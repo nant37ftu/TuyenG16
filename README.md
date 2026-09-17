@@ -64,6 +64,19 @@ người nộp, BTC không nhận được gì. Bắt buộc phải làm bước
    - `anon public` key → dán vào `SUPABASE_ANON_KEY`
 4. Mở lại trang, dòng cảnh báo "Chế độ thử" biến mất là xong. Nộp thử một đơn để kiểm tra.
 
+> **Dự án của CLB đã có sẵn.** `SUPABASE_URL` trong `config.js` đã điền:
+> `https://qiwfknocgwcptjmjdpmc.supabase.co`. Chỉ còn thiếu `SUPABASE_ANON_KEY`.
+>
+> Làm đúng thứ tự này, đừng đảo:
+> 1. Chạy `sql/schema.sql` trong **SQL Editor** trước — file này bật RLS, khoá không cho
+>    người ngoài đọc đơn ứng viên.
+> 2. Rồi mới dán `anon public` key vào `config.js`.
+>
+> Khoá `anon` sinh ra để lộ trong code chạy ở máy người dùng, **nhưng nó chỉ an toàn
+> khi RLS đã bật**. Repo này công khai, nên dán key vào trước khi chạy schema là mở
+> toang bảng đơn cho cả internet đọc. Nếu lỡ làm ngược, vào Supabase bấm
+> **Settings → API → Rotate anon key** rồi làm lại.
+
 **Xem đơn đã nhận:** Supabase → **Table Editor** → bảng `g16_ung_vien`.
 Nút **Export → CSV** để tải về mở bằng Excel.
 
@@ -194,11 +207,29 @@ Nút ⛶ góc trên bên phải để chạy toàn màn hình. Nút 🔊 để t
 
 ## 8. Đưa lên mạng
 
-Nhanh nhất là **Vercel**: vào [vercel.com](https://vercel.com) → đăng nhập bằng GitHub →
-kéo thả cả thư mục `web` này vào → có link chạy ngay sau một phút. Đổi sang tên miền
-riêng của CLB cũng ở đó.
+Mã nguồn nằm ở **<https://github.com/nant37ftu/TuyenG16>**, nhánh `main`.
 
-Hoặc **GitHub Pages**: đẩy thư mục này lên một repo → Settings → Pages → chọn nhánh `main`.
+**GitHub Pages** — không tốn đồng nào, hợp với trang tĩnh như bộ này:
+vào repo → **Settings → Pages** → mục *Build and deployment*, chọn
+*Deploy from a branch* → nhánh `main`, thư mục `/ (root)` → **Save**.
+Chờ khoảng một phút, trang chạy ở `https://nant37ftu.github.io/TuyenG16/`.
+
+**Vercel** nếu muốn gắn tên miền riêng của CLB: vào [vercel.com](https://vercel.com) →
+đăng nhập bằng GitHub → **Import** repo này → Deploy. Sau đó mỗi lần đẩy code lên
+`main` là trang tự cập nhật.
+
+### Sửa xong thì đẩy lên thế nào
+
+```bash
+git add -A
+git commit -m "Sửa mốc thời gian G16"
+git push
+```
+
+Máy khác muốn lấy về: `git clone https://github.com/nant37ftu/TuyenG16.git`
+
+`.gitignore` đã chặn sẵn thư mục `rieng-tu/` và các file `*.local.js` — cần ghi chú
+nội bộ hay để tạm thứ gì không muốn công khai thì bỏ vào đó.
 
 ---
 
