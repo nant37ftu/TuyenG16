@@ -5,8 +5,13 @@ window.CAU_HINH = {
   // --- Kết nối Supabase để nhận đơn ---
   // Để trống -> trang chạy ở CHẾ ĐỘ THỬ: đơn chỉ lưu tạm trong trình duyệt.
   // Xem hướng dẫn lấy 2 giá trị này trong README.md
+  //
+  // Khoá dưới đây là "publishable key" — sinh ra để lộ trong code chạy ở máy
+  // người dùng, ai xem mã nguồn trang cũng thấy. Nó CHỈ an toàn khi RLS trong
+  // sql/schema.sql đã chạy: anon chỉ được ghi đơn, không đọc lại được đơn của
+  // người khác. Đổi khoá khi cần: Supabase -> Settings -> API Keys.
   SUPABASE_URL: 'https://qiwfknocgwcptjmjdpmc.supabase.co',
-  SUPABASE_ANON_KEY: '',
+  SUPABASE_ANON_KEY: 'sb_publishable_hifh_GhvmKJM35AMwCs2nA_-2lvSiLk',
   BANG_UNG_VIEN: 'g16_ung_vien',
   BANG_BAN_DO_DANG_KY: 'ban_do_dang_ky',  // nơi nhận người tự thêm tên vào bản đồ
 
