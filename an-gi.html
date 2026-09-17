@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hôm nay ăn chi? — 37FTU</title>
+<meta name="description" content="Đứng giữa ngã ba đường không biết ăn gì thì bấm một cái. Có cả món xứ Nghệ cho hôm nào nhớ nhà.">
+<meta property="og:title" content="Hôm nay ăn chi?">
+<meta property="og:description" content="Bấm một cái, khỏi nghĩ. Món xứ Nghệ có sẵn cho hôm nào nhớ nhà.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<meta name="theme-color" content="#1B1310">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="an-gi.css">
+</head>
+<body class="ag-body">
+
+<header class="ag-dinh">
+  <a class="hieu" href="index.html"><img src="assets/logo-trang.png" alt="Logo 37FTU">37FTU</a>
+  <button id="nut-tieng" class="ag-tieng" type="button" aria-pressed="true" title="Bật/tắt tiếng">🔊</button>
+</header>
+
+<main class="ag">
+  <div class="ag-trong">
+
+    <!-- ---------- Mở đầu ---------- -->
+    <div class="ag-tieu">
+      <p class="ag-chao" id="ag-chao">Chào em</p>
+      <h1 id="ag-hoi">Trưa ni ăn chi?</h1>
+      <p class="ag-phu">Nghĩ lâu thì đói. Chọn vài điều kiện rồi bấm một cái, để cái máy nó lo.</p>
+    </div>
+
+    <!-- ---------- Bộ lọc ---------- -->
+    <div class="ag-loc" id="ag-loc">
+      <div class="ag-hang">
+        <span class="ag-nhan-loc">Bữa</span>
+        <div class="ag-chip" data-nhom="buoi"></div>
+      </div>
+      <div class="ag-hang">
+        <span class="ag-nhan-loc">Túi tiền</span>
+        <div class="ag-chip" data-nhom="tien"></div>
+      </div>
+      <div class="ag-hang">
+        <span class="ag-nhan-loc">Thèm chi</span>
+        <div class="ag-chip" data-nhom="kieu"></div>
+      </div>
+    </div>
+
+    <!-- ---------- Máy quay ---------- -->
+    <div class="ag-may">
+      <div class="ag-khe" id="ag-khe" aria-live="polite">
+        <div class="ag-cuon" id="ag-cuon"></div>
+        <div class="ag-vach" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <button class="ag-bam" id="ag-bam" type="button">
+      <span>Bấm cái coi</span>
+      <small id="ag-bam-phu">còn <b id="ag-con">—</b> món hợp ý em</small>
+    </button>
+    <p class="ag-meo" id="ag-meo">Mẹo: bấm phím cách cũng quay được. Trên điện thoại thì lắc một cái.</p>
+
+    <!-- ---------- Kết quả ---------- -->
+    <section class="ag-kq" id="ag-kq" hidden>
+      <div class="ag-kq-the">
+        <div class="ag-kq-icon" id="kq-icon">🍜</div>
+        <h2 id="kq-ten">—</h2>
+        <div class="ag-kq-chip" id="kq-chip"></div>
+        <p class="ag-kq-mota" id="kq-mota"></p>
+        <p class="ag-kq-ly-do" id="kq-ly-do"></p>
+        <p class="ag-kq-cho" id="kq-cho" hidden></p>
+        <div class="ag-kq-nut">
+          <button class="nut nut-vien" type="button" id="kq-quay">Quay lại</button>
+          <button class="nut nut-chinh" type="button" id="kq-chot">Chốt, đi ăn!</button>
+        </div>
+        <button class="ag-chep" type="button" id="kq-chep">Chép để gửi vào nhóm</button>
+      </div>
+    </section>
+
+    <!-- ---------- Đã ăn gần đây ---------- -->
+    <section class="ag-lich-su" id="ag-lich-su" hidden>
+      <h3>Mấy bữa vừa rồi em ăn</h3>
+      <div class="ag-ls-hang" id="ag-ls-hang"></div>
+      <button class="ag-xoa" type="button" id="ag-xoa">Xoá lịch sử</button>
+    </section>
+
+    <!-- ---------- Chân trang nhỏ ---------- -->
+    <div class="ag-chan">
+      <p>Một sản phẩm vui của <b>CLB Tình nguyện Đồng hương Nghệ An — 37FTU</b>.</p>
+      <div class="ag-chan-link">
+        <a href="index.html">Tuyển thành viên Gen 16</a>
+        <a href="ban-do.html">Người Nghệ ở Ngoại thương</a>
+        <a href="game.html">Góc game bàn trực</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ag-phao" id="ag-phao" aria-hidden="true"></div>
+</main>
+
+<script src="config.js"></script>
+<script src="an-gi.js"></script>
+</body>
+</html>

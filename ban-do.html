@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Người Nghệ ở Ngoại thương — Bản đồ &amp; Danh bạ · 37FTU</title>
+<meta name="description" content="21 huyện, thành, thị của Nghệ An trên một tấm bản đồ, và danh bạ những người con xứ Nghệ đang học ở Ngoại thương. Tìm người cùng quê, cùng trường cấp ba với em.">
+<meta property="og:title" content="Người Nghệ ở Ngoại thương">
+<meta property="og:description" content="Quê em, trường cấp ba của em — đã có ai ở Ngoại thương chưa?">
+<meta property="og:image" content="assets/img/hero.jpg">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="ban-do.css">
+</head>
+<body>
+
+<header class="dinh">
+  <div class="khung">
+    <a class="hieu" href="ban-do.html"><img src="assets/logo.png" alt="Logo 37FTU">Người Nghệ ở Ngoại thương</a>
+    <nav class="menu">
+      <a href="#ban-do">Bản đồ</a>
+      <a href="#danh-ba">Danh bạ</a>
+      <a href="index.html">Tuyển Gen 16</a>
+    </nav>
+    <a class="nut nut-chinh" href="#them-ten">Thêm tên em</a>
+  </div>
+</header>
+
+<main>
+  <!-- ======================= MỞ ĐẦU ======================= -->
+  <section class="nn-dau">
+    <div class="khung">
+      <span class="nhan">Một sản phẩm của 37FTU</span>
+      <h1>Quê em, trường cấp ba của em —<br>đã có ai ở Ngoại thương chưa?</h1>
+      <p class="dan-de" style="margin-top:16px">
+        Người Nghệ gặp nhau, câu đầu tiên bao giờ cũng là <i>“quê mô?”</i>, câu thứ hai là <i>“học trường mô?”</i>.
+        Tấm bản đồ này trả lời cả hai: có bao nhiêu người cùng quê em ở đây, và <b>họ là ai</b>.
+      </p>
+      <div id="canh-bao-mau"></div>
+      <div class="nn-so" id="nn-so"></div>
+    </div>
+  </section>
+
+  <!-- ======================= CHỌN CHẾ ĐỘ XEM ======================= -->
+  <div class="nn-tab-boc">
+    <div class="khung">
+      <div class="nn-tab" role="tablist">
+        <button id="tab-ban-do" role="tab" aria-selected="true" aria-controls="xem-ban-do">Bản đồ</button>
+        <button id="tab-danh-ba" role="tab" aria-selected="false" aria-controls="xem-danh-ba">Danh bạ người Nghệ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= XEM: BẢN ĐỒ ======================= -->
+  <section id="xem-ban-do" role="tabpanel" aria-labelledby="tab-ban-do" style="padding-top:26px">
+    <div class="khung">
+      <a id="ban-do" class="neo"></a>
+      <div class="bo-loc" id="bo-loc" role="group" aria-label="Lọc theo thế hệ"></div>
+
+      <div class="tim-que">
+        <label for="tim-que">Tìm nhanh quê em:</label>
+        <select id="tim-que"><option value="">— Chọn huyện, thành, thị —</option></select>
+      </div>
+
+      <div class="bd-khung">
+        <div class="bd-map the">
+          <div class="bd-tren">
+            <div>
+              <div class="bd-tong"><b id="tong-so">—</b> <span>người trên bản đồ</span></div>
+              <div class="bd-phu" id="bd-phu">21 huyện, thành, thị · theo tên đơn vị hành chính cũ</div>
+            </div>
+            <div class="thang" aria-hidden="true">
+              <span>ít</span>
+              <i style="background:#FFE9E0"></i><i style="background:#FFC9B3"></i><i style="background:#FB9A76"></i>
+              <i style="background:#FA501E"></i><i style="background:#A82F0D"></i>
+              <span>nhiều</span>
+            </div>
+          </div>
+          <div class="bd-svg-boc">
+            <svg id="bd-svg" role="img" aria-label="Bản đồ tỉnh Nghệ An theo huyện"></svg>
+            <div id="chu-thich" class="chu-thich" hidden></div>
+          </div>
+          <p class="nhac-cham">Chạm vào một vùng bất kỳ để xem tên huyện và số người.</p>
+        </div>
+
+        <aside class="bd-panel the" id="panel">
+          <div id="panel-rong">
+            <h3>Chọn một huyện</h3>
+            <p style="color:var(--muc-nhat);font-size:.95rem">
+              Bấm vào bất kỳ vùng nào trên bản đồ để xem những người con xứ Nghệ quê ở đó.
+            </p>
+            <div class="xep-hang" id="xep-hang"></div>
+          </div>
+          <div id="panel-chi-tiet" hidden></div>
+        </aside>
+      </div>
+
+      <p class="goi-y" style="margin-top:18px">
+        Bản đồ vẽ theo 21 huyện/thành/thị trước đợt sắp xếp đơn vị hành chính năm 2025 — cách mà người Nghệ vẫn quen gọi tên quê mình.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= XEM: DANH BẠ ======================= -->
+  <section id="xem-danh-ba" role="tabpanel" aria-labelledby="tab-danh-ba" hidden style="padding-top:26px">
+    <div class="khung">
+      <a id="danh-ba" class="neo"></a>
+
+      <!-- Khối "em là ai" — dùng để xếp người gần em nhất lên đầu -->
+      <div class="la-ai the" id="la-ai">
+        <div class="la-ai-chu">
+          <b>Em quê mô, học trường mô?</b>
+          <span>Cho anh chị biết, danh bạ sẽ tự đẩy người cùng quê và cùng trường cấp ba với em lên trước.</span>
+        </div>
+        <div class="la-ai-o">
+          <select id="em-que" aria-label="Quê của em"><option value="">Quê của em</option></select>
+          <input id="em-truong" list="ds-truong" placeholder="Trường cấp ba của em" aria-label="Trường cấp ba của em">
+          <datalist id="ds-truong"></datalist>
+          <button class="nut nut-vien" id="xoa-em" type="button" hidden>Bỏ ghi nhớ</button>
+        </div>
+      </div>
+
+      <!-- Bộ lọc danh bạ -->
+      <div class="db-loc">
+        <input id="db-tim" type="search" placeholder="Tìm theo tên, quê, trường, ngành…" aria-label="Tìm trong danh bạ">
+        <select id="db-que" aria-label="Lọc theo quê"><option value="">Tất cả quê</option></select>
+        <select id="db-the-he" aria-label="Lọc theo thế hệ"><option value="">Tất cả thế hệ</option></select>
+        <select id="db-truong" aria-label="Lọc theo trường cấp ba"><option value="">Tất cả trường cấp ba</option></select>
+      </div>
+
+      <div class="db-dem" id="db-dem"></div>
+      <div class="db-luoi" id="db-luoi"></div>
+      <div id="db-trong" class="db-trong" hidden></div>
+    </div>
+  </section>
+
+  <!-- ======================= THÊM TÊN ======================= -->
+  <section class="form-vung" id="them-ten">
+    <div class="hep">
+      <span class="nhan">Góp tên vào bản đồ</span>
+      <h2>Đặt tên em lên bản đồ này</h2>
+      <p class="dan-de" style="margin:14px 0 26px">
+        Không cần là thành viên 37FTU. Chỉ cần em là người Nghệ đang học ở Ngoại thương —
+        một dòng của em có thể là chỗ dựa cho một em khoá dưới cùng huyện, cùng trường cấp ba,
+        năm sau ra Hà Nội mà chưa quen ai.
+      </p>
+
+      <div class="form-hop">
+        <div id="tb-ban-do"></div>
+        <form id="form-ban-do" novalidate>
+          <div class="hang hang-2">
+            <div class="o" data-o="ten">
+              <label for="tt-ten">Họ và tên <span class="sao">*</span></label>
+              <input id="tt-ten" name="ten" autocomplete="name" placeholder="Nguyễn Thị Hà">
+              <div class="loi">Em ghi đầy đủ họ tên giúp anh chị nhé.</div>
+            </div>
+            <div class="o" data-o="que_id">
+              <label for="tt-que">Quê ở huyện/thành/thị nào <span class="sao">*</span></label>
+              <select id="tt-que" name="que_id"><option value="">— Chọn —</option></select>
+              <div class="loi">Chọn quê của em.</div>
+            </div>
+          </div>
+
+          <div class="hang hang-2">
+            <div class="o" data-o="truong_thpt">
+              <label for="tt-truong">Trường cấp ba <span class="sao">*</span></label>
+              <input id="tt-truong" name="truong_thpt" list="ds-truong-2" placeholder="THPT Phan Đăng Lưu">
+              <datalist id="ds-truong-2"></datalist>
+              <div class="loi">Đây là thứ giúp người khác nhận ra em nhanh nhất.</div>
+            </div>
+            <div class="o" data-o="khoa_hoc">
+              <label for="tt-khoa">Khoá ở Ngoại thương <span class="sao">*</span></label>
+              <input id="tt-khoa" name="khoa_hoc" placeholder="K63">
+              <div class="loi">Ví dụ: K63.</div>
+            </div>
+          </div>
+
+          <div class="hang hang-2">
+            <div class="o" data-o="nganh">
+              <label for="tt-nganh">Ngành đang học</label>
+              <input id="tt-nganh" name="nganh" placeholder="Kinh tế đối ngoại">
+              <div class="loi"></div>
+            </div>
+            <div class="o" data-o="the_he">
+              <label for="tt-the-he">Thế hệ 37FTU (nếu là thành viên)</label>
+              <input id="tt-the-he" name="the_he" placeholder="G16 — bỏ trống nếu chưa vào CLB">
+              <div class="loi"></div>
+            </div>
+          </div>
+
+          <div class="hang">
+            <div class="o" data-o="gioi_thieu">
+              <label for="tt-gioi-thieu">Một dòng về em</label>
+              <input id="tt-gioi-thieu" name="gioi_thieu" maxlength="90" placeholder="Nhà có nhút, ai thèm nhút Thanh Chương thì nhắn.">
+              <div class="goi-y">Viết như đang nói chuyện. Tối đa 90 ký tự.</div>
+              <div class="loi"></div>
+            </div>
+          </div>
+
+          <div class="hang">
+            <div class="o" data-o="lien_he">
+              <label for="tt-lien-he">Link Facebook để người cùng quê nhắn cho em</label>
+              <input id="tt-lien-he" name="lien_he" placeholder="https://facebook.com/...">
+              <div class="goi-y">Chỉ dán link trang cá nhân. <b>Đừng điền số điện thoại hay email vào đây</b> — ô này hiện công khai cho mọi người đọc.</div>
+              <div class="loi">Link phải bắt đầu bằng http.</div>
+            </div>
+          </div>
+
+          <div class="hang">
+            <label class="dong-y">
+              <input type="checkbox" id="tt-dong-y" name="dong_y">
+              <span>Em đồng ý cho 37FTU hiển thị công khai những thông tin trên trong danh bạ này, và có thể yêu cầu gỡ bất cứ lúc nào qua email của CLB. <span class="sao">*</span></span>
+            </label>
+            <div class="o" data-o="dong_y"><div class="loi">Cần em đồng ý thì anh chị mới dám đăng.</div></div>
+          </div>
+
+          <button class="nut nut-chinh" type="submit" id="nut-them" style="width:100%;margin-top:6px">Gửi — chờ anh chị duyệt</button>
+          <p class="goi-y" style="text-align:center;margin-top:12px">
+            Tên em sẽ xuất hiện sau khi ban Truyền thông kiểm tra, thường trong 1–2 ngày.
+          </p>
+        </form>
+
+        <div id="tt-xong" class="xong" hidden>
+          <div class="dau">✓</div>
+          <h3>Nhận rồi, cảm ơn em!</h3>
+          <p style="color:var(--muc-nhat)">
+            Anh chị sẽ kiểm tra rồi đưa tên em lên bản đồ. Trong lúc chờ, em thử xem
+            trong huyện mình đã có những ai nhé.
+          </p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px">
+            <button class="nut nut-chinh" type="button" id="tt-xem-que">Xem người cùng quê</button>
+            <a class="nut nut-vien" href="index.html">Về trang tuyển Gen 16</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="khung">
+    <div>
+      <div class="ten">Người Nghệ ở Ngoại thương</div>
+      <div>Một sản phẩm của CLB Tình nguyện Đồng hương Nghệ An — 37FTU, lập 30/10/2011.</div>
+      <div style="margin-top:10px">Muốn gỡ tên khỏi danh bạ? Nhắn cho CLB, anh chị gỡ ngay.</div>
+    </div>
+    <div>
+      <div class="ten">Liên hệ</div>
+      <div id="chan-lien-he-bd"></div>
+    </div>
+    <div>
+      <div class="ten">Đường tắt</div>
+      <div><a href="#danh-ba">Danh bạ</a></div>
+      <div><a href="#them-ten">Thêm tên em</a></div>
+      <div><a href="index.html">Tuyển thành viên Gen 16</a></div>
+      <div style="margin-top:10px;font-size:.85rem">Ranh giới hành chính: bộ dữ liệu mở dvhcvn.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="ban-do.js"></script>
+</body>
+</html>

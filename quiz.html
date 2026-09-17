@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Em hợp ban nào ở 37FTU?</title>
+<meta name="description" content="10 câu hỏi vui để xem em hợp với Ban Tổ chức, Ban Truyền thông hay Ban Đối ngoại của 37FTU.">
+<meta property="og:title" content="Em hợp ban nào ở 37FTU?">
+<meta property="og:description" content="10 câu, 2 phút, biết ngay mình thuộc về ban nào.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+<header class="dinh">
+  <div class="khung">
+    <a class="hieu" href="index.html"><img src="assets/logo.png" alt="Logo 37FTU">37FTU</a>
+    <nav class="menu">
+      <a href="index.html#ve-chung-toi">Về 37FTU</a>
+      <a href="index.html#cac-ban">Các ban</a>
+      <a href="ban-do.html">Người Nghệ ở FTU</a>
+      <a href="index.html#san-choi">Sân chơi</a>
+      <a href="index.html#cau-hoi">Hỏi đáp</a>
+    </nav>
+    <a class="nut nut-chinh" href="index.html#nop-don">Nộp đơn</a>
+  </div>
+</header>
+
+<main>
+  <section class="q-vung">
+    <div class="hep">
+
+      <!-- Màn mở đầu -->
+      <div id="man-dau">
+        <span class="nhan">Trắc nghiệm vui</span>
+        <h1 class="q-tieu-de">Em hợp ban nào<br>ở 37FTU?</h1>
+        <p class="dan-de" style="margin-top:16px">
+          10 câu, chừng 2 phút. Không có đáp án đúng hay sai — chỉ để em biết mình giống kiểu người nào
+          trong ba ban của Đội, rồi ghi nguyện vọng cho trúng.
+        </p>
+        <button class="nut nut-chinh" id="bat-dau" style="margin-top:26px">Bắt đầu →</button>
+        <p class="goi-y" style="margin-top:14px">Kết quả chỉ để tham khảo, em vẫn được tự chọn nguyện vọng khi nộp đơn.</p>
+      </div>
+
+      <!-- Màn câu hỏi -->
+      <div id="man-hoi" hidden>
+        <div class="q-tien-do">
+          <div class="q-thanh"><i id="q-thanh-chay"></i></div>
+          <span id="q-dem">Câu 1/10</span>
+        </div>
+        <h2 class="q-cau" id="q-cau"></h2>
+        <div class="q-dap-an" id="q-dap-an"></div>
+        <button class="nut nut-vien q-quay-lai" id="q-quay-lai" hidden>← Câu trước</button>
+      </div>
+
+      <!-- Màn kết quả -->
+      <div id="man-ket-qua" hidden>
+        <span class="nhan">Kết quả của em</span>
+        <div class="kq-hop">
+          <div class="kq-ten" id="kq-ten"></div>
+          <div class="kq-biet-danh" id="kq-biet-danh"></div>
+          <p class="kq-mo-ta" id="kq-mo-ta"></p>
+          <div class="kq-thanh" id="kq-thanh"></div>
+          <div class="kq-hoc" id="kq-hoc"></div>
+        </div>
+
+        <div class="kq-nut">
+          <a class="nut nut-chinh" id="kq-nop" href="index.html#nop-don">Nộp đơn với nguyện vọng này</a>
+          <button class="nut nut-vien" id="kq-tai">Tải ảnh kết quả</button>
+          <button class="nut nut-vien" id="kq-lam-lai">Làm lại</button>
+        </div>
+
+        <p class="goi-y" style="margin-top:16px">
+          Tải ảnh về rồi đăng story kèm link trang tuyển, bạn bè cùng quê sẽ thấy.
+        </p>
+
+        <div class="kq-xem-truoc">
+          <canvas id="anh-kq" width="1080" height="1350"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="khung">
+    <div>
+      <div class="ten">CLB Tình nguyện Đồng hương Nghệ An</div>
+      <div>Trường Đại học Ngoại thương · Thành lập 30/10/2011</div>
+    </div>
+    <div>
+      <div class="ten">Đường tắt</div>
+      <div><a href="index.html">Trang tuyển thành viên</a></div>
+      <div><a href="ban-do.html">Người Nghệ ở Ngoại thương</a></div>
+      <div><a href="an-gi.html">Hôm nay ăn chi</a></div>
+      <div><a href="game.html">Góc game bàn trực</a></div>
+    </div>
+    <div>
+      <div class="ten">Liên hệ</div>
+      <div id="chan-lien-he-q"></div>
+    </div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="noi-dung.js"></script>
+<script src="quiz.js"></script>
+</body>
+</html>

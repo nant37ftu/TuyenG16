@@ -1,0 +1,13 @@
+# Rác hệ điều hành
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# File thử nghiệm / ảnh chụp màn hình tạm
+_thu-*.html
+pv-*.jpg
+pv-*.png
+
+# Ghi chú riêng của BTC, không đẩy lên repo công khai
+rieng-tu/
+*.local.js

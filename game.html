@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Góc game bàn trực — 37FTU</title>
+<meta name="description" content="Hai trò chơi nhanh của CLB Đồng hương Nghệ An: bắt lươn xứ Nghệ và đố giọng Nghệ. Chơi 45 giây, có bảng xếp hạng ngay tại bàn trực.">
+<meta property="og:title" content="Góc game bàn trực — 37FTU">
+<meta property="og:description" content="Bắt lươn xứ Nghệ và đố giọng Nghệ. Một lượt 45 giây.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<meta name="theme-color" content="#120C0A">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="game.css">
+</head>
+<body class="gm-body">
+
+<header class="gm-dinh">
+  <a class="hieu" href="index.html"><img src="assets/logo-trang.png" alt="Logo 37FTU">37FTU</a>
+  <div class="gm-dinh-nut">
+    <button id="gm-tieng" type="button" aria-pressed="true" title="Bật/tắt tiếng">🔊</button>
+    <button id="gm-toan" type="button" title="Toàn màn hình">⛶</button>
+  </div>
+</header>
+
+<main class="gm">
+
+  <!-- ================= CHỌN TRÒ ================= -->
+  <section id="man-chon" class="gm-man">
+    <div class="gm-trong">
+      <p class="gm-nhan">Góc game bàn trực</p>
+      <h1>Chơi một lượt<br>rồi hẵng đi</h1>
+      <p class="gm-phu">Mỗi lượt chưa tới một phút. Điểm cao nhất trong ngày được ghi lên bảng ngay tại bàn.</p>
+
+      <div class="gm-chon">
+        <button class="gm-tro" data-tro="luon" type="button">
+          <span class="gm-tro-hinh" aria-hidden="true">🐟</span>
+          <b>Bắt lươn xứ Nghệ</b>
+          <span>Lươn trườn qua chậu, chạm trúng là được điểm. Đừng chộp nhầm bèo.</span>
+          <i>45 giây · phản xạ</i>
+        </button>
+        <button class="gm-tro" data-tro="giong" type="button">
+          <span class="gm-tro-hinh" aria-hidden="true">💬</span>
+          <b>Giọng Nghệ tốc độ</b>
+          <span>“Mô, tê, răng, rứa” nghĩa là chi? Mỗi câu 6 giây, trả lời nhanh được nhiều điểm.</span>
+          <i>10 câu · đoán nghĩa</i>
+        </button>
+      </div>
+
+      <div class="gm-bxh" id="bxh-chung"></div>
+
+      <div class="gm-chan">
+        <a href="index.html">Tuyển thành viên Gen 16</a>
+        <a href="ban-do.html">Người Nghệ ở Ngoại thương</a>
+        <a href="an-gi.html">Hôm nay ăn chi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NHẬP TÊN ================= -->
+  <section id="man-ten" class="gm-man" hidden>
+    <div class="gm-trong gm-giua">
+      <h2 id="ten-tro">—</h2>
+      <p class="gm-phu">Ghi tên để lát nữa còn lên bảng xếp hạng.</p>
+      <form id="form-ten" class="gm-form">
+        <input id="o-ten" maxlength="18" placeholder="Tên hoặc biệt danh" autocomplete="off" aria-label="Tên người chơi">
+        <button class="nut nut-chinh" type="submit">Bắt đầu</button>
+      </form>
+      <button class="gm-quay-lai" type="button" data-ve="man-chon">← Chọn trò khác</button>
+    </div>
+  </section>
+
+  <!-- ================= TRÒ 1: BẮT LƯƠN ================= -->
+  <section id="man-luon" class="gm-man" hidden>
+    <div class="gm-trong">
+      <div class="gm-thanh">
+        <div class="gm-diem"><span>Điểm</span><b id="luon-diem">0</b></div>
+        <div class="gm-gio"><i id="luon-thanh"></i></div>
+        <div class="gm-diem gm-phai"><span>Còn</span><b id="luon-giay">45</b></div>
+      </div>
+      <div class="gm-canvas-boc">
+        <canvas id="luon-canvas"></canvas>
+        <div class="gm-combo" id="luon-combo" hidden></div>
+        <div class="gm-dem-vao" id="luon-dem-vao" hidden>3</div>
+      </div>
+      <p class="gm-meo">Chạm hoặc bấm chuột vào con lươn. Bèo xanh thì tránh ra.</p>
+    </div>
+  </section>
+
+  <!-- ================= TRÒ 2: GIỌNG NGHỆ ================= -->
+  <section id="man-giong" class="gm-man" hidden>
+    <div class="gm-trong">
+      <div class="gm-thanh">
+        <div class="gm-diem"><span>Điểm</span><b id="giong-diem">0</b></div>
+        <div class="gm-gio"><i id="giong-thanh"></i></div>
+        <div class="gm-diem gm-phai"><span>Câu</span><b id="giong-cau">1/10</b></div>
+      </div>
+      <div class="gm-hoi">
+        <p class="gm-hoi-nhan">Người Nghệ nói…</p>
+        <h2 id="giong-tu">—</h2>
+        <p class="gm-hoi-vd" id="giong-vd"></p>
+      </div>
+      <div class="gm-dap" id="giong-dap"></div>
+      <div class="gm-bao" id="giong-bao" hidden></div>
+    </div>
+  </section>
+
+  <!-- ================= KẾT THÚC ================= -->
+  <section id="man-xong" class="gm-man" hidden>
+    <div class="gm-trong gm-giua">
+      <div class="gm-xong-icon" id="xong-icon">🏅</div>
+      <p class="gm-nhan" id="xong-tro">—</p>
+      <h2 id="xong-loi">—</h2>
+      <div class="gm-xong-diem"><b id="xong-diem">0</b><span>điểm</span></div>
+      <p class="gm-phu" id="xong-hang"></p>
+
+      <div class="gm-bxh" id="bxh-tro"></div>
+
+      <div class="gm-qr">
+        <img id="qr-anh" src="assets/qr.png" alt="Mã QR mở trang tuyển thành viên Gen 16" hidden>
+        <div>
+          <b>Thích thì vào luôn cho vui</b>
+          <p id="qr-chu">Gen 16 đang mở đơn. Quét mã hoặc mở trang tuyển thành viên.</p>
+          <a class="nut nut-chinh" href="index.html#nop-don">Xem vòng tuyển Gen 16</a>
+        </div>
+      </div>
+
+      <div class="gm-xong-nut">
+        <button class="nut nut-vien" type="button" id="xong-lai">Chơi lại</button>
+        <button class="nut nut-vien" type="button" data-ve="man-chon">Đổi trò</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="config.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

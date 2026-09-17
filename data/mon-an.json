@@ -1,0 +1,710 @@
+{
+ "_doc": "Danh sách món cho trang 'Hôm nay ăn chi'. BTC thêm/bớt thoải mái. gia = nghìn đồng (ước lượng, để lọc túi tiền). kieu: que | pho-thong | vat. buoi: sang, trua, toi, dem. goi_y_cho: chỗ ăn quen của CLB, để trống thì trang không hiện dòng đó.",
+ "cap_nhat": "2026-09-17",
+ "mon": [
+  {
+   "ten": "Cháo lươn Vinh",
+   "icon": "🍲",
+   "kieu": "que",
+   "gia": 35,
+   "buoi": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Nóng, cay, thơm nghệ. Ăn xong là thấy mình vừa về nhà một chuyến.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Súp lươn bánh mướt",
+   "icon": "🥣",
+   "kieu": "que",
+   "gia": 40,
+   "buoi": [
+    "sang",
+    "trua"
+   ],
+   "mo_ta": "Bộ đôi quốc dân xứ Nghệ. Thiếu bánh mướt là thiếu nửa linh hồn.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Miến lươn",
+   "icon": "🍜",
+   "kieu": "que",
+   "gia": 40,
+   "buoi": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Lươn giòn, miến dai. Món cho hôm nào muốn ăn ngon mà không muốn no quá.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Lươn xào nghệ",
+   "icon": "🍛",
+   "kieu": "que",
+   "gia": 50,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Cay xè, thơm nức. Ăn với cơm trắng là hết hai bát không kịp thở.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh mướt chấm nước mắm",
+   "icon": "🍥",
+   "kieu": "que",
+   "gia": 20,
+   "buoi": [
+    "sang",
+    "toi",
+    "chieu"
+   ],
+   "mo_ta": "Trắng, mỏng, mềm. Món sáng của cả tỉnh, ăn hoài không chán.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh đa Đô Lương",
+   "icon": "🫓",
+   "kieu": "que",
+   "gia": 15,
+   "buoi": [
+    "sang",
+    "trua",
+    "toi",
+    "dem",
+    "chieu"
+   ],
+   "mo_ta": "Giòn tan, thơm vừng. Bẻ một miếng là nghe tiếng quê.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Nhút Thanh Chương",
+   "icon": "🥬",
+   "kieu": "que",
+   "gia": 20,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Chua chua mặn mặn, ăn với cơm nóng ngày mưa thì thôi rồi.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cà muối chấm tương Nam Đàn",
+   "icon": "🫙",
+   "kieu": "que",
+   "gia": 15,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Nghe thì đơn giản, nhưng đứa mô xa nhà cũng nhớ cái vị này.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Giò bê",
+   "icon": "🥩",
+   "kieu": "que",
+   "gia": 60,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Đặc sản Nam Đàn. Hôm nào sang thì làm một đĩa cho ra dáng người Nghệ.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Canh hến sông Lam",
+   "icon": "🦪",
+   "kieu": "que",
+   "gia": 30,
+   "buoi": [
+    "trua"
+   ],
+   "mo_ta": "Ngọt thanh, húp một hớp là mát cả buổi trưa.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cơm lam",
+   "icon": "🎍",
+   "kieu": "que",
+   "gia": 30,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Của miền tây Nghệ An. Thơm mùi ống nứa, ăn với muối vừng là đủ.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh ngào mật mía",
+   "icon": "🍯",
+   "kieu": "que",
+   "gia": 20,
+   "buoi": [
+    "toi",
+    "dem",
+    "chieu"
+   ],
+   "mo_ta": "Ngọt gắt kiểu Nghệ. Ăn một bát nóng ngày lạnh là ấm tới tận Tết.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh gai xứ Dừa",
+   "icon": "🍘",
+   "kieu": "que",
+   "gia": 10,
+   "buoi": [
+    "sang",
+    "toi",
+    "chieu"
+   ],
+   "mo_ta": "Đen, dẻo, thơm. Quà quê chuẩn để dúi cho bạn cùng phòng.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cháo canh",
+   "icon": "🍲",
+   "kieu": "que",
+   "gia": 30,
+   "buoi": [
+    "sang",
+    "toi",
+    "chieu"
+   ],
+   "mo_ta": "Sợi to, nước sánh. Món ăn cho hôm nào thấy người uể oải.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cá mát sông Giăng nướng",
+   "icon": "🐟",
+   "kieu": "que",
+   "gia": 70,
+   "buoi": [
+    "toi"
+   ],
+   "mo_ta": "Của Con Cuông. Hôm nào có tiền thì rủ cả hội, chứ ăn một mình phí.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Mực nháy Cửa Lò",
+   "icon": "🦑",
+   "kieu": "que",
+   "gia": 80,
+   "buoi": [
+    "toi"
+   ],
+   "mo_ta": "Ngọt lừ. Ăn ở Hà Nội thì nhớ, ăn ở Cửa Lò thì mê.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cam Vinh",
+   "icon": "🍊",
+   "kieu": "que",
+   "gia": 20,
+   "buoi": [
+    "sang",
+    "trua",
+    "toi",
+    "chieu"
+   ],
+   "mo_ta": "Không phải bữa chính, nhưng là niềm tự hào chính.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Kẹo cu đơ",
+   "icon": "🥜",
+   "kieu": "que",
+   "gia": 15,
+   "buoi": [
+    "sang",
+    "toi",
+    "dem",
+    "chieu"
+   ],
+   "mo_ta": "Bên Hà Tĩnh nhưng dân Nghệ nghiện không kém. Nhai xong nhớ uống nước chè.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Nước chè xanh",
+   "icon": "🍵",
+   "kieu": "que",
+   "gia": 5,
+   "buoi": [
+    "sang",
+    "trua",
+    "toi",
+    "dem",
+    "chieu"
+   ],
+   "mo_ta": "Chát trước ngọt sau. Ngồi bệt uống với nhau là ra chuyện.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Phở bò",
+   "icon": "🍜",
+   "kieu": "pho-thong",
+   "gia": 40,
+   "buoi": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Không bao giờ sai. Chỉ là hơi thiếu bất ngờ thôi.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bún chả",
+   "icon": "🍢",
+   "kieu": "pho-thong",
+   "gia": 40,
+   "buoi": [
+    "trua"
+   ],
+   "mo_ta": "Trưa nắng mà có bát nước chấm ấm là ổn cả buổi chiều.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bún đậu mắm tôm",
+   "icon": "🍆",
+   "kieu": "pho-thong",
+   "gia": 45,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Ăn theo hội thì vui, ăn một mình thì buồn. Rủ thêm đứa nữa đi.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bún riêu cua",
+   "icon": "🦀",
+   "kieu": "pho-thong",
+   "gia": 35,
+   "buoi": [
+    "sang",
+    "trua"
+   ],
+   "mo_ta": "Chua nhẹ, dễ ăn, hợp hôm người mệt mà vẫn phải đi học.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bún bò Huế",
+   "icon": "🌶️",
+   "kieu": "pho-thong",
+   "gia": 45,
+   "buoi": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Cay đúng kiểu miền Trung. Người Nghệ ăn thấy quen quen.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cơm rang dưa bò",
+   "icon": "🍚",
+   "kieu": "pho-thong",
+   "gia": 40,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Món cứu đói kinh điển. Không ngon nhất nhưng chưa bao giờ làm ai thất vọng.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cơm bình dân",
+   "icon": "🍛",
+   "kieu": "pho-thong",
+   "gia": 35,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Chọn ba món, xin thêm canh. Chân lý của đời sinh viên.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cơm gà xối mỡ",
+   "icon": "🍗",
+   "kieu": "pho-thong",
+   "gia": 45,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Giòn rụm. Ăn xong hơi tội lỗi nhưng rất đáng.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cơm tấm sườn",
+   "icon": "🍖",
+   "kieu": "pho-thong",
+   "gia": 45,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Miền Nam ra Bắc lập nghiệp, và thành công.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Xôi xéo",
+   "icon": "🌽",
+   "kieu": "pho-thong",
+   "gia": 20,
+   "buoi": [
+    "sang",
+    "chieu"
+   ],
+   "mo_ta": "Rẻ, no, nhanh. Ăn vội trên đường tới lớp đầu giờ sáng.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh mì",
+   "icon": "🥖",
+   "kieu": "pho-thong",
+   "gia": 25,
+   "buoi": [
+    "sang",
+    "trua",
+    "dem",
+    "chieu"
+   ],
+   "mo_ta": "Cầm đi cũng được, ngồi ăn cũng xong. Món của người đang vội.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh cuốn",
+   "icon": "🥟",
+   "kieu": "pho-thong",
+   "gia": 30,
+   "buoi": [
+    "sang",
+    "toi"
+   ],
+   "mo_ta": "Nhẹ bụng. Hợp hôm qua vừa ăn quá tay.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cháo sườn",
+   "icon": "🥣",
+   "kieu": "pho-thong",
+   "gia": 25,
+   "buoi": [
+    "sang",
+    "toi",
+    "chieu"
+   ],
+   "mo_ta": "Ấm bụng, dễ nuốt. Hôm nào ốm là nhớ tới đầu tiên.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Miến trộn",
+   "icon": "🍝",
+   "kieu": "pho-thong",
+   "gia": 35,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Nhẹ hơn cơm, no hơn bún. Lựa chọn của người đang cân nhắc.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bún ốc",
+   "icon": "🐚",
+   "kieu": "pho-thong",
+   "gia": 40,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Chua cay, tỉnh cả người. Món hợp hôm đầu óc đang mù mờ.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Mì cay",
+   "icon": "🔥",
+   "kieu": "pho-thong",
+   "gia": 55,
+   "buoi": [
+    "toi",
+    "dem"
+   ],
+   "mo_ta": "Ăn để trút giận sau một buổi họp dài.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Lẩu rủ cả hội",
+   "icon": "🍲",
+   "kieu": "pho-thong",
+   "gia": 90,
+   "buoi": [
+    "toi"
+   ],
+   "mo_ta": "Không phải bữa ăn, là một buổi tối. Nhắn nhóm ngay đi.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Gà rán",
+   "icon": "🍗",
+   "kieu": "pho-thong",
+   "gia": 70,
+   "buoi": [
+    "trua",
+    "toi",
+    "dem"
+   ],
+   "mo_ta": "Đắt hơn dự định, nhưng hôm nay em xứng đáng.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Nem chua rán",
+   "icon": "🧆",
+   "kieu": "pho-thong",
+   "gia": 30,
+   "buoi": [
+    "chieu",
+    "toi",
+    "dem"
+   ],
+   "mo_ta": "Ăn chơi mà no thật. Cẩn thận kẻo hỏng bữa chính.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh xèo",
+   "icon": "🥘",
+   "kieu": "pho-thong",
+   "gia": 45,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Cuốn rau cho đỡ tội, rồi chấm ngập nước mắm.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Phở cuốn",
+   "icon": "🌯",
+   "kieu": "pho-thong",
+   "gia": 45,
+   "buoi": [
+    "toi"
+   ],
+   "mo_ta": "Nhẹ nhàng, thanh cảnh. Hôm nào muốn tử tế với cái dạ dày.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Mì gói nâng cấp",
+   "icon": "🍥",
+   "kieu": "pho-thong",
+   "gia": 15,
+   "buoi": [
+    "toi",
+    "dem",
+    "chieu"
+   ],
+   "mo_ta": "Thêm trứng, thêm rau, thêm xúc xích. Cuối tháng vẫn sống tốt.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh giò",
+   "icon": "🫔",
+   "kieu": "pho-thong",
+   "gia": 20,
+   "buoi": [
+    "sang",
+    "chieu"
+   ],
+   "mo_ta": "Nóng hổi, mềm mịn. Ăn nhanh còn kịp vào ca học.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Hủ tiếu",
+   "icon": "🍜",
+   "kieu": "pho-thong",
+   "gia": 40,
+   "buoi": [
+    "sang",
+    "trua"
+   ],
+   "mo_ta": "Ngọt nhẹ. Đổi vị cho hôm đã chán phở.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cơm nhà tự nấu",
+   "icon": "🏠",
+   "kieu": "pho-thong",
+   "gia": 25,
+   "buoi": [
+    "trua",
+    "toi"
+   ],
+   "mo_ta": "Rẻ nhất, sạch nhất, và mẹ sẽ rất vui khi biết.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Trà chanh vỉa hè",
+   "icon": "🍋",
+   "kieu": "vat",
+   "gia": 15,
+   "buoi": [
+    "chieu",
+    "toi",
+    "dem"
+   ],
+   "mo_ta": "Ngồi ghế nhựa, nói chuyện trên trời. Quốc hồn quốc tuý sinh viên.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Sữa chua trân châu",
+   "icon": "🥤",
+   "kieu": "vat",
+   "gia": 25,
+   "buoi": [
+    "chieu",
+    "toi"
+   ],
+   "mo_ta": "Mát, dai, ngọt vừa. Cứu tinh của buổi chiều buồn ngủ.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh tráng trộn",
+   "icon": "🥗",
+   "kieu": "vat",
+   "gia": 25,
+   "buoi": [
+    "chieu",
+    "toi"
+   ],
+   "mo_ta": "Ăn là dính tay, nhưng dừng lại được mới lạ.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Chè",
+   "icon": "🍧",
+   "kieu": "vat",
+   "gia": 20,
+   "buoi": [
+    "chieu",
+    "toi"
+   ],
+   "mo_ta": "Ngọt để bù cho một ngày hơi nhạt.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Tào phớ",
+   "icon": "🥛",
+   "kieu": "vat",
+   "gia": 15,
+   "buoi": [
+    "chieu"
+   ],
+   "mo_ta": "Mát lịm. Hè Hà Nội mà không có tào phớ thì khó sống.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Nước mía",
+   "icon": "🧃",
+   "kieu": "vat",
+   "gia": 15,
+   "buoi": [
+    "trua",
+    "chieu"
+   ],
+   "mo_ta": "Một cốc là tỉnh. Hai cốc là no.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Cà phê muối",
+   "icon": "☕",
+   "kieu": "vat",
+   "gia": 30,
+   "buoi": [
+    "sang",
+    "chieu"
+   ],
+   "mo_ta": "Mặn mặn ngọt ngọt. Uống để tin rằng mình sắp làm việc.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Khoai lang kén",
+   "icon": "🍠",
+   "kieu": "vat",
+   "gia": 20,
+   "buoi": [
+    "chieu",
+    "toi"
+   ],
+   "mo_ta": "Giòn ngoài dẻo trong. Hợp hôm trời trở gió.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Bánh rán mặn",
+   "icon": "🥠",
+   "kieu": "vat",
+   "gia": 15,
+   "buoi": [
+    "chieu",
+    "toi"
+   ],
+   "mo_ta": "Rẻ, nóng, ăn ba cái là qua cơn đói.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Hoa quả dầm",
+   "icon": "🍓",
+   "kieu": "vat",
+   "gia": 30,
+   "buoi": [
+    "chieu",
+    "toi"
+   ],
+   "mo_ta": "Tự nhủ là đang ăn healthy, dù có cả sữa đặc.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Trà đá và hướng dương",
+   "icon": "🌻",
+   "kieu": "vat",
+   "gia": 5,
+   "buoi": [
+    "chieu",
+    "toi",
+    "dem"
+   ],
+   "mo_ta": "Không no được, nhưng ngồi được tới khuya.",
+   "goi_y_cho": ""
+  },
+  {
+   "ten": "Sữa đậu nành nóng",
+   "icon": "🥛",
+   "kieu": "vat",
+   "gia": 10,
+   "buoi": [
+    "sang",
+    "toi",
+    "dem"
+   ],
+   "mo_ta": "Ấm bụng, rẻ tiền. Món của những đêm ôn thi.",
+   "goi_y_cho": ""
+  }
+ ],
+ "ly_do": [
+  "Vì hôm ni em xứng đáng.",
+  "Vì tuần trước em ăn cái ni rồi mà vẫn thèm.",
+  "Vì trời hôm ni hợp món ni.",
+  "Vì nghĩ lâu quá thì đói mất.",
+  "Vì cái bụng vừa gật đầu đó.",
+  "Vì ăn rồi còn đi họp CLB.",
+  "Vì đứa mô cũng chọn cái ni, em khác chi.",
+  "Vì cuối tháng rồi, liệu cơm gắp mắm.",
+  "Vì ăn xong là thấy đời dễ thở hơn.",
+  "Vì trời sinh ra bữa ni để ăn món ni."
+ ]
+}
