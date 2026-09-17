@@ -1,470 +1,3621 @@
 {
- "_doc": "DỮ LIỆU MẪU — thay bằng danh sách thật của CLB trước khi công bố. Xem README.md mục \"Bản đồ người Nghệ\". CHỈ đưa lên đây tên của người đã đồng ý công khai. TUYỆT ĐỐI không đặt số điện thoại, email hay mã sinh viên vào file này — ai mở trang cũng đọc được.",
- "la_du_lieu_mau": true,
+ "_doc": "File này SINH RA TỰ ĐỘNG từ tools/tu-sheet.py — đừng sửa tay, sửa trong Google Sheet rồi chạy lại script. Chỉ nêu tên người từng giữ chức trong BCH; thành viên thường chỉ được đếm vào số tổng. Tuyệt đối không có số điện thoại, email, ngày sinh hay mã sinh viên ở đây.",
+ "nguon": "37FTU | DANH SÁCH THÀNH VIÊN CÁC THẾ HỆ",
  "cap_nhat": "2026-09-17",
- "so_lieu": {
-  "yen-thanh": {
-   "ten": "Yên Thành",
-   "tong": 34,
-   "theo_the_he": {
-    "G11": 4,
-    "G12": 5,
-    "G13": 7,
-    "G14": 8,
-    "G15": 10
-   }
+ "la_du_lieu_mau": false,
+ "tong_thanh_vien": 429,
+ "da_biet_que": 0,
+ "so_lieu": {},
+ "nguoi": [
+  {
+   "ma": "le thi huong tra|12",
+   "ten": "Lê Thị Hương Trà",
+   "gen": 12,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 4,
+   "nhiem_ky": [
+    "2022-2023",
+    "2023-2024",
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "dien-chau": {
-   "ten": "Diễn Châu",
-   "tong": 31,
-   "theo_the_he": {
-    "G11": 4,
-    "G12": 5,
-    "G13": 6,
-    "G14": 7,
-    "G15": 9
-   }
+  {
+   "ma": "nguyen ngoc ha|13",
+   "ten": "Nguyễn Ngọc Hà",
+   "gen": 13,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2023-2024",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2023-2024",
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "quynh-luu": {
-   "ten": "Quỳnh Lưu",
-   "tong": 26,
-   "theo_the_he": {
-    "G11": 3,
-    "G12": 4,
-    "G13": 5,
-    "G14": 6,
-    "G15": 8
-   }
+  {
+   "ma": "nguyen phuong uyen|11",
+   "ten": "Nguyễn Phương Uyên",
+   "gen": 11,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023",
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "thanh-chuong": {
-   "ten": "Thanh Chương",
-   "tong": 24,
-   "theo_the_he": {
-    "G11": 3,
-    "G12": 4,
-    "G13": 5,
-    "G14": 6,
-    "G15": 6
-   }
+  {
+   "ma": "ta minh chien|10",
+   "ten": "Tạ Minh Chiến",
+   "gen": 10,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "nghi-loc": {
-   "ten": "Nghi Lộc",
-   "tong": 22,
-   "theo_the_he": {
-    "G11": 3,
-    "G12": 4,
-    "G13": 4,
-    "G14": 5,
-    "G15": 6
-   }
+  {
+   "ma": "nguyen khanh linh|9",
+   "ten": "Nguyễn Khánh Linh",
+   "gen": 9,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "do-luong": {
-   "ten": "Đô Lương",
-   "tong": 21,
-   "theo_the_he": {
-    "G11": 3,
-    "G12": 3,
-    "G13": 4,
-    "G14": 5,
-    "G15": 6
-   }
+  {
+   "ma": "nguyen thi minh hien|8",
+   "ten": "Nguyễn Thị Minh Hiền",
+   "gen": 8,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "nam-dan": {
-   "ten": "Nam Đàn",
-   "tong": 18,
-   "theo_the_he": {
-    "G11": 2,
-    "G12": 3,
-    "G13": 4,
-    "G14": 4,
-    "G15": 5
-   }
+  {
+   "ma": "hoang the luc|7",
+   "ten": "Hoàng Thế Lực",
+   "gen": 7,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "vinh": {
-   "ten": "Vinh",
-   "tong": 17,
-   "theo_the_he": {
-    "G11": 2,
-    "G12": 3,
-    "G13": 3,
-    "G14": 4,
-    "G15": 5
-   }
+  {
+   "ma": "nguyen trung duc|6",
+   "ten": "Nguyễn Trung Đức",
+   "gen": 6,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2016-2017",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2016-2017",
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "hung-nguyen": {
-   "ten": "Hưng Nguyên",
-   "tong": 14,
-   "theo_the_he": {
-    "G11": 2,
-    "G12": 2,
-    "G13": 3,
-    "G14": 3,
-    "G15": 4
-   }
+  {
+   "ma": "tran manh thang|5",
+   "ten": "Trần Mạnh Thắng",
+   "gen": 5,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2015-2016",
+   "nhiem_ky_cuoi": "2017-2018",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2015-2016",
+    "2016-2017",
+    "2017-2018"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "anh-son": {
-   "ten": "Anh Sơn",
-   "tong": 11,
-   "theo_the_he": {
-    "G11": 1,
-    "G12": 2,
-    "G13": 2,
-    "G14": 3,
-    "G15": 3
-   }
+  {
+   "ma": "thai khac hung|4",
+   "ten": "Thái Khắc Hưng",
+   "gen": 4,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2014-2015",
+   "nhiem_ky_cuoi": "2016-2017",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2014-2015",
+    "2015-2016",
+    "2016-2017"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "tan-ky": {
-   "ten": "Tân Kỳ",
-   "tong": 9,
-   "theo_the_he": {
-    "G11": 1,
-    "G12": 1,
-    "G13": 2,
-    "G14": 2,
-    "G15": 3
-   }
+  {
+   "ma": "nguyen hoang son|3",
+   "ten": "Nguyễn Hoàng Sơn",
+   "gen": 3,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2015-2016",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2015-2016"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "nghia-dan": {
-   "ten": "Nghĩa Đàn",
-   "tong": 8,
-   "theo_the_he": {
-    "G11": 1,
-    "G12": 1,
-    "G13": 2,
-    "G14": 2,
-    "G15": 2
-   }
+  {
+   "ma": "pham duc ngo|1",
+   "ten": "Phạm Đức Ngô",
+   "gen": 1,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2014-2015",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2014-2015"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "cua-lo": {
-   "ten": "Cửa Lò",
-   "tong": 7,
-   "theo_the_he": {
-    "G11": 1,
-    "G12": 1,
-    "G13": 1,
-    "G14": 2,
-    "G15": 2
-   }
+  {
+   "ma": "le van tri|1",
+   "ten": "Lê Văn Trí",
+   "gen": 1,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Đồng sáng lập · Chủ tịch",
+   "nhom": "Sáng lập",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "quy-hop": {
-   "ten": "Quỳ Hợp",
-   "tong": 6,
-   "theo_the_he": {
-    "G11": 1,
-    "G12": 1,
-    "G13": 1,
-    "G14": 1,
-    "G15": 2
-   }
+  {
+   "ma": "chu the dan|12",
+   "ten": "Chu Thế Dân",
+   "gen": 12,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 4,
+   "nhiem_ky": [
+    "2022-2023",
+    "2023-2024",
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2024–2026",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "hoang-mai": {
-   "ten": "Hoàng Mai",
-   "tong": 6,
-   "theo_the_he": {
-    "G11": 1,
-    "G12": 1,
-    "G13": 1,
-    "G14": 1,
-    "G15": 2
-   }
+  {
+   "ma": "pham duc loc|12",
+   "ten": "Phạm Đức Lộc",
+   "gen": 12,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 4,
+   "nhiem_ky": [
+    "2022-2023",
+    "2023-2024",
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2024–2026",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "thai-hoa": {
-   "ten": "Thái Hoà",
-   "tong": 5,
-   "theo_the_he": {
-    "G11": 1,
-    "G12": 1,
-    "G13": 1,
-    "G14": 1,
-    "G15": 1
-   }
+  {
+   "ma": "mai thi thu tra|11",
+   "ten": "Mai Thị Thu Trà",
+   "gen": 11,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023",
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2022–2024",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "con-cuong": {
-   "ten": "Con Cuông",
-   "tong": 4,
-   "theo_the_he": {
-    "G11": 0,
-    "G12": 1,
-    "G13": 1,
-    "G14": 1,
-    "G15": 1
-   }
+  {
+   "ma": "nguyen thanh dat|11",
+   "ten": "Nguyễn Thành Đạt",
+   "gen": 11,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023",
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2022–2024",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "quy-chau": {
-   "ten": "Quỳ Châu",
-   "tong": 3,
-   "theo_the_he": {
-    "G11": 0,
-    "G12": 0,
-    "G13": 1,
-    "G14": 1,
-    "G15": 1
-   }
+  {
+   "ma": "hoang thi trang|10",
+   "ten": "Hoàng Thị Trang",
+   "gen": 10,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "tuong-duong": {
-   "ten": "Tương Dương",
-   "tong": 2,
-   "theo_the_he": {
-    "G11": 0,
-    "G12": 0,
-    "G13": 0,
-    "G14": 0,
-    "G15": 2
-   }
+  {
+   "ma": "nguyen thanh ngan|10",
+   "ten": "Nguyễn Thanh Ngân",
+   "gen": 10,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "que-phong": {
-   "ten": "Quế Phong",
-   "tong": 2,
-   "theo_the_he": {
-    "G11": 0,
-    "G12": 0,
-    "G13": 0,
-    "G14": 0,
-    "G15": 2
-   }
+  {
+   "ma": "le ngoc cam tu|9",
+   "ten": "Lê Ngọc Cẩm Tú",
+   "gen": 9,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   },
-  "ky-son": {
-   "ten": "Kỳ Sơn",
-   "tong": 1,
-   "theo_the_he": {
-    "G11": 0,
-    "G12": 0,
-    "G13": 0,
-    "G14": 0,
-    "G15": 1
-   }
+  {
+   "ma": "nguyen thi nhu quynh|9",
+   "ten": "Nguyễn Thị Như Quỳnh",
+   "gen": 9,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "hoang van duc|8",
+   "ten": "Hoàng Văn Đức",
+   "gen": 8,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi thu ha|8",
+   "ten": "Nguyễn Thị Thu Hà",
+   "gen": 8,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen huu quan|7",
+   "ten": "Nguyễn Hữu Quân",
+   "gen": 7,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "pham thi hoai thuong|7",
+   "ten": "Phạm Thị Hoài Thương",
+   "gen": 7,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "hoang ha|6",
+   "ten": "Hoàng Hà",
+   "gen": 6,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2016-2017",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2016-2017",
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran minh anh|6",
+   "ten": "Trần Minh Anh",
+   "gen": 6,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2016-2017",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2016-2017",
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi minh ngoc|5",
+   "ten": "Nguyễn Thị Minh Ngọc",
+   "gen": 5,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2015-2016",
+   "nhiem_ky_cuoi": "2017-2018",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2015-2016",
+    "2016-2017",
+    "2017-2018"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "truong thi thuy dung|5",
+   "ten": "Trương Thị Thùy Dung",
+   "gen": 5,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2015-2016",
+   "nhiem_ky_cuoi": "2017-2018",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2015-2016",
+    "2016-2017",
+    "2017-2018"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thu thao|4",
+   "ten": "Nguyễn Thu Thảo",
+   "gen": 4,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2014-2015",
+   "nhiem_ky_cuoi": "2016-2017",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2014-2015",
+    "2015-2016",
+    "2016-2017"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran thi van anh|4",
+   "ten": "Trần Thị Vân Anh",
+   "gen": 4,
+   "que": "",
+   "bac": 4,
+   "chuc_vu": "Phó chủ tịch",
+   "nhom": "Ban Lãnh đạo",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2014-2015",
+   "nhiem_ky_cuoi": "2016-2017",
+   "so_nhiem_ky": 3,
+   "nhiem_ky": [
+    "2014-2015",
+    "2015-2016",
+    "2016-2017"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Phó chủ tịch",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "pham quang chinh|14",
+   "ten": "Phạm Quang Chính",
+   "gen": 14,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran bui mai uyen|14",
+   "ten": "Trần Bùi Mai Uyên",
+   "gen": 14,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "trinh thi lan anh|14",
+   "ten": "Trịnh Thị Lan Anh",
+   "gen": 14,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "ngo quynh nhu|13",
+   "ten": "Ngô Quỳnh Như",
+   "gen": 13,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2023-2024",
+   "nhiem_ky_cuoi": "2024-2025",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2023-2024",
+    "2024-2025"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran anh thu|13",
+   "ten": "Trần Anh Thư",
+   "gen": 13,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2023-2024",
+   "nhiem_ky_cuoi": "2024-2025",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2023-2024",
+    "2024-2025"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran minh hoang|13",
+   "ten": "Trần Minh Hoàng",
+   "gen": 13,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2023-2024",
+   "nhiem_ky_cuoi": "2024-2025",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2023-2024",
+    "2024-2025"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "dang thi thu thao|12",
+   "ten": "Đặng Thị Thu Thảo",
+   "gen": 12,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2022-2023",
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi phuong anh|12",
+   "ten": "Nguyễn Thị Phương Anh",
+   "gen": 12,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2022-2023",
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen anh dung|11",
+   "ten": "Nguyễn Anh Dũng",
+   "gen": 11,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thuy nga|11",
+   "ten": "Nguyễn Thúy Nga",
+   "gen": 11,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "le thi thanh ha|10",
+   "ten": "Lê Thị Thanh Hà",
+   "gen": 10,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen hong quan|10",
+   "ten": "Nguyễn Hồng Quân",
+   "gen": 10,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "pham thi tu anh|7",
+   "ten": "Phạm Thị Tú Anh",
+   "gen": 7,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "duong nhat linh|6",
+   "ten": "Dương Nhật Linh",
+   "gen": 6,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2016-2017",
+   "nhiem_ky_cuoi": "2017-2018",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2016-2017",
+    "2017-2018"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi nga|6",
+   "ten": "Nguyễn Thị Nga",
+   "gen": 6,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2016-2017",
+   "nhiem_ky_cuoi": "2017-2018",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2016-2017",
+    "2017-2018"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi linh trang|5",
+   "ten": "Nguyễn Thị Linh Trang",
+   "gen": 5,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2015-2016",
+   "nhiem_ky_cuoi": "2016-2017",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2015-2016",
+    "2016-2017"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi phuong thao|5",
+   "ten": "Nguyễn Thị Phương Thảo",
+   "gen": 5,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2015-2016",
+   "nhiem_ky_cuoi": "2016-2017",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2015-2016",
+    "2016-2017"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "hoang thi quynh trang|3",
+   "ten": "Hoàng Thị Quỳnh Trang",
+   "gen": 3,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2014-2015",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2014-2015"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011–2015",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "le thi huong|3",
+   "ten": "Lê Thị Hương",
+   "gen": 3,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Uỷ viên BCH",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2014-2015",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2014-2015"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011–2015",
+     "chuc_vu": "Uỷ viên BCH",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "ngo thi hong nhung|3",
+   "ten": "Ngô Thị Hồng Nhung",
+   "gen": 3,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Uỷ viên BCH",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2014-2015",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2014-2015"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011–2015",
+     "chuc_vu": "Uỷ viên BCH",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen duc trung|3",
+   "ten": "Nguyễn Đức Trung",
+   "gen": 3,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2014-2015",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2014-2015"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011–2015",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "vo thi phuong|2",
+   "ten": "Võ Thị Phương",
+   "gen": 2,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Trưởng ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2014-2015",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2014-2015"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011–2015",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "dang ngoc thach|1",
+   "ten": "Đặng Ngọc Thạch",
+   "gen": 1,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Đồng sáng lập · Uỷ viên BCH",
+   "nhom": "Sáng lập",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Uỷ viên BCH",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "dau thi thu le|1",
+   "ten": "Đậu Thị Thu Lê",
+   "gen": 1,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Đồng sáng lập · Trưởng ban",
+   "nhom": "Sáng lập",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran duc long|1",
+   "ten": "Trần Đức Long",
+   "gen": 1,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Đồng sáng lập · Trưởng ban",
+   "nhom": "Sáng lập",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran thi thanh tam|1",
+   "ten": "Trần Thị Thanh Tâm",
+   "gen": 1,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Đồng sáng lập · Trưởng ban",
+   "nhom": "Sáng lập",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "ha le quynh anh|14",
+   "ten": "Hà Lê Quỳnh Anh",
+   "gen": 14,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "le tran hong tham|14",
+   "ten": "Lê Trần Hồng Thắm",
+   "gen": 14,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen phan van truong|14",
+   "ten": "Nguyễn Phan Văn Trường",
+   "gen": 14,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen sang|14",
+   "ten": "Nguyễn Sáng",
+   "gen": 14,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi quynh trang|14",
+   "ten": "Nguyễn Thị Quỳnh Trang",
+   "gen": 14,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen trong hiep|14",
+   "ten": "Nguyễn Trọng Hiệp",
+   "gen": 14,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran bao chau|14",
+   "ten": "Trần Bảo Châu",
+   "gen": 14,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2024-2025",
+   "nhiem_ky_cuoi": "2025-2026",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2024-2025",
+    "2025-2026"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2025-2026",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "lang thi mai suong|13",
+   "ten": "Lang Thị Mai Sương",
+   "gen": 13,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2023-2024",
+   "nhiem_ky_cuoi": "2024-2025",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2023-2024",
+    "2024-2025"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi quynh nga|12",
+   "ten": "Nguyễn Thị Quỳnh Nga",
+   "gen": 12,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2024-2025",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2022-2023",
+    "2024-2025"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran thi hang|12",
+   "ten": "Trần Thị Hằng",
+   "gen": 12,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2024-2025",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2022-2023",
+    "2024-2025"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2024-2025",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "dau lu yen nhi|12",
+   "ten": "Đậu Lữ Yến Nhi",
+   "gen": 12,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2022-2023",
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "duong thi huyen ngan|12",
+   "ten": "Dương Thị Huyền Ngân",
+   "gen": 12,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2022-2023",
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "pham thi minh anh|12",
+   "ten": "Phạm Thị Minh Anh",
+   "gen": 12,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2022-2023",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2022-2023",
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen mai duyen|11",
+   "ten": "Nguyễn Mai Duyên",
+   "gen": 11,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi phuong thao|11",
+   "ten": "Nguyễn Thị Phương Thảo",
+   "gen": 11,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen trung thanh|11",
+   "ten": "Nguyễn Trung Thành",
+   "gen": 11,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021–2023",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran nhat vy|11",
+   "ten": "Trần Nhật Vy",
+   "gen": 11,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2021-2022",
+   "nhiem_ky_cuoi": "2022-2023",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2021-2022",
+    "2022-2023"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2022-2023",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "ho thi hoang mai|10",
+   "ten": "Hồ Thị Hoàng Mai",
+   "gen": 10,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "hoang the nhan|10",
+   "ten": "Hoàng Thế Nhân",
+   "gen": 10,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "le thao nguyen|10",
+   "ten": "Lê Thảo Nguyên",
+   "gen": 10,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi khanh chi|10",
+   "ten": "Nguyễn Thị Khánh Chi",
+   "gen": 10,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "vo xuan dat|10",
+   "ten": "Võ Xuân Đạt",
+   "gen": 10,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2020-2021",
+   "nhiem_ky_cuoi": "2021-2022",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2020-2021",
+    "2021-2022"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2021-2022",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "hoang anh|9",
+   "ten": "Hoàng Anh",
+   "gen": 9,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "hoang le yen nhi|9",
+   "ten": "Hoàng Lê Yến Nhi",
+   "gen": 9,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "ngo thuy hang|9",
+   "ten": "Ngô Thuý Hằng",
+   "gen": 9,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thu phuong|9",
+   "ten": "Nguyễn Thu Phương",
+   "gen": 9,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "van thi thuy hang|9",
+   "ten": "Văn Thị Thúy Hằng",
+   "gen": 9,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "vu thi my duyen|9",
+   "ten": "Vũ Thị Mỹ Duyên",
+   "gen": 9,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2019-2020",
+   "nhiem_ky_cuoi": "2020-2021",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2019-2020",
+    "2020-2021"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2020-2021",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "cao thi thanh thuong|8",
+   "ten": "Cao Thị Thanh Thương",
+   "gen": 8,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "hoang thi mai linh|8",
+   "ten": "Hoàng Thị Mai Linh",
+   "gen": 8,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "le thanh tan|8",
+   "ten": "Lê Thanh Tân",
+   "gen": 8,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "thai thi dieu linh|8",
+   "ten": "Thái Thị Diệu Linh",
+   "gen": 8,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran le thao lam|8",
+   "ten": "Trần Lê Thảo Lam",
+   "gen": 8,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "vo mai linh|8",
+   "ten": "Võ Mai Linh",
+   "gen": 8,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2018-2019",
+   "nhiem_ky_cuoi": "2019-2020",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2018-2019",
+    "2019-2020"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2019-2020",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi binh|7",
+   "ten": "Nguyễn Thị Bình",
+   "gen": 7,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi minh hien|7",
+   "ten": "Nguyễn Thị Minh Hiền",
+   "gen": 7,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "pham hong duyen|7",
+   "ten": "Phạm Hồng Duyên",
+   "gen": 7,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "phan thi thanh hien|7",
+   "ten": "Phan Thị Thanh Hiền",
+   "gen": 7,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "trinh tran ha linh|7",
+   "ten": "Trịnh Trần Hà Linh",
+   "gen": 7,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2017-2018",
+   "nhiem_ky_cuoi": "2018-2019",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2017-2018",
+    "2018-2019"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2018-2019",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen huu thang|6",
+   "ten": "Nguyễn Hữu Thắng",
+   "gen": 6,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2016-2017",
+   "nhiem_ky_cuoi": "2017-2018",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2016-2017",
+    "2017-2018"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen the anh|6",
+   "ten": "Nguyễn Thế Anh",
+   "gen": 6,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2016-2017",
+   "nhiem_ky_cuoi": "2017-2018",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2016-2017",
+    "2017-2018"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "thai thi ngoc hoai|6",
+   "ten": "Thái Thị Ngọc Hoài",
+   "gen": 6,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2016-2017",
+   "nhiem_ky_cuoi": "2017-2018",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2016-2017",
+    "2017-2018"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2017-2018",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "dau tran phuong thao|5",
+   "ten": "Đậu Trần Phương Thảo",
+   "gen": 5,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2015-2016",
+   "nhiem_ky_cuoi": "2016-2017",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2015-2016",
+    "2016-2017"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi thanh hai|5",
+   "ten": "Nguyễn Thị Thanh Hải",
+   "gen": 5,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2015-2016",
+   "nhiem_ky_cuoi": "2016-2017",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2015-2016",
+    "2016-2017"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thu trang|5",
+   "ten": "Nguyễn Thu Trang",
+   "gen": 5,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2015-2016",
+   "nhiem_ky_cuoi": "2016-2017",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2015-2016",
+    "2016-2017"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2016-2017",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "le nguyen tra my|4",
+   "ten": "Lê Nguyễn Trà My",
+   "gen": 4,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2014-2015",
+   "nhiem_ky_cuoi": "2015-2016",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2014-2015",
+    "2015-2016"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi bao yen|4",
+   "ten": "Nguyễn Thị Bảo Yến",
+   "gen": 4,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2014-2015",
+   "nhiem_ky_cuoi": "2015-2016",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2014-2015",
+    "2015-2016"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi ha an|4",
+   "ten": "Nguyễn Thị Hà An",
+   "gen": 4,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2014-2015",
+   "nhiem_ky_cuoi": "2015-2016",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2014-2015",
+    "2015-2016"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Thành viên",
+     "ban": "Truyền thông"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen trong hoang|4",
+   "ten": "Nguyễn Trọng Hoàng",
+   "gen": 4,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2014-2015",
+   "nhiem_ky_cuoi": "2015-2016",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2014-2015",
+    "2015-2016"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Thành viên",
+     "ban": "Đối ngoại"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "phan quang khai|4",
+   "ten": "Phan Quang Khải",
+   "gen": 4,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2014-2015",
+   "nhiem_ky_cuoi": "2015-2016",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2014-2015",
+    "2015-2016"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2014-2015",
+     "chuc_vu": "Thành viên",
+     "ban": "Tổ chức"
+    },
+    {
+     "nk": "2015-2016",
+     "chuc_vu": "Phó ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran thi trang|3",
+   "ten": "Trần Thị Trang",
+   "gen": 3,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2014-2015",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2014-2015"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011–2015",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "vo phuong khanh linh|3",
+   "ten": "Võ Phương Khánh Linh",
+   "gen": 3,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2014-2015",
+   "so_nhiem_ky": 2,
+   "nhiem_ky": [
+    "2011-2014",
+    "2014-2015"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011–2015",
+     "chuc_vu": "Phó ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "nguyen thi thu hien|12",
+   "ten": "Nguyền Thị Thu Hiền",
+   "gen": 12,
+   "que": "",
+   "bac": 2,
+   "chuc_vu": "Phó ban",
+   "nhom": "Ban Chấp hành",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2023-2024",
+   "nhiem_ky_cuoi": "2023-2024",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2023-2024"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2023-2024",
+     "chuc_vu": "Phó ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
   }
- },
- "thanh_vien": [
-  {
-   "ten": "Nguyễn Văn A",
-   "que_id": "yen-thanh",
-   "the_he": "G15",
-   "truong_thpt": "THPT Phan Đăng Lưu",
-   "khoa_hoc": "K62",
-   "nganh": "Kinh tế đối ngoại",
-   "ban": "Ban Tổ chức",
-   "gioi_thieu": "Mê bóng đá, ai rủ đá sân Ngoại thương là có mặt.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Trần Thị B",
-   "que_id": "yen-thanh",
-   "the_he": "G14",
-   "truong_thpt": "THPT Bắc Yên Thành",
-   "khoa_hoc": "K61",
-   "nganh": "Quản trị kinh doanh",
-   "ban": "Ban Truyền thông",
-   "gioi_thieu": "Chụp ảnh cho CLB từ ngày còn chưa biết chỉnh màu.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Lê Văn C",
-   "que_id": "dien-chau",
-   "the_he": "G15",
-   "truong_thpt": "THPT Nguyễn Xuân Ôn",
-   "khoa_hoc": "K62",
-   "nganh": "Tài chính quốc tế",
-   "ban": "Ban Đối ngoại",
-   "gioi_thieu": "Chuyên đi xin tài trợ, nói chuyện được với mọi người.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Phạm Thị D",
-   "que_id": "dien-chau",
-   "the_he": "G13",
-   "truong_thpt": "THPT Diễn Châu 3",
-   "khoa_hoc": "K60",
-   "nganh": "Kinh tế quốc tế",
-   "ban": "Ban Tổ chức",
-   "gioi_thieu": "Cựu trưởng ban, giờ vẫn về hỗ trợ mỗi mùa Tết ấm.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Hoàng Văn E",
-   "que_id": "quynh-luu",
-   "the_he": "G15",
-   "truong_thpt": "THPT Quỳnh Lưu 1",
-   "khoa_hoc": "K62",
-   "nganh": "Luật thương mại quốc tế",
-   "ban": "Ban Truyền thông",
-   "gioi_thieu": "Viết content, hay bịa deadline cho chính mình.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Võ Thị F",
-   "que_id": "quynh-luu",
-   "the_he": "G14",
-   "truong_thpt": "THPT Nguyễn Đức Mậu",
-   "khoa_hoc": "K61",
-   "nganh": "Kế toán - Kiểm toán",
-   "ban": "Ban Tổ chức",
-   "gioi_thieu": "Giữ quỹ CLB, chi ly từng đồng nhưng rất thương em.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Đặng Văn G",
-   "que_id": "thanh-chuong",
-   "the_he": "G15",
-   "truong_thpt": "THPT Đặng Thúc Hứa",
-   "khoa_hoc": "K62",
-   "nganh": "Kinh doanh quốc tế",
-   "ban": "Ban Đối ngoại",
-   "gioi_thieu": "Nhà có nhút, ai thèm nhút Thanh Chương thì nhắn.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Nguyễn Thị H",
-   "que_id": "vinh",
-   "the_he": "G15",
-   "truong_thpt": "THPT chuyên Phan Bội Châu",
-   "khoa_hoc": "K62",
-   "nganh": "Kinh tế đối ngoại",
-   "ban": "Ban Truyền thông",
-   "gioi_thieu": "Dẫn chương trình cho mấy sự kiện gần đây của CLB.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Trần Văn I",
-   "que_id": "vinh",
-   "the_he": "G14",
-   "truong_thpt": "THPT Huỳnh Thúc Kháng",
-   "khoa_hoc": "K61",
-   "nganh": "Ngân hàng",
-   "ban": "Ban Tổ chức",
-   "gioi_thieu": "Ai cần chỗ trọ quanh Chùa Láng thì hỏi, biết hết.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Lê Thị K",
-   "que_id": "vinh",
-   "the_he": "G13",
-   "truong_thpt": "THPT Lê Viết Thuật",
-   "khoa_hoc": "K60",
-   "nganh": "Marketing",
-   "ban": "Ban Truyền thông",
-   "gioi_thieu": "Đang đi làm, vẫn nhận mentor cho các em khoá dưới.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Phan Văn L",
-   "que_id": "nghi-loc",
-   "the_he": "G15",
-   "truong_thpt": "THPT Nguyễn Duy Trinh",
-   "khoa_hoc": "K62",
-   "nganh": "Kinh tế đối ngoại",
-   "ban": "Ban Đối ngoại",
-   "gioi_thieu": "Đi đâu cũng mang giọng Nghệ, không giấu được.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Hồ Thị M",
-   "que_id": "do-luong",
-   "the_he": "G14",
-   "truong_thpt": "THPT Đô Lương 1",
-   "khoa_hoc": "K61",
-   "nganh": "Kinh doanh quốc tế",
-   "ban": "Ban Tổ chức",
-   "gioi_thieu": "Hậu cần mọi chuyến tình nguyện hai năm nay.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Nguyễn Văn N",
-   "que_id": "nam-dan",
-   "the_he": "G15",
-   "truong_thpt": "THPT Nam Đàn 1",
-   "khoa_hoc": "K62",
-   "nganh": "Kinh tế đối ngoại",
-   "ban": "Ban Truyền thông",
-   "gioi_thieu": "Dựng video, nhận cắt clip cho ai cần.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Trương Thị P",
-   "que_id": "hung-nguyen",
-   "the_he": "G13",
-   "truong_thpt": "THPT Lê Hồng Phong",
-   "khoa_hoc": "K60",
-   "nganh": "Tài chính quốc tế",
-   "ban": "Ban Đối ngoại",
-   "gioi_thieu": "Cựu thành viên, hiện làm ở Hà Nội, hay về CLB.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Cao Văn Q",
-   "que_id": "tan-ky",
-   "the_he": "G15",
-   "truong_thpt": "THPT Tân Kỳ",
-   "khoa_hoc": "K62",
-   "nganh": "Quản trị kinh doanh",
-   "ban": "Ban Tổ chức",
-   "gioi_thieu": "Người miền núi đầu tiên của thế hệ này, thích leo núi thật.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Lương Thị R",
-   "que_id": "quy-hop",
-   "the_he": "G14",
-   "truong_thpt": "THPT Quỳ Hợp 1",
-   "khoa_hoc": "K61",
-   "nganh": "Kinh tế quốc tế",
-   "ban": "Ban Truyền thông",
-   "gioi_thieu": "Biết hát dân ca, mỗi lần gala là được gọi tên.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Nguyễn Văn S",
-   "que_id": "cua-lo",
-   "the_he": "G15",
-   "truong_thpt": "THPT Cửa Lò",
-   "khoa_hoc": "K62",
-   "nganh": "Logistics",
-   "ban": "Ban Đối ngoại",
-   "gioi_thieu": "Hè về là có chỗ ở biển cho cả CLB, nói trước vậy.",
-   "lien_he": "",
-   "cong_khai": true
-  },
-  {
-   "ten": "Trần Thị T",
-   "que_id": "anh-son",
-   "the_he": "G13",
-   "truong_thpt": "THPT Anh Sơn 1",
-   "khoa_hoc": "K60",
-   "nganh": "Kế toán - Kiểm toán",
-   "ban": "Ban Tổ chức",
-   "gioi_thieu": "Khoá đầu của mảng Tết ấm, giờ vẫn theo dõi từng mùa.",
-   "lien_he": "",
-   "cong_khai": true
-  }
- ],
- "goi_y_truong": [
-  "THPT chuyên Phan Bội Châu",
-  "THPT Huỳnh Thúc Kháng",
-  "THPT Lê Viết Thuật",
-  "THPT Hà Huy Tập",
-  "THPT Nguyễn Xuân Ôn",
-  "THPT Phan Đăng Lưu",
-  "THPT Nguyễn Duy Trinh",
-  "THPT Đặng Thúc Hứa",
-  "THPT Quỳnh Lưu 1",
-  "THPT Đô Lương 1",
-  "THPT Nam Đàn 1",
-  "THPT Cửa Lò"
  ]
 }

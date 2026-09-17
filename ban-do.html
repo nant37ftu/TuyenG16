@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Người Nghệ ở Ngoại thương — Bản đồ &amp; Danh bạ · 37FTU</title>
-<meta name="description" content="21 huyện, thành, thị của Nghệ An trên một tấm bản đồ, và danh bạ những người con xứ Nghệ đang học ở Ngoại thương. Tìm người cùng quê, cùng trường cấp ba với em.">
+<title>Người Nghệ ở Ngoại thương — Bản đồ &amp; Bảng vàng · 37FTU</title>
+<meta name="description" content="21 huyện, thành, thị của Nghệ An trên một tấm bản đồ. Rê chuột vào quê em để gặp những người đi trước cùng quê — 15 năm, 13 nhiệm kỳ, những người đã dựng nên 37FTU.">
 <meta property="og:title" content="Người Nghệ ở Ngoại thương">
-<meta property="og:description" content="Quê em, trường cấp ba của em — đã có ai ở Ngoại thương chưa?">
+<meta property="og:description" content="Rê vào quê em trên bản đồ, gặp những người đi trước cùng quê ở Ngoại thương.">
 <meta property="og:image" content="assets/img/hero.jpg">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
     <a class="hieu" href="ban-do.html"><img src="assets/logo.png" alt="Logo 37FTU">Người Nghệ ở Ngoại thương</a>
     <nav class="menu">
       <a href="#ban-do">Bản đồ</a>
-      <a href="#danh-ba">Danh bạ</a>
+      <a href="#bang-vang">Bảng vàng</a>
       <a href="index.html">Tuyển Gen 16</a>
     </nav>
     <a class="nut nut-chinh" href="#them-ten">Thêm tên em</a>
@@ -34,10 +34,11 @@
   <section class="nn-dau">
     <div class="khung">
       <span class="nhan">Một sản phẩm của 37FTU</span>
-      <h1>Quê em, trường cấp ba của em —<br>đã có ai ở Ngoại thương chưa?</h1>
+      <h1>Quê em đã có ai<br>đi trước ở Ngoại thương?</h1>
       <p class="dan-de" style="margin-top:16px">
-        Người Nghệ gặp nhau, câu đầu tiên bao giờ cũng là <i>“quê mô?”</i>, câu thứ hai là <i>“học trường mô?”</i>.
-        Tấm bản đồ này trả lời cả hai: có bao nhiêu người cùng quê em ở đây, và <b>họ là ai</b>.
+        Người Nghệ gặp nhau, câu đầu tiên bao giờ cũng là <i>“quê mô?”</i>. Rê chuột vào quê em
+        trên bản đồ — hiện ra những người cùng huyện đã đi qua 37FTU, và họ đã đi tới đâu.
+        <b>Không phải để tra danh sách, mà để biết mình có chỗ bấu víu.</b>
       </p>
       <div id="canh-bao-mau"></div>
       <div class="nn-so" id="nn-so"></div>
@@ -49,7 +50,7 @@
     <div class="khung">
       <div class="nn-tab" role="tablist">
         <button id="tab-ban-do" role="tab" aria-selected="true" aria-controls="xem-ban-do">Bản đồ</button>
-        <button id="tab-danh-ba" role="tab" aria-selected="false" aria-controls="xem-danh-ba">Danh bạ người Nghệ</button>
+        <button id="tab-danh-ba" role="tab" aria-selected="false" aria-controls="xem-danh-ba">Bảng vàng 37FTU</button>
       </div>
     </div>
   </div>
@@ -82,15 +83,17 @@
           <div class="bd-svg-boc">
             <svg id="bd-svg" role="img" aria-label="Bản đồ tỉnh Nghệ An theo huyện"></svg>
             <div id="chu-thich" class="chu-thich" hidden></div>
+            <div id="bd-hover" class="bd-hover" hidden aria-hidden="true"></div>
           </div>
-          <p class="nhac-cham">Chạm vào một vùng bất kỳ để xem tên huyện và số người.</p>
+          <p class="nhac-cham">Rê chuột vào một vùng để xem ngay những người đi trước quê đó. Bấm để mở đầy đủ.</p>
         </div>
 
         <aside class="bd-panel the" id="panel">
           <div id="panel-rong">
-            <h3>Chọn một huyện</h3>
+            <h3>Rê vào một huyện</h3>
             <p style="color:var(--muc-nhat);font-size:.95rem">
-              Bấm vào bất kỳ vùng nào trên bản đồ để xem những người con xứ Nghệ quê ở đó.
+              Mỗi huyện là một danh sách người đi trước — xếp từ Ban Lãnh đạo xuống,
+              người gắn bó lâu nhất đứng trước.
             </p>
             <div class="xep-hang" id="xep-hang"></div>
           </div>
@@ -107,28 +110,36 @@
   <!-- ======================= XEM: DANH BẠ ======================= -->
   <section id="xem-danh-ba" role="tabpanel" aria-labelledby="tab-danh-ba" hidden style="padding-top:26px">
     <div class="khung">
+      <a id="bang-vang" class="neo"></a>
       <a id="danh-ba" class="neo"></a>
 
-      <!-- Khối "em là ai" — dùng để xếp người gần em nhất lên đầu -->
+      <div class="bv-dau">
+        <h2>Những người đã dựng nên 37FTU</h2>
+        <p class="dan-de">
+          Xếp từ Ban Lãnh đạo xuống, ai gắn bó nhiều nhiệm kỳ nhất đứng trước.
+          Mỗi thẻ là một hành trình — hầu hết đều bắt đầu từ dòng “Thành viên”.
+        </p>
+      </div>
+
+      <!-- Khối "quê em" — để đánh dấu người cùng quê -->
       <div class="la-ai the" id="la-ai">
         <div class="la-ai-chu">
-          <b>Em quê mô, học trường mô?</b>
-          <span>Cho anh chị biết, danh bạ sẽ tự đẩy người cùng quê và cùng trường cấp ba với em lên trước.</span>
+          <b>Quê em ở mô?</b>
+          <span>Cho biết một lần thôi, người cùng quê em sẽ được đánh dấu và đẩy lên trước.</span>
         </div>
         <div class="la-ai-o">
           <select id="em-que" aria-label="Quê của em"><option value="">Quê của em</option></select>
-          <input id="em-truong" list="ds-truong" placeholder="Trường cấp ba của em" aria-label="Trường cấp ba của em">
-          <datalist id="ds-truong"></datalist>
           <button class="nut nut-vien" id="xoa-em" type="button" hidden>Bỏ ghi nhớ</button>
         </div>
       </div>
 
-      <!-- Bộ lọc danh bạ -->
+      <!-- Bộ lọc bảng vàng -->
       <div class="db-loc">
-        <input id="db-tim" type="search" placeholder="Tìm theo tên, quê, trường, ngành…" aria-label="Tìm trong danh bạ">
+        <input id="db-tim" type="search" placeholder="Tìm theo tên, quê, ban…" aria-label="Tìm trong bảng vàng">
         <select id="db-que" aria-label="Lọc theo quê"><option value="">Tất cả quê</option></select>
-        <select id="db-the-he" aria-label="Lọc theo thế hệ"><option value="">Tất cả thế hệ</option></select>
-        <select id="db-truong" aria-label="Lọc theo trường cấp ba"><option value="">Tất cả trường cấp ba</option></select>
+        <select id="db-cap-bac" aria-label="Lọc theo cấp bậc"><option value="">Mọi cấp bậc</option></select>
+        <select id="db-nhiem-ky" aria-label="Lọc theo nhiệm kỳ"><option value="">Mọi nhiệm kỳ</option></select>
+        <select id="db-ban" aria-label="Lọc theo ban"><option value="">Mọi ban</option></select>
       </div>
 
       <div class="db-dem" id="db-dem"></div>
@@ -167,8 +178,7 @@
           <div class="hang hang-2">
             <div class="o" data-o="truong_thpt">
               <label for="tt-truong">Trường cấp ba <span class="sao">*</span></label>
-              <input id="tt-truong" name="truong_thpt" list="ds-truong-2" placeholder="THPT Phan Đăng Lưu">
-              <datalist id="ds-truong-2"></datalist>
+              <input id="tt-truong" name="truong_thpt" placeholder="THPT Phan Đăng Lưu">
               <div class="loi">Đây là thứ giúp người khác nhận ra em nhanh nhất.</div>
             </div>
             <div class="o" data-o="khoa_hoc">
@@ -202,7 +212,7 @@
 
           <div class="hang">
             <div class="o" data-o="lien_he">
-              <label for="tt-lien-he">Link Facebook để người cùng quê nhắn cho em</label>
+              <label for="tt-lien-he">Link Facebook để người cùng quê kết nối với em</label>
               <input id="tt-lien-he" name="lien_he" placeholder="https://facebook.com/...">
               <div class="goi-y">Chỉ dán link trang cá nhân. <b>Đừng điền số điện thoại hay email vào đây</b> — ô này hiện công khai cho mọi người đọc.</div>
               <div class="loi">Link phải bắt đầu bằng http.</div>
@@ -212,7 +222,7 @@
           <div class="hang">
             <label class="dong-y">
               <input type="checkbox" id="tt-dong-y" name="dong_y">
-              <span>Em đồng ý cho 37FTU hiển thị công khai những thông tin trên trong danh bạ này, và có thể yêu cầu gỡ bất cứ lúc nào qua email của CLB. <span class="sao">*</span></span>
+              <span>Em đồng ý cho 37FTU hiển thị công khai những thông tin trên trên trang này, và có thể yêu cầu gỡ bất cứ lúc nào qua email của CLB. <span class="sao">*</span></span>
             </label>
             <div class="o" data-o="dong_y"><div class="loi">Cần em đồng ý thì anh chị mới dám đăng.</div></div>
           </div>
@@ -263,5 +273,6 @@
 
 <script src="config.js"></script>
 <script src="ban-do.js"></script>
+<script src="hieu-ung.js"></script>
 </body>
 </html>

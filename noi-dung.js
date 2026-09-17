@@ -9,7 +9,7 @@ window.NOI_DUNG = {
   so_lieu: [
     { so: '2011', nhan: 'Năm thành lập' },
     { so: '15', nhan: 'Thế hệ đã đi qua' },
-    { so: '300+', nhan: 'Thành viên & cựu thành viên' },
+    { so: '429', nhan: 'Thành viên & cựu thành viên' },   // đếm thật từ sheet, 09/2026
     { so: '21', nhan: 'Huyện, thành, thị của quê mình' }
   ],
 

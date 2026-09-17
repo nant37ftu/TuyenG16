@@ -233,3 +233,31 @@ footer .ten{font-family:var(--font-tieu-de);font-size:1.15rem;color:#fff;margin-
 .sc h3{font-size:1.15rem}
 .sc p{font-size:.92rem;color:var(--muc-nhat);margin:0}
 .sc-di{margin-top:auto;padding-top:10px;font-size:.88rem;font-weight:700;color:var(--cam-dam)}
+
+/* =====================================================================
+   HIỆU ỨNG (hieu-ung.js gắn các lớp này vào)
+   Lưu ý: KHÔNG được ẩn sẵn bằng CSS. Lớp .hd chỉ do JS thêm vào, nên
+   máy nào chặn JS thì nội dung vẫn hiện bình thường.
+   ===================================================================== */
+.hd{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .55s cubic-bezier(.22,.8,.3,1), transform .55s cubic-bezier(.22,.8,.3,1);
+  will-change:opacity,transform;
+}
+.hd-vao{opacity:1;transform:none}
+
+/* Thanh trên cùng: phẳng khi ở đỉnh, có bóng khi đã cuộn */
+.dinh{transition:box-shadow .25s ease, background-color .25s ease, border-color .25s ease}
+.dinh-cuon{box-shadow:0 10px 30px -18px rgba(0,0,0,.4)}
+
+/* Thẻ nổi lên khi rê chuột — chỉ ở máy thật sự có chuột */
+@media (hover:hover){
+  .the,.sc{transition:transform .22s cubic-bezier(.22,.9,.3,1), box-shadow .22s ease, border-color .22s ease}
+  .the:hover,.sc:hover{transform:translateY(-3px)}
+}
+
+/* Ai bật giảm chuyển động thì tắt sạch, kể cả khi JS đã kịp gắn lớp */
+@media (prefers-reduced-motion: reduce){
+  .hd,.hd-vao{opacity:1;transform:none;transition:none}
+  .the:hover,.sc:hover{transform:none}
+}

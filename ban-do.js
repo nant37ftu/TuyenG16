@@ -41,22 +41,56 @@
     return (o.theo_the_he && o.theo_the_he[LOC]) || 0;
   }
 
+  function theHeCua(p) { return p.gen ? 'G' + p.gen : ''; }
+
   function cacTheHe() {
     var t = {};
     Object.keys((DULIEU && DULIEU.so_lieu) || {}).forEach(function (id) {
       Object.keys(DULIEU.so_lieu[id].theo_the_he || {}).forEach(function (g) { t[g] = 1; });
     });
-    NGUOI.forEach(function (p) { if (p.the_he) t[p.the_he] = 1; });
+    NGUOI.forEach(function (p) { var g = theHeCua(p); if (g) t[g] = 1; });
     return Object.keys(t).sort(function (a, b) {
       return (parseInt(a.replace(/\D/g, ''), 10) || 0) - (parseInt(b.replace(/\D/g, ''), 10) || 0);
     });
   }
 
-  function cacTruong() {
+  /* Gom các giá trị khác nhau của một trường, để đổ vào ô lọc */
+  function cacGiaTri(lay) {
     var t = {};
-    NGUOI.forEach(function (p) { if (p.truong_thpt) t[p.truong_thpt] = 1; });
-    ((DULIEU && DULIEU.goi_y_truong) || []).forEach(function (x) { t[x] = 1; });
-    return Object.keys(t).sort(function (a, b) { return a.localeCompare(b, 'vi'); });
+    NGUOI.forEach(function (p) {
+      var v = lay(p);
+      (Array.isArray(v) ? v : [v]).forEach(function (x) { if (x) t[x] = 1; });
+    });
+    return Object.keys(t);
+  }
+
+  /* Năm của nhiệm kỳ gần nhất — dùng để xếp người mới rời ghế lên trước */
+  function namCuoi(p) {
+    var m = /(\d{4})/.exec(String(p.nhiem_ky_cuoi || ''));
+    return m ? parseInt(m[1], 10) : 0;
+  }
+
+  /* Thứ tự Bảng vàng: cấp bậc cao trước, rồi người gắn bó lâu, rồi người gần đây */
+  function xepNguoi(a, b) {
+    var d = (b.bac || 0) - (a.bac || 0);
+    if (d) return d;
+    d = (b.so_nhiem_ky || 0) - (a.so_nhiem_ky || 0);
+    if (d) return d;
+    d = namCuoi(b) - namCuoi(a);
+    if (d) return d;
+    return String(a.ten).localeCompare(String(b.ten), 'vi');
+  }
+
+  function lopNhom(p) {
+    return p.nhom === 'Sáng lập' ? 'ng-sl'
+      : p.nhom === 'Ban Lãnh đạo' ? 'ng-ld'
+      : p.nhom === 'Ban Chấp hành' ? 'ng-ch' : 'ng-tv';
+  }
+
+  function khoangNam(p) {
+    var d = String(p.nhiem_ky_dau || '').split('-')[0];
+    var c = String(p.nhiem_ky_cuoi || '').split('-').pop();
+    return d && c && d !== c ? d + '–' + c : (d || '');
   }
 
   function mauCho(so, max) {
@@ -92,6 +126,10 @@
       u._path = p;
 
       var mo = function (e) {
+        // Máy có chuột thì đã có thẻ #bd-hover đầy đủ hơn rồi (xem ganReChuot),
+        // để cả hai cùng hiện là chồng chữ lên nhau. Ô đen này chỉ còn dành cho
+        // máy cảm ứng, nơi 'hover' thật ra là một cú chạm.
+        if (window.matchMedia && window.matchMedia('(hover:hover)').matches) return;
         var b = svg.getBoundingClientRect();
         var ct = $('#chu-thich');
         ct.hidden = false;
@@ -229,8 +267,8 @@
 
   function nguoiCuaQue(id) {
     return NGUOI.filter(function (p) {
-      return p.que_id === id && (LOC === 'tat-ca' || p.the_he === LOC);
-    });
+      return p.que === id && (LOC === 'tat-ca' || theHeCua(p) === LOC);
+    }).sort(xepNguoi);
   }
 
   function chon(id) {
@@ -252,7 +290,9 @@
       html += '<div class="ct-so"><b>' + so + '</b><span>người con ' + an(u.name) + ' ở Ngoại thương' +
         (LOC === 'tat-ca' ? '' : ' (thế hệ ' + an(LOC) + ')') + '</span></div>';
       var theo = o.theo_the_he || {};
-      var gs = Object.keys(theo).sort();
+      var gs = Object.keys(theo).sort(function (x, y) {
+        return (parseInt(x.replace(/\D/g, ''), 10) || 0) - (parseInt(y.replace(/\D/g, ''), 10) || 0);
+      });
       var maxG = Math.max.apply(null, gs.map(function (g) { return theo[g]; }).concat([1]));
       if (gs.length) {
         html += '<div class="ct-cot"><div class="xh-dau">Theo thế hệ</div>';
@@ -266,17 +306,17 @@
 
       var ds = nguoiCuaQue(id);
       if (ds.length) {
-        html += '<div class="ct-nguoi"><div class="xh-dau">Họ là ai</div>' +
-          ds.slice(0, 5).map(theNhoNguoi).join('') + '</div>' +
+        html += '<div class="ct-nguoi"><div class="xh-dau">Những người đi trước</div>' +
+          ds.slice(0, 6).map(theNhoNguoi).join('') + '</div>' +
           '<button class="nut nut-vien ct-xem-them" id="xem-danh-ba-que" style="width:100%;margin-top:14px">' +
-          (ds.length > 5 ? 'Xem cả ' + ds.length + ' người ' + an(u.name) : 'Mở trong danh bạ') + ' →</button>';
+          (ds.length > 6 ? 'Xem cả ' + ds.length + ' người ' + an(u.name) : 'Mở bảng vàng ' + an(u.name)) + ' →</button>';
       } else {
-        html += '<div class="ct-trong"><p>Có người quê ' + an(u.name) + ' đấy, nhưng chưa ai để lại tên trong danh bạ. ' +
-          'Em là người đầu tiên nhé?</p>' +
+        html += '<div class="ct-trong"><p>Có người quê ' + an(u.name) + ' đấy, nhưng chưa ai ' +
+          'trong số họ được ghi lên bảng vàng. Em là người đầu tiên nhé?</p>' +
           '<a class="nut nut-chinh" href="#them-ten">Thêm tên em</a></div>';
       }
     } else {
-      html += '<div class="ct-trong"><p>Chưa có ai quê ' + an(u.name) + ' trong ' +
+      html += '<div class="ct-trong"><p>Chưa ghi nhận ai quê ' + an(u.name) + ' trong ' +
         (LOC === 'tat-ca' ? 'danh sách này' : 'thế hệ ' + an(LOC)) +
         '. Em có muốn là người đầu tiên đặt tên quê mình lên bản đồ không?</p>' +
         '<a class="nut nut-chinh" href="#them-ten">Thêm tên em</a></div>';
@@ -299,6 +339,63 @@
     if (window.matchMedia('(max-width:999px)').matches) {
       $('#panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+
+  /* =====================================================================
+     RÊ CHUỘT TRÊN BẢN ĐỒ
+     Không thay chỗ bấm — chỉ hiện nhanh vài người đi trước của huyện đang rê,
+     để người xem khỏi phải bấm từng huyện mới biết có ai hay không.
+     ===================================================================== */
+  function ganReChuot() {
+    var hop = $('#bd-hover');
+    var boc = document.querySelector('.bd-svg-boc');
+    if (!hop || !boc) return;
+    // máy cảm ứng không có chuột — bỏ qua, bấm vẫn chạy bình thường
+    if (!window.matchMedia || !window.matchMedia('(hover:hover)').matches) return;
+
+    function dong() { hop.hidden = true; }
+
+    function datViTri(e) {
+      var r = boc.getBoundingClientRect();
+      var x = e.clientX - r.left + 18;
+      var y = e.clientY - r.top + 18;
+      var w = hop.offsetWidth, h = hop.offsetHeight;
+      if (x + w > r.width - 6) x = e.clientX - r.left - w - 14;
+      if (y + h > r.height - 6) y = Math.max(6, r.height - h - 6);
+      hop.style.left = Math.max(6, x) + 'px';
+      hop.style.top = Math.max(6, y) + 'px';
+    }
+
+    function mo(u, e) {
+      var so = soCua(u.id);
+      var ds = nguoiCuaQue(u.id);
+      var h = '<div class="bdh-ten">' + an(u.name) + '</div>';
+      if (so) {
+        h += '<div class="bdh-so"><b>' + so + '</b> người con ' + an(u.name) + ' ở Ngoại thương</div>';
+      } else {
+        h += '<div class="bdh-so bdh-trong">Chưa ghi nhận ai</div>';
+      }
+      if (ds.length) {
+        h += '<div class="bdh-ds">' + ds.slice(0, 3).map(function (p) {
+          return '<div class="bdh-nguoi ' + lopNhom(p) + '"><b>' + an(p.ten) + '</b>' +
+            '<span>' + an(p.chuc_vu) + (p.ban ? ' · ' + an(p.ban) : '') + '</span></div>';
+        }).join('') + '</div>';
+        if (ds.length > 3) h += '<div class="bdh-them">và ' + (ds.length - 3) + ' người nữa — bấm để xem</div>';
+        else h += '<div class="bdh-them">bấm để xem đầy đủ</div>';
+      } else if (so) {
+        h += '<div class="bdh-them">chưa ai lên bảng vàng</div>';
+      }
+      hop.innerHTML = h;
+      hop.hidden = false;
+      datViTri(e);
+    }
+
+    BANDO.units.forEach(function (u) {
+      u._path.addEventListener('mouseenter', function (e) { mo(u, e); });
+      u._path.addEventListener('mousemove', datViTri);
+      u._path.addEventListener('mouseleave', dong);
+    });
+    boc.addEventListener('mouseleave', dong);
   }
 
   function veBoLoc() {
@@ -329,85 +426,92 @@
     return (t[t.length - 1][0] || '?').toUpperCase();
   }
 
-  /* Điểm "gần em": cùng trường cấp ba là mạnh nhất, rồi mới đến cùng quê */
-  function diemGan(p) {
-    var d = 0;
-    if (EM.truong && p.truong_thpt && khongDau(p.truong_thpt) === khongDau(EM.truong)) d += 100;
-    if (EM.que && p.que_id === EM.que) d += 50;
-    return d;
-  }
+  function cungQue(p) { return !!(EM.que && p.que === EM.que); }
 
-  function nhanGan(p) {
-    var t = [];
-    if (EM.truong && p.truong_thpt && khongDau(p.truong_thpt) === khongDau(EM.truong)) t.push('Cùng trường cấp ba');
-    if (EM.que && p.que_id === EM.que) t.push('Cùng quê');
-    return t;
-  }
-
-  /* Thẻ rút gọn, dùng trong bảng chi tiết huyện trên bản đồ */
+  /* Thẻ rút gọn, dùng trong bảng chi tiết huyện và trong ô rê chuột */
   function theNhoNguoi(p) {
-    return '<div class="ng-nho">' +
+    return '<div class="ng-nho ' + lopNhom(p) + '">' +
       '<span class="ng-chu ng-chu-nho">' + an(chuDau(p.ten)) + '</span>' +
-      '<span><b>' + an(p.ten) + '</b>' +
-      '<span>' + [p.the_he, p.khoa_hoc, p.truong_thpt].filter(Boolean).map(an).join(' · ') + '</span></span>' +
+      '<span class="ng-nho-chu"><b>' + an(p.ten) + '</b>' +
+      '<span>' + [p.chuc_vu, p.ban && ('Ban ' + p.ban)].filter(Boolean).map(an).join(' · ') + '</span></span>' +
+      '<span class="ng-nho-gen">' + an(theHeCua(p)) + '</span>' +
       '</div>';
   }
 
   function theNguoi(p) {
-    var gan = nhanGan(p);
+    var gan = cungQue(p);
     var lh = linkSach(p.lien_he);
-    var dong = [];
-    if (p.que_id) dong.push(['Quê', tenHuyen(p.que_id)]);
-    if (p.truong_thpt) dong.push(['Cấp ba', p.truong_thpt]);
-    if (p.nganh) dong.push(['Ngành', p.nganh]);
-    return '<article class="ng the' + (gan.length ? ' ng-gan-em' : '') + '">' +
-      (gan.length ? '<div class="ng-co">' + gan.map(an).join(' · ') + '</div>' : '') +
+    var ht = p.hanh_trinh || [];
+    var tt = p.thanh_tich || [];
+    var meta = [theHeCua(p), p.que ? tenHuyen(p.que) : ''].filter(Boolean);
+
+    return '<article class="ng the ' + lopNhom(p) + (gan ? ' ng-gan-em' : '') + '">' +
+      '<div class="ng-hang-co"><span class="ng-co">' + an(p.nhom) + '</span>' +
+      (gan ? '<span class="ng-co ng-co-que">Cùng quê em</span>' : '') + '</div>' +
+
       '<div class="ng-dau"><span class="ng-chu">' + an(chuDau(p.ten)) + '</span>' +
-      '<div><h3>' + an(p.ten) + '</h3><div class="ng-meta">' +
-      [p.the_he, p.khoa_hoc].filter(Boolean).map(an).join(' · ') + '</div></div></div>' +
-      '<dl class="ng-dong">' + dong.map(function (x) {
-        return '<div><dt>' + an(x[0]) + '</dt><dd>' + an(x[1]) + '</dd></div>';
-      }).join('') + '</dl>' +
-      (p.gioi_thieu ? '<p class="ng-gt">“' + an(p.gioi_thieu) + '”</p>' : '') +
-      '<div class="ng-chan">' +
-      (p.ban ? '<span class="ng-ban">' + an(p.ban) + '</span>' : '<span></span>') +
-      (lh ? '<a class="ng-nhan" href="' + an(lh) + '" target="_blank" rel="noopener nofollow">Nhắn cho ' + an(chuDau(p.ten)) + ' →</a>' : '') +
+      '<div><h3>' + an(p.ten) + '</h3>' +
+      '<div class="ng-meta">' + meta.map(an).join(' · ') + '</div></div></div>' +
+
+      '<div class="ng-chuc">' + an(p.chuc_vu) +
+      (p.ban ? '<span> · Ban ' + an(p.ban) + '</span>' : '') + '</div>' +
+
+      (ht.length > 1
+        ? '<ol class="ng-ht">' + ht.map(function (b) {
+            return '<li><i></i><span class="ng-ht-nk">' + an(b.nk) + '</span>' +
+              '<span class="ng-ht-cv">' + an(b.chuc_vu) +
+              (b.ban && b.ban !== p.ban ? ' · ' + an(b.ban) : '') + '</span></li>';
+          }).join('') + '</ol>'
+        : '') +
+
+      (tt.length ? '<ul class="ng-tt">' + tt.map(function (t) {
+        return '<li>' + an(t) + '</li>';
+      }).join('') + '</ul>' : '') +
+
+      (p.loi_nhan ? '<p class="ng-gt">“' + an(p.loi_nhan) + '”</p>' : '') +
+
+      '<div class="ng-chan"><span class="ng-ban">' +
+      an(p.so_nhiem_ky) + ' nhiệm kỳ' + (khoangNam(p) ? ' · ' + an(khoangNam(p)) : '') + '</span>' +
+      (lh ? '<a class="ng-nhan" href="' + an(lh) + '" target="_blank" rel="noopener nofollow">Kết nối →</a>' : '') +
       '</div></article>';
   }
 
   function locDanhBa() {
     var tu = khongDau($('#db-tim').value.trim());
     var que = $('#db-que').value;
-    var the_he = $('#db-the-he').value;
-    var truong = $('#db-truong').value;
+    var bac = $('#db-cap-bac').value;
+    var nk = $('#db-nhiem-ky').value;
+    var ban = $('#db-ban').value;
     return NGUOI.filter(function (p) {
-      if (que && p.que_id !== que) return false;
-      if (the_he && p.the_he !== the_he) return false;
-      if (truong && p.truong_thpt !== truong) return false;
+      if (que && p.que !== que) return false;
+      if (bac && p.nhom !== bac) return false;
+      if (ban && p.ban !== ban) return false;
+      if (nk && (p.nhiem_ky || []).indexOf(nk) < 0) return false;
       if (tu) {
-        var kho = khongDau([p.ten, tenHuyen(p.que_id), p.truong_thpt, p.nganh, p.khoa_hoc, p.the_he, p.ban, p.gioi_thieu].join(' '));
+        var kho = khongDau([p.ten, tenHuyen(p.que), p.chuc_vu, p.ban, p.nhom,
+          theHeCua(p), p.loi_nhan].concat(p.thanh_tich || []).join(' '));
         if (kho.indexOf(tu) < 0) return false;
       }
       return true;
     }).sort(function (a, b) {
-      var d = diemGan(b) - diemGan(a);
-      if (d) return d;
-      return String(a.ten).localeCompare(String(b.ten), 'vi');
+      // người cùng quê em luôn được đẩy lên trước, còn lại giữ thứ tự cấp bậc
+      var ga = cungQue(a) ? 1 : 0, gb = cungQue(b) ? 1 : 0;
+      if (ga !== gb) return gb - ga;
+      return xepNguoi(a, b);
     });
   }
 
   function veDanhBa() {
     var ds = locDanhBa();
-    var soGan = ds.filter(function (p) { return diemGan(p) > 0; }).length;
-    $('#db-dem').innerHTML = '<b>' + ds.length + '</b> người' +
-      (soGan ? ' · <span class="db-gan">' + soGan + ' người gần em nhất được xếp lên đầu</span>' : '');
+    var soGan = ds.filter(cungQue).length;
+    $('#db-dem').innerHTML = '<b>' + ds.length + '</b> người trên bảng vàng' +
+      (soGan ? ' · <span class="db-gan">' + soGan + ' người cùng quê em được xếp lên đầu</span>' : '');
     $('#db-luoi').innerHTML = ds.map(theNguoi).join('');
     var trong = $('#db-trong');
     if (ds.length) { trong.hidden = true; return; }
     trong.hidden = false;
     trong.innerHTML = '<h3>Chưa tìm thấy ai như vậy</h3>' +
-      '<p>Thử bỏ bớt bộ lọc — hoặc chính em là người đầu tiên.</p>' +
-      '<a class="nut nut-chinh" href="#them-ten">Thêm tên em vào danh bạ</a>';
+      '<p>Thử bỏ bớt bộ lọc.</p>';
   }
 
   function moTab(ten) {
@@ -435,8 +539,8 @@
   }
   function luuEm() {
     try { localStorage.setItem(KHOA_EM, JSON.stringify(EM)); } catch (e) {}
-    $('#xoa-em').hidden = !(EM.que || EM.truong);
-    $('#la-ai').classList.toggle('la-ai-xong', !!(EM.que || EM.truong));
+    $('#xoa-em').hidden = !EM.que;
+    $('#la-ai').classList.toggle('la-ai-xong', !!EM.que);
   }
 
   function dungDanhBa() {
@@ -444,30 +548,37 @@
     BANDO.units.forEach(function (u) {
       selQue.appendChild(new Option(u.name, u.id));
       selEmQue.appendChild(new Option(u.name, u.id));
-      selTt.appendChild(new Option(u.name, u.id));
+      if (selTt) selTt.appendChild(new Option(u.name, u.id));
     });
-    cacTheHe().forEach(function (g) { $('#db-the-he').appendChild(new Option(g, g)); });
-    var truongs = cacTruong();
-    truongs.forEach(function (t) {
-      $('#db-truong').appendChild(new Option(t, t));
-      $('#ds-truong').appendChild(new Option(t));
-      $('#ds-truong-2').appendChild(new Option(t));
+
+    // cấp bậc: theo đúng thứ tự trên xuống, không phải a-b-c
+    ['Sáng lập', 'Ban Lãnh đạo', 'Ban Chấp hành', 'Thành viên'].forEach(function (n) {
+      if (cacGiaTri(function (p) { return p.nhom; }).indexOf(n) >= 0) {
+        $('#db-cap-bac').appendChild(new Option(n, n));
+      }
     });
+    // nhiệm kỳ: gần đây trước
+    cacGiaTri(function (p) { return p.nhiem_ky; })
+      .sort(function (a, b) { return String(b).localeCompare(String(a)); })
+      .forEach(function (n) { $('#db-nhiem-ky').appendChild(new Option(n, n)); });
+    cacGiaTri(function (p) { return p.ban; })
+      .sort(function (a, b) { return a.localeCompare(b, 'vi'); })
+      .forEach(function (n) { $('#db-ban').appendChild(new Option('Ban ' + n, n)); });
 
     nhoEm();
     selEmQue.value = EM.que;
-    $('#em-truong').value = EM.truong;
     luuEm();
 
-    selEmQue.addEventListener('change', function () { EM.que = selEmQue.value; luuEm(); veDanhBa(); });
-    $('#em-truong').addEventListener('change', function () { EM.truong = this.value.trim(); luuEm(); veDanhBa(); });
+    selEmQue.addEventListener('change', function () {
+      EM.que = selEmQue.value; luuEm(); veDanhBa();
+    });
     $('#xoa-em').addEventListener('click', function () {
       EM = { que: '', truong: '' };
-      selEmQue.value = ''; $('#em-truong').value = '';
+      selEmQue.value = '';
       luuEm(); veDanhBa();
     });
 
-    ['#db-tim', '#db-que', '#db-the-he', '#db-truong'].forEach(function (s) {
+    ['#db-tim', '#db-que', '#db-cap-bac', '#db-nhiem-ky', '#db-ban'].forEach(function (s) {
       $(s).addEventListener('input', veDanhBa);
       $(s).addEventListener('change', veDanhBa);
     });
@@ -615,13 +726,12 @@
     var tongNguoi = 0;
     Object.keys(DULIEU.so_lieu || {}).forEach(function (id) { tongNguoi += (DULIEU.so_lieu[id].tong || 0); });
     var soQue = Object.keys(DULIEU.so_lieu || {}).filter(function (id) { return DULIEU.so_lieu[id].tong > 0; }).length;
-    var soTruong = {};
-    NGUOI.forEach(function (p) { if (p.truong_thpt) soTruong[p.truong_thpt] = 1; });
+    var soNk = cacGiaTri(function (p) { return p.nhiem_ky; }).length;
     var o = [
-      [tongNguoi, 'người Nghệ đã ghi nhận'],
-      [soQue + '/21', 'huyện, thành, thị đã có tên'],
-      [NGUOI.length, 'người đã có mặt trong danh bạ'],
-      [Object.keys(soTruong).length, 'trường cấp ba đã góp mặt']
+      [DULIEU.tong_thanh_vien || tongNguoi, 'thành viên đã đi qua 37FTU'],
+      [soNk, 'nhiệm kỳ đã ghi lại được'],
+      [NGUOI.length, 'người có tên trên bảng vàng'],
+      [soQue + '/21', 'huyện, thành, thị đã có tên']
     ];
     $('#nn-so').innerHTML = o.map(function (x) {
       return '<div><b>' + an(x[0]) + '</b><span>' + an(x[1]) + '</span></div>';
@@ -644,14 +754,18 @@
     ]).then(function (kq) {
       BANDO = kq[0];
       DULIEU = kq[1] || { so_lieu: {} };
-      NGUOI = (DULIEU.thanh_vien || []).filter(function (p) {
+      NGUOI = (DULIEU.nguoi || DULIEU.thanh_vien || []).filter(function (p) {
         return p && p.ten && p.cong_khai !== false;
       });
       if (DULIEU.la_du_lieu_mau) {
-        loi('Số liệu và danh bạ đang hiển thị là DỮ LIỆU MẪU để xem thử giao diện. Ban tổ chức thay bằng danh sách thật (data/thanh-vien.json) trước khi công bố.');
+        loi('Số liệu đang hiển thị là DỮ LIỆU MẪU để xem thử giao diện. Ban tổ chức thay bằng danh sách thật (data/thanh-vien.json) trước khi công bố.');
+      } else if (!Object.keys(DULIEU.so_lieu || {}).length) {
+        loi('Bảng vàng đã có ' + NGUOI.length + ' người thật, nhưng CHƯA AI ĐƯỢC GÁN QUÊ nên bản đồ còn trống. ' +
+            'Điền cột QUÊ rồi chạy lại tools/tu-sheet.py — xem README mục 5.');
       }
       veBoLoc();
       veBanDo();
+      ganReChuot();
       dungDanhBa();
       veSoTong();
       dungForm();
