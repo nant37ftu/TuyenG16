@@ -261,3 +261,48 @@ footer .ten{font-family:var(--font-tieu-de);font-size:1.15rem;color:#fff;margin-
   .hd,.hd-vao{opacity:1;transform:none;transition:none}
   .the:hover,.sc:hover{transform:none}
 }
+
+/* =====================================================================
+   CHẾ ĐỘ GÓP Ý (gop-y.js) — chỉ bật khi địa chỉ có ?gopy=1
+   ===================================================================== */
+.gy-bat .gy-khoi{position:relative;cursor:crosshair}
+.gy-bat .gy-khoi:hover{outline:2px dashed var(--cam);outline-offset:3px}
+.gy-bat .gy-khoi.gy-dang-chon{outline:2px solid var(--cam);outline-offset:3px}
+.gy-bat .gy-khoi:hover::after{
+  content:'✎ góp ý';position:absolute;top:4px;right:4px;z-index:9;
+  background:var(--cam);color:#fff;font-family:var(--font);font-size:.7rem;font-weight:800;
+  letter-spacing:.05em;padding:3px 9px;border-radius:99px;pointer-events:none
+}
+
+.gy-form{
+  margin:10px auto;width:min(520px,100% - 24px);z-index:40;position:relative;
+  background:var(--trang);border:2px solid var(--cam);border-radius:var(--r);
+  padding:14px 16px;box-shadow:0 18px 44px -18px rgba(0,0,0,.45);text-align:left
+}
+.gy-form-dau{font-size:.8rem;color:var(--muc-nhat);margin-bottom:8px}
+.gy-form-dau b{color:var(--cam-dam)}
+.gy-form textarea{
+  width:100%;margin:0;padding:10px 12px;font-family:var(--font);font-size:.95rem;
+  border:1px solid var(--vien-dam);border-radius:10px;resize:vertical;color:var(--muc);background:var(--trang)
+}
+.gy-form textarea:focus{border-color:var(--cam);outline:none;box-shadow:0 0 0 3px rgba(250,80,30,.13)}
+.gy-form-nut{display:flex;gap:8px;margin-top:10px}
+.gy-form-nut .nut{padding:8px 16px;font-size:.86rem}
+
+.gy-bang{
+  position:fixed;right:16px;bottom:16px;z-index:50;width:min(310px,calc(100vw - 32px));
+  background:var(--trang);border:1px solid var(--vien-dam);border-radius:var(--r-lon);
+  padding:15px 16px;box-shadow:0 22px 50px -20px rgba(0,0,0,.5);text-align:left
+}
+.gy-bang-dau{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.gy-bang-dau b{font-family:var(--font-tieu-de);font-size:1.02rem;color:var(--muc)}
+.gy-bang-so{font-size:.78rem;font-weight:700;color:var(--cam-dam)}
+.gy-bang-chu{font-size:.8rem;color:var(--muc-nhat);margin:6px 0 0;line-height:1.5}
+.gy-bang ol{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px;max-height:150px;overflow:auto}
+.gy-bang li{font-size:.78rem;color:var(--muc-nhat);line-height:1.4;
+  border-left:2px solid var(--cam-nhat);padding-left:8px}
+.gy-bang li b{display:block;color:var(--muc);font-size:.76rem}
+.gy-bang-nut{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.gy-bang-nut .nut{padding:7px 12px;font-size:.8rem;flex:1 1 auto;text-align:center}
+
+@media print{ .gy-bang,.gy-form{display:none} }

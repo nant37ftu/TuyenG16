@@ -17,6 +17,11 @@
   transition:fill .18s ease, opacity .18s ease;
 }
 #bd-svg path:hover{opacity:.82}
+/* path có tabindex nên trình duyệt vẽ viền focus quanh KHUNG BAO của nó — ra một
+   hình chữ nhật đen chình ình giữa bản đồ. Bỏ viền đó, nhưng người dùng bàn phím
+   (:focus-visible) vẫn phải thấy mình đang ở đâu. */
+#bd-svg path:focus{outline:none}
+#bd-svg path:focus-visible{outline:none;stroke:var(--muc);stroke-width:2.4}
 #bd-svg path.dang-chon{stroke:var(--muc);stroke-width:2.2}
 #bd-svg text{
   font-family:var(--font);font-size:15px;font-weight:600;fill:#3A2A22;
@@ -35,13 +40,6 @@
 .tim-que{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
 .tim-que label{margin:0;font-size:.85rem;white-space:nowrap}
 .tim-que select{width:auto;min-width:210px;max-width:320px;flex:1 1 210px;padding:9px 12px;font-size:.92rem}
-
-.chu-thich{
-  position:absolute;pointer-events:none;z-index:5;transform:translate(-50%,-115%);
-  background:var(--muc);color:#fff;padding:8px 12px;border-radius:10px;font-size:.85rem;
-  white-space:nowrap;box-shadow:0 8px 20px -8px rgba(0,0,0,.5)
-}
-.chu-thich b{color:#FFB499}
 
 /* Bộ lọc thế hệ */
 .bo-loc{display:flex;flex-wrap:wrap;gap:8px}
@@ -81,8 +79,6 @@
 .ct-cot .t i{display:block;height:100%;background:var(--cam);border-radius:99px}
 .ct-trong{background:var(--cam-nhat);border-radius:var(--r);padding:18px;margin-top:18px}
 .ct-trong p{font-size:.95rem;color:var(--cam-dam);font-weight:600;margin:0 0 14px}
-.ds-ten{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px}
-.ds-ten span{background:var(--cam-nhat);color:var(--cam-dam);padding:5px 11px;border-radius:99px;font-size:.84rem;font-weight:600}
 
 .bao-mau{
   margin-top:22px;padding:14px 16px;border-radius:var(--r);font-size:.9rem;font-weight:600;
@@ -90,7 +86,7 @@
 }
 
 /* =====================================================================
-   NGƯỜI NGHỆ Ở NGOẠI THƯƠNG — mở đầu, tab, danh bạ
+   NGƯỜI NGHỆ Ở NGOẠI THƯƠNG — mở đầu, thẻ người trong huyện
    ===================================================================== */
 .neo{display:block;position:relative;top:-90px;height:0;visibility:hidden}
 
@@ -103,89 +99,13 @@
 .nn-so b{display:block;font-family:var(--font-tieu-de);font-size:clamp(1.5rem,4vw,2.1rem);color:var(--cam);line-height:1.1}
 .nn-so span{font-size:.82rem;color:var(--muc-nhat);line-height:1.35;display:block;margin-top:4px}
 @media(min-width:760px){.nn-so{grid-template-columns:repeat(4,1fr)}}
-
-/* Tab bản đồ / danh bạ */
-.nn-tab-boc{position:sticky;top:64px;z-index:20;background:var(--giay);border-bottom:1px solid var(--vien)}
-.nn-tab{display:flex;gap:4px}
-.nn-tab button{
-  appearance:none;background:none;border:0;border-bottom:3px solid transparent;
-  padding:14px 4px;margin-right:22px;font-family:var(--font);font-size:1rem;font-weight:700;
-  color:var(--muc-nhat);cursor:pointer
-}
-.nn-tab button:hover{color:var(--cam-dam)}
-.nn-tab button[aria-selected="true"]{color:var(--muc);border-bottom-color:var(--cam)}
-
-/* Khối "em quê mô, học trường mô" */
-.la-ai{padding:20px;display:grid;gap:14px;margin-bottom:22px;border-color:var(--cam);background:var(--cam-nhat)}
-.la-ai-chu b{display:block;font-family:var(--font-tieu-de);font-size:1.15rem}
-.la-ai-chu span{font-size:.9rem;color:var(--muc-nhat)}
-.la-ai-o{display:grid;gap:10px}
-.la-ai-o .nut{padding:10px 18px;font-size:.88rem;justify-self:start}
-.la-ai.la-ai-xong{background:var(--trang);border-color:var(--vien)}
-@media(min-width:760px){
-  .la-ai{grid-template-columns:1fr 1.2fr;align-items:center}
-  .la-ai-o{grid-template-columns:1fr auto;align-items:center}
-  .la-ai-o .nut{white-space:nowrap}
-}
-
-/* Bộ lọc danh bạ */
-.db-loc{display:grid;gap:10px;margin-bottom:16px}
-.db-loc input,.db-loc select{font-size:.95rem;padding:11px 13px}
-
-.db-dem{font-size:.9rem;color:var(--muc-nhat);margin-bottom:16px}
-.db-dem b{color:var(--muc);font-size:1.05rem}
-.db-gan{color:var(--cam-dam);font-weight:600}
-
-.db-luoi{display:grid;gap:14px}
-
-.db-trong{text-align:center;padding:44px 20px;border:1.5px dashed var(--vien-dam);border-radius:var(--r-lon)}
-.db-trong h3{font-size:1.4rem;margin-bottom:8px}
-.db-trong p{color:var(--muc-nhat);margin-bottom:18px}
-
-/* Thẻ một người */
-.ng{padding:18px;display:flex;flex-direction:column;gap:12px}
-.ng-gan-em{border-color:var(--cam);box-shadow:0 0 0 3px rgba(250,80,30,.1),var(--bong)}
-.ng-co{
-  align-self:flex-start;background:var(--cam);color:#fff;font-size:.72rem;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:99px
-}
-.ng-dau{display:flex;gap:12px;align-items:center}
-.ng-chu{
-  width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;
-  background:var(--cam-nhat);color:var(--cam-dam);font-family:var(--font-tieu-de);font-size:1.3rem;font-weight:800
-}
-.ng h3{font-size:1.12rem;line-height:1.2}
-.ng-meta{font-size:.82rem;font-weight:700;color:var(--cam-dam);letter-spacing:.04em;margin-top:2px}
-.ng-dong{margin:0;display:grid;gap:5px;font-size:.88rem}
-.ng-dong > div{display:grid;grid-template-columns:62px 1fr;gap:8px}
-.ng-dong dt{color:var(--muc-nhat);font-size:.8rem;padding-top:1px}
-.ng-dong dd{margin:0;font-weight:600}
-.ng-gt{font-size:.9rem;color:var(--muc-nhat);font-style:italic;margin:0;
-  border-left:2px solid var(--cam-nhat);padding-left:10px}
-.ng-chan{display:flex;align-items:center;justify-content:space-between;gap:10px;
-  margin-top:auto;padding-top:12px;border-top:1px solid var(--vien);flex-wrap:wrap}
-.ng-ban{font-size:.78rem;font-weight:700;color:var(--muc-nhat);background:var(--giay);
-  border:1px solid var(--vien);padding:4px 10px;border-radius:99px}
-.ng-nhan{font-size:.88rem;font-weight:700;color:var(--cam-dam);text-decoration:none;white-space:nowrap}
-.ng-nhan:hover{text-decoration:underline}
-
-/* Danh sách người rút gọn trong bảng chi tiết huyện */
+/* =====================================================================
+   DANH SÁCH NGƯỜI TRONG PANEL HUYỆN
+   ===================================================================== */
 .xh-dau{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   color:var(--muc-nhat);margin-bottom:4px}
 .ct-nguoi{margin-top:22px;display:grid;gap:10px}
-.ng-nho{display:flex;gap:10px;align-items:center}
-.ng-nho > span:last-child{display:grid;line-height:1.3}
-.ng-nho b{font-size:.95rem}
-.ng-nho span span{font-size:.8rem;color:var(--muc-nhat)}
-.ng-chu-nho{width:34px;height:34px;font-size:1rem}
 .ct-xem-them{padding:11px 18px;font-size:.9rem}
-
-/* =====================================================================
-   BẢNG VÀNG — vinh danh người đi trước
-   ===================================================================== */
-.bv-dau{margin-bottom:22px}
-.bv-dau h2{font-size:clamp(1.7rem,4.2vw,2.4rem);letter-spacing:-.02em}
-.bv-dau .dan-de{margin-top:10px;max-width:56ch}
 
 /* Màu theo cấp bậc — vàng cho người sáng lập, cam cho lãnh đạo */
 .ng-sl{--bac:#B4841C;--bac-nen:#FFF6E0}
@@ -193,72 +113,26 @@
 .ng-ch{--bac:#3F6B5A;--bac-nen:#EAF3EE}
 .ng-tv{--bac:#5B6470;--bac-nen:#EFF1F4}
 
-.ng-hang-co{display:flex;gap:6px;flex-wrap:wrap}
-.ng-co{background:var(--bac,var(--cam));color:#fff}
-.ng-co-que{background:var(--trang);color:var(--cam-dam);border:1.5px solid var(--cam)}
-.ng-sl{border-color:#E6C46A;box-shadow:0 0 0 3px rgba(180,132,28,.08),var(--bong)}
-.ng .ng-chu{background:var(--bac-nen,var(--cam-nhat));color:var(--bac,var(--cam-dam))}
-.ng-meta{color:var(--bac,var(--cam-dam))}
-
-.ng-chuc{font-family:var(--font-tieu-de);font-size:1.05rem;font-weight:800;
-  color:var(--bac,var(--muc));line-height:1.25}
-.ng-chuc span{font-family:var(--font);font-size:.88rem;font-weight:600;color:var(--muc-nhat)}
-
-/* Hành trình: mốc nào cũng bắt đầu từ dòng "Thành viên" */
-.ng-ht{list-style:none;margin:0;padding:0 0 0 4px;display:grid;gap:9px}
-.ng-ht li{display:grid;grid-template-columns:12px 84px 1fr;gap:9px;align-items:baseline;
-  font-size:.85rem;position:relative}
-.ng-ht li i{width:8px;height:8px;border-radius:50%;background:var(--bac-nen,var(--cam-nhat));
-  border:2px solid var(--bac,var(--cam));align-self:center;position:relative;z-index:1}
-.ng-ht li:not(:last-child)::before{content:'';position:absolute;left:4px;top:14px;bottom:-13px;
-  width:2px;background:var(--vien)}
-.ng-ht li:last-child i{background:var(--bac,var(--cam))}
-.ng-ht-nk{color:var(--muc-nhat);font-variant-numeric:tabular-nums}
-.ng-ht-cv{font-weight:700}
-.ng-ht li:last-child .ng-ht-cv{color:var(--bac,var(--muc))}
-
-/* Thành tích — BTC tự điền, không có thì thẻ tự bỏ khối này */
-.ng-tt{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.ng-tt li{font-size:.86rem;font-weight:600;padding-left:20px;position:relative}
-.ng-tt li::before{content:'★';position:absolute;left:0;color:var(--bac,var(--cam))}
-
-/* Thẻ rút gọn trong panel huyện */
-.ng-nho{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
-.ng-nho > span:last-child{display:block}
+.ng-nho{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
+  padding:8px 10px;border-radius:12px;transition:background .15s ease}
+.ng-nho:hover{background:var(--giay)}
 .ng-nho-chu{display:grid;line-height:1.3;min-width:0}
 .ng-nho-chu b{font-size:.95rem}
 .ng-nho-chu span{font-size:.79rem;color:var(--muc-nhat)}
-.ng-nho .ng-chu-nho{background:var(--bac-nen,var(--cam-nhat));color:var(--bac,var(--cam-dam))}
+.ng-chu-nho{
+  width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--font-tieu-de);font-size:1rem;font-weight:800;
+  background:var(--bac-nen,var(--cam-nhat));color:var(--bac,var(--cam-dam))
+}
 .ng-nho-gen{font-size:.72rem;font-weight:800;color:var(--bac,var(--muc-nhat));
   background:var(--bac-nen,var(--giay));padding:3px 8px;border-radius:99px;white-space:nowrap}
 
-/* =====================================================================
-   Ô RÊ CHUỘT TRÊN BẢN ĐỒ
-   ===================================================================== */
-.bd-hover{
-  position:absolute;z-index:6;pointer-events:none;width:min(260px,72vw);
-  background:var(--trang);border:1px solid var(--vien-dam);border-radius:16px;padding:13px 15px;
-  box-shadow:0 22px 48px -20px rgba(0,0,0,.42);
-  animation:bdh-hien .14s ease-out both;
-}
-@keyframes bdh-hien{from{opacity:0;transform:translateY(5px) scale(.97)}to{opacity:1;transform:none}}
-.bdh-ten{font-family:var(--font-tieu-de);font-size:1.15rem;line-height:1.15}
-.bdh-so{font-size:.83rem;color:var(--muc-nhat);margin-top:3px}
-.bdh-so b{color:var(--cam-dam);font-size:1rem}
-.bdh-trong{font-style:italic}
-.bdh-ds{margin-top:11px;padding-top:10px;border-top:1px solid var(--vien);display:grid;gap:8px}
-.bdh-nguoi{display:grid;line-height:1.25;border-left:3px solid var(--bac,var(--cam));padding-left:9px}
-.bdh-nguoi b{font-size:.88rem}
-.bdh-nguoi span{font-size:.76rem;color:var(--muc-nhat)}
-.bdh-them{margin-top:9px;font-size:.75rem;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--cam-dam)}
-
-@media (prefers-reduced-motion: reduce){ .bd-hover{animation:none} }
-
-@media (min-width:700px){
-  .db-loc{grid-template-columns:1.4fr 1fr 1fr 1fr 1fr}
-  .db-luoi{grid-template-columns:repeat(2,1fr)}
-}
-@media (min-width:1100px){
-  .db-luoi{grid-template-columns:repeat(3,1fr)}
-}
+/* Phần thêm của thẻ: thành tích, lời nhắn, link — nằm dưới tên, thẳng hàng với tên */
+.ng-nho-them{grid-column:2 / -1;display:grid;gap:6px;font-size:.83rem;line-height:1.45;margin-top:-2px}
+.ng-tt{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+.ng-tt li{position:relative;padding-left:17px;color:var(--muc)}
+.ng-tt li::before{content:"★";position:absolute;left:0;top:0;font-size:.78rem;color:var(--bac,var(--cam))}
+.ng-ln{margin:0;font-style:italic;color:var(--muc-nhat);padding-left:9px;
+  border-left:2px solid var(--vien);border-left-color:color-mix(in srgb,var(--bac,var(--cam)) 40%,transparent)}
+.ng-lk{justify-self:start;font-weight:700;font-size:.8rem;color:var(--bac,var(--cam-dam));text-decoration:none}
+.ng-lk:hover{text-decoration:underline}

@@ -5,10 +5,13 @@ Năm trang web tĩnh, không cần server, không tốn tiền hosting:
 | Trang | File | Dùng để làm gì |
 |---|---|---|
 | Tuyển thành viên Gen 16 | `index.html` | Giới thiệu CLB, lộ trình tuyển, nhận đơn ứng tuyển |
-| Người Nghệ ở Ngoại thương | `ban-do.html` | Bản đồ 21 huyện + **bảng vàng** vinh danh người đi trước theo quê |
+| Người Nghệ ở Ngoại thương | `ban-do.html` | Bản đồ 21 huyện — bấm vào quê là thấy những người đi trước cùng quê |
 | Trắc nghiệm hợp ban nào | `quiz.html` | Mini game lan toả, cho ra ảnh kết quả để đăng story |
 | Hôm nay ăn chi? | `an-gi.html` | Máy quay chọn món, có món xứ Nghệ cho hôm nào nhớ nhà |
 | Góc game bàn trực | `game.html` | Bắt lươn xứ Nghệ + Giọng Nghệ tốc độ, có bảng xếp hạng tại bàn |
+
+Thêm một trang cho BTC: **`admin.html`** — bảng sửa trực tiếp tên, quê, chức vụ, thành
+tích… của người hiện trên bản đồ (mục 5). Không có trong menu.
 
 `index.html` là trang của **mùa tuyển**. Bốn trang còn lại sống độc lập, hết mùa
 tuyển vẫn dùng được — đặc biệt là `ban-do.html`, thứ đáng giữ qua nhiều nhiệm kỳ nhất.
@@ -48,6 +51,17 @@ Rồi vào `http://localhost:5196`.
 
 Sửa câu hỏi trắc nghiệm: mở `quiz.js`, phần `CAU_HOI` ở đầu file. Mỗi đáp án có
 `d: [Tổ chức, Truyền thông, Đối ngoại]` là điểm cộng cho từng ban.
+
+### Góp ý thẳng vào từng khối — thêm `?gopy=1`
+
+Không muốn tự sửa, chỉ muốn chỉ chỗ cho người sửa: thêm `?gopy=1` vào cuối địa chỉ trang
+bất kỳ, ví dụ `ban-do.html?gopy=1`. Rê chuột thấy từng khối nội dung viền nét đứt; bấm
+vào khối nào là mở ô ghi chú ngay dưới khối đó (`Ctrl+Enter` lưu, `Esc` đóng). Sang trang
+khác vẫn ở chế độ góp ý cho tới khi bấm **Tắt**.
+
+Ghi chú gom về bảng nhỏ ở góc màn hình và tab *Góp ý đã ghi* trong `admin.html`. Bấm
+**Chép tất cả** rồi dán vào khung chat — mỗi dòng có sẵn tên trang và tên khối, người
+sửa biết đúng chỗ. Ghi chú chỉ nằm trong trình duyệt của người ghi, không gửi đi đâu.
 
 ---
 
@@ -103,24 +117,24 @@ Trang tự ghi nhớ nguồn và gửi kèm khi ứng viên nộp đơn. Hết m
 
 ---
 
-## 5. Người Nghệ ở Ngoại thương — bản đồ và bảng vàng
+## 5. Người Nghệ ở Ngoại thương — bản đồ theo quê
 
 Trang này không phải danh bạ tra cứu. Nó trả lời câu người Nghệ gặp nhau bao giờ cũng
 hỏi trước — *quê mô* — rồi đưa ra những người đi trước cùng quê, để một em tân sinh
 viên biết mình có chỗ bấu víu, và để những người đã dựng nên CLB không bị quên.
 
-Ba phần:
+Hai phần:
 
-- **Bản đồ** — 21 huyện/thành/thị tô màu theo số người. **Rê chuột vào một huyện**
-  là hiện ngay ba người đi trước quê đó; bấm vào thì mở panel đầy đủ.
-- **Bảng vàng** — mỗi người một thẻ: cấp bậc cao nhất từng giữ, ban, thế hệ, quê, và
-  **hành trình qua từng nhiệm kỳ** (hầu hết đều bắt đầu từ dòng “Thành viên” — đó mới
-  là chỗ đáng cho khoá sau nhìn vào). Lọc theo quê, cấp bậc, nhiệm kỳ, ban.
+- **Bản đồ** — 21 huyện/thành/thị tô màu theo số người. Rê chuột chỉ làm vùng sáng lên,
+  không bật hộp gì. **Bấm vào một huyện** thì khung bên phải hiện tổng số người, chia
+  theo thế hệ, rồi thẻ từng người được nêu tên — 6 người đầu, bấm *Xem thêm* ra hết.
+  Ai có thành tích, lời nhắn hay link Facebook thì thẻ dài thêm để hiện mấy thứ đó.
 - **Thêm tên em** — người ngoài tự xin vào, BTC duyệt rồi mới hiện.
 
-Thứ tự trên bảng vàng: **Chủ tịch → Phó chủ tịch → Trưởng ban / Uỷ viên BCH → Phó ban**,
-cùng bậc thì ai gắn bó nhiều nhiệm kỳ hơn đứng trước. Ai khai quê mình thì người cùng
-quê được gắn nhãn và đẩy lên đầu.
+Thứ tự người trong một huyện: **Sáng lập → Ban Lãnh đạo → Ban Chấp hành → Thành viên**.
+Cùng nhóm thì chức cao hơn đứng trước, rồi người nhiều thành tích hơn, rồi người gắn bó
+nhiều nhiệm kỳ hơn, rồi người gần đây hơn. Đổi *Cấp bậc* của ai trong `admin.html` là
+đổi chỗ đứng của người đó.
 
 ### Dữ liệu lấy từ Google Sheet
 
@@ -133,8 +147,10 @@ python tools/tu-sheet.py
 
 Quy trình đầy đủ:
 
-1. **Thêm cột `QUÊ`** vào sheet, ghi tên huyện cũ: `Yên Thành`, `Diễn Châu`, `TP Vinh`…
-   Đây là việc bắt buộc — sheet hiện tại **không có cột quê**, nên bản đồ đang trống.
+1. **Gán quê cho từng người.** Sheet hiện tại **không có cột quê**, nên bản đồ đang
+   trống. Hai cách, chọn cách nào cũng được:
+   - thêm cột `QUÊ` vào sheet, ghi tên huyện cũ: `Yên Thành`, `Diễn Châu`, `TP Vinh`…
+   - hoặc gán thẳng trong `admin.html` (xem bên dưới) — có nút gán cả loạt theo bộ lọc.
 2. Mỗi tab (một nhiệm kỳ) bấm **File → Download → CSV**, cất vào `rieng-tu/nhiem-ky/`,
    đặt tên theo nhiệm kỳ: `2025-2026.csv`.
 3. Chạy `python tools/tu-sheet.py`.
@@ -165,22 +181,46 @@ Muốn nêu tên thêm ai thì ghi tên họ vào `rieng-tu/cho-phep-neu-ten.txt
 tên — tức là người đó đã đồng ý.
 
 Script **không bao giờ** chép số điện thoại, email, ngày sinh, mã sinh viên hay lớp.
-Đừng tự tay thêm vào `data/thanh-vien.json`; file đó sinh tự động, sửa tay là mất khi
-chạy lại script.
+Muốn sửa gì thì sửa qua `admin.html`, đừng mở `data/thanh-vien.json` ra gõ tay.
 
-### Thành tích và lời nhắn
+### Sửa bằng bảng — `admin.html`
 
-Mỗi người có sẵn hai ô trống trong JSON để BTC tự điền, thẻ nào có thì hiện thêm:
+Mở `admin.html` (chạy thử trên máy: `http://localhost:5196/admin.html`). Trang không có
+trong menu và đã chặn Google lập chỉ mục.
 
-```json
-"thanh_tich": ["Trưởng ban tổ chức Tết Yêu Thương 2024"],
-"loi_nhan": "Cứ nhận việc khó, còn lại tính sau.",
-"lien_he": "https://facebook.com/..."
-```
+- **Người** — mỗi người một dòng, bấm thẳng vào ô để sửa: họ tên, gen, quê, chức vụ, cấp
+  bậc, ban, nhiệm kỳ, thành tích (nhiều cái thì ngăn bằng dấu `;`), lời nhắn, link
+  Facebook (chỉ nhận link `http…` — dán số điện thoại vào là bị bỏ). Lọc theo quê, cấp
+  bậc, ban; lọc xong có ô **Gán quê cho tất cả** người đang hiện. Cuối bảng có
+  **+ Thêm một người**; nút **×** ở cuối dòng để gỡ tên.
+- **Số người theo huyện** — con số bản đồ sẽ hiện. Cột *Ghi đè* dùng khi CLB biết tổng
+  thật lớn hơn số trong sheet.
+- **Góp ý đã ghi** — ghi chú từ chế độ `?gopy=1` (mục 2).
 
-Điền trực tiếp vào `data/thanh-vien.json` thì lần chạy script sau sẽ mất. Muốn giữ lâu
-dài thì thêm cột tương ứng vào sheet và sửa `tools/tu-sheet.py` cho nó đọc thêm — chỗ
-cần sửa nằm ở hàm `gom()`.
+Sửa xong bấm **Tải file về** → được `thanh-vien.json` → chép đè vào `data/` → đẩy lên
+GitHub (mục 8). Chưa tải thì mọi thay đổi vẫn giữ tạm trong trình duyệt đó, đóng tab
+không mất; **Hoàn tác** lùi được 30 bước.
+
+**Không có mật khẩu, và không cần.** Ai mở `admin.html` cũng thấy bảng, nhưng bảng chỉ
+đọc lại `data/thanh-vien.json` vốn đã công khai và không ghi được gì lên trang thật —
+muốn đổi trang thì phải có quyền đẩy code lên repo.
+
+**Sửa ở bảng và chạy lại script không giẫm lên nhau.** `tools/tu-sheet.py` đọc bản cũ
+trước khi ghi:
+
+| Đã sửa ở `admin.html` | Chạy lại script thì |
+|---|---|
+| Ô đã sửa tay (ghi trong `sua_tay` của người đó) | giữ bản sửa tay |
+| Thành tích, lời nhắn, link | luôn giữ — sheet không có mấy ô này |
+| Quê | sheet có thì lấy sheet (trừ ô đã sửa tay), sheet trống thì giữ quê cũ |
+| Người bị gỡ tên (nút ×) | không nêu tên lại, vẫn được đếm vào tổng của huyện |
+| Người thêm tay (mã `tay-…`) | giữ nguyên |
+| Ghi đè tổng theo huyện | giữ nguyên |
+
+Người bị gỡ tên chỉ để lại một mã băm trong `an_ma` để script nhận ra. Mã băm làm từ
+tên + gen nên không giấu được với ai đã biết sẵn tên — và tên cũ vẫn nằm trong **lịch sử
+commit** của GitHub. Ai đòi xoá hẳn thì phải viết lại lịch sử repo (`git filter-repo`),
+nhờ người rành git làm.
 
 ### Duyệt người tự thêm tên
 
@@ -272,11 +312,11 @@ nội bộ hay để tạm thứ gì không muốn công khai thì bỏ vào đ�
 - [ ] Sửa `HAN_NOP_DON` và 5 mốc thời gian trong `noi-dung.js` cho đúng lịch G16
 - [ ] Nối Supabase và **nộp thử một đơn**, kiểm tra thấy dữ liệu trong Table Editor
 - [ ] Điền `FANPAGE`, `EMAIL`, `HOTLINE` trong `config.js`
-- [ ] **Thêm cột QUÊ vào sheet thành viên** rồi chạy `python tools/tu-sheet.py` —
-      chưa làm thì bản đồ trống trơn (mục 5)
+- [ ] **Gán quê cho từng người** — thêm cột QUÊ vào sheet rồi chạy
+      `python tools/tu-sheet.py`, hoặc gán trong `admin.html`. Chưa làm thì bản đồ trống (mục 5)
 - [ ] Xoá `rieng-tu/que-VI-DU-de-xem-thu.csv` nếu đã dùng nó để xem thử
 - [ ] Soát 18 tên bị trùng ở nhiều gen mà script báo ra
-- [ ] Hỏi từng người trên bảng vàng xem có đồng ý hiện tên và link Facebook không
+- [ ] Hỏi từng người được nêu tên trên bản đồ xem có đồng ý hiện tên, thành tích, link Facebook không
 - [ ] Đặt `assets/qr.png` nếu định mang game ra bàn trực
 - [ ] Đổi ảnh trong `assets/img/` nếu muốn dùng ảnh mùa mới
 - [ ] Đọc lại toàn bộ chữ một lượt trên điện thoại
@@ -294,8 +334,8 @@ Nghị định 13/2023/NĐ-CP. Ba nguyên tắc:
 2. Chỉ người trong BTC được cấp tài khoản Supabase. Không chuyển file CSV ứng viên ra ngoài Đội.
 3. Xong mùa tuyển thì xoá dữ liệu của ứng viên không trúng, hoặc hỏi lại nếu muốn giữ cho mùa sau.
 
-Danh bạ ở `ban-do.html` là chỗ dễ sai nhất vì nó **công khai theo thiết kế**. Đọc kỹ ba
-điều ở mục 5 trước khi đưa tên ai lên đó.
+Tên người trên `ban-do.html` là chỗ dễ sai nhất vì nó **công khai theo thiết kế**. Đọc kỹ
+ba điều ở mục 5 trước khi đưa tên ai lên đó.
 
 ---
 
@@ -325,24 +365,27 @@ trang chạy y nguyên.
 ```
 web/
 ├── index.html          trang tuyển thành viên Gen 16
-├── ban-do.html         bản đồ + bảng vàng người Nghệ
+├── ban-do.html         bản đồ người Nghệ theo quê
+├── admin.html          bảng sửa dữ liệu bản đồ (BTC dùng, mục 5)
 ├── quiz.html           trắc nghiệm hợp ban nào
 ├── an-gi.html          hôm nay ăn chi
 ├── game.html           góc game bàn trực
 ├── config.js           ⚙ thiết lập (BTC sửa)
 ├── noi-dung.js         ✍ toàn bộ chữ trang tuyển (BTC sửa)
 ├── app.js              xử lý form, đếm ngược, đo nguồn truy cập
-├── ban-do.js           vẽ bản đồ, bảng vàng, form thêm tên
+├── ban-do.js           vẽ bản đồ, thẻ người trong huyện, form thêm tên
+├── admin.js            bảng sửa + xuất thanh-vien.json
+├── gop-y.js            chế độ góp ý ?gopy=1 (mục 2)
 ├── quiz.js             câu hỏi + vẽ ảnh kết quả
 ├── an-gi.js            máy quay chọn món
 ├── game.js             hai trò chơi + bảng xếp hạng
 ├── hieu-ung.js         hiện dần khi cuộn, số đếm lên (xem mục 11)
 ├── styles.css          giao diện chung
-├── ban-do.css, quiz.css, an-gi.css, game.css
+├── ban-do.css, admin.css, quiz.css, an-gi.css, game.css
 ├── tools/tu-sheet.py   đổi Google Sheet -> data/thanh-vien.json (mục 5)
 ├── data/
 │   ├── nghe-an.json    ranh giới 21 huyện (không cần sửa)
-│   ├── thanh-vien.json SINH TỰ ĐỘNG từ tools/tu-sheet.py — đừng sửa tay
+│   ├── thanh-vien.json sinh từ tools/tu-sheet.py, sửa tiếp bằng admin.html
 │   └── mon-an.json     danh sách món ăn (BTC thêm bớt)
 ├── rieng-tu/           CSV gốc từ sheet — .gitignore chặn, KHÔNG lên GitHub
 ├── sql/schema.sql      chạy một lần trong Supabase

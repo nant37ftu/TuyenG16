@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sửa dữ liệu — 37FTU</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="ad-body">
+
+<header class="ad-dinh">
+  <div class="ad-dinh-trai">
+    <a class="hieu" href="ban-do.html"><img src="assets/logo.png" alt="">Sửa dữ liệu</a>
+    <span class="ad-trang-thai" id="trang-thai">đang nạp…</span>
+  </div>
+  <div class="ad-dinh-phai">
+    <button class="nut nut-vien" id="nut-hoan" type="button" disabled>Hoàn tác</button>
+    <button class="nut nut-vien" id="nut-chep" type="button">Chép JSON</button>
+    <button class="nut nut-chinh" id="nut-tai" type="button">Tải file về</button>
+  </div>
+</header>
+
+<div class="ad-nhac" id="ad-nhac">
+  <b>Sửa ở đây không tự động đổi trang thật.</b>
+  Sửa xong bấm <b>Tải file về</b>, được file <code>thanh-vien.json</code> — chép đè vào
+  thư mục <code>data/</code> rồi đẩy lên GitHub là trang cập nhật.
+  Mọi thay đổi được giữ tạm trong trình duyệt này, đóng tab không mất.
+  <button class="ad-nhac-dong" id="an-nhac" type="button" aria-label="Đóng">×</button>
+</div>
+
+<nav class="ad-tab" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="nguoi">Người <span class="ad-dem" id="dem-nguoi">0</span></button>
+  <button role="tab" aria-selected="false" data-tab="huyen">Số người theo huyện</button>
+  <button role="tab" aria-selected="false" data-tab="gopy">Góp ý đã ghi <span class="ad-dem" id="dem-gopy">0</span></button>
+</nav>
+
+<!-- ============================ NGƯỜI ============================ -->
+<main class="ad-vung" id="tab-nguoi">
+
+  <div class="ad-loc">
+    <input id="loc-tim" type="search" placeholder="Tìm tên, chức vụ, ban…" aria-label="Tìm người">
+    <select id="loc-que" aria-label="Lọc theo quê"><option value="">Mọi quê</option></select>
+    <select id="loc-nhom" aria-label="Lọc theo cấp bậc"><option value="">Mọi cấp bậc</option></select>
+    <select id="loc-ban" aria-label="Lọc theo ban"><option value="">Mọi ban</option></select>
+    <label class="ad-hop"><input type="checkbox" id="loc-thieu-que"> Chỉ người chưa có quê</label>
+  </div>
+
+  <!-- Gán quê hàng loạt: 429 người mà bấm từng ô thì ngồi cả buổi -->
+  <div class="ad-hangloat" id="hang-loat" hidden>
+    <span>Đang xem <b id="hl-so">0</b> người.</span>
+    <label for="hl-que">Gán quê cho tất cả:</label>
+    <select id="hl-que"><option value="">— Chọn huyện —</option></select>
+    <button class="nut nut-vien" id="hl-lam" type="button" disabled>Gán</button>
+  </div>
+
+  <div class="ad-bang-boc">
+    <table class="ad-bang" id="bang-nguoi">
+      <thead>
+        <tr>
+          <th class="c-stt">#</th>
+          <th class="c-ten">Họ tên</th>
+          <th class="c-gen">Gen</th>
+          <th class="c-que">Quê</th>
+          <th class="c-cv">Chức vụ</th>
+          <th class="c-nhom">Cấp bậc</th>
+          <th class="c-ban">Ban</th>
+          <th class="c-nk">Nhiệm kỳ</th>
+          <th class="c-tt">Thành tích</th>
+          <th class="c-ln">Lời nhắn</th>
+          <th class="c-lh">Link Facebook</th>
+          <th class="c-xoa"></th>
+        </tr>
+      </thead>
+      <tbody id="than-nguoi"></tbody>
+    </table>
+    <p class="ad-trong" id="nguoi-trong" hidden>Không có ai khớp bộ lọc.</p>
+  </div>
+
+  <div class="ad-duoi">
+    <button class="nut nut-vien" id="them-nguoi" type="button">+ Thêm một người</button>
+    <span class="ad-ghi">Bấm thẳng vào ô để sửa. Nhấn Tab để sang ô kế.</span>
+  </div>
+</main>
+
+<!-- ============================ HUYỆN ============================ -->
+<main class="ad-vung" id="tab-huyen" hidden>
+  <div class="ad-nhac ad-nhac-nho">
+    Cột <b>Tự đếm</b> = người có quê đó trong bảng Người, cộng thành viên thường không nêu
+    tên mà <code>tools/tu-sheet.py</code> đã đếm từ sheet. Cột <b>Ghi đè</b> để khi CLB biết
+    tổng số thật lớn hơn — ví dụ có 34 người Yên Thành nhưng sheet mới có 8.
+    Để trống thì bản đồ lấy số tự đếm.
+  </div>
+  <div class="ad-bang-boc">
+    <table class="ad-bang ad-bang-hep">
+      <thead>
+        <tr><th>Huyện, thành, thị</th><th class="c-so">Tự đếm</th><th class="c-so">Ghi đè</th><th class="c-so">Bản đồ hiện</th></tr>
+      </thead>
+      <tbody id="than-huyen"></tbody>
+    </table>
+  </div>
+</main>
+
+<!-- ============================ GÓP Ý ============================ -->
+<main class="ad-vung" id="tab-gopy" hidden>
+  <div class="ad-nhac ad-nhac-nho">
+    Mở bất kỳ trang nào với đuôi <code>?gopy=1</code> — ví dụ
+    <a href="ban-do.html?gopy=1" target="_blank" rel="noopener"><code>ban-do.html?gopy=1</code></a> —
+    rồi bấm vào đúng khối nội dung muốn sửa để ghi chú thẳng vào đó.
+    Ghi chú gom hết về đây. Bấm <b>Chép tất cả</b> rồi dán vào khung chat là xong.
+  </div>
+  <div class="ad-duoi" style="margin:0 0 14px">
+    <button class="nut nut-chinh" id="gy-chep" type="button">Chép tất cả góp ý</button>
+    <button class="nut nut-vien" id="gy-xoa" type="button">Xoá hết</button>
+  </div>
+  <div id="gy-ds" class="gy-ds"></div>
+  <p class="ad-trong" id="gy-trong">Chưa có góp ý nào.</p>
+</main>
+
+<div class="ad-bao" id="ad-bao" hidden></div>
+
+<script src="config.js"></script>
+<script src="gop-y.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

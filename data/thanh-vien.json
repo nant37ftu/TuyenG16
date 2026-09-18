@@ -1,12 +1,142 @@
 {
- "_doc": "File này SINH RA TỰ ĐỘNG từ tools/tu-sheet.py — đừng sửa tay, sửa trong Google Sheet rồi chạy lại script. Chỉ nêu tên người từng giữ chức trong BCH; thành viên thường chỉ được đếm vào số tổng. Tuyệt đối không có số điện thoại, email, ngày sinh hay mã sinh viên ở đây.",
+ "_doc": "File này sinh ra từ tools/tu-sheet.py và được sửa tiếp ở admin.html. Chạy lại script KHÔNG làm mất chỗ đã sửa tay (xem sua_tay, an_ma). Chỉ nêu tên người từng giữ chức trong BCH; thành viên thường chỉ được đếm vào số tổng. Tuyệt đối không có số điện thoại, email, ngày sinh hay mã sinh viên ở đây.",
  "nguon": "37FTU | DANH SÁCH THÀNH VIÊN CÁC THẾ HỆ",
- "cap_nhat": "2026-09-17",
+ "cap_nhat": "2026-09-18",
  "la_du_lieu_mau": false,
  "tong_thanh_vien": 429,
  "da_biet_que": 0,
  "so_lieu": {},
  "nguoi": [
+  {
+   "ma": "le van tri|1",
+   "ten": "Lê Văn Trí",
+   "gen": 1,
+   "que": "",
+   "bac": 5,
+   "chuc_vu": "Đồng sáng lập · Chủ tịch",
+   "nhom": "Sáng lập",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Chủ tịch",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "dang ngoc thach|1",
+   "ten": "Đặng Ngọc Thạch",
+   "gen": 1,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Đồng sáng lập · Uỷ viên BCH",
+   "nhom": "Sáng lập",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Uỷ viên BCH",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "dau thi thu le|1",
+   "ten": "Đậu Thị Thu Lê",
+   "gen": 1,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Đồng sáng lập · Trưởng ban",
+   "nhom": "Sáng lập",
+   "ban": "Tổ chức",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Tổ chức"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran duc long|1",
+   "ten": "Trần Đức Long",
+   "gen": 1,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Đồng sáng lập · Trưởng ban",
+   "nhom": "Sáng lập",
+   "ban": "Truyền thông",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Truyền thông"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
+  {
+   "ma": "tran thi thanh tam|1",
+   "ten": "Trần Thị Thanh Tâm",
+   "gen": 1,
+   "que": "",
+   "bac": 3,
+   "chuc_vu": "Đồng sáng lập · Trưởng ban",
+   "nhom": "Sáng lập",
+   "ban": "Đối ngoại",
+   "nhiem_ky_dau": "2011-2014",
+   "nhiem_ky_cuoi": "2011-2014",
+   "so_nhiem_ky": 1,
+   "nhiem_ky": [
+    "2011-2014"
+   ],
+   "hanh_trinh": [
+    {
+     "nk": "2011-2014",
+     "chuc_vu": "Trưởng ban",
+     "ban": "Đối ngoại"
+    }
+   ],
+   "thanh_tich": [],
+   "loi_nhan": "",
+   "lien_he": ""
+  },
   {
    "ma": "le thi huong tra|12",
    "ten": "Lê Thị Hương Trà",
@@ -449,32 +579,6 @@
     },
     {
      "nk": "2014-2015",
-     "chuc_vu": "Chủ tịch",
-     "ban": "Đối ngoại"
-    }
-   ],
-   "thanh_tich": [],
-   "loi_nhan": "",
-   "lien_he": ""
-  },
-  {
-   "ma": "le van tri|1",
-   "ten": "Lê Văn Trí",
-   "gen": 1,
-   "que": "",
-   "bac": 5,
-   "chuc_vu": "Đồng sáng lập · Chủ tịch",
-   "nhom": "Sáng lập",
-   "ban": "Đối ngoại",
-   "nhiem_ky_dau": "2011-2014",
-   "nhiem_ky_cuoi": "2011-2014",
-   "so_nhiem_ky": 1,
-   "nhiem_ky": [
-    "2011-2014"
-   ],
-   "hanh_trinh": [
-    {
-     "nk": "2011-2014",
      "chuc_vu": "Chủ tịch",
      "ban": "Đối ngoại"
     }
@@ -1830,110 +1934,6 @@
    "hanh_trinh": [
     {
      "nk": "2011–2015",
-     "chuc_vu": "Trưởng ban",
-     "ban": "Đối ngoại"
-    }
-   ],
-   "thanh_tich": [],
-   "loi_nhan": "",
-   "lien_he": ""
-  },
-  {
-   "ma": "dang ngoc thach|1",
-   "ten": "Đặng Ngọc Thạch",
-   "gen": 1,
-   "que": "",
-   "bac": 3,
-   "chuc_vu": "Đồng sáng lập · Uỷ viên BCH",
-   "nhom": "Sáng lập",
-   "ban": "Đối ngoại",
-   "nhiem_ky_dau": "2011-2014",
-   "nhiem_ky_cuoi": "2011-2014",
-   "so_nhiem_ky": 1,
-   "nhiem_ky": [
-    "2011-2014"
-   ],
-   "hanh_trinh": [
-    {
-     "nk": "2011-2014",
-     "chuc_vu": "Uỷ viên BCH",
-     "ban": "Đối ngoại"
-    }
-   ],
-   "thanh_tich": [],
-   "loi_nhan": "",
-   "lien_he": ""
-  },
-  {
-   "ma": "dau thi thu le|1",
-   "ten": "Đậu Thị Thu Lê",
-   "gen": 1,
-   "que": "",
-   "bac": 3,
-   "chuc_vu": "Đồng sáng lập · Trưởng ban",
-   "nhom": "Sáng lập",
-   "ban": "Tổ chức",
-   "nhiem_ky_dau": "2011-2014",
-   "nhiem_ky_cuoi": "2011-2014",
-   "so_nhiem_ky": 1,
-   "nhiem_ky": [
-    "2011-2014"
-   ],
-   "hanh_trinh": [
-    {
-     "nk": "2011-2014",
-     "chuc_vu": "Trưởng ban",
-     "ban": "Tổ chức"
-    }
-   ],
-   "thanh_tich": [],
-   "loi_nhan": "",
-   "lien_he": ""
-  },
-  {
-   "ma": "tran duc long|1",
-   "ten": "Trần Đức Long",
-   "gen": 1,
-   "que": "",
-   "bac": 3,
-   "chuc_vu": "Đồng sáng lập · Trưởng ban",
-   "nhom": "Sáng lập",
-   "ban": "Truyền thông",
-   "nhiem_ky_dau": "2011-2014",
-   "nhiem_ky_cuoi": "2011-2014",
-   "so_nhiem_ky": 1,
-   "nhiem_ky": [
-    "2011-2014"
-   ],
-   "hanh_trinh": [
-    {
-     "nk": "2011-2014",
-     "chuc_vu": "Trưởng ban",
-     "ban": "Truyền thông"
-    }
-   ],
-   "thanh_tich": [],
-   "loi_nhan": "",
-   "lien_he": ""
-  },
-  {
-   "ma": "tran thi thanh tam|1",
-   "ten": "Trần Thị Thanh Tâm",
-   "gen": 1,
-   "que": "",
-   "bac": 3,
-   "chuc_vu": "Đồng sáng lập · Trưởng ban",
-   "nhom": "Sáng lập",
-   "ban": "Đối ngoại",
-   "nhiem_ky_dau": "2011-2014",
-   "nhiem_ky_cuoi": "2011-2014",
-   "so_nhiem_ky": 1,
-   "nhiem_ky": [
-    "2011-2014"
-   ],
-   "hanh_trinh": [
-    {
-     "nk": "2011-2014",
      "chuc_vu": "Trưởng ban",
      "ban": "Đối ngoại"
     }

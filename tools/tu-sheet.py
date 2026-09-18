@@ -27,6 +27,7 @@ RIÊNG TƯ — đọc kỹ
 """
 
 import csv
+import hashlib
 import io
 import json
 import os
@@ -301,6 +302,86 @@ def gom(dong, cho_phep):
 
 # ---------------------------------------------------------------- xuất file
 
+def doc_file_cu():
+    """Bản data/thanh-vien.json hiện có — có thể đã được sửa tay ở admin.html."""
+    if not os.path.isfile(FILE_RA):
+        return {}
+    try:
+        with io.open(FILE_RA, encoding='utf-8') as f:
+            return json.load(f)
+    except (ValueError, OSError):
+        print('  ! data/thanh-vien.json hỏng, bỏ qua bản cũ — mọi chỗ sửa tay sẽ mất.')
+        return {}
+
+
+def bam(ma):
+    """Phải khớp y hệt hàm bam() trong admin.js: SHA-256 của mã, dạng hex."""
+    return hashlib.sha256(ma.encode('utf-8')).hexdigest()
+
+
+def doc_an_ma(v):
+    """an_ma bản cũ là mảng mã băm, bản mới là {mã băm: quê}. Đọc được cả hai."""
+    if not v:
+        return {}
+    if isinstance(v, list):
+        return {h: '' for h in v}
+    return dict(v)
+
+
+# Ba ô này sheet không có — chỉ admin.html điền. Có thì luôn giữ.
+CHI_ADMIN = ('thanh_tich', 'loi_nhan', 'lien_he')
+
+
+def hop_nhat(moi_nguoi, cu):
+    """
+    Trộn số liệu mới từ sheet với chỗ BTC đã sửa tay ở admin.html.
+
+      * Ô nào nằm trong `sua_tay` của người đó  -> giữ bản sửa tay.
+      * thành tích, lời nhắn, link liên hệ     -> luôn giữ (sheet không có).
+      * Quê: sheet có thì lấy sheet, trừ khi đã sửa tay; sheet trống thì giữ quê cũ.
+      * Người có mã băm nằm trong `an_ma`       -> đã bị gỡ tên, không nêu tên lại,
+        nhưng vẫn đếm vào tổng: an_ma giữ kèm quê của họ lúc bị gỡ.
+      * Người thêm tay ở admin (mã 'tay-...')   -> giữ nguyên, sheet không biết họ.
+    """
+    cu_theo_ma = {p.get('ma'): p for p in cu.get('nguoi', []) if p.get('ma')}
+    an_ma = doc_an_ma(cu.get('an_ma'))
+    bi_go = []
+    for p in moi_nguoi:
+        old = cu_theo_ma.get(p['ma'])
+        if old:
+            sua = old.get('sua_tay') or []
+            for k in sua:
+                if k in old:
+                    p[k] = old[k]
+            for k in CHI_ADMIN:
+                if old.get(k):
+                    p[k] = old[k]
+            if not p['que'] and old.get('que'):
+                p['que'] = old['que']
+            if sua:
+                p['sua_tay'] = list(sua)
+        h = bam(p['ma'])
+        p['bi_go'] = h in an_ma
+        if p['bi_go'] and not p['que'] and an_ma[h] in HUYEN:
+            p['que'] = an_ma[h]   # quê lúc bị gỡ — để còn đếm vào tổng
+        if p['bi_go'] and p['cong_khai']:
+            bi_go.append(p)
+    them_tay = [p for p in cu.get('nguoi', []) if str(p.get('ma', '')).startswith('tay-')]
+    return bi_go, them_tay
+
+
+# thứ tự nhóm khi xếp: người sáng lập, rồi Ban Lãnh đạo, rồi Ban Chấp hành
+THU_TU_NHOM = {'Sáng lập': 0, 'Ban Lãnh đạo': 1, 'Ban Chấp hành': 2, 'Thành viên': 3}
+
+
+def cong_vao(so, q, gen, n=1):
+    o = so.setdefault(q, {'ten': HUYEN[q], 'tong': 0, 'theo_the_he': {}})
+    o['tong'] += n
+    if gen:
+        k = 'G%d' % gen
+        o['theo_the_he'][k] = o['theo_the_he'].get(k, 0) + n
+
+
 def main():
     dong = doc_het_csv()
     cho_phep = doc_cho_phep()
@@ -312,54 +393,93 @@ def main():
         if not p['que']:
             p['que'] = bo_sung.get(p['ma'], '')
 
-    # số liệu bản đồ: đếm TẤT CẢ mọi người (kể cả người không nêu tên)
-    so_lieu = OrderedDict()
-    cho_biet_que = 0
-    for p in moi_nguoi:
-        if not p['que']:
-            continue
-        cho_biet_que += 1
-        o = so_lieu.setdefault(p['que'], {'ten': HUYEN[p['que']], 'tong': 0, 'theo_the_he': {}})
+    cu = doc_file_cu()
+    bi_go, them_tay = hop_nhat(moi_nguoi, cu)
+
+    # Người được nêu tên trên trang; còn lại chỉ góp vào con số tổng
+    cong_khai = [p for p in moi_nguoi if p['cong_khai'] and not p['bi_go']] + them_tay
+    khong_ten = [p for p in moi_nguoi if (not p['cong_khai'] or p['bi_go']) and p['que']]
+
+    dem_khong_ten = OrderedDict()
+    for p in khong_ten:
+        o = dem_khong_ten.setdefault(p['que'], {'tong': 0, 'theo_the_he': {}})
         o['tong'] += 1
         if p['gen']:
             k = 'G%d' % p['gen']
             o['theo_the_he'][k] = o['theo_the_he'].get(k, 0) + 1
 
-    cong_khai = [p for p in moi_nguoi if p['cong_khai']]
-    # Bảng vàng: bậc cao trước, rồi tới người gắn bó lâu, rồi tới nhiệm kỳ gần đây
-    cong_khai.sort(key=lambda p: (-p['bac'], -p['so_nhiem_ky'],
-                                  -khoa_nhiem_ky(p['nhiem_ky_cuoi']), khong_dau(p['ten'])))
+    # số liệu bản đồ = người có tên + người không nêu tên; admin ghi đè thì theo ghi đè
+    ghi_de = cu.get('ghi_de_tong') or {}
+    so_lieu = OrderedDict()
+    for p in cong_khai:
+        if p.get('que') in HUYEN:
+            cong_vao(so_lieu, p['que'], p.get('gen'))
+    for q, d in dem_khong_ten.items():
+        o = so_lieu.setdefault(q, {'ten': HUYEN[q], 'tong': 0, 'theo_the_he': {}})
+        o['tong'] += d['tong']
+        for k, n in d['theo_the_he'].items():
+            o['theo_the_he'][k] = o['theo_the_he'].get(k, 0) + n
+    for q, n in ghi_de.items():
+        if q in HUYEN:
+            so_lieu.setdefault(q, {'ten': HUYEN[q], 'tong': 0, 'theo_the_he': {}})['tong'] = n
+    cho_biet_que = sum(1 for p in cong_khai if p.get('que')) + len(khong_ten)
+
+    # khớp xepNguoi() trong ban-do.js
+    cong_khai.sort(key=lambda p: (THU_TU_NHOM.get(p.get('nhom'), 9), -p.get('bac', 0),
+                                  -len(p.get('thanh_tich') or []),
+                                  -p.get('so_nhiem_ky', 0),
+                                  -khoa_nhiem_ky(p.get('nhiem_ky_cuoi') or ''),
+                                  khong_dau(p.get('ten', ''))))
     for p in cong_khai:
         p.pop('cong_khai', None)
+        p.pop('bi_go', None)
 
     ra = OrderedDict([
-        ('_doc', 'File này SINH RA TỰ ĐỘNG từ tools/tu-sheet.py — đừng sửa tay, '
-                 'sửa trong Google Sheet rồi chạy lại script. Chỉ nêu tên người từng '
-                 'giữ chức trong BCH; thành viên thường chỉ được đếm vào số tổng. '
-                 'Tuyệt đối không có số điện thoại, email, ngày sinh hay mã sinh viên ở đây.'),
+        ('_doc', 'File này sinh ra từ tools/tu-sheet.py và được sửa tiếp ở admin.html. '
+                 'Chạy lại script KHÔNG làm mất chỗ đã sửa tay (xem sua_tay, an_ma). '
+                 'Chỉ nêu tên người từng giữ chức trong BCH; thành viên thường chỉ được '
+                 'đếm vào số tổng. Tuyệt đối không có số điện thoại, email, ngày sinh '
+                 'hay mã sinh viên ở đây.'),
         ('nguon', '37FTU | DANH SÁCH THÀNH VIÊN CÁC THẾ HỆ'),
         ('cap_nhat', __import__('datetime').date.today().isoformat()),
         ('la_du_lieu_mau', False),
-        ('tong_thanh_vien', len(moi_nguoi)),
+        ('tong_thanh_vien', len(moi_nguoi) + len(them_tay)),
         ('da_biet_que', cho_biet_que),
         ('so_lieu', so_lieu),
-        ('nguoi', cong_khai),
     ])
+    if dem_khong_ten:
+        ra['dem_khong_ten'] = dem_khong_ten
+    if ghi_de:
+        ra['ghi_de_tong'] = ghi_de
+    an_ma = doc_an_ma(cu.get('an_ma'))
+    if an_ma:
+        ra['an_ma'] = an_ma
+    ra['nguoi'] = cong_khai
+
     with io.open(FILE_RA, 'w', encoding='utf-8', newline='\n') as f:
         json.dump(ra, f, ensure_ascii=False, indent=1)
 
+    so_sua_tay = sum(1 for p in cong_khai if p.get('sua_tay'))
     print('Đã đọc   : %d dòng, %d nhiệm kỳ' % (len(dong), len({d['nk'] for d in dong})))
     print('Gom lại  : %d người' % len(moi_nguoi))
     print('Nêu tên  : %d người (BCH trở lên hoặc đã đồng ý)' % len(cong_khai))
     print('Có quê   : %d người, %d huyện' % (cho_biet_que, len(so_lieu)))
+    if cu:
+        print('Giữ lại  : chỗ sửa tay của %d người, %d người thêm tay ở admin'
+              % (so_sua_tay, len(them_tay)))
+    if bi_go:
+        print('Đã gỡ tên: %d người (theo admin.html) — vẫn đếm vào tổng, không nêu tên:'
+              % len(bi_go))
+        for p in bi_go:
+            print('      %s — G%s' % (p['ten'], p['gen']))
     if cho_biet_que < len(moi_nguoi):
         print('')
-        print('  ! Con %d nguoi chua biet que - ban do chua dem duoc ho.'
+        print('  ! Còn %d người chưa biết quê — bản đồ chưa đếm được họ.'
               % (len(moi_nguoi) - cho_biet_que))
         if not os.path.isfile(FILE_QUE):
             viet_mau_que(moi_nguoi)
         else:
-            print('    Dien not cot QUE trong %s roi chay lai.' % FILE_QUE)
+            print('    Gán quê ở admin.html, hoặc điền cột QUÊ trong %s rồi chạy lại.' % FILE_QUE)
     canh_bao_trung_ten(moi_nguoi)
     thieu = sorted({d['que_tho'] for d in dong if d['que_tho'] and not d['que']})
     if thieu:

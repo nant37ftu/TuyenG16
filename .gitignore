@@ -11,3 +11,4 @@ pv-*.png
 # Ghi chú riêng của BTC, không đẩy lên repo công khai
 rieng-tu/
 *.local.js
+__pycache__/
