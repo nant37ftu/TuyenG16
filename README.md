@@ -11,7 +11,8 @@ Năm trang web tĩnh, không cần server, không tốn tiền hosting:
 | Góc game bàn trực | `game.html` | Bắt lươn xứ Nghệ + Giọng Nghệ tốc độ, có bảng xếp hạng tại bàn |
 
 Thêm một trang cho BTC: **`admin.html`** — bảng sửa trực tiếp tên, quê, chức vụ, thành
-tích… của người hiện trên bản đồ (mục 5). Không có trong menu.
+tích… của người hiện trên bản đồ, bấm **Lưu lên web** là trang đổi ngay (mục 5). Không có
+trong menu, phải đăng nhập tài khoản BTC mới lưu được.
 
 `index.html` là trang của **mùa tuyển**. Bốn trang còn lại sống độc lập, hết mùa
 tuyển vẫn dùng được — đặc biệt là `ban-do.html`, thứ đáng giữ qua nhiều nhiệm kỳ nhất.
@@ -47,7 +48,6 @@ Rồi vào `http://localhost:5196`.
 | `BANG_UNG_VIEN` | Bảng nhận đơn ứng tuyển |
 | `BANG_BAN_DO_DANG_KY` | Bảng nhận người tự xin thêm tên vào bản đồ |
 | `LINK_FORM_DU_PHONG` | Link Google Form, phòng khi chưa kịp dựng Supabase |
-| `BAN_DO_DUNG_SUPABASE` | `true` = bản đồ đọc số liệu thật từ Supabase thay vì file json |
 
 Sửa câu hỏi trắc nghiệm: mở `quiz.js`, phần `CAU_HOI` ở đầu file. Mỗi đáp án có
 `d: [Tổ chức, Truyền thông, Đối ngoại]` là điểm cộng cho từng ban.
@@ -73,23 +73,34 @@ người nộp, BTC không nhận được gì. Bắt buộc phải làm bước
 1. Vào [supabase.com](https://supabase.com) → đăng ký miễn phí → **New project**.
    Chọn region Singapore cho nhanh. Nhớ lưu mật khẩu database.
 2. Vào **SQL Editor** → **New query** → dán toàn bộ nội dung `sql/schema.sql` → **Run**.
-3. Vào **Project Settings → API**, copy:
+   Chạy lại bao nhiêu lần cũng được, dữ liệu cũ không mất. Bảng kết quả hiện ra cuối
+   cùng là phần tự kiểm tra: cả 5 dòng phải có `da_bat_rls = true`.
+3. Vào **Project Settings → API Keys**, copy:
    - `Project URL` → dán vào `SUPABASE_URL`
-   - `anon public` key → dán vào `SUPABASE_ANON_KEY`
+   - `Publishable key` (`sb_publishable_…`) → dán vào `SUPABASE_ANON_KEY`
 4. Mở lại trang, dòng cảnh báo "Chế độ thử" biến mất là xong. Nộp thử một đơn để kiểm tra.
+5. Tạo tài khoản cho người trong BTC để sửa bản đồ — mục 5, phần *Sửa bằng bảng*.
 
-> **Dự án của CLB đã có sẵn.** `SUPABASE_URL` trong `config.js` đã điền:
-> `https://qiwfknocgwcptjmjdpmc.supabase.co`. Chỉ còn thiếu `SUPABASE_ANON_KEY`.
+> **Dự án của CLB đã có sẵn** — `SUPABASE_URL` và khoá publishable trong `config.js`
+> đã điền: `https://qiwfknocgwcptjmjdpmc.supabase.co`.
 >
-> Làm đúng thứ tự này, đừng đảo:
-> 1. Chạy `sql/schema.sql` trong **SQL Editor** trước — file này bật RLS, khoá không cho
->    người ngoài đọc đơn ứng viên.
-> 2. Rồi mới dán `anon public` key vào `config.js`.
+> Khoá publishable sinh ra để lộ trong code chạy ở máy người dùng, **nhưng nó chỉ an
+> toàn khi `sql/schema.sql` đã chạy**. Repo này công khai, key đã nằm trên mạng — nên
+> nếu chưa chạy schema thì chạy ngay.
 >
-> Khoá `anon` sinh ra để lộ trong code chạy ở máy người dùng, **nhưng nó chỉ an toàn
-> khi RLS đã bật**. Repo này công khai, nên dán key vào trước khi chạy schema là mở
-> toang bảng đơn cho cả internet đọc. Nếu lỡ làm ngược, vào Supabase bấm
-> **Settings → API → Rotate anon key** rồi làm lại.
+> **Ai đã chạy bản `schema.sql` trước ngày 18/09/2026 thì chạy lại bản mới.** Bản cũ có
+> hai lỗ hổng:
+> 1. Quyền đọc đơn cấp cho *mọi tài khoản đã đăng nhập*. Mà Supabase mặc định cho bất kỳ
+>    ai tự đăng ký tài khoản bằng khoá publishable trên trang — tức là người lạ tự tạo
+>    tài khoản là đọc được số điện thoại, email của toàn bộ ứng viên. Bản mới chỉ cho
+>    tài khoản có tên trong bảng `btc_quan_tri`.
+> 2. Ba bảng xem nhanh (`g16_theo_kenh`, `g16_theo_que`, `ban_do_cho_duyet`) chạy bằng
+>    quyền chủ sở hữu nên lách qua RLS — ai có khoá cũng đọc được danh sách người xin
+>    thêm tên đang chờ duyệt. Bản mới bắt chúng chạy bằng quyền người xem.
+>
+> Nếu nghi đã có người lạ vào đọc: Supabase → **Authentication → Users** xem có tài khoản
+> nào lạ không, xoá đi; rồi **Settings → API Keys** tạo khoá publishable mới, thay vào
+> `config.js`.
 
 **Xem đơn đã nhận:** Supabase → **Table Editor** → bảng `g16_ung_vien`.
 Nút **Export → CSV** để tải về mở bằng Excel.
@@ -153,8 +164,11 @@ Quy trình đầy đủ:
    - hoặc gán thẳng trong `admin.html` (xem bên dưới) — có nút gán cả loạt theo bộ lọc.
 2. Mỗi tab (một nhiệm kỳ) bấm **File → Download → CSV**, cất vào `rieng-tu/nhiem-ky/`,
    đặt tên theo nhiệm kỳ: `2025-2026.csv`.
-3. Chạy `python tools/tu-sheet.py`.
-4. Mở lại trang. Xong.
+3. Chạy `python tools/tu-sheet.py`. Script lấy **bản đang chạy trên web** (chỗ BTC đã
+   sửa ở `admin.html`) làm gốc rồi trộn số liệu mới từ sheet vào — không mất chỗ đã sửa.
+   Không có mạng thì nó lấy `data/thanh-vien.json`.
+4. Mở `admin.html` → **Khác → Nạp file .json** → chọn `data/thanh-vien.json` vừa sinh ra →
+   xem lại → **Lưu lên web**.
 
 Chưa kịp sửa sheet thì điền tạm vào **`rieng-tu/que.csv`** — script tự sinh sẵn file này,
 mỗi người một dòng, chỉ phải điền một lần thay vì lặp ở từng nhiệm kỳ. Muốn xem thử
@@ -181,12 +195,12 @@ Muốn nêu tên thêm ai thì ghi tên họ vào `rieng-tu/cho-phep-neu-ten.txt
 tên — tức là người đó đã đồng ý.
 
 Script **không bao giờ** chép số điện thoại, email, ngày sinh, mã sinh viên hay lớp.
-Muốn sửa gì thì sửa qua `admin.html`, đừng mở `data/thanh-vien.json` ra gõ tay.
+Muốn sửa gì thì sửa qua `admin.html`.
 
 ### Sửa bằng bảng — `admin.html`
 
-Mở `admin.html` (chạy thử trên máy: `http://localhost:5196/admin.html`). Trang không có
-trong menu và đã chặn Google lập chỉ mục.
+Mở `admin.html` — trên mạng là `https://nant37ftu.github.io/TuyenG16/admin.html`. Trang
+không có trong menu và đã chặn Google lập chỉ mục.
 
 - **Người** — mỗi người một dòng, bấm thẳng vào ô để sửa: họ tên, gen, quê, chức vụ, cấp
   bậc, ban, nhiệm kỳ, thành tích (nhiều cái thì ngăn bằng dấu `;`), lời nhắn, link
@@ -195,18 +209,42 @@ trong menu và đã chặn Google lập chỉ mục.
   **+ Thêm một người**; nút **×** ở cuối dòng để gỡ tên.
 - **Số người theo huyện** — con số bản đồ sẽ hiện. Cột *Ghi đè* dùng khi CLB biết tổng
   thật lớn hơn số trong sheet.
+- **Lịch sử lưu** — mỗi lần lưu là một bản, giữ 100 bản gần nhất. Lỡ tay thì mở bản cũ
+  ra, bấm **Lưu lên web** là trang quay về bản đó.
 - **Góp ý đã ghi** — ghi chú từ chế độ `?gopy=1` (mục 2).
 
-Sửa xong bấm **Tải file về** → được `thanh-vien.json` → chép đè vào `data/` → đẩy lên
-GitHub (mục 8). Chưa tải thì mọi thay đổi vẫn giữ tạm trong trình duyệt đó, đóng tab
-không mất; **Hoàn tác** lùi được 30 bước.
+Sửa xong bấm **Lưu lên web** (hoặc `Ctrl+S`) là `ban-do.html` đổi ngay, không cần đụng
+GitHub. Chưa lưu thì thay đổi vẫn giữ tạm trong trình duyệt đó, đóng tab không mất;
+**Hoàn tác** lùi được 30 bước. Hai người cùng sửa một lúc thì người lưu sau được hỏi lại
+chứ không đè mất bản của người kia. Menu **Khác** có *Nạp file .json* (file script vừa
+sinh), *Tải bản sao .json* (cất giữ, hoặc chép vào `data/` làm bản dự phòng).
 
-**Không có mật khẩu, và không cần.** Ai mở `admin.html` cũng thấy bảng, nhưng bảng chỉ
-đọc lại `data/thanh-vien.json` vốn đã công khai và không ghi được gì lên trang thật —
-muốn đổi trang thì phải có quyền đẩy code lên repo.
+Dữ liệu nằm ở bảng `trang_du_lieu` trên Supabase. Trang bản đồ đọc ở đó trước; Supabase
+lỗi hay chậm quá 6 giây thì lấy `data/thanh-vien.json` đi kèm trang — không bao giờ trắng.
 
-**Sửa ở bảng và chạy lại script không giẫm lên nhau.** `tools/tu-sheet.py` đọc bản cũ
-trước khi ghi:
+**Ai được lưu.** Ai mở `admin.html` cũng xem được bảng (dữ liệu vốn công khai trên bản
+đồ). Muốn lưu phải đăng nhập bằng tài khoản có tên trong bảng `btc_quan_tri` — chốt chặn
+nằm ở Supabase chứ không ở trang, nên sửa code trang cũng không lách được. Cấp tài khoản
+cho một người (người giữ tài khoản Supabase của CLB làm):
+
+1. Supabase → **Authentication → Users → Add user → Create new user**: email + mật khẩu,
+   tick **Auto Confirm User**.
+2. **SQL Editor**, thay email và tên rồi chạy:
+
+   ```sql
+   insert into public.btc_quan_tri (user_id, email, ten)
+   select id, email, 'Trí' from auth.users where email = 'email-cua-ban@gmail.com'
+   on conflict (user_id) do update set ten = excluded.ten;
+   ```
+
+3. Một lần duy nhất: **Authentication → Sign In / Providers** → tắt
+   **Allow new users to sign up**, để người lạ không tự tạo tài khoản được.
+
+Gỡ quyền: `delete from public.btc_quan_tri where email = '...';`. Quên mật khẩu: vào
+**Authentication → Users**, chọn người đó, đặt lại mật khẩu.
+
+**Sửa ở bảng và chạy lại script không giẫm lên nhau.** `tools/tu-sheet.py` đọc bản đang
+chạy trên web trước khi ghi:
 
 | Đã sửa ở `admin.html` | Chạy lại script thì |
 |---|---|
@@ -225,13 +263,14 @@ nhờ người rành git làm.
 ### Duyệt người tự thêm tên
 
 Người lạ gửi form ở cuối trang → vào bảng `ban_do_dang_ky`, **chưa hiện lên trang**.
-BTC mở `ban_do_cho_duyet` trong SQL Editor, đọc, thấy ổn thì chép sang `thanh_vien_que`
-(câu lệnh mẫu đã ghi sẵn cuối `sql/schema.sql`).
+BTC mở `ban_do_cho_duyet` trong SQL Editor, đọc, thấy ổn thì thêm người đó trong
+`admin.html` (**+ Thêm một người**), lưu, rồi đánh dấu đã duyệt:
+`update public.ban_do_dang_ky set da_duyet = true where id = 123;`
 
 > **Ba điều không được quên.** Đây là trang công khai, ai vào cũng đọc được.
 > 1. Chỉ đưa lên tên của người **đã đồng ý**.
-> 2. Tuyệt đối không đặt số điện thoại, email hay mã sinh viên vào `thanh_vien_que`
->    hay `data/thanh-vien.json`. Ô liên hệ chỉ nhận link Facebook do chính người đó đưa.
+> 2. Tuyệt đối không đặt số điện thoại, email hay mã sinh viên vào bảng người ở
+>    `admin.html`. Ô liên hệ chỉ nhận link Facebook do chính người đó đưa.
 > 3. Ai nhắn xin gỡ tên thì gỡ ngay, không hỏi lý do.
 
 ---
@@ -310,7 +349,9 @@ nội bộ hay để tạm thứ gì không muốn công khai thì bỏ vào đ�
 ## 9. Cần làm trước khi công bố
 
 - [ ] Sửa `HAN_NOP_DON` và 5 mốc thời gian trong `noi-dung.js` cho đúng lịch G16
-- [ ] Nối Supabase và **nộp thử một đơn**, kiểm tra thấy dữ liệu trong Table Editor
+- [ ] **Chạy lại `sql/schema.sql` bản mới** — vá hai lỗ hổng của bản cũ (mục 3)
+- [ ] Tạo tài khoản BTC, thêm vào `btc_quan_tri`, tắt tự đăng ký (mục 5)
+- [ ] **Nộp thử một đơn** trên trang thật, kiểm tra thấy trong Table Editor rồi xoá đơn thử
 - [ ] Điền `FANPAGE`, `EMAIL`, `HOTLINE` trong `config.js`
 - [ ] **Gán quê cho từng người** — thêm cột QUÊ vào sheet rồi chạy
       `python tools/tu-sheet.py`, hoặc gán trong `admin.html`. Chưa làm thì bản đồ trống (mục 5)
@@ -331,7 +372,8 @@ Nghị định 13/2023/NĐ-CP. Ba nguyên tắc:
 
 1. File `sql/schema.sql` đã khoá sẵn: người ngoài **chỉ gửi được đơn, không đọc được đơn**.
    Đừng tự thêm quyền `select` cho `anon` ở bảng `g16_ung_vien` và `ban_do_dang_ky`.
-2. Chỉ người trong BTC được cấp tài khoản Supabase. Không chuyển file CSV ứng viên ra ngoài Đội.
+2. Chỉ tài khoản có tên trong bảng `btc_quan_tri` mới đọc được đơn — đăng nhập được
+   thôi là chưa đủ. Ai rời BTC thì xoá khỏi bảng đó. Không chuyển file CSV ứng viên ra ngoài Đội.
 3. Xong mùa tuyển thì xoá dữ liệu của ứng viên không trúng, hoặc hỏi lại nếu muốn giữ cho mùa sau.
 
 Tên người trên `ban-do.html` là chỗ dễ sai nhất vì nó **công khai theo thiết kế**. Đọc kỹ
@@ -366,7 +408,7 @@ trang chạy y nguyên.
 web/
 ├── index.html          trang tuyển thành viên Gen 16
 ├── ban-do.html         bản đồ người Nghệ theo quê
-├── admin.html          bảng sửa dữ liệu bản đồ (BTC dùng, mục 5)
+├── admin.html          bảng sửa dữ liệu bản đồ, lưu thẳng lên web (BTC, mục 5)
 ├── quiz.html           trắc nghiệm hợp ban nào
 ├── an-gi.html          hôm nay ăn chi
 ├── game.html           góc game bàn trực
@@ -374,7 +416,7 @@ web/
 ├── noi-dung.js         ✍ toàn bộ chữ trang tuyển (BTC sửa)
 ├── app.js              xử lý form, đếm ngược, đo nguồn truy cập
 ├── ban-do.js           vẽ bản đồ, thẻ người trong huyện, form thêm tên
-├── admin.js            bảng sửa + xuất thanh-vien.json
+├── admin.js            bảng sửa, đăng nhập, lưu lên Supabase, lịch sử
 ├── gop-y.js            chế độ góp ý ?gopy=1 (mục 2)
 ├── quiz.js             câu hỏi + vẽ ảnh kết quả
 ├── an-gi.js            máy quay chọn món
@@ -385,10 +427,10 @@ web/
 ├── tools/tu-sheet.py   đổi Google Sheet -> data/thanh-vien.json (mục 5)
 ├── data/
 │   ├── nghe-an.json    ranh giới 21 huyện (không cần sửa)
-│   ├── thanh-vien.json sinh từ tools/tu-sheet.py, sửa tiếp bằng admin.html
+│   ├── thanh-vien.json bản dự phòng khi Supabase lỗi; đầu ra của tools/tu-sheet.py
 │   └── mon-an.json     danh sách món ăn (BTC thêm bớt)
 ├── rieng-tu/           CSV gốc từ sheet — .gitignore chặn, KHÔNG lên GitHub
-├── sql/schema.sql      chạy một lần trong Supabase
+├── sql/schema.sql      chạy trong Supabase (chạy lại được, không mất dữ liệu)
 └── assets/             logo, ảnh, và qr.png nếu có
 ```
 

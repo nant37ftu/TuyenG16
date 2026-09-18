@@ -25,10 +25,8 @@ window.CAU_HINH = {
   // --- Liên hệ ---
   FANPAGE: 'https://www.facebook.com/37FTU',
   EMAIL: 'nant.37ftu@gmail.com',
-  HOTLINE: '',            // vd: '0912 345 678 (Ban Nhân sự)'
+  HOTLINE: ''             // vd: '0912 345 678 (Ban Nhân sự)'
 
-  // --- Bản đồ người Nghệ ---
-  // true  = đọc số liệu thật từ Supabase (bảng thanh_vien_que)
-  // false = đọc file data/thanh-vien.json
-  BAN_DO_DUNG_SUPABASE: false
+  // Bản đồ người Nghệ tự đọc dữ liệu BTC sửa ở admin.html (bảng trang_du_lieu
+  // trên Supabase); chưa có thì lấy file data/thanh-vien.json. Không cần chỉnh gì.
 };

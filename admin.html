@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<!-- Trang có ô mật khẩu và giữ phiên đăng nhập: chỉ cho chạy script của chính trang,
+     chỉ cho gọi về Supabase. Có ai chèn được mã lạ vào dữ liệu thì mã đó cũng không chạy. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
 <title>Sửa dữ liệu — 37FTU</title>
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,23 +24,30 @@
     <span class="ad-trang-thai" id="trang-thai">đang nạp…</span>
   </div>
   <div class="ad-dinh-phai">
+    <span class="ad-tk" id="ad-tk"></span>
     <button class="nut nut-vien" id="nut-hoan" type="button" disabled>Hoàn tác</button>
-    <button class="nut nut-vien" id="nut-chep" type="button">Chép JSON</button>
-    <button class="nut nut-chinh" id="nut-tai" type="button">Tải file về</button>
+    <details class="ad-them" id="ad-them">
+      <summary class="nut nut-vien">Khác</summary>
+      <div class="ad-them-menu">
+        <button type="button" id="nut-nap">Nạp file .json…<small>file tools/tu-sheet.py vừa sinh ra</small></button>
+        <button type="button" id="nut-tai">Tải bản sao .json<small>để cất giữ, hoặc chép vào data/</small></button>
+        <button type="button" id="nut-chep">Chép JSON</button>
+      </div>
+    </details>
+    <button class="nut nut-chinh" id="nut-luu" type="button">Lưu lên web</button>
+    <input type="file" id="o-nap" accept=".json,application/json" hidden>
   </div>
 </header>
 
 <div class="ad-nhac" id="ad-nhac">
-  <b>Sửa ở đây không tự động đổi trang thật.</b>
-  Sửa xong bấm <b>Tải file về</b>, được file <code>thanh-vien.json</code> — chép đè vào
-  thư mục <code>data/</code> rồi đẩy lên GitHub là trang cập nhật.
-  Mọi thay đổi được giữ tạm trong trình duyệt này, đóng tab không mất.
+  <span id="ad-nhac-chu">Đang nạp dữ liệu…</span>
   <button class="ad-nhac-dong" id="an-nhac" type="button" aria-label="Đóng">×</button>
 </div>
 
 <nav class="ad-tab" role="tablist">
   <button role="tab" aria-selected="true" data-tab="nguoi">Người <span class="ad-dem" id="dem-nguoi">0</span></button>
   <button role="tab" aria-selected="false" data-tab="huyen">Số người theo huyện</button>
+  <button role="tab" aria-selected="false" data-tab="lichsu">Lịch sử lưu</button>
   <button role="tab" aria-selected="false" data-tab="gopy">Góp ý đã ghi <span class="ad-dem" id="dem-gopy">0</span></button>
 </nav>
 
@@ -84,7 +95,7 @@
 
   <div class="ad-duoi">
     <button class="nut nut-vien" id="them-nguoi" type="button">+ Thêm một người</button>
-    <span class="ad-ghi">Bấm thẳng vào ô để sửa. Nhấn Tab để sang ô kế.</span>
+    <span class="ad-ghi">Bấm thẳng vào ô để sửa. Nhấn Tab để sang ô kế. Ctrl+S để lưu.</span>
   </div>
 </main>
 
@@ -106,6 +117,24 @@
   </div>
 </main>
 
+<!-- ============================ LỊCH SỬ ============================ -->
+<main class="ad-vung" id="tab-lichsu" hidden>
+  <div class="ad-nhac ad-nhac-nho">
+    Mỗi lần bấm <b>Lưu lên web</b> là một bản, giữ 100 bản gần nhất. Lỡ tay xoá nhầm thì
+    mở bản cũ ra, xem đúng rồi bấm <b>Lưu lên web</b> là trang quay về bản đó.
+  </div>
+  <div class="ad-nhac ad-nhac-nho ls-moi-hon" id="ls-moi-hon" hidden></div>
+  <div class="ad-bang-boc">
+    <table class="ad-bang ad-bang-hep">
+      <thead>
+        <tr><th class="c-so">Bản</th><th>Lúc lưu</th><th>Người lưu</th><th class="c-so">Số người nêu tên</th><th></th></tr>
+      </thead>
+      <tbody id="than-lichsu"></tbody>
+    </table>
+    <p class="ad-trong" id="ls-trong">Đang tải…</p>
+  </div>
+</main>
+
 <!-- ============================ GÓP Ý ============================ -->
 <main class="ad-vung" id="tab-gopy" hidden>
   <div class="ad-nhac ad-nhac-nho">
@@ -122,7 +151,24 @@
   <p class="ad-trong" id="gy-trong">Chưa có góp ý nào.</p>
 </main>
 
-<div class="ad-bao" id="ad-bao" hidden></div>
+<!-- ============================ ĐĂNG NHẬP ============================ -->
+<dialog class="ad-hop-thoai" id="hop-dang-nhap" aria-labelledby="dn-tieu-de">
+  <form id="form-dang-nhap" novalidate>
+    <h2 id="dn-tieu-de">Đăng nhập BTC</h2>
+    <p class="ad-hop-ghi">Tài khoản do người quản trị Supabase của CLB tạo. Chưa có thì nhắn họ.</p>
+    <label for="dn-email">Email</label>
+    <input id="dn-email" type="email" autocomplete="username" required>
+    <label for="dn-mk">Mật khẩu</label>
+    <input id="dn-mk" type="password" autocomplete="current-password" required>
+    <p class="ad-loi" id="dn-loi" role="alert" hidden></p>
+    <div class="ad-hop-nut">
+      <button class="nut nut-vien" type="button" id="dn-huy">Huỷ</button>
+      <button class="nut nut-chinh" type="submit" id="dn-vao">Đăng nhập</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="ad-bao" id="ad-bao" role="status" hidden></div>
 
 <script src="config.js"></script>
 <script src="gop-y.js"></script>

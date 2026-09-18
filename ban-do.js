@@ -408,18 +408,23 @@
     return loi;
   }
 
+  /* Khoá publishable (sb_publishable_…) không phải JWT: chỉ gửi ở header apikey.
+     Khoá anon kiểu cũ là JWT (bắt đầu bằng eyJ) thì gửi thêm Authorization như xưa. */
+  function dauSupabase(them) {
+    var k = CH.SUPABASE_ANON_KEY || '';
+    var h = { apikey: k };
+    if (/^eyJ/.test(k)) h.Authorization = 'Bearer ' + k;
+    Object.keys(them || {}).forEach(function (x) { h[x] = them[x]; });
+    return h;
+  }
+
   function guiSupabase(du) {
     var url = (CH.SUPABASE_URL || '').replace(/\/$/, '');
     var bang = CH.BANG_BAN_DO_DANG_KY || 'ban_do_dang_ky';
     if (!url || !CH.SUPABASE_ANON_KEY) return Promise.reject(new Error('chua-noi'));
     return fetch(url + '/rest/v1/' + bang, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        apikey: CH.SUPABASE_ANON_KEY,
-        Authorization: 'Bearer ' + CH.SUPABASE_ANON_KEY,
-        Prefer: 'return=minimal'
-      },
+      headers: dauSupabase({ 'Content-Type': 'application/json', Prefer: 'return=minimal' }),
       body: JSON.stringify(du)
     }).then(function (r) {
       if (!r.ok) return r.text().then(function (t) { throw new Error(t || ('HTTP ' + r.status)); });
@@ -488,23 +493,32 @@
   /* =====================================================================
      NẠP DỮ LIỆU
      ===================================================================== */
+  /* Bản BTC sửa ở admin.html nằm ở Supabase (bảng trang_du_lieu) — đọc ở đó trước.
+     Chưa nối Supabase, bảng chưa có, mạng chậm quá 6 giây… thì lui về file
+     data/thanh-vien.json đi kèm trang. Trang không bao giờ trắng vì Supabase. */
   function napSoLieu() {
-    if (CH.BAN_DO_DUNG_SUPABASE && CH.SUPABASE_URL && CH.SUPABASE_ANON_KEY) {
-      return fetch(CH.SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/thanh_vien_que?select=*', {
-        headers: { apikey: CH.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + CH.SUPABASE_ANON_KEY }
-      }).then(function (r) { return r.json(); }).then(function (rows) {
-        var so = {};
-        rows.forEach(function (r) {
-          var id = r.que_id;
-          if (!id) return;
-          so[id] = so[id] || { ten: r.que || id, tong: 0, theo_the_he: {} };
-          so[id].tong += 1;
-          if (r.the_he) so[id].theo_the_he[r.the_he] = (so[id].theo_the_he[r.the_he] || 0) + 1;
-        });
-        return { la_du_lieu_mau: false, so_lieu: so, thanh_vien: rows };
-      });
-    }
-    return fetch('data/thanh-vien.json').then(function (r) { return r.json(); });
+    var tuFile = function () {
+      return fetch('data/thanh-vien.json').then(function (r) { return r.json(); });
+    };
+    var url = String(CH.SUPABASE_URL || '').replace(/\/+$/, '');
+    if (!url || !CH.SUPABASE_ANON_KEY) return tuFile();
+    var hen = window.AbortController ? new AbortController() : null;
+    var hetGio = hen ? setTimeout(function () { hen.abort(); }, 6000) : 0;
+    return fetch(url + '/rest/v1/trang_du_lieu?khoa=eq.ban-do&select=du_lieu', {
+      headers: dauSupabase(),
+      cache: 'no-store',
+      signal: hen ? hen.signal : undefined
+    }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function (rows) {
+      clearTimeout(hetGio);
+      var d = rows && rows[0] && rows[0].du_lieu;
+      return d && Array.isArray(d.nguoi) ? d : tuFile();
+    }).catch(function () {
+      clearTimeout(hetGio);
+      return tuFile();
+    });
   }
 
   function loi(msg) {

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Đổi danh sách thành viên (Google Sheet) -> data/thanh-vien.json cho Bảng vàng.
+Đổi danh sách thành viên (Google Sheet) -> data/thanh-vien.json cho bản đồ người Nghệ.
 
 CÁCH DÙNG
 ---------
@@ -11,7 +11,11 @@ CÁCH DÙNG
    thư mục `rieng-tu/nhiem-ky/`. Tên file đặt theo nhiệm kỳ: `2025-2026.csv`.
    Thư mục `rieng-tu/` đã bị .gitignore chặn, không lên GitHub.
 3. Chạy:  python tools/tu-sheet.py
-4. Xem `data/thanh-vien.json` rồi mở lại trang bản đồ.
+   Script lấy bản đang chạy trên web (BTC sửa ở admin.html) làm gốc, trộn số
+   liệu mới từ sheet vào, không làm mất chỗ đã sửa tay. Không có mạng thì lấy
+   data/thanh-vien.json. Thêm --khong-web để bỏ qua bản trên web.
+4. Mở admin.html -> Khác -> Nạp file .json -> chọn data/thanh-vien.json ->
+   xem lại -> Lưu lên web.
 
 FILE CSV CẦN CÓ CÁC CỘT (thừa cột khác cũng không sao, script bỏ qua):
    HỌ TÊN | GEN | CHỨC VỤ | BAN | QUÊ
@@ -34,6 +38,7 @@ import os
 import re
 import sys
 import unicodedata
+import urllib.request
 from collections import OrderedDict
 
 GOC = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -302,6 +307,43 @@ def gom(dong, cho_phep):
 
 # ---------------------------------------------------------------- xuất file
 
+def doc_cau_hinh():
+    """Lấy SUPABASE_URL và khoá công khai từ config.js — khỏi phải khai hai chỗ."""
+    try:
+        s = io.open(os.path.join(GOC, 'config.js'), encoding='utf-8').read()
+    except OSError:
+        return '', ''
+    u = re.search(r"SUPABASE_URL:\s*'([^']*)'", s)
+    k = re.search(r"SUPABASE_ANON_KEY:\s*'([^']*)'", s)
+    return (u.group(1).rstrip('/') if u else ''), (k.group(1) if k else '')
+
+
+def doc_tu_web():
+    """
+    Bản đang chạy trên web — bảng trang_du_lieu, dòng 'ban-do', BTC sửa ở admin.html.
+    Đọc công khai, không cần đăng nhập. Không đọc được thì trả None.
+    """
+    url, khoa = doc_cau_hinh()
+    if not url or not khoa:
+        return None
+    # khoá publishable không phải JWT: chỉ gửi ở header apikey
+    dau = {'apikey': khoa, 'Accept': 'application/json'}
+    if khoa.startswith('eyJ'):
+        dau['Authorization'] = 'Bearer ' + khoa
+    req = urllib.request.Request(
+        url + '/rest/v1/trang_du_lieu?khoa=eq.ban-do&select=du_lieu,phien_ban', headers=dau)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            rows = json.loads(r.read().decode('utf-8'))
+    except Exception as e:  # mất mạng, bảng chưa tạo... đều lui về file
+        print('  ! Chưa đọc được bản trên web (%s) — dùng data/thanh-vien.json.' % e)
+        return None
+    if not rows or not isinstance(rows[0].get('du_lieu'), dict):
+        return None
+    print('Bản gốc   : bản đang chạy trên web (bản số %s)' % rows[0].get('phien_ban'))
+    return rows[0]['du_lieu']
+
+
 def doc_file_cu():
     """Bản data/thanh-vien.json hiện có — có thể đã được sửa tay ở admin.html."""
     if not os.path.isfile(FILE_RA):
@@ -393,7 +435,9 @@ def main():
         if not p['que']:
             p['que'] = bo_sung.get(p['ma'], '')
 
-    cu = doc_file_cu()
+    cu = None if '--khong-web' in sys.argv else doc_tu_web()
+    if cu is None:
+        cu = doc_file_cu()
     bi_go, them_tay = hop_nhat(moi_nguoi, cu)
 
     # Người được nêu tên trên trang; còn lại chỉ góp vào con số tổng
@@ -487,6 +531,8 @@ def main():
         for t in thieu[:20]:
             print('      %r' % t)
     print('\nGhi xong : %s' % FILE_RA)
+    if all(doc_cau_hinh()):
+        print('Đưa lên web: mở admin.html -> Khác -> Nạp file .json -> chọn file trên -> Lưu lên web.')
 
 
 if __name__ == '__main__':

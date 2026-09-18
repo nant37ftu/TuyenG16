@@ -203,15 +203,20 @@
     hop.innerHTML = '<div class="thong-bao ' + loai + '">' + html + '</div>';
   }
 
+  /* Khoá publishable (sb_publishable_…) không phải JWT: chỉ gửi ở header apikey —
+     gửi cả ở Authorization: Bearer thì Supabase coi là JWT hỏng và từ chối.
+     Khoá anon kiểu cũ là JWT (bắt đầu bằng eyJ) thì gửi thêm Authorization như xưa. */
+  function dauSupabase() {
+    var k = CH.SUPABASE_ANON_KEY || '';
+    var h = { 'Content-Type': 'application/json', apikey: k, Prefer: 'return=minimal' };
+    if (/^eyJ/.test(k)) h.Authorization = 'Bearer ' + k;
+    return h;
+  }
+
   function guiSupabase(ban_ghi) {
     return fetch(CH.SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/' + (CH.BANG_UNG_VIEN || 'g16_ung_vien'), {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': CH.SUPABASE_ANON_KEY,
-        'Authorization': 'Bearer ' + CH.SUPABASE_ANON_KEY,
-        'Prefer': 'return=minimal'
-      },
+      headers: dauSupabase(),
       body: JSON.stringify(ban_ghi)
     }).then(function (r) {
       if (!r.ok) return r.text().then(function (t) { throw new Error(t || ('HTTP ' + r.status)); });

@@ -159,11 +159,73 @@
 }
 .gy-bo:hover{color:#C0392B}
 
+/* ---------- Tài khoản trên thanh đầu ---------- */
+.ad-dinh-phai{align-items:center}
+.ad-tk{display:flex;align-items:center;gap:8px;font-size:.84rem}
+.ad-tk:empty{display:none}
+.ad-tk-ten{
+  font-weight:700;color:#2F6B4F;background:#EAF5EE;border:1px solid #CFE6D8;
+  padding:5px 10px;border-radius:99px;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+.ad-tk-ten::before{content:'● ';font-size:.7rem}
+.ad-tk-ten.ad-tk-chua{color:var(--cam-dam);background:var(--cam-nhat);border-color:#F4C4B0}
+.ad-tk-ra{
+  background:none;border:0;cursor:pointer;font-family:var(--font);font-size:.8rem;
+  color:var(--muc-nhat);text-decoration:underline;text-underline-offset:3px;padding:0
+}
+.ad-tk-ra:hover{color:var(--cam-dam)}
+
+/* ---------- Menu "Khác" ---------- */
+/* styles.css có sẵn kiểu details cho phần hỏi-đáp ở trang chủ — gỡ hết ở đây */
+.ad-them{position:relative;border:0;padding:0}
+.ad-them summary{list-style:none;cursor:pointer;user-select:none;position:static;padding:9px 16px;font-weight:700}
+.ad-them summary::-webkit-details-marker{display:none}
+.ad-them summary::after,.ad-them[open] summary::after{
+  content:'▾';position:static;transform:none;margin-left:6px;font-size:.75em;color:inherit;
+  width:auto;height:auto;border:0;background:none;font-weight:inherit;line-height:inherit
+}
+.ad-them-menu{
+  position:absolute;right:0;top:calc(100% + 6px);z-index:30;min-width:250px;
+  background:var(--trang);border:1px solid var(--vien);border-radius:var(--r);
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.35);padding:6px;display:grid
+}
+.ad-them-menu button{
+  text-align:left;background:none;border:0;border-radius:9px;cursor:pointer;padding:9px 11px;
+  font-family:var(--font);font-size:.88rem;font-weight:600;color:var(--muc)
+}
+.ad-them-menu button:hover{background:var(--giay)}
+.ad-them-menu small{display:block;font-weight:500;font-size:.76rem;color:var(--muc-nhat);margin-top:2px}
+
+/* ---------- Hộp đăng nhập ---------- */
+.ad-hop-thoai{
+  border:0;border-radius:var(--r-lon);padding:0;width:min(420px,calc(100vw - 32px));
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.45);color:var(--muc)
+}
+.ad-hop-thoai::backdrop{background:rgba(30,18,12,.45)}
+.ad-hop-thoai form{padding:26px 26px 22px;display:grid;gap:6px}
+.ad-hop-thoai h2{font-size:1.4rem;margin:0}
+.ad-hop-ghi{font-size:.86rem;color:var(--muc-nhat);margin:0 0 10px;line-height:1.5}
+.ad-hop-thoai label{font-size:.84rem;font-weight:700;margin:6px 0 0}
+.ad-hop-thoai input{margin:0}
+.ad-loi{
+  margin:8px 0 0;padding:9px 12px;border-radius:10px;font-size:.86rem;font-weight:600;
+  background:#FFF3F0;border:1px solid #F3C9BC;color:#A5301A
+}
+.ad-hop-nut{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.ad-hop-nut .nut{padding:10px 18px;font-size:.9rem}
+
+/* ---------- Lịch sử lưu ---------- */
+.ls-mo{padding:6px 12px;font-size:.8rem}
+.ls-dang{font-size:.78rem;font-weight:800;color:#2F6B4F;background:#EAF5EE;padding:4px 10px;border-radius:99px;white-space:nowrap}
+#tab-lichsu .ad-trong .nut{padding:7px 14px;font-size:.84rem;margin-left:6px}
+.ls-moi-hon{background:var(--cam-nhat);border-color:#F4C4B0;color:var(--cam-dam)}
+
 /* ---------- Báo nhỏ góc màn hình ---------- */
 .ad-bao{
   position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;
-  background:var(--muc);color:#fff;padding:11px 20px;border-radius:99px;
-  font-size:.88rem;font-weight:600;box-shadow:0 14px 34px -14px rgba(0,0,0,.6)
+  background:var(--muc);color:#fff;padding:11px 20px;border-radius:18px;
+  font-size:.88rem;font-weight:600;box-shadow:0 14px 34px -14px rgba(0,0,0,.6);
+  width:max-content;max-width:calc(100vw - 32px);text-align:center;line-height:1.45
 }
 
 @media(max-width:760px){
