@@ -52,6 +52,27 @@ Rồi vào `http://localhost:5196`.
 Sửa câu hỏi trắc nghiệm: mở `quiz.js`, phần `CAU_HOI` ở đầu file. Mỗi đáp án có
 `d: [Tổ chức, Truyền thông, Đối ngoại]` là điểm cộng cho từng ban.
 
+### Xuất tất cả nội dung ra Excel cho cả team sửa
+
+Muốn gửi nội dung cho nhiều người đọc và sửa cùng lúc, không ai phải mở code:
+
+```
+python tools/xuat-excel.py
+```
+
+Ra file `37FTU-G16-Noi-dung-web.xlsx` ở thư mục cha (`D:\37FTU\Tuyển G16\`) — **nằm ngoài
+thư mục `web/` nên không bị đẩy lên GitHub**. File gồm 19 sheet, mỗi sheet là một phần
+đang hiện trên trang: chữ trong `noi-dung.js`, tiêu đề trong các file HTML, từng câu hỏi
+trong đơn ứng tuyển, 110 người trên bản đồ (cột *Quê* có danh sách 21 huyện chọn sẵn),
+10 câu trắc nghiệm, 56 món ăn, từ tiếng Nghệ, và các mốc trong `config.js`.
+
+Team sửa trực tiếp vào ô, ghi ý kiến ở cột *Ghi chú của team* (ô vàng cuối mỗi dòng).
+Cột **Mã** là khoá để đưa chữ trở lại đúng chỗ — đừng sửa, đừng xoá dòng. Nhận file về
+thì đối chiếu với bản gốc để biết chỗ nào đổi rồi sửa vào `noi-dung.js` / `admin.html`.
+
+Chạy lại script là file được ghi đè bằng nội dung mới nhất, nên xuất trước khi gửi, và
+đừng chạy lại khi team đang sửa dở (sửa xong hãy lưu bản của họ ra tên khác).
+
 ### Góp ý thẳng vào từng khối — thêm `?gopy=1`
 
 Không muốn tự sửa, chỉ muốn chỉ chỗ cho người sửa: thêm `?gopy=1` vào cuối địa chỉ trang
@@ -425,6 +446,7 @@ web/
 ├── styles.css          giao diện chung
 ├── ban-do.css, admin.css, quiz.css, an-gi.css, game.css
 ├── tools/tu-sheet.py   đổi Google Sheet -> data/thanh-vien.json (mục 5)
+├── tools/xuat-excel.py xuất toàn bộ nội dung ra 1 file Excel cho team sửa (mục 2)
 ├── data/
 │   ├── nghe-an.json    ranh giới 21 huyện (không cần sửa)
 │   ├── thanh-vien.json bản dự phòng khi Supabase lỗi; đầu ra của tools/tu-sheet.py
