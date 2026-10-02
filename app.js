@@ -33,7 +33,7 @@
     (ND.gia_tri || []).forEach(function (x, i) {
       var t = el('div', 'the');
       t.setAttribute('data-so', '0' + (i + 1));
-      t.innerHTML = '<h3>' + an(x.ten) + '</h3><p>' + an(x.mo_ta) + '</p>';
+      t.innerHTML = '<h3>' + an(x.ten) + '</h3><p>' + x.mo_ta + '</p>';
       gt.appendChild(t);
     });
 
@@ -59,7 +59,7 @@
       nd.appendChild(el('div', 'the', '<h3>' + an(x.ten) + '</h3><p>' + an(x.mo_ta) + '</p>'));
     });
 
-    var lt = $('#lo-trinh');
+    var lt = $('#lo-trinh-danh-sach');
     (ND.vong_tuyen || []).forEach(function (v, i) {
       lt.appendChild(el('div', 'buoc',
         '<div class="so">' + (i + 1) + '</div>' +
@@ -122,9 +122,9 @@
       $('#dn-gio').textContent = String(Math.floor(g / 3600) % 24).padStart(2, '0');
       $('#dn-phut').textContent = String(Math.floor(g / 60) % 60).padStart(2, '0');
       $('#dn-giay').textContent = String(g % 60).padStart(2, '0');
-      chu.textContent = 'còn lại để nộp đơn — hạn chót ' + han.toLocaleString('vi-VN', {
-        day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
-      });
+      chu.textContent = 'Còn lại để nộp đơn — Hạn cuối điền đơn: ' + han.toLocaleString('vi-VN', {
+  day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+});
       setTimeout(ve, 1000);
     }
     ve();
@@ -175,7 +175,7 @@
   function layDuLieu() {
     var d = {};
     ['ho_ten', 'ngay_sinh', 'mssv', 'khoa', 'khoa_vien', 'sdt', 'email', 'facebook', 'que',
-      'nv1', 'nv2', 'ly_do', 'diem_manh', 'biet_qua', 'nguoi_gioi_thieu'].forEach(function (k) {
+      'nv1', 'nv2', 'ly_do', 'diem_manh', 'biet_qua', 'nguoi_gioi_thieu', 'cau_hoi'].forEach(function (k) {
       var n = document.getElementById(k);
       d[k] = n ? String(n.value || '').trim() : '';
     });
@@ -307,12 +307,35 @@
       'trắc nghiệm của em. Em đổi lại thoải mái nếu thấy chưa đúng.</div>');
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    veNoiDung();
-    veQue();
-    demNguoc();
-    nguonTruyCap();
-    gan();
-    nhanNguyenVong();
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  veNoiDung();
+  veQue();
+  demNguoc();
+  nguonTruyCap();
+  gan();
+  nhanNguyenVong();
+
+  // Carousel hành trình
+  var carousel = document.getElementById('hanh-trinh-carousel');
+  var prev = document.querySelector('.carousel-prev');
+  var next = document.querySelector('.carousel-next');
+
+  if (carousel && prev && next) {
+
+    next.addEventListener('click', function () {
+      carousel.scrollBy({
+        left: carousel.clientWidth * 0.85,
+        behavior: 'smooth'
+      });
+    });
+
+    prev.addEventListener('click', function () {
+      carousel.scrollBy({
+        left: -carousel.clientWidth * 0.85,
+        behavior: 'smooth'
+      });
+    });
+
+  }
+});
 })();

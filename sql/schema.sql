@@ -64,6 +64,7 @@ create table if not exists public.g16_ung_vien (
   diem_manh         text,
   biet_qua          text,
   nguoi_gioi_thieu  text,
+  cau_hoi           text,           -- ô "Em có câu hỏi gì muốn gửi tới anh chị không?"
 
   the_he            text default 'Gen 16',
   nguon             jsonb,          -- utm_source / utm_medium / utm_campaign / ref
@@ -71,6 +72,9 @@ create table if not exists public.g16_ung_vien (
   trang_thai        text default 'moi',   -- moi | qua_ho_so | pv | teamwork | trung_tuyen | truot
   ghi_chu_btc       text
 );
+
+-- Bảng đã tạo từ trước thì câu create ở trên không thêm cột mới — thêm ở đây
+alter table public.g16_ung_vien add column if not exists cau_hoi text;
 
 create index if not exists g16_ung_vien_tao_luc_idx on public.g16_ung_vien (tao_luc desc);
 create index if not exists g16_ung_vien_que_idx     on public.g16_ung_vien (que);

@@ -19,7 +19,7 @@ window.CAU_HINH = {
   LINK_FORM_DU_PHONG: '',
 
   // --- Mốc thời gian (BTC sửa cho đúng lịch G16) ---
-  HAN_NOP_DON: '2026-10-15T23:59:59+07:00', // dùng cho đồng hồ đếm ngược
+  HAN_NOP_DON: '2026-10-20T23:59:59+07:00', // dùng cho đồng hồ đếm ngược
   DANG_MO_DON: true,                        // false -> ẩn form, hiện thông báo đã đóng
 
   // --- Liên hệ ---

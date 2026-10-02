@@ -22,18 +22,24 @@ body{
 img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3,h4{font-family:var(--font-tieu-de);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:0}
-h2{font-size:clamp(1.75rem,4.2vw,2.9rem)}
+h2{font-size:clamp(1.5rem,3.2vw,2.3rem)}
 h3{font-size:1.2rem;letter-spacing:-.01em}
 p{margin:0 0 1em}
 .khung{width:min(1140px,100% - 32px);margin-inline:auto}
 .hep{width:min(760px,100% - 32px);margin-inline:auto}
-section{padding:clamp(56px,8vw,104px) 0}
+section{
+  padding:clamp(80px,10vw,130px) 0;
+}
 .nhan{
-  display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;font-size:1.5rem;font-weight:700;
   text-transform:uppercase;letter-spacing:.14em;color:var(--cam-dam);margin-bottom:14px;
 }
 .nhan::before{content:"";width:22px;height:2px;background:var(--cam);border-radius:2px}
-.dan-de{color:var(--muc-nhat);font-size:1.05rem;max-width:62ch}
+.dan-de{
+  color:var(--muc-nhat);
+  font-size:1.05rem;
+  max-width:100%;
+}
 
 /* ---------- Nút ---------- */
 .nut{
@@ -73,7 +79,10 @@ section{padding:clamp(56px,8vw,104px) 0}
   content:"";position:absolute;inset:0;z-index:-1;
   background:linear-gradient(175deg,rgba(27,19,16,.55) 0%,rgba(27,19,16,.72) 55%,rgba(198,58,15,.88) 100%);
 }
-.hero .khung{padding:clamp(64px,11vw,132px) 0 clamp(48px,7vw,84px)}
+/* clamp(50px 0 40px) thiếu dấu phẩy nên cả dòng padding bị trình duyệt bỏ qua
+   (hero mất hẳn khoảng đệm trên dưới). Viết lại đúng cú pháp, giữ con số BTC
+   đã chọn: đệm trên 40–50px tuỳ bề ngang màn hình. */
+.hero .khung{padding:clamp(40px,6vw,50px) 0 clamp(32px,5vw,60px)}
 .hero h1{font-size:clamp(2.6rem,9vw,5.4rem);max-width:15ch}
 .hero .phu{color:rgba(255,255,255,.86);max-width:56ch;margin-top:18px;font-size:clamp(1rem,2.2vw,1.15rem)}
 .the-he-chip{
@@ -131,7 +140,13 @@ section{padding:clamp(56px,8vw,104px) 0}
 
 /* ---------- Các ban ---------- */
 .ban{display:flex;flex-direction:column;gap:14px}
-.ban .biet-danh{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cam-dam)}
+/* Không để white-space:nowrap ở đây: biệt danh dài ("Những người lưu giữ câu
+   chuyện 37FTU") sẽ ép cột rộng ra, lưới 3 ban tràn khỏi khung và trang sinh
+   thanh cuộn ngang ở màn hình hẹp hơn 1240px. Cho nó tự xuống dòng. */
+.ban .biet-danh{
+  font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--cam-dam)
+}
 .ban h3{font-size:1.45rem}
 .ban .tom-tat{font-weight:600;color:var(--muc);margin:0}
 .ban p{font-size:.95rem;color:var(--muc-nhat);margin:0}
@@ -163,7 +178,12 @@ section{padding:clamp(56px,8vw,104px) 0}
 .nhan-duoc .dan-de{color:rgba(255,255,255,.72)}
 .nhan-duoc .the{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);box-shadow:none}
 .nhan-duoc .the h3{color:#fff}
-.nhan-duoc .the p{color:rgba(255,255,255,.72);font-size:.95rem;margin:8px 0 0}
+.nhan-duoc .the p {
+  color: rgba(255,255,255,.72);
+  font-size: .82rem;
+  line-height: 1.45;
+  margin: 6px 0 0;
+}
 
 /* ---------- Ảnh ---------- */
 .anh-luoi{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:8px}
@@ -306,3 +326,371 @@ footer .ten{font-family:var(--font-tieu-de);font-size:1.15rem;color:#fff;margin-
 .gy-bang-nut .nut{padding:7px 12px;font-size:.8rem;flex:1 1 auto;text-align:center}
 
 @media print{ .gy-bang,.gy-form{display:none} }
+.cau-tho {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+/* ---------- Hành trình 37FTU ---------- */
+
+.hanh-trinh-section {
+  margin-top: 48px;
+  margin-bottom: 52px;
+}
+
+.hanh-trinh-tieu-de {
+  font-family: var(--font-tieu-de);
+  font-size: clamp(1.75rem, 4.2vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--cam-dam);
+  margin: 0 0 24px;
+}
+
+.hanh-trinh-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: visible !important;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+.hanh-trinh-carousel {
+  display: flex;
+  flex-wrap: nowrap !important;
+  gap: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 4px 2px 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.hanh-trinh-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.hanh-trinh-card {
+  flex: 0 0 calc((100% - 54px) / 4) !important;
+  width: calc((100% - 54px) / 4);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.hanh-trinh-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--r);
+  margin-bottom: 12px;
+}
+
+.hanh-trinh-card h4 {
+  font-family: var(--font-tieu-de);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin: 0 0 8px;
+  color: var(--muc);
+}
+.hanh-trinh-card p {
+  color: var(--muc-nhat);
+  font-size: .82rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.carousel-btn {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--vien-dam);
+  border-radius: 50%;
+  background: var(--trang);
+  color: var(--muc);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all .2s ease;
+}
+.carousel-btn:hover {
+  border-color: var(--cam);
+  color: var(--cam);
+  transform: scale(1.05);
+}
+
+@media(max-width:900px) {
+  .hanh-trinh-card {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+}
+
+@media(max-width:600px) {
+  .hanh-trinh-wrap {
+    display: block;
+  }
+
+  .hanh-trinh-carousel {
+    gap: 14px;
+  }
+
+  .hanh-trinh-card {
+    flex-basis: 82%;
+  }
+
+  .carousel-btn {
+    display: none;
+  }
+}
+#ve-chung-toi .khung {
+  width: min(1140px, calc(100% - 64px));
+  margin-inline: auto;
+}
+.nhan-duoc {
+  padding-top: 35px; padding-bottom: 35px;}
+  .cau-dan-nhan-duoc {
+  font-style: italic;
+}
+#lo-trinh .lo-trinh {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+#lo-trinh .buoc {
+  padding-left: 0;
+}
+#lo-trinh .khung {
+  width: min(1140px, calc(100% - 64px));
+  margin-inline: auto;
+}
+/* ---------- 3 card Sân chơi ---------- */
+
+.sc-luoi {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.sc {
+  min-height: 300px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sc-hinh {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.sc h3 {
+  font-family: var(--font-tieu-de);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.sc p {
+  font-size: .95rem;
+  line-height: 1.55;
+  color: var(--muc-nhat);
+  margin: 0;
+}
+
+.sc-di {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--cam-dam);
+}
+
+@media(max-width:900px) {
+  .sc-luoi {
+    grid-template-columns: 1fr;
+  }
+
+  .sc {
+    min-height: 0;
+  }
+}
+/* =========================
+   SECTION HỎI ĐÁP
+   ========================= */
+
+.hoi-dap-section {
+  position: relative;
+  background-image: url("assets/img/hoi-dap.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  color: #fff;
+  overflow: hidden;
+  padding: 35px 0;
+}
+
+.hoi-dap-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.hoi-dap-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hoi-dap-section .nhan {
+  color: #fff;
+}
+
+.hoi-dap-section h2 {
+  color: #fff;
+}
+
+.hoi-dap-section .cau-hoi-list {
+  margin-top: 28px;
+}
+
+.hoi-dap-section details {
+  border-bottom: 1px solid rgba(255,255,255,.28);
+}
+
+.hoi-dap-section summary {
+  color: #fff;
+}
+
+.hoi-dap-section details p {
+  color: rgba(255,255,255,.85);
+}
+
+.hoi-dap-section details::marker {
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .hoi-dap-section {
+    padding: 55px 0;
+    background-position: center center;
+  }
+}
+.hoi-dap-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.80);
+}
+.hoi-dap-section summary {
+  color: #fff;
+}
+
+.hoi-dap-section details p {
+  color: rgba(255,255,255,.85);
+}
+/* FIX CAROUSEL HÀNH TRÌNH */
+/* FIX VỊ TRÍ NÚT CAROUSEL */
+
+.hanh-trinh-wrap {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.hanh-trinh-carousel {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  gap: 18px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 4px 2px 12px;
+}
+
+.hanh-trinh-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.hanh-trinh-card {
+  flex: 0 0 calc((100% - 54px) / 4) !important;
+  width: calc((100% - 54px) / 4) !important;
+  min-width: calc((100% - 54px) / 4) !important;
+  max-width: calc((100% - 54px) / 4) !important;
+  flex-shrink: 0 !important;
+  scroll-snap-align: start;
+}
+
+/* Hai nút nằm hai bên carousel */
+.carousel-prev,
+.carousel-next {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 10 !important;
+  width: 38px !important;
+  height: 38px !important;
+  flex: none !important;
+  margin: 0 !important;
+}
+
+.carousel-prev {
+  left: -50px !important;
+}
+
+.carousel-next {
+  right: -50px !important;
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 20 !important;
+}
+
+/* Hover */
+.carousel-prev:hover,
+.carousel-next:hover {
+  transform: translateY(-50%) scale(1.05) !important;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .hanh-trinh-card {
+    flex: 0 0 82% !important;
+    width: 82% !important;
+    min-width: 82% !important;
+    max-width: 82% !important;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    display: none !important;
+  }
+
+}
+/* ---------- Vá nút mũi tên của carousel hành trình ----------
+   Hai nút đặt left/right:-50px nên nằm ngoài khung: trang sinh thanh cuộn
+   ngang, và ở màn hình hẹp hơn 1240px thì nút bên trái bị cắt mất. Chừa 50px
+   lề trong khung rồi đặt nút vào đó — mọi khổ màn hình đều thấy đủ hai nút. */
+@media (min-width: 601px) {
+  .hanh-trinh-wrap { padding-inline: 50px; }
+  .carousel-prev { left: 6px !important; }
+  .carousel-next { right: 6px !important; }
+}

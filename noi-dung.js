@@ -3,22 +3,26 @@
    ============================================================ */
 window.NOI_DUNG = {
   the_he: 'Gen 16',
-  tieu_de: 'Về nhà, hè con!',
-  phu_de: 'CLB Tình nguyện Đồng hương Nghệ An — Đại học Ngoại thương tuyển thành viên thế hệ thứ 16. Nếu em là người con xứ Nghệ đang học ở Ngoại thương, ở đây có một chỗ dành sẵn cho em.',
-
+  tieu_de: 'Gen 16 ơi, về nhà cùng anh chị nhé!',
+phu_de: 'CLB Tình nguyện Đồng hương Nghệ An Trường Đại học Ngoại thương - 37FTU đang mở đơn tuyển thành viên thế hệ thứ 16. Nếu em là một người con xứ Nghệ, quan tâm đến những hoạt động sinh viên và tình nguyện, hoặc đơn giản chỉ đang tìm một nơi để kết nối, trải nghiệm và cùng nhau tạo nên những điều ý nghĩa — có lẽ 37FTU là nơi dành cho em.',
   so_lieu: [
     { so: '2011', nhan: 'Năm thành lập' },
     { so: '15', nhan: 'Thế hệ đã đi qua' },
-    { so: '429', nhan: 'Thành viên & cựu thành viên' },   // đếm thật từ sheet, 09/2026
+    { so: '429', nhan: 'Thành viên & cựu thành viên'},   // đếm thật từ sheet, 09/2026
     { so: '21', nhan: 'Huyện, thành, thị của quê mình' }
   ],
 
   gia_tri: [
-    { ten: 'Bản sắc xứ Nghệ', mo_ta: 'Đi đâu, làm gì cũng nhớ về quê hương, cội nguồn. Đoàn kết, hiếu học, tương thân tương ái — những nết người mà cha mẹ mình đã gói ghém cho từ nhỏ.' },
-    { ten: 'Vì cộng đồng', mo_ta: 'Mỗi thành viên sống có tâm, giúp người quanh mình, lan toả những giá trị nhân văn ra xã hội. Tình nguyện không phải để chụp ảnh, mà để thật sự có ích.' },
-    { ten: 'Phát triển thành viên', mo_ta: 'CLB tạo điều kiện để em giỏi lên thật: tổ chức sự kiện, truyền thông, đối ngoại, tư duy, cách đối nhân xử thế. Rời 37FTU, em phải khác lúc mới vào.' },
-    { ten: 'Văn hoá gia đình', mo_ta: 'Có một nơi để về, đó là nhà. Có những người để thương, đó là gia đình. 37FTU là mái nhà thứ hai giữa Hà Nội của những đứa con xa quê.' }
-  ],
+{
+  ten: 'Bản sắc xứ Nghệ',  mo_ta: 'Mang trong mình sự chân thành, đoàn kết và tinh thần hiếu học của người Nghệ. Dù ở đâu, những cô cậu sinh viên ấy vẫn luôn nhớ về quê hương và những giá trị đã làm nên con người xứ Nghệ.'
+},   
+ {ten: 'Vì cộng đồng', mo_ta: 'Tình nguyện không chỉ là những chuyến đi hay những bức ảnh đẹp. Đó là khi chúng ta thật sự đặt tâm sức để giúp đỡ mọi người, lan tỏa những điều tích cực và tạo nên những thay đổi dù là nhỏ nhất.'
+},
+    { ten: 'Phát triển thành viên', mo_ta: '37FTU chính là mái nhà nơi anh chị đã trưởng thành, nơi những ngày đầu bỡ ngỡ trở thành hành trình học hỏi và hoàn thiện bản thân. Tại đây, anh chị được thử sức, được dẫn dắt và rèn luyện những kỹ năng cần thiết để tự tin hơn trên chặng đường phía trước. Và giờ đây, 37FTU sẽ tiếp tục là nơi chào đón em, cùng em viết nên câu chuyện trưởng thành của riêng mình.' },
+{
+  ten: 'Văn hoá gia đình',
+  mo_ta: '<span class="cau-tho">Có một nơi để về, đó là nhà.<br>Có những người để thương, đó là gia đình.</span> 37FTU là nơi có những người anh chị sẵn sàng chỉ dẫn, những người bạn cùng đồng hành và những kỷ niệm sẽ theo em trong suốt những năm tháng sinh viên.'
+},  ],
 
   quy_tac_4t: [
     { chu: 'Tôn trọng', y: 'Tôn trọng thầy cô, anh chị đi trước, bạn bè xung quanh — và tôn trọng chính mình.' },
@@ -28,55 +32,88 @@ window.NOI_DUNG = {
   ],
 
   cac_ban: [
-    {
-      ten: 'Ban Tổ chức',
-      biet_danh: 'Ban Tình cảm',
-      tom_tat: 'Người dẫn đường của mọi chương trình',
-      mo_ta: 'Lên kế hoạch, chuẩn bị những khâu đầu tiên, lo giấy tờ – tài chính – nhân sự và xử lý mọi tình huống phát sinh để chương trình chạy trơn tru. Trong các hoạt động nội bộ, Ban Tổ chức còn là chất keo gắn các ban, các con người trong 37FTU lại với nhau.',
-      hoc_duoc: ['Tổ chức sự kiện từ A đến Z', 'Quản lý thời gian và điều phối con người', 'Xử lý khủng hoảng tại chỗ'],
-      hop_voi: 'Bạn thích lo việc, nhớ chi tiết, và thấy vui khi mọi thứ vào guồng.'
-    },
-    {
-      ten: 'Ban Truyền thông',
-      biet_danh: 'Chiếc anten của 37FTU',
-      tom_tat: 'Người kể chuyện của cả Đội',
-      mo_ta: 'Phát sóng và lan toả hình ảnh của Đội ra cộng đồng: content, thiết kế, ảnh, video, các chiến dịch trên mạng xã hội. Em không cần có kinh nghiệm truyền thông từ trước — chỉ cần sáng tạo và thật sự thích làm.',
-      hoc_duoc: ['Viết content và làm chiến dịch', 'Thiết kế, chụp – dựng cơ bản', 'Tư duy hình ảnh và thông điệp'],
-      hop_voi: 'Bạn hay nghĩ ra ý tưởng, thích cái đẹp, và muốn thứ mình làm có người xem.'
-    },
-    {
-      ten: 'Ban Đối ngoại',
-      biet_danh: 'Những nhà đàm phán',
-      tom_tat: 'Cầu nối giữa Đội và các nguồn lực bên ngoài',
-      mo_ta: 'Kết nối, giữ và nuôi quan hệ với doanh nghiệp, nhà tài trợ, các tổ chức và hội đồng hương, để mang nguồn lực thật về cho các chương trình xã hội của Đội.',
-      hoc_duoc: ['Viết hồ sơ tài trợ, gửi mail chuyên nghiệp', 'Đàm phán và chăm sóc đối tác', 'Tư duy lợi ích đôi bên'],
-      hop_voi: 'Bạn dạn người, nói chuyện dễ thương, và không ngại bị từ chối vài lần.'
-    }
+  {
+  ten: 'Ban Tổ chức',
+  biet_danh: 'Những người đứng sau mỗi hành trình',
+  tom_tat: 'Nơi biến những ý tưởng thành những chương trình thực tế',
+  mo_ta: 'Từ việc lên kế hoạch, chuẩn bị hậu cần, điều phối nhân sự đến xử lý những tình huống phát sinh, Ban Tổ chức luôn là những người âm thầm góp phần tạo nên thành công của mỗi hoạt động.',
+  hoc_duoc: ['Lên kế hoạch và tổ chức chương trình', 'Điều phối công việc và nhân sự', 'Xử lý tình huống phát sinh'],
+  hop_voi: 'Nếu em là người thích sắp xếp, yêu sự chỉn chu và cảm thấy vui khi nhìn mọi thứ diễn ra trọn vẹn, có lẽ Tổ chức chính là nơi dành cho em.'
+},
+   {
+  ten: 'Ban Truyền thông',
+  biet_danh: 'Những người lưu giữ câu chuyện 37FTU',
+  tom_tat: 'Nơi kể lại những câu chuyện của 37FTU',
+  mo_ta: 'Mỗi hoạt động, mỗi khoảnh khắc của 37FTU đều cần được lưu giữ và lan tỏa. Ban Truyền thông là nơi kể lại những câu chuyện ấy qua từng bài viết, hình ảnh, video và những ý tưởng sáng tạo.',
+  hoc_duoc: ['Viết nội dung và xây dựng chiến dịch', 'Thiết kế, chụp ảnh và dựng video cơ bản', 'Tư duy hình ảnh và cách kể chuyện'],
+  hop_voi: 'Nếu em yêu thích cái đẹp, thích khám phá những cách kể chuyện mới hoặc đơn giản là muốn lưu giữ những kỷ niệm thanh xuân của Đội, hãy thử tìm hiểu về Truyền thông nhé.'
+},
+   {
+  ten: 'Ban Đối ngoại',
+  biet_danh: 'Những chiếc cầu nối của ngôi nhà 37FTU',
+  tom_tat: 'Nơi kết nối 37FTU với những người đồng hành',
+  mo_ta: 'Ban Đối ngoại là nơi kết nối 37FTU với các anh chị, đối tác và những người đồng hành trong các chương trình của Đội. Không chỉ là những cuộc trò chuyện hay những lời kết nối, đây còn là nơi mỗi thành viên học cách giao tiếp, xây dựng mối quan hệ và tự tin hơn.',
+  hoc_duoc: ['Giao tiếp và làm việc với đối tác', 'Xây dựng và duy trì mối quan hệ', 'Giao tiếp chuyên nghiệp và tự tin'],
+  hop_voi: 'Nếu em là người thích gặp gỡ, yêu thích việc kết nối và luôn sẵn sàng mở lòng với những người mới, Đối ngoại có thể là mảnh ghép phù hợp dành cho em.'
+}
   ],
 
-  nhan_duoc: [
-    { ten: 'Một nghề nho nhỏ trong tay', mo_ta: 'Tổ chức sự kiện, truyền thông hay đối ngoại — làm thật, sai thật, có anh chị sửa cho.' },
-    { ten: 'Mạng lưới 15 thế hệ', mo_ta: 'Cựu thành viên 37FTU đang đi làm ở khắp nơi, và họ luôn đỡ đầu đàn em xứ Nghệ.' },
-    { ten: 'Hồ sơ hoạt động có xác nhận', mo_ta: 'Vai trò và chương trình em tham gia được ghi nhận, cuối nhiệm kỳ có chứng nhận để đưa vào CV.' },
-    { ten: 'Một chỗ để về', mo_ta: 'Sinh nhật Đội, tập huấn, bóng đá, văn nghệ, và những đêm ngồi lại với nhau sau chiến dịch.' }
-  ],
-
-  vong_tuyen: [
-    { ten: 'Nộp đơn', thoi_gian: '01/10 – 15/10/2026', mo_ta: 'Điền đơn ngay trên trang này. Không cần CV cầu kỳ, chỉ cần em viết thật.' },
-    { ten: 'Vòng hồ sơ', thoi_gian: '16/10 – 18/10/2026', mo_ta: 'BTC đọc từng đơn và báo kết quả qua email cho tất cả ứng viên.' },
-    { ten: 'Phỏng vấn', thoi_gian: '19/10 – 23/10/2026', mo_ta: 'Một buổi trò chuyện 20–30 phút với anh chị trong Đội. Hỏi gì cũng được.' },
-    { ten: 'Vòng Teamwork', thoi_gian: '25/10 – 02/11/2026', mo_ta: 'Em vào một nhóm, có mentor đi cùng, cùng xây một đề án cho 37FTU rồi thuyết trình trước ban giám khảo.' },
-    { ten: 'Công bố & Kết nạp', thoi_gian: '05/11/2026', mo_ta: 'Gọi tên Gen 16. Từ hôm đó em có thêm một cái nhà.' }
-  ],
-
+ nhan_duoc: [
+  {
+    ten: 'Những kỹ năng',
+    mo_ta: 'Anh chị cũng từng bắt đầu ở 37FTU từ con số 0: lần đầu tập design, lần đầu viết một bài truyền thông, lần đầu tự tay tổ chức chương trình hay chủ động kết nối với một người xa lạ. Ở đây, em sẽ được tiếp xúc, được bắt tay vào làm, được anh chị chỉ dẫn và cả được sai để học. Rồi từng chút một, những điều từng rất mới sẽ dần trở thành kỹ năng em có thể tự tin mang theo trong hành trình sau này.'
+  },  {    ten: 'Những mối quan hệ',
+    mo_ta: 'Từ 37FTU, anh chị đã có cơ hội gặp gỡ nhiều người hơn mình từng nghĩ: những người bạn, anh chị đi trước, thầy cô, đối tác và cả những người đồng hành qua từng chương trình. Có những cuộc gặp chỉ bắt đầu từ một lần làm việc cùng nhau, nhưng rồi lại mở ra những mối quan hệ, những lời giới thiệu hay những cơ hội rất lâu sau đó. Và có lẽ, một trong những điều quý nhất 37FTU để lại chính là những kết nối cứ thế lớn lên cùng mình.'
+  },  {    ten: 'Những trải nghiệm',
+    mo_ta: 'Những năm tháng đại học đâu chỉ có giảng đường, bài vở hay những kỳ thi. Ở 37FTU, em sẽ có thêm những chuyến đi, những chương trình, những lần thử sức với điều mình chưa từng làm và cơ hội gặp gỡ nhiều người, nhiều câu chuyện mới. Những trải nghiệm ấy sẽ khiến quãng đời sinh viên của em phong phú hơn, và giữa Hà Thành rộng lớn, em vẫn có một góc nhỏ thân quen để thấy ấm áp và thuộc về.'
+  },  {    ten: 'Một nơi để thuộc về',
+    mo_ta: '37FTU không đơn giản chỉ là một câu lạc bộ đại học, nơi đây đã trở thành Nhà của anh chị trong những năm tháng thanh xuân. Là nơi có những người để sẻ chia, những kỷ niệm để nhớ và một góc thân quen để trở về. Anh chị mong rằng, khi em bước vào 37FTU, nơi đây cũng sẽ dần trở thành một Nhà như thế đối với em.'
+  }],
+vong_tuyen: [
+  {
+    ten: 'Điền và nộp đơn',
+    thoi_gian: '01/10/2026 – 20/10/2026',
+    mo_ta: 'Ứng viên điền và nộp đơn đăng ký để CLB bước đầu tìm hiểu về bản thân, góc nhìn và mức độ phù hợp của ứng viên với 37FTU.'
+  },
+  {
+    ten: 'Vòng phỏng vấn sơ tuyển',
+    thoi_gian: '22/10/2026 – 23/10/2026',
+    mo_ta: 'Đây là vòng sơ tuyển được diễn ra theo hình thức phỏng vấn trực tiếp để CLB gặp gỡ, tìm hiểu thêm và định hướng cho ứng viên trước các vòng tuyển tiếp theo.'
+  },
+  {
+    ten: 'Vòng Teamwork',
+    thoi_gian: '25/10/2026 – 01/11/2026',
+    mo_ta: 'Các ứng viên vượt qua vòng Phỏng vấn sơ tuyển sẽ được sắp xếp thành các nhóm, được dẫn dắt bởi các mentor hướng dẫn là các thành viên hiện tại của 37FTU và cùng thực hiện một đề  chung nhằm thể hiện khả năng phối hợp, tư duy, thái độ và cách giải quyết vấn đề.'
+  },
+  {
+    ten: 'Vòng phỏng vấn',
+    thoi_gian: '07/11/2026 – 08/11/2026',
+    mo_ta: 'Ứng viên tham gia phỏng vấn chuyên sâu để CLB đánh giá toàn diện hơn về sự phù hợp, định hướng và mong muốn đồng hành của ứng viên.'
+  },
+  {
+    ten: 'Công bố kết quả',
+    thoi_gian: '12/11/2026',
+    mo_ta: 'CLB công bố kết quả tuyển thành viên và danh sách những ứng viên chính thức trở thành thành viên Gen 16 của 37FTU.'
+  }
+],
   cau_hoi: [
-    { hoi: 'Không phải người Nghệ An thì có nộp được không?', dap: 'CLB ưu tiên những người con xứ Nghệ (quê Nghệ An, hoặc bố/mẹ quê Nghệ An). Nếu em không phải người Nghệ nhưng thật lòng muốn đồng hành, cứ nộp và ghi rõ trong đơn — BTC sẽ xem xét từng trường hợp.' },
-    { hoi: 'Em năm nhất, chưa có kinh nghiệm gì thì sao?', dap: 'Đúng đối tượng rồi. 37FTU tuyển người để đào tạo, không tuyển người đã giỏi sẵn. Tinh thần trách nhiệm quan trọng hơn kinh nghiệm.' },
-    { hoi: 'Một tuần phải dành bao nhiêu thời gian?', dap: 'Trung bình 4–6 tiếng/tuần, dồn vào mùa chiến dịch (Mùa hè xanh, Tết Yêu Thương). Lịch họp do các bạn tự thống nhất, luôn tránh giờ học.' },
-    { hoi: 'Có mất phí gì không?', dap: 'Không có phí tham gia. Các chi phí chiến dịch do CLB gây quỹ và vận động tài trợ.' },
-    { hoi: 'Em được chọn ban mình thích chứ?', dap: 'Em ghi nguyện vọng 1 và 2 trong đơn. BTC cố gắng tôn trọng tối đa nguyện vọng, có cân đối theo nhu cầu nhân sự từng ban.' },
-    { hoi: 'Trượt vòng này thì mùa sau nộp lại được không?', dap: 'Được, và nhiều anh chị trong Đội từng như vậy. Trượt một vòng không có nghĩa là không thuộc về ở đây.' }
-  ],
+  {
+    hoi: 'Nếu em không phải người Nghệ An thì có thể đăng ký làm thành viên của CLB không?',
+    dap: '37FTU ưu tiên những người con xứ Nghệ, bao gồm các bạn có quê quán tại Nghệ An. Tuy nhiên, nếu em thực sự yêu mến và mong muốn đồng hành cùng 37FTU, em vẫn có thể gửi đơn và chia sẻ với anh chị nhiều hơn về mong muốn của mình nhé.'
+  },
+  {
+    hoi: 'Nếu em chưa có nhiều kinh nghiệm thì có phù hợp với 37FTU không?',
+    dap: 'Có chứ. Rất nhiều anh chị cũng từng đến với 37FTU khi chưa biết design, chưa từng tổ chức một chương trình hay làm truyền thông, đối ngoại. Em không cần phải giỏi ngay từ đầu, bởi ở đây em sẽ có cơ hội được làm, được học và được anh chị hướng dẫn. Điều quan trọng hơn cả vẫn là sự nghiêm túc, trách nhiệm và tinh thần sẵn sàng học hỏi của em nha.'
+  },
+  {
+    hoi: 'Nếu tham gia 37FTU, em cần dành bao nhiêu thời gian cho các hoạt động của CLB?',
+    dap: 'Thông thường, em sẽ dành khoảng 4–6 tiếng mỗi tuần cho các buổi training, hoạt động định kỳ, bonding và công việc chung của CLB. Vào thời gian chuẩn bị cho những chương trình lớn, thời lượng có thể nhiều hơn một chút. Tuy nhiên, em hoàn toàn có thể thoải mái trao đổi với anh chị và mọi người để cùng sắp xếp thời gian, cân bằng giữa việc học, hoạt động CLB và những kế hoạch cá nhân.'
+  },
+  {
+    hoi: 'Em có được lựa chọn ban mà mình mong muốn không?',
+    dap: 'Có nhé. Trong đơn đăng ký, em sẽ được lựa chọn nguyện vọng 1 và nguyện vọng 2. Trong suốt các vòng tuyển, em cũng sẽ có thêm thời gian để tìm hiểu về từng ban, còn anh chị sẽ đồng hành để giúp em tìm ra nơi phù hợp nhất với sở thích, thế mạnh và mong muốn của mình.'
+  }
+],
 
   kenh_biet_den: ['Fanpage 37FTU', 'TikTok 37FTU', 'Bạn bè giới thiệu', 'Anh/chị khoá trên', 'Group Đồng hương Nghệ An', 'Sự kiện ở trường', 'Khác']
 };
