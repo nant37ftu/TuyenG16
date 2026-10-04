@@ -37,7 +37,7 @@ window.NOI_DUNG = {
   {
   ten: 'Ban Tổ chức',
   biet_danh: 'Những người đứng sau mỗi hành trình',
-    anh: 'assets/img/ban-to-chuc.jpg?v=2',
+    anh: 'assets/img/BTC.jpg?v=2',
     tom_tat: 'Nơi biến những ý tưởng thành những chương trình thực tế',
     mo_ta: 'Từ việc lên kế hoạch, chuẩn bị hậu cần, điều phối nhân sự đến xử lý những tình huống phát sinh, Ban Tổ chức luôn là những người âm thầm góp phần tạo nên thành công của mỗi hoạt động.',
     hoc_duoc: ['Lên kế hoạch và tổ chức chương trình', 'Điều phối công việc và nhân sự', 'Xử lý tình huống phát sinh'],
@@ -55,7 +55,7 @@ window.NOI_DUNG = {
   {
     ten: 'Ban Đối ngoại',
     biet_danh: 'Những chiếc cầu nối của ngôi nhà 37FTU',
-    anh: 'assets/img/ban-doi-ngoai.jpg?v=2',
+    anh: 'assets/img/BDN.jpg?v=2',
   tom_tat: 'Nơi kết nối 37FTU với những người đồng hành',
   mo_ta: 'Ban Đối ngoại là nơi kết nối 37FTU với các anh chị, đối tác và những người đồng hành trong các chương trình của Đội. Không chỉ là những cuộc trò chuyện hay những lời kết nối, đây còn là nơi mỗi thành viên học cách giao tiếp, xây dựng mối quan hệ và tự tin hơn.',
   hoc_duoc: ['Giao tiếp và làm việc với đối tác', 'Xây dựng và duy trì mối quan hệ', 'Giao tiếp chuyên nghiệp và tự tin'],
