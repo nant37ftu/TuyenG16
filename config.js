@@ -23,7 +23,7 @@ window.CAU_HINH = {
   DANG_MO_DON: true,                        // false -> ẩn form, hiện thông báo đã đóng
 
   // --- Liên hệ ---
-  FANPAGE: 'https://www.facebook.com/37FTU',
+  FANPAGE: 'https://www.facebook.com/svna.ftu',
   EMAIL: 'nant.37ftu@gmail.com',
   HOTLINE: ''             // vd: '0912 345 678 (Ban Nhân sự)'
 

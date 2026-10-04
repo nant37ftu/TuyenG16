@@ -165,11 +165,11 @@ if (bt) {
 
   /* ---------------- Kiểm tra và gửi đơn ---------------- */
   var QUY_TAC = {
-    ho_ten: function (v) { return v.trim().length >= 3 && v.trim().indexOf(' ') > 0; },
+    ho_ten: function (v) { return !!v.trim(); },
     mssv: function (v) { return v.trim().length >= 6; },
     khoa: function (v) { return !!v; },
     ngay_sinh: function (v) { var d = new Date(v + 'T00:00:00'); return /^\d{4}-\d{2}-\d{2}$/.test(v) && !isNaN(d.getTime()) && d <= new Date(); },
-    sdt: function (v) { return /^(0|\+84)\d{8,10}$/.test(v.replace(/[\s.\-()]/g, '')); },
+    sdt: function (v) { return !!v.trim(); },
     email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
     facebook: function (v) { return v.trim().length >= 5; },
     que: function (v) { return !!v.trim(); },
@@ -265,6 +265,32 @@ if (bt) {
       if (demChu) demChu.textContent = lyDo.value.trim().length;
     });
 
+    // Tự động xoá cảnh báo lỗi ngay khi người dùng điền dữ liệu hợp lệ
+    function xoaLoiKhiNhap(e) {
+      var el = e.target;
+      var hop = el.closest('[data-truong]');
+      if (!hop) return;
+      var ten = hop.getAttribute('data-truong');
+      if (!ten) return;
+
+      if (ten === 'dong_y') {
+        if (el.checked) datLoi('dong_y', false);
+        return;
+      }
+      if (ten === 'nv2') {
+        var nv1Val = (document.getElementById('nv1') || {}).value || '';
+        if (!el.value || el.value !== nv1Val) datLoi('nv2', false);
+        return;
+      }
+      if (QUY_TAC[ten]) {
+        if (QUY_TAC[ten](el.value || '')) datLoi(ten, false);
+      } else {
+        datLoi(ten, false);
+      }
+    }
+    form.addEventListener('input', xoaLoiKhiNhap);
+    form.addEventListener('change', xoaLoiKhiNhap);
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var d = layDuLieu();
@@ -272,7 +298,7 @@ if (bt) {
       if (hong.length) {
         var o = document.querySelector('[data-truong="' + hong[0] + '"]');
         if (o) { o.scrollIntoView({ behavior: 'smooth', block: 'center' }); var i = o.querySelector('input,select,textarea'); if (i) i.focus({ preventScroll: true }); }
-        thongBao('tb-loi', 'Còn ' + hong.length + ' ô chưa hợp lệ, em xem lại giúp nhé.');
+        thongBao('tb-loi', 'Còn ' + hong.length + ' ô chưa hợp lệ, em xem lại nhé.');
         return;
       }
       $('#tb-he-thong').innerHTML = '';
