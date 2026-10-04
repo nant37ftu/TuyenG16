@@ -17,17 +17,20 @@
 </head>
 <body>
 
+<!-- NHẠC NỀN 37FTU TỰ ĐỘNG PHÁT -->
+<audio id="nhac-nen" src="assets/music.mp3" autoplay loop playsinline preload="auto"></audio>
+<script src="nhac-nen.js"></script>
+
 <header class="dinh">
   <div class="khung">
     <a class="hieu" href="index.html"><img src="assets/logo.png" alt="Logo 37FTU">37FTU</a>
     <nav class="menu">
       <a href="index.html#ve-chung-toi">Về 37FTU</a>
       <a href="index.html#cac-ban">Các ban</a>
-      <a href="ban-do.html">Người Nghệ ở FTU</a>
-      <a href="index.html#san-choi">Sân chơi</a>
+      <a href="index.html#san-choi">Một chút game</a>
       <a href="index.html#cau-hoi">Hỏi đáp</a>
     </nav>
-    <a class="nut nut-chinh" href="index.html#nop-don">Nộp đơn</a>
+    <a class="nut nut-chinh" href="index.html#nop-don">Đăng kí</a>
   </div>
 </header>
 
@@ -37,14 +40,19 @@
 
       <!-- Màn mở đầu -->
       <div id="man-dau">
-        <span class="nhan">Trắc nghiệm vui</span>
-        <h1 class="q-tieu-de">Em hợp ban nào<br>ở 37FTU?</h1>
-        <p class="dan-de" style="margin-top:16px">
-          10 câu, chừng 2 phút. Không có đáp án đúng hay sai — chỉ để em biết mình giống kiểu người nào
-          trong ba ban của Đội, rồi ghi nguyện vọng cho trúng.
-        </p>
-        <button class="nut nut-chinh" id="bat-dau" style="margin-top:26px">Bắt đầu →</button>
-        <p class="goi-y" style="margin-top:14px">Kết quả chỉ để tham khảo, em vẫn được tự chọn nguyện vọng khi nộp đơn.</p>
+  <span class="nhan">TRẮC NGHIỆM NHỎ</span>
+
+  <h1 class="q-tieu-de">
+    Cùng khám phá xem em phù hợp với ban nào ở 37FTU nhé!
+  </h1>
+
+  <p class="dan-de" style="margin-top:16px">
+    Nếu em vẫn đang phân vân chưa biết mình hợp với ban nào, hãy thử một bài trắc nghiệm nhỏ để khám phá xem đâu là ban phù hợp với em nhất ở 37FTU nhé!
+  </p>
+
+  <button class="nut nut-chinh" id="bat-dau" style="margin-top:26px">
+    Bắt đầu →
+  </button>
       </div>
 
       <!-- Màn câu hỏi -->
@@ -70,14 +78,10 @@
         </div>
 
         <div class="kq-nut">
-          <a class="nut nut-chinh" id="kq-nop" href="index.html#nop-don">Nộp đơn với nguyện vọng này</a>
+          <a class="nut nut-chinh" id="kq-nop" href="index.html#nop-don">Đăng kí với nguyện vọng này</a>
           <button class="nut nut-vien" id="kq-tai">Tải ảnh kết quả</button>
           <button class="nut nut-vien" id="kq-lam-lai">Làm lại</button>
         </div>
-
-        <p class="goi-y" style="margin-top:16px">
-          Tải ảnh về rồi đăng story kèm link trang tuyển, bạn bè cùng quê sẽ thấy.
-        </p>
 
         <div class="kq-xem-truoc">
           <canvas id="anh-kq" width="1080" height="1350"></canvas>
@@ -95,9 +99,8 @@
       <div>Trường Đại học Ngoại thương · Thành lập 30/10/2011</div>
     </div>
     <div>
-      <div class="ten">Đường tắt</div>
+      <div class="ten">- Tuyển Thành viên Gen 16</div>
       <div><a href="index.html">Trang tuyển thành viên</a></div>
-      <div><a href="ban-do.html">Người Nghệ ở Ngoại thương</a></div>
       <div><a href="an-gi.html">Hôm nay ăn chi</a></div>
       <div><a href="game.html">Góc game bàn trực</a></div>
     </div>

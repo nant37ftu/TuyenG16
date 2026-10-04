@@ -120,6 +120,8 @@
   function veChip() {
     Object.keys(NHOM).forEach(function (nhom) {
       var hop = document.querySelector('.ag-chip[data-nhom="' + nhom + '"]');
+      if (!hop) return;
+      hop.innerHTML = '';
       NHOM[nhom].forEach(function (x) {
         var b = document.createElement('button');
         b.type = 'button';
@@ -367,15 +369,30 @@
     var DM2 = window.DeviceMotionEvent;
     if (DM2 && typeof DM2.requestPermission !== 'function') nghenLac();
 
-    fetch('data/mon-an.json').then(function (r) { return r.json(); }).then(function (d) {
+    veChip();
+
+    function napDuLieu(d) {
+      if (!d) return;
       MON = d.mon || [];
       LY_DO = d.ly_do || [];
-      veChip();
       capNhatDem();
       veKheChoDoi();
-    }).catch(function () {
-      $('#ag-bam-phu').textContent = 'không đọc được danh sách món — chạy trang qua web server nhé';
-      $('#ag-bam').disabled = true;
-    });
+      $('#ag-bam').disabled = false;
+    }
+
+    if (window.DU_LIEU_MON_AN && window.DU_LIEU_MON_AN.mon) {
+      napDuLieu(window.DU_LIEU_MON_AN);
+    } else {
+      fetch('data/mon-an.json').then(function (r) { return r.json(); }).then(function (d) {
+        napDuLieu(d);
+      }).catch(function () {
+        if (window.DU_LIEU_MON_AN && window.DU_LIEU_MON_AN.mon) {
+          napDuLieu(window.DU_LIEU_MON_AN);
+        } else {
+          $('#ag-bam-phu').textContent = 'chưa nạp được danh sách món';
+          $('#ag-bam').disabled = true;
+        }
+      });
+    }
   });
 })();

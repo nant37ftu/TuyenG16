@@ -3,8 +3,10 @@
    ============================================================ */
 window.NOI_DUNG = {
   the_he: 'Gen 16',
-  tieu_de: 'Gen 16 ơi, về nhà cùng anh chị nhé!',
-phu_de: 'CLB Tình nguyện Đồng hương Nghệ An Trường Đại học Ngoại thương - 37FTU đang mở đơn tuyển thành viên thế hệ thứ 16. Nếu em là một người con xứ Nghệ, quan tâm đến những hoạt động sinh viên và tình nguyện, hoặc đơn giản chỉ đang tìm một nơi để kết nối, trải nghiệm và cùng nhau tạo nên những điều ý nghĩa — có lẽ 37FTU là nơi dành cho em.',
+  chu_de: 'Nghệ Sĩ Nhí!',
+  slogan: 'Hành trình trở thành Gen 16 37FTU',
+  tieu_de: 'Nghệ Sĩ Nhí!',
+  phu_de: 'CLB Tình nguyện Đồng hương Nghệ An Trường Đại học Ngoại thương - 37FTU đang mở đơn tuyển thành viên thế hệ thứ 16. Nếu em là một người con xứ Nghệ, hãy cùng chú gấu trúc đỏ bước vào khu rừng tình nguyện để kết nối, trải nghiệm và cùng nhau viết tiếp những câu chuyện thanh xuân rực rỡ nhất nhé!',
   so_lieu: [
     { so: '2011', nhan: 'Năm thành lập' },
     { so: '15', nhan: 'Thế hệ đã đi qua' },
@@ -35,22 +37,25 @@ phu_de: 'CLB Tình nguyện Đồng hương Nghệ An Trường Đại học Ngo
   {
   ten: 'Ban Tổ chức',
   biet_danh: 'Những người đứng sau mỗi hành trình',
-  tom_tat: 'Nơi biến những ý tưởng thành những chương trình thực tế',
-  mo_ta: 'Từ việc lên kế hoạch, chuẩn bị hậu cần, điều phối nhân sự đến xử lý những tình huống phát sinh, Ban Tổ chức luôn là những người âm thầm góp phần tạo nên thành công của mỗi hoạt động.',
-  hoc_duoc: ['Lên kế hoạch và tổ chức chương trình', 'Điều phối công việc và nhân sự', 'Xử lý tình huống phát sinh'],
-  hop_voi: 'Nếu em là người thích sắp xếp, yêu sự chỉn chu và cảm thấy vui khi nhìn mọi thứ diễn ra trọn vẹn, có lẽ Tổ chức chính là nơi dành cho em.'
-},
-   {
-  ten: 'Ban Truyền thông',
-  biet_danh: 'Những người lưu giữ câu chuyện 37FTU',
-  tom_tat: 'Nơi kể lại những câu chuyện của 37FTU',
-  mo_ta: 'Mỗi hoạt động, mỗi khoảnh khắc của 37FTU đều cần được lưu giữ và lan tỏa. Ban Truyền thông là nơi kể lại những câu chuyện ấy qua từng bài viết, hình ảnh, video và những ý tưởng sáng tạo.',
-  hoc_duoc: ['Viết nội dung và xây dựng chiến dịch', 'Thiết kế, chụp ảnh và dựng video cơ bản', 'Tư duy hình ảnh và cách kể chuyện'],
-  hop_voi: 'Nếu em yêu thích cái đẹp, thích khám phá những cách kể chuyện mới hoặc đơn giản là muốn lưu giữ những kỷ niệm thanh xuân của Đội, hãy thử tìm hiểu về Truyền thông nhé.'
-},
-   {
-  ten: 'Ban Đối ngoại',
-  biet_danh: 'Những chiếc cầu nối của ngôi nhà 37FTU',
+    anh: 'assets/img/ban-to-chuc.jpg?v=2',
+    tom_tat: 'Nơi biến những ý tưởng thành những chương trình thực tế',
+    mo_ta: 'Từ việc lên kế hoạch, chuẩn bị hậu cần, điều phối nhân sự đến xử lý những tình huống phát sinh, Ban Tổ chức luôn là những người âm thầm góp phần tạo nên thành công của mỗi hoạt động.',
+    hoc_duoc: ['Lên kế hoạch và tổ chức chương trình', 'Điều phối công việc và nhân sự', 'Xử lý tình huống phát sinh'],
+    hop_voi: 'Nếu em là người thích sắp xếp, yêu sự chỉn chu và cảm thấy vui khi nhìn mọi thứ diễn ra trọn vẹn, có lẽ Tổ chức chính là nơi dành cho em.'
+  },
+  {
+    ten: 'Ban Truyền thông',
+    biet_danh: 'Những người lưu giữ câu chuyện 37FTU',
+    anh: 'assets/img/ban-truyen-thong.jpg?v=2',
+    tom_tat: 'Nơi kể lại những câu chuyện của 37FTU',
+    mo_ta: 'Mỗi hoạt động, mỗi khoảnh khắc của 37FTU đều cần được lưu giữ và lan tỏa. Ban Truyền thông là nơi kể lại những câu chuyện ấy qua từng bài viết, hình ảnh, video và những ý tưởng sáng tạo.',
+    hoc_duoc: ['Viết nội dung và xây dựng chiến dịch', 'Thiết kế, chụp ảnh và dựng video cơ bản', 'Tư duy hình ảnh và cách kể chuyện'],
+    hop_voi: 'Nếu em yêu thích cái đẹp, thích khám phá những cách kể chuyện mới hoặc đơn giản là muốn lưu giữ những kỷ niệm thanh xuân của Đội, hãy thử tìm hiểu về Truyền thông nhé.'
+  },
+  {
+    ten: 'Ban Đối ngoại',
+    biet_danh: 'Những chiếc cầu nối của ngôi nhà 37FTU',
+    anh: 'assets/img/ban-doi-ngoai.jpg?v=2',
   tom_tat: 'Nơi kết nối 37FTU với những người đồng hành',
   mo_ta: 'Ban Đối ngoại là nơi kết nối 37FTU với các anh chị, đối tác và những người đồng hành trong các chương trình của Đội. Không chỉ là những cuộc trò chuyện hay những lời kết nối, đây còn là nơi mỗi thành viên học cách giao tiếp, xây dựng mối quan hệ và tự tin hơn.',
   hoc_duoc: ['Giao tiếp và làm việc với đối tác', 'Xây dựng và duy trì mối quan hệ', 'Giao tiếp chuyên nghiệp và tự tin'],
@@ -71,9 +76,9 @@ phu_de: 'CLB Tình nguyện Đồng hương Nghệ An Trường Đại học Ngo
   }],
 vong_tuyen: [
   {
-    ten: 'Điền và nộp đơn',
+    ten: 'Điền và đăng kí',
     thoi_gian: '01/10/2026 – 20/10/2026',
-    mo_ta: 'Ứng viên điền và nộp đơn đăng ký để CLB bước đầu tìm hiểu về bản thân, góc nhìn và mức độ phù hợp của ứng viên với 37FTU.'
+    mo_ta: 'Ứng viên điền thông tin đăng kí để CLB bước đầu tìm hiểu về bản thân, góc nhìn và mức độ phù hợp của ứng viên với 37FTU.'
   },
   {
     ten: 'Vòng phỏng vấn sơ tuyển',
@@ -83,7 +88,7 @@ vong_tuyen: [
   {
     ten: 'Vòng Teamwork',
     thoi_gian: '25/10/2026 – 01/11/2026',
-    mo_ta: 'Các ứng viên vượt qua vòng Phỏng vấn sơ tuyển sẽ được sắp xếp thành các nhóm, được dẫn dắt bởi các mentor hướng dẫn là các thành viên hiện tại của 37FTU và cùng thực hiện một đề  chung nhằm thể hiện khả năng phối hợp, tư duy, thái độ và cách giải quyết vấn đề.'
+    mo_ta: 'Các ứng viên vượt qua vòng Phỏng vấn sơ tuyển sẽ được sắp xếp thành các nhóm, được dẫn dắt bởi các mentor hướng dẫn là các thành viên hiện tại của 37FTU và cùng thực hiện một đề chung nhằm thể hiện khả năng phối hợp, tư duy, thái độ và cách giải quyết vấn đề. Đặc biệt trước khi bắt đầu bước vào vòng Teamwork, các em sẽ có cơ hội gặp gỡ các teammate cũng như mentors dẫn dắt team mình trong ngày Teambuilding (25/10).'
   },
   {
     ten: 'Vòng phỏng vấn',

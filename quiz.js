@@ -8,56 +8,296 @@
   var BAN = ['Ban Tổ chức', 'Ban Truyền thông', 'Ban Đối ngoại'];
 
   var CAU_HOI = [
-    { hoi: 'Nhóm sắp đi tình nguyện. Việc đầu tiên em nghĩ tới là gì?', dap: [
-      { chu: 'Lên danh sách đồ cần mang và chia việc cho từng người', d: [2, 0, 0] },
-      { chu: 'Nghĩ xem chuyến này kể lại trên fanpage thế nào cho hay', d: [0, 2, 0] },
-      { chu: 'Hỏi mấy anh chị quen xem có xin được tài trợ gì không', d: [0, 0, 2] }
-    ]},
-    { hoi: 'Làm bài nhóm, em thường là người...', dap: [
-      { chu: 'Giữ deadline, nhắc cả nhóm chạy đúng tiến độ', d: [2, 0, 0] },
-      { chu: 'Làm slide, lo phần nhìn cho đẹp', d: [0, 2, 0] },
-      { chu: 'Đứng lên thuyết trình và đỡ câu hỏi', d: [0, 1, 2] }
-    ]},
-    { hoi: 'Thứ em mở nhiều nhất trên điện thoại?', dap: [
-      { chu: 'Ghi chú, lịch, danh sách việc cần làm', d: [2, 0, 0] },
-      { chu: 'Thư viện ảnh và mấy app chỉnh ảnh, dựng video', d: [0, 2, 0] },
-      { chu: 'Tin nhắn — danh bạ dài dằng dặc', d: [0, 0, 2] }
-    ]},
-    { hoi: 'Chương trình còn thiếu 2 triệu mà sát ngày rồi. Em làm gì?', dap: [
-      { chu: 'Ngồi rà lại dự trù, cắt hạng mục chưa thật cần', d: [2, 0, 0] },
-      { chu: 'Viết một bài kêu gọi thật thà, đăng lên nhờ mọi người chung tay', d: [0, 2, 1] },
-      { chu: 'Nhắn cho chục quán, doanh nghiệp quen xin tài trợ hiện vật', d: [0, 0, 2] }
-    ]},
-    { hoi: 'Em thấy sướng nhất khi nào?', dap: [
-      { chu: 'Khi mọi thứ chạy đúng y như kế hoạch đã vạch', d: [2, 0, 0] },
-      { chu: 'Khi bài mình làm được nhiều người chia sẻ', d: [0, 2, 0] },
-      { chu: 'Khi chốt được cái hẹn theo đuổi cả tháng trời', d: [0, 0, 2] }
-    ]},
-    { hoi: 'Bạn bè hay nhờ em việc gì?', dap: [
-      { chu: 'Sắp xếp, tổ chức, cầm trịch hộ', d: [2, 0, 0] },
-      { chu: 'Viết hộ caption, làm hộ cái ảnh', d: [0, 2, 0] },
-      { chu: 'Đi nói chuyện hộ, hỏi hộ người ta', d: [0, 0, 2] }
-    ]},
-    { hoi: 'Đang chạy chương trình thì mất điện. Phản xạ của em?', dap: [
-      { chu: 'Lôi phương án B ra chạy ngay', d: [2, 0, 0] },
-      { chu: 'Rút điện thoại quay lại, kiểu gì cũng thành tư liệu hay', d: [0, 2, 0] },
-      { chu: 'Ra chỗ khách mời, giữ không khí cho khỏi nguội', d: [0, 0, 2] }
-    ]},
-    { hoi: 'Em tự thấy mình là người...', dap: [
-      { chu: 'Kỹ tính, nhớ chi tiết, ghét sai sót', d: [2, 0, 0] },
-      { chu: 'Nhiều ý tưởng, hay nghĩ linh tinh mà ra cái hay', d: [0, 2, 0] },
-      { chu: 'Dạn người, gặp ai cũng bắt chuyện được', d: [0, 0, 2] }
-    ]},
-    { hoi: 'Nhắn cho người ta mà bị đọc rồi để đó. Em sẽ...', dap: [
-      { chu: 'Ghi vào việc cần làm, mai nhắc lại đúng lịch', d: [2, 0, 1] },
-      { chu: 'Thôi, để dành sức làm việc khác cho đỡ mệt', d: [0, 2, 0] },
-      { chu: 'Nhắn tiếp, không thì gọi thẳng cho nhanh', d: [0, 0, 2] }
-    ]},
-    { hoi: 'Hết nhiệm kỳ, em muốn tên mình gắn với điều gì?', dap: [
-      { chu: 'Một chiến dịch chạy trơn tru từ đầu đến cuối', d: [2, 0, 0] },
-      { chu: 'Một video khiến người xem rưng rưng', d: [0, 2, 0] },
-      { chu: 'Một bản hợp tác mang về nguồn lực thật cho Đội', d: [0, 0, 2] }
-    ]}
+    {
+      "hoi": "Một nhóm bạn rủ nhau làm chuyến đi 2 ngày 1 đêm. Phần nào khiến em hứng thú nhất?",
+      "dap": [
+        {
+          "chu": "Tìm những địa điểm hay ho, nghĩ xem chuyến đi có thể có những khoảnh khắc gì đáng nhớ.",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Hỏi han kinh nghiệm, tìm những chỗ ăn, ở ổn áp và trao đổi với mọi người để chốt lựa chọn.",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "chu": "Ghép lịch trình, thời gian và chi phí để chuyến đi vừa vui vừa không “toang”.",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Khi bước vào một sự kiện khá đông người, thứ em thường vô thức để ý là...",
+      "dap": [
+        {
+          "chu": "Không khí của sự kiện: hình ảnh, âm nhạc, cách mọi thứ được thể hiện và cảm giác nó mang lại.",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Con người: ai đang nói chuyện với ai, mọi người có thoải mái không và mình có thể làm quen với ai.",
+          "d": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "chu": "Cách chương trình vận hành: mọi người di chuyển thế nào, có phải chờ lâu không, có đoạn nào hơi rối không.",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Nếu được dành một tháng để học thật nghiêm túc một kỹ năng mới, em sẽ hứng thú nhất với...",
+      "dap": [
+        {
+          "chu": "Biến một ý tưởng thành nội dung, hình ảnh hoặc video mà người khác muốn xem.",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Biến một ý tưởng thành kế hoạch và từng bước đưa nó thành hiện thực.",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "chu": "Giao tiếp, thuyết phục và khiến cuộc trò chuyện với những người chưa quen trở nên tự nhiên.",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Cả nhóm rất tâm huyết với một ý tưởng, nhưng sát ngày thực hiện lại xuất hiện vấn đề lớn. Suy nghĩ đầu tiên của em gần với...",
+      "dap": [
+        {
+          "chu": "“Phần nào bắt buộc phải giữ, phần nào có thể thay đổi để mọi thứ vẫn chạy được?”",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "chu": "“Nếu cách cũ không được, liệu có thể biến nó thành một hướng khác thú vị hơn không?”",
+          "d": [
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "chu": "“Mình có thể hỏi hoặc tìm đến ai để có thêm một phương án?”",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Nếu được chọn một “siêu năng lực” để mang theo trong mọi dự án, em muốn...",
+      "dap": [
+        {
+          "chu": "Nhìn một mớ công việc hỗn độn và nhanh chóng biết nên bắt đầu từ đâu.",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "chu": "Nhìn một điều rất bình thường nhưng luôn tìm được cách khiến nó trở nên đáng chú ý.",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Bước vào một căn phòng toàn người lạ nhưng vẫn nhanh chóng tìm được tiếng nói chung.",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Một người bạn đưa em xem sản phẩm mà cả nhóm đã làm rất lâu và hỏi: “Mày thấy thế nào?” Em thường chú ý trước đến...",
+      "dap": [
+        {
+          "chu": "Có chi tiết nào chưa hợp lý hoặc khi đưa vào thực tế có thể phát sinh vấn đề không.",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "chu": "Nó có đủ thú vị, khác biệt và khiến mình muốn xem tiếp không.",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Người nhận/người tham gia sẽ cảm thấy thế nào khi tiếp xúc với nó.",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Nếu phải dành cả một buổi chiều cho một trong ba việc, em thấy mình dễ “cuốn” vào việc nào nhất?",
+      "dap": [
+        {
+          "chu": "Ngồi với một đống đầu việc rồi sắp xếp chúng lại cho đến khi mọi thứ bắt đầu rõ ràng.",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "chu": "Nghĩ một ý tưởng rồi sửa câu chữ, hình ảnh hoặc cách thể hiện đến khi cảm thấy “đúng vibe”.",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Đi gặp hoặc nhắn tin với nhiều người, nghe những câu chuyện và góc nhìn rất khác nhau.",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Trong một cuộc thảo luận mà mọi người bắt đầu bất đồng quan điểm, em thường có xu hướng...",
+      "dap": [
+        {
+          "chu": "Tìm xem vấn đề thực sự đang mắc ở đâu rồi kéo mọi người trở lại điều cần giải quyết.",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "chu": "Thử đặt vấn đề theo một góc khác để xem có hướng nào mọi người chưa nghĩ tới.",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Nghe xem mỗi bên thực sự đang quan tâm điều gì rồi tìm một điểm mà mọi người có thể gặp nhau.",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Một hoạt động mà nhóm em chuẩn bị rất kỹ lại không thu hút nhiều người như dự kiến. Điều em muốn biết nhất là...",
+      "dap": [
+        {
+          "chu": "Có khâu nào trong cách triển khai, thời gian hoặc trải nghiệm tham gia chưa hợp lý?",
+          "d": [
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "chu": "Có phải cách giới thiệu hoạt động chưa đủ khiến người ta tò mò và muốn tham gia?",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Những người mình từng tiếp cận thực sự nghĩ gì và điều gì khiến họ quyết định tham gia hoặc không?",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "hoi": "Một chương trình vừa kết thúc. Trong ba khoảnh khắc sau, điều nào khiến em cảm thấy “đáng” nhất?",
+      "dap": [
+        {
+          "chu": "Nhìn lại từ lúc mọi thứ còn ngổn ngang đến khi từng phần cuối cùng cũng khớp với nhau.",
+          "d": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "chu": "Thấy mọi người vẫn chụp ảnh, chia sẻ hoặc nhắc lại một chi tiết mà mình đã góp phần tạo nên.",
+          "d": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "chu": "Thấy những người ban đầu chẳng quen biết nhau giờ có thể trò chuyện, kết nối và muốn tiếp tục đồng hành.",
+          "d": [
+            0,
+            0,
+            2
+          ]
+        }
+      ]
+    }
   ];
 
   var $ = function (s) { return document.querySelector(s); };

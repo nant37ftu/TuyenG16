@@ -3,55 +3,105 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>37FTU tuyển thành viên Gen 16</title>
-<meta name="description" content="CLB Tình nguyện Đồng hương Nghệ An Trường Đại học Ngoại thương - 37FTU đang mở đơn tuyển thành viên thế hệ thứ 16.">
-<meta property="og:title" content="37FTU tuyển thành viên Gen 16">
-<meta property="og:description" content="Nếu em là người con xứ Nghệ đang học ở Ngoại thương, ở đây có một chỗ dành sẵn cho em.">
+<title>37FTU · Nghệ Sĩ Nhí — Tuyển thành viên Gen 16</title>
+<meta name="description" content="CLB Tình nguyện Đồng hương Nghệ An Trường Đại học Ngoại thương - 37FTU mở đơn tuyển thành viên Gen 16: Nghệ Sĩ Nhí!">
+<meta property="og:title" content="37FTU · Nghệ Sĩ Nhí — Tuyển thành viên Gen 16">
+<meta property="og:description" content="Hành trình trở thành Gen 16 37FTU. Về nhà cùng anh chị nhé!">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/img/hero.jpg">
+<meta property="og:image" content="assets/banner-nghe-si-nhi.png">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
+<!-- NHẠC NỀN 37FTU TỰ ĐỘNG PHÁT -->
+<audio id="nhac-nen" src="assets/music.mp3" autoplay loop playsinline preload="auto"></audio>
+<script src="nhac-nen.js"></script>
+
 <header class="dinh">
   <div class="khung">
-    <a class="hieu" href="#dau"><img src="assets/logo.png" alt="Logo 37FTU">37FTU</a>
+    <a class="hieu" href="#dau">
+      <img src="assets/logo.png" alt="Logo 37FTU">
+      <span class="hieu-ten">37FTU <span class="hieu-chu-de">Nghệ Sĩ Nhí!</span></span>
+    </a>
     <nav class="menu">
       <a href="#ve-chung-toi">Về 37FTU</a>
       <a href="#cac-ban">Các ban</a>
-      <a href="#lo-trinh">Quy trình Tuyển</a>
-      <a href="quiz.html">Em hợp ban nào</a>
-      <a href="#san-choi">Sân chơi</a>
+      <a href="#lo-trinh">Quy trình tuyển</a>
+      <a href="quiz.html">Khám phá ban phù hợp</a>
+      <a href="#san-choi">Một chút game</a>
       <a href="#cau-hoi">Hỏi đáp</a>
     </nav>
-    <a class="nut nut-chinh" href="#nop-don">Nộp đơn</a>
+    <a class="nut nut-chinh nut-dinh-cta" href="#nop-don">Đăng kí ngay 🐾</a>
   </div>
 </header>
 
 <main id="dau">
 
-  <!-- HERO -->
-  <section class="hero">
-    <img class="nen" src="assets/img/hero.jpg" alt="Tập thể 37FTU trong màu áo xanh tình nguyện">
-    <div class="khung">
-      <span class="the-he-chip"><i class="cham" id="cham-trang-thai"></i><span id="chip-chu">Đang mở đơn · Gen 16</span></span>
-      <h1 id="hero-tieu-de">Về nhà, hè con!</h1>
-      <p class="phu" id="hero-phu"></p>
-      <div class="hero-nut">
-        <a class="nut nut-chinh" href="#nop-don">Nộp đơn ngay</a>
-        <a class="nut nut-vien" href="quiz.html">Xem em hợp ban nào</a>
+  <!-- HERO NGHỆ SĨ NHÍ -->
+  <section class="hero hero-nghe-si-nhi">
+    <div class="hero-bg-layer">
+      <img class="nen" src="assets/forest-sunlight.png" alt="Khu rừng ngập nắng - Nghệ Sĩ Nhí 37FTU">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Bươm bướm bay lượn sinh động -->
+    <div class="buom buom-trai" aria-hidden="true">
+      <img src="assets/buom-1.png" alt="">
+    </div>
+    <div class="buom buom-phai" aria-hidden="true">
+      <img src="assets/buom-2.png" alt="">
+    </div>
+
+    <div class="khung hero-grid">
+      <div class="hero-trai">
+        <div class="the-he-chip">
+          <i class="cham" id="cham-trang-thai"></i>
+          <span id="chip-chu">Đang mở đơn · Gen 16 · Nghệ Sĩ Nhí</span>
+        </div>
+
+        <div class="hero-brand-wrap">
+          <div class="hero-phu-chuoi">CHUỖI TUYỂN THÀNH VIÊN THẾ HỆ THỨ 16</div>
+          <h1 class="hero-brand-title" id="hero-tieu-de">
+            <span class="chu-nghe">Nghệ</span>
+            <span class="chu-si">Sĩ</span><span class="chu-than">!</span>
+            <span class="chu-nhi">Nhí</span>
+          </h1>
+          <div class="hero-slogan-dong">Hành trình trở thành Gen 16 37FTU</div>
+        </div>
+
+        <p class="phu" id="hero-phu"></p>
+
+        <div class="hero-nut">
+          <a class="nut nut-chinh nut-cta-chinh" href="#nop-don">
+            <span>Đăng kí ngay</span>
+            <span class="icon-chan">🐾</span>
+          </a>
+          <a class="nut nut-vien nut-cta-phu" href="quiz.html">
+            <span>Khám phá ban phù hợp</span>
+            <span class="icon-la">🧭</span>
+          </a>
+        </div>
+
+        <div class="dem-nguoc" id="dem-nguoc" hidden>
+          <div class="o-dem"><b id="dn-ngay">--</b><span>ngày</span></div>
+          <div class="o-dem"><b id="dn-gio">--</b><span>giờ</span></div>
+          <div class="o-dem"><b id="dn-phut">--</b><span>phút</span></div>
+          <div class="o-dem"><b id="dn-giay">--</b><span>giây</span></div>
+        </div>
+        <p class="dem-chu" id="dem-chu"></p>
       </div>
-      <div class="dem-nguoc" id="dem-nguoc" hidden>
-        <div class="o-dem"><b id="dn-ngay">--</b><span>ngày</span></div>
-        <div class="o-dem"><b id="dn-gio">--</b><span>giờ</span></div>
-        <div class="o-dem"><b id="dn-phut">--</b><span>phút</span></div>
-        <div class="o-dem"><b id="dn-giay">--</b><span>giây</span></div>
+
+      <!-- Cột bên phải: Mascot Chú Gấu Trúc Đỏ -->
+      <div class="hero-phai">
+        <div class="mascot-khung">
+          <div class="mascot-hao-quang"></div>
+          <img class="mascot-img" src="assets/mascot-red-panda.png" alt="Chú Gấu Trúc Đỏ 37FTU vẫy tay chào">
+        </div>
       </div>
-      <p class="dem-chu" id="dem-chu"></p>
     </div>
   </section>
 
@@ -68,9 +118,20 @@
   Trải qua nhiều thế hệ, 37FTU đã cùng nhau thực hiện nhiều chương trình tình nguyện, thiện nguyện ý nghĩa như <em>Mùa hè xanh</em>, <em>Tết Yêu Thương</em>,
 <em>Cho em mơ</em>, <em>Gieo mầm</em>... và trở thành một phần thanh xuân của rất nhiều thành viên.
 </p>
-<!-- HÀNH TRÌNH -->
-<div class="hanh-trinh-section">
 
+
+<h3 style="margin-top:40px;font-size:1.3rem">
+  Bốn giá trị cốt lõi - Điều gì đã mang anh chị lại cùng nhau?
+</h3>
+
+<div class="luoi luoi-2 gia-tri" style="margin-top:20px" id="gia-tri"></div>   
+    </div>
+  </section>
+
+  <!-- HÀNH TRÌNH -->
+<section id="hanh-trinh-hoat-dong">
+  <div class="khung">
+<span class="nhan">15 NĂM, 1 HÀNH TRÌNH</span>
   <h3 class="hanh-trinh-tieu-de">
     Những hành trình làm nên màu áo 37FTU
   </h3>
@@ -84,32 +145,31 @@
     <div class="hanh-trinh-carousel" id="hanh-trinh-carousel">
 
   <div class="hanh-trinh-card">
-    <img src="assets/img/gallery-1.jpg" alt="Mùa hè xanh">
-    <h4>Mùa hè xanh</h4>
+    <img src="assets/img/hanh-trinh-mhx.jpg" alt="MÙA HÈ XANH">
+    <h4>MÙA HÈ XANH</h4>
     <p>
-      Hành trình mang màu áo xanh tình nguyện đến những vùng đất còn nhiều khó khăn.
+      Chiến dịch tình nguyện dài ngày lớn nhất trong năm của 37FTU, được tổ chức vào mùa hè tại các địa phương còn nhiều khó khăn. Tình nguyện viên trực tiếp tham gia giảng dạy, tổ chức hoạt động cho trẻ em, thực hiện công trình thanh niên và hỗ trợ cộng đồng, qua đó đóng góp sức trẻ vào sự phát triển của địa phương.
     </p>
   </div>
 
   <div class="hanh-trinh-card">
-    <img src="assets/img/gallery-2.jpg" alt="Tết Yêu Thương">
-    <h4>Tết Yêu Thương</h4>
+    <img src="assets/img/hanh-trinh-tet.jpg" alt="TẾT YÊU THƯƠNG">
+    <h4>TẾT YÊU THƯƠNG</h4>
     <p>
-      Trao gửi yêu thương và sự sẻ chia đến những hoàn cảnh còn nhiều khó khăn mỗi dịp Tết.
+      Chương trình tình nguyện thường niên được tổ chức trước Tết Nguyên đán, hướng đến trẻ em, người dân và các gia đình có hoàn cảnh khó khăn. Thông qua trao tặng quà, tổ chức hoạt động vui chơi – văn nghệ và hỗ trợ địa phương, chương trình mong muốn mang đến một cái Tết ấm áp, đủ đầy hơn cả về vật chất lẫn tinh thần.
     </p>
   </div>
 
-
   <div class="hanh-trinh-card">
-    <img src="assets/img/gallery-4.jpg" alt="Tập huấn">
+    <img src="assets/img/hanh-trinh-tap-huan.jpg" alt="TẬP HUẤN">
     <h4>TẬP HUẤN</h4>
     <p>
-      Cùng học hỏi, rèn luyện và chuẩn bị hành trang để đồng hành cùng 37FTU.
+      Chương trình đào tạo và rèn luyện nội bộ thường niên của 37FTU, đặc biệt dành cho thế hệ thành viên mới. Thành viên được trang bị kiến thức, kỹ năng tình nguyện, kỹ năng làm việc nhóm và xử lý tình huống, đồng thời rèn luyện tính kỷ luật, tinh thần trách nhiệm và sự gắn kết để sẵn sàng tham gia các hoạt động của Đội.
     </p>
   </div>
 
   <div class="hanh-trinh-card">
-    <img src="assets/img/gallery-5.jpg" alt="Gieo Mầm">
+    <img src="assets/img/hanh-trinh-gieo-mam.jpg" alt="GIEO MẦM">
     <h4>GIEO MẦM</h4>
     <p>
       Chiến dịch thiện nguyện – giáo dục do Learn to Leap phối hợp cùng 37FTU tổ chức,
@@ -118,7 +178,7 @@
   </div>
 
   <div class="hanh-trinh-card">
-    <img src="assets/img/gallery-1.jpg" alt="Cho em mơ">
+    <img src="assets/img/hanh-trinh-cho-em-mo.jpg" alt="Cho em mơ">
     <h4>CHO EM MƠ</h4>
     <p>
       Chương trình tình nguyện dành cho trẻ em có hoàn cảnh khó khăn,
@@ -128,7 +188,7 @@
   </div>
 
   <div class="hanh-trinh-card">
-    <img src="assets/img/gallery-2.jpg" alt="Chương trình nội bộ">
+    <img src="assets/img/hanh-trinh-noi-bo.jpg" alt="Chương trình nội bộ">
     <h4>CHƯƠNG TRÌNH NỘI BỘ</h4>
     <p>
       Các hoạt động dành cho thành viên 37FTU nhằm tạo không gian gặp gỡ,
@@ -137,28 +197,12 @@
   </div>
 
 </div>
-    </div>
-
-    <button class="carousel-btn carousel-next" aria-label="Xem hoạt động tiếp theo">
-  &#8250;
+     <button class="carousel-btn carousel-next" aria-label="Xem hoạt động tiếp theo">
+  ›
 </button>
-
-  </div>
 </div>
-
 </div>
-
-<h3 style="margin-top:40px;font-size:1.3rem">
-  Bốn giá trị cốt lõi - Điều gì đã mang anh chị lại cùng nhau?
-</h3>
-
-<div class="luoi luoi-2 gia-tri" style="margin-top:20px" id="gia-tri"></div>   
-
-<h3 style="margin-top:52px;font-size:1.3rem">Quy tắc 4T — Những điều chúng mình luôn giữ gìn</h3>
-
-      <div class="bon-t" id="bon-t"></div>
-    </div>
-  </section>
+</section>
 
   <!-- CÁC BAN -->
 <section id="cac-ban" style="background:var(--trang);border-block:1px solid var(--vien);padding-top:35px; padding-bottom:35px">  <div class="khung">
@@ -204,29 +248,19 @@
   <!-- LỘ TRÌNH -->
   <section id="lo-trinh" style="padding-top:35px;padding-bottom:35px">
     <div class="khung">
-<span class="nhan">HÀNH TRÌNH VỀ NHÀ</span>
+      <span class="nhan">HÀNH TRÌNH VỀ NHÀ</span>
 
-<h2>QUY TRÌNH TUYỂN THÀNH VIÊN GEN 16</h2>
+      <h2>QUY TRÌNH TUYỂN THÀNH VIÊN GEN 16</h2>
 
-<p class="dan-de" style="margin-top:18px">
-  Em hãy theo dõi email cá nhân và Fanpage 37FTU để cập nhật những thông tin về chiến dịch Tuyển thành viên thế hệ thứ 16 nhé!
-</p>
-<div class="lo-trinh" style="margin-top:38px" id="lo-trinh-danh-sach"></div>    </div>
-  </section>
+      <p class="dan-de" style="margin-top:18px">
+        Em hãy theo dõi email cá nhân và Fanpage 37FTU để cập nhật những thông tin về chiến dịch Tuyển thành viên thế hệ thứ 16 nhé!
+      </p>
 
-  <!-- ẢNH + BẢN ĐỒ -->
-  <section style="background:var(--trang);border-block:1px solid var(--vien);padding-top:clamp(40px,6vw,72px)">
-    <div class="khung">
-      <span class="nhan">Những mùa đã qua</span>
-      <h2>15 năm, gói trong vài khung hình</h2>
-      <div class="anh-luoi" style="margin-top:28px">
-        <a href="assets/img/gallery-1.jpg" target="_blank" rel="noopener"><img src="assets/img/gallery-1.jpg" alt="Hoạt động của 37FTU" loading="lazy"></a>
-        <a href="assets/img/gallery-2.jpg" target="_blank" rel="noopener"><img src="assets/img/gallery-2.jpg" alt="Hoạt động của 37FTU" loading="lazy"></a>
-        <a href="assets/img/gallery-3.jpg" target="_blank" rel="noopener"><img src="assets/img/gallery-3.jpg" alt="Hoạt động của 37FTU" loading="lazy"></a>
-        <a href="assets/img/gallery-4.jpg" target="_blank" rel="noopener"><img src="assets/img/gallery-4.jpg" alt="Hoạt động của 37FTU" loading="lazy"></a>
-        <a href="assets/img/gallery-5.jpg" target="_blank" rel="noopener"><img src="assets/img/gallery-5.jpg" alt="Hoạt động của 37FTU" loading="lazy"></a>
+      <div class="lo-trinh-banner-wrap" style="margin-top:28px;margin-bottom:34px">
+        <img class="lo-trinh-banner-img" src="assets/banner-nghe-si-nhi.png" alt="Lộ trình tuyển thành viên Nghệ Sĩ Nhí Gen 16 37FTU">
       </div>
 
+      <div class="lo-trinh" id="lo-trinh-danh-sach"></div>
     </div>
   </section>
 
@@ -234,27 +268,27 @@
   <!-- SÂN CHƠI — các sản phẩm khác của CLB, mỗi thứ sống ở một trang riêng -->
   <section id="san-choi" style="padding-top:35px;padding-bottom:35px">
     <div class="khung">
-      <span class="nhan">Sân chơi</span>
-      <h2>Mấy thứ khác bọn anh làm</h2>
-      <p class="dan-de" style="margin-top:14px">Không liên quan hồ sơ, không tính điểm. Vào chơi cho biết.</p>
+      <span class="nhan">Một chút game</span>
+      <h2>Còn nhiều điều để cùng nhau trải nghiệm</h2>
+      <p class="dan-de" style="margin-top:14px">Đây chỉ là những hoạt động, những cuộc gặp và những điều nhỏ xinh bọn anh muốn cùng em trải qua ở 37FTU.</p>
       <div class="sc-luoi">
         
         <a class="sc the" href="quiz.html">
           <span class="sc-hinh" aria-hidden="true">🧭</span>
-          <h3>Em hợp ban nào?</h3>
+          <h3>Khám phá ban phù hợp với em</h3>
           <p>10 câu, ra ngay ban hợp với em nhất và một tấm ảnh để đăng story.</p>
           <span class="sc-di">Làm thử →</span>
         </a>
         <a class="sc the" href="an-gi.html">
           <span class="sc-hinh" aria-hidden="true">🍜</span>
           <h3>Hôm nay ăn chi?</h3>
-          <p>Đứng giữa ngã ba đường không biết ăn gì thì bấm một cái, khỏi nghĩ.</p>
-          <span class="sc-di">Bấm cho biết →</span>
+          <p>Nếu em đang phân vân chưa biết menu hôm nay là gì thì để anh chị gợi ý một chút nha</p>
+          <span class="sc-di">Bấm vào đây →</span>
         </a>
         <a class="sc the" href="game.html">
           <span class="sc-hinh" aria-hidden="true">🎮</span>
           <h3>Góc game bàn trực</h3>
-          <p>Bắt lươn xứ Nghệ và đố giọng Nghệ. Ghé bàn trực chơi, có bảng xếp hạng.</p>
+          <p>Ghé bàn trực chơi thử một chút game nho nhỏ cùng anh chị nha</p>
           <span class="sc-di">Vào chơi →</span>
         </a>
       </div>
@@ -264,14 +298,14 @@
   
   <!-- HỎI ĐÁP -->
 <section id="cau-hoi">
-  <div class="hep">
+  <div class="khung">
     <span class="nhan">HỎI ĐÁP</span>
     <h2>Có thể em cũng đang thắc mắc...</h2>
     <div style="margin-top:28px" id="cau-hoi-ds"></div>
   </div>
 </section>
 
-  <!-- NỘP ĐƠN -->
+  <!-- ĐĂNG KÍ -->
   <section id="nop-don" class="form-vung" style="padding-top:35px;padding-bottom:35px">
     <div class="hep">
       <span class="nhan">Đơn ứng tuyển</span>
@@ -284,130 +318,22 @@
         <div id="tb-he-thong"></div>
 
         <form id="don" novalidate>
-          <div class="hang hang-2">
-            <div class="o" data-truong="ho_ten">
-              <label for="ho_ten">Họ và tên <span class="sao">*</span></label>
-              <input id="ho_ten" name="ho_ten" autocomplete="name" placeholder="Nguyễn Văn A">
-              <p class="loi">Em điền họ tên đầy đủ giúp anh chị nhé.</p>
-            </div>
-            <div class="o" data-truong="ngay_sinh">
-              <label for="ngay_sinh">Ngày sinh</label>
-              <input id="ngay_sinh" name="ngay_sinh" type="date">
-              <p class="loi"></p>
-            </div>
-          </div>
-
-          <div class="hang hang-3">
-            <div class="o" data-truong="mssv">
-              <label for="mssv">Mã sinh viên <span class="sao">*</span></label>
-              <input id="mssv" name="mssv" inputmode="numeric" placeholder="2412345678">
-              <p class="loi">Chưa có mã sinh viên.</p>
-            </div>
-            <div class="o" data-truong="khoa">
-              <label for="khoa">Khoá <span class="sao">*</span></label>
-              <select id="khoa" name="khoa">
-                <option value="">— Chọn —</option>
-                <option>K65 (năm nhất)</option>
-                <option>K64 (năm hai)</option>
-                <option>K63 (năm ba)</option>
-                <option>K62 (năm tư)</option>
-                <option>Khác</option>
-              </select>
-              <p class="loi">Em chọn khoá giúp nhé.</p>
-            </div>
-            <div class="o" data-truong="khoa_vien">
-              <label for="khoa_vien">Khoa / Viện <span class="sao">*</span></label>
-              <input id="khoa_vien" name="khoa_vien" placeholder="Kinh tế đối ngoại">
-              <p class="loi">Em điền khoa/viện đang học.</p>
-            </div>
-          </div>
-
-          <div class="hang hang-2">
-            <div class="o" data-truong="sdt">
-              <label for="sdt">Số điện thoại <span class="sao">*</span></label>
-              <input id="sdt" name="sdt" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx">
-              <p class="loi">Số điện thoại chưa đúng định dạng.</p>
-            </div>
-            <div class="o" data-truong="email">
-              <label for="email">Email <span class="sao">*</span></label>
-              <input id="email" name="email" type="email" autocomplete="email" placeholder="ten@gmail.com">
-              <p class="loi">Email chưa đúng định dạng.</p>
-            </div>
-          </div>
-
-          <div class="hang hang-2">
-            <div class="o" data-truong="facebook">
-              <label for="facebook">Link Facebook <span class="sao">*</span></label>
-              <input id="facebook" name="facebook" placeholder="facebook.com/...">
-              <p class="loi">BTC cần link Facebook để liên hệ với em.</p>
-            </div>
-            <div class="o" data-truong="que">
-              <label for="que">Quê ở huyện / thành / thị nào? <span class="sao">*</span></label>
-              <select id="que" name="que"><option value="">— Chọn —</option></select>
-              <p class="goi-y">Theo tên huyện cũ cho dễ nhớ. Không phải người Nghệ thì chọn “Nơi khác”.</p>
-              <p class="loi">Em chọn quê giúp nhé.</p>
-            </div>
-          </div>
-
-          <div class="hang hang-2">
-            <div class="o" data-truong="nv1">
-              <label for="nv1">Nguyện vọng 1 <span class="sao">*</span></label>
-              <select id="nv1" name="nv1"><option value="">— Chọn ban —</option></select>
-              <p class="loi">Em chọn nguyện vọng 1.</p>
-            </div>
-            <div class="o" data-truong="nv2">
-              <label for="nv2">Nguyện vọng 2</label>
-              <select id="nv2" name="nv2"><option value="">— Không có —</option></select>
-              <p class="loi">Nguyện vọng 2 phải khác nguyện vọng 1.</p>
-            </div>
-          </div>
-
-          <div class="hang">
-            <div class="o" data-truong="ly_do">
-              <label for="ly_do">Vì sao em muốn vào 37FTU? <span class="sao">*</span></label>
-              <textarea id="ly_do" name="ly_do" placeholder="Viết ngắn gọn thôi, miễn là thật."></textarea>
-              <p class="goi-y"><span id="dem-chu-ly-do">0</span> ký tự · nên viết từ 80 ký tự trở lên</p>
-              <p class="loi">Em viết thêm một chút nữa nhé (tối thiểu 80 ký tự).</p>
-            </div>
-          </div>
-
-          <div class="hang">
-            <div class="o" data-truong="diem_manh">
-              <label for="diem_manh">Em nghĩ mình mang được gì cho Đội?</label>
-              <textarea id="diem_manh" name="diem_manh" style="min-height:90px" placeholder="Kỹ năng, tính cách, thứ em làm tốt..."></textarea>
-              <p class="loi"></p>
-            </div>
-          </div>
-
-          <div class="hang hang-2">
-            <div class="o" data-truong="biet_qua">
-              <label for="biet_qua">Em biết 37FTU qua đâu? <span class="sao">*</span></label>
-              <select id="biet_qua" name="biet_qua"><option value="">— Chọn —</option></select>
-              <p class="loi">Em chọn giúp nhé, BTC cần biết để làm truyền thông tốt hơn.</p>
-            </div>
-            <div class="o" data-truong="nguoi_gioi_thieu">
-              <label for="nguoi_gioi_thieu">Ai giới thiệu em? (nếu có)</label>
-              <input id="nguoi_gioi_thieu" name="nguoi_gioi_thieu" placeholder="Tên anh/chị/bạn">
-              <p class="loi"></p>
-            </div>
-          </div>
-<div class="hang">
-  <div class="o" data-truong="cau_hoi">
-
-    <label for="cau_hoi">
-      Em có câu hỏi hay thắc mắc gì muốn gửi tới anh chị không?
-    </label>
-
-    <textarea
-      id="cau_hoi"
-      name="cau_hoi"
-      style="min-height:100px"
-      placeholder="Nếu có điều gì em muốn hỏi, cứ viết ở đây nhé..."
-    ></textarea>
-
-  </div>
-</div>
-          <div class="hang" style="margin-bottom:22px">
+<div class="hang"><div class="o" data-truong="ho_ten"><label for="ho_ten">Họ và tên <span class="sao">*</span></label><input id="ho_ten" name="ho_ten" required type="text" placeholder="Nguyễn Văn A"><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="ngay_sinh"><label for="ngay_sinh">Ngày tháng năm sinh <span class="sao">*</span></label><input id="ngay_sinh" name="ngay_sinh" required type="date" placeholder=""><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="mssv"><label for="mssv">Mã sinh viên <span class="sao">*</span></label><input id="mssv" name="mssv" required type="text" placeholder="2412345678"><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="khoa"><label for="khoa">Khóa - Lớp - Chương trình đào tạo <span class="sao">*</span></label><input id="khoa" name="khoa" required type="text" placeholder="K63 - Anh 02 - CLC Kinh tế Đối ngoại"><p class="goi-y"><em>Ví dụ: K63 - Anh 02 - CLC Kinh tế Đối ngoại</em></p><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="sdt"><label for="sdt">Số điện thoại <span class="sao">*</span></label><input id="sdt" name="sdt" required type="tel" placeholder="09xx xxx xxx"><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="email"><label for="email">Email <span class="sao">*</span></label><input id="email" name="email" required type="email" placeholder="ten@gmail.com"><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="facebook"><label for="facebook">Link Facebook <span class="sao">*</span></label><input id="facebook" name="facebook" required type="text" placeholder="https://www.facebook.com/..."><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="que"><label for="que">Quê quán <span class="sao">*</span></label><select id="que" name="que" required><option value="">— Chọn —</option></select><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="ba_tinh_tu"><label for="ba_tinh_tu">Nếu được dùng 3 tính từ để miêu tả bản thân, em sẽ chọn những từ nào?</label><textarea id="ba_tinh_tu" name="ba_tinh_tu"></textarea><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="trai_nghiem"><label for="trai_nghiem">Em hãy kể cho anh chị về 1–2 hoạt động, CLB, dự án hoặc trải nghiệm ngoại khóa mà em từng tham gia và để lại cho em một kỷ niệm đáng nhớ nhé.</label><textarea id="trai_nghiem" name="trai_nghiem"></textarea><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="nv1"><label for="nv1">Nguyện vọng 1 của em là gì? <span class="sao">*</span></label><select id="nv1" name="nv1" required><option value="">— Chọn ban —</option></select><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="nv2"><label for="nv2">Nguyện vọng 2 của em là gì?</label><select id="nv2" name="nv2"><option value="">— Không có —</option></select><p class="loi">Nguyện vọng 2 phải khác nguyện vọng 1.</p></div></div>
+<div class="hang"><div class="o" data-truong="biet_qua"><label for="biet_qua">Em có thể chia sẻ cho anh chị rằng em biết tới 37FTU qua nguồn thông tin nào được không? <span class="sao">*</span></label><select id="biet_qua" name="biet_qua" required><option value="">— Chọn —</option></select><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="ly_do"><label for="ly_do">Điều gì khiến em lựa chọn điền đơn vào 37FTU?</label><textarea id="ly_do" name="ly_do"></textarea><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang"><div class="o" data-truong="cau_hoi"><label for="cau_hoi">Em có câu hỏi hay thắc mắc gì muốn gửi gắm đến anh chị không?</label><textarea id="cau_hoi" name="cau_hoi"></textarea><p class="loi">Em kiểm tra và điền thông tin hợp lệ giúp nhé.</p></div></div>
+<div class="hang" style="margin-bottom:22px">
             <label class="dong-y" data-truong="dong_y">
               <input type="checkbox" id="dong_y" name="dong_y">
               <span>Em đồng ý để BTC 37FTU lưu và sử dụng thông tin trong đơn này cho mục đích tuyển thành viên Gen 16. <span class="sao">*</span></span>
@@ -416,9 +342,6 @@
           </div>
 
           <button class="nut nut-chinh" type="submit" id="nut-gui" style="width:100%">Gửi đơn ứng tuyển</button>
-          <p class="goi-y" style="text-align:center;margin-top:12px">
-            Gửi xong em sẽ thấy màn hình xác nhận. Kết quả vòng hồ sơ sẽ được gửi qua email.
-          </p>
         </form>
 
         <div id="man-xong" class="xong" hidden>
@@ -438,6 +361,17 @@
   </section>
 </main>
 
+<!-- NÚT BẬT/TẮT NHẠC NỀN -->
+<button id="nut-nhac-nen" class="nut-nhac-nen" type="button" aria-label="Bật/tắt nhạc nền" title="Khúc ca 37FTU · Bật/tắt nhạc">
+  <span class="dia-nhac">
+    <span class="dia-icon">🎵</span>
+  </span>
+  <span class="nhac-chu">Khúc ca 37FTU</span>
+  <span class="song-nhac" aria-hidden="true">
+    <i></i><i></i><i></i><i></i>
+  </span>
+</button>
+
 <footer>
   <div class="khung">
     <div>
@@ -450,10 +384,9 @@
       <div id="chan-lien-he"></div>
     </div>
     <div>
-      <div class="ten">Đường tắt</div>
-      <div><a href="#nop-don">Nộp đơn</a></div>
+      <div class="ten">- Tuyển Thành viên Gen 16</div>
+      <div><a href="#nop-don">Đăng kí</a></div>
       <div><a href="quiz.html">Trắc nghiệm hợp ban nào</a></div>
-      <div><a href="ban-do.html">Người Nghệ ở Ngoại thương</a></div>
       <div><a href="an-gi.html">Hôm nay ăn chi</a></div>
       <div><a href="game.html">Góc game bàn trực</a></div>
       <div><a href="#cau-hoi">Hỏi đáp</a></div>

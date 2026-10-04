@@ -18,6 +18,10 @@
 </head>
 <body class="ag-body">
 
+<!-- NHẠC NỀN 37FTU TỰ ĐỘNG PHÁT -->
+<audio id="nhac-nen" src="assets/music.mp3" autoplay loop playsinline preload="auto"></audio>
+<script src="nhac-nen.js"></script>
+
 <header class="ag-dinh">
   <a class="hieu" href="index.html"><img src="assets/logo-trang.png" alt="Logo 37FTU">37FTU</a>
   <button id="nut-tieng" class="ag-tieng" type="button" aria-pressed="true" title="Bật/tắt tiếng">🔊</button>
@@ -30,7 +34,7 @@
     <div class="ag-tieu">
       <p class="ag-chao" id="ag-chao">Chào em</p>
       <h1 id="ag-hoi">Trưa ni ăn chi?</h1>
-      <p class="ag-phu">Nghĩ lâu thì đói. Chọn vài điều kiện rồi bấm một cái, để cái máy nó lo.</p>
+      <p class="ag-phu">Nếu em đang phân vân chưa biết menu hôm nay là chi thì để anh chị gợi ý một chút nha.</p>
     </div>
 
     <!-- ---------- Bộ lọc ---------- -->
@@ -61,7 +65,6 @@
       <span>Bấm cái coi</span>
       <small id="ag-bam-phu">còn <b id="ag-con">—</b> món hợp ý em</small>
     </button>
-    <p class="ag-meo" id="ag-meo">Mẹo: bấm phím cách cũng quay được. Trên điện thoại thì lắc một cái.</p>
 
     <!-- ---------- Kết quả ---------- -->
     <section class="ag-kq" id="ag-kq" hidden>
@@ -92,7 +95,6 @@
       <p>Một sản phẩm vui của <b>CLB Tình nguyện Đồng hương Nghệ An — 37FTU</b>.</p>
       <div class="ag-chan-link">
         <a href="index.html">Tuyển thành viên Gen 16</a>
-        <a href="ban-do.html">Người Nghệ ở Ngoại thương</a>
         <a href="game.html">Góc game bàn trực</a>
       </div>
     </div>
@@ -102,6 +104,7 @@
 </main>
 
 <script src="config.js"></script>
+<script src="data/mon-an.js"></script>
 <script src="an-gi.js"></script>
 <script src="gop-y.js"></script>
 </body>

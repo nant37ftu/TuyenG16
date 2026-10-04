@@ -19,10 +19,14 @@
 
   /* ---------------- Đổ nội dung từ noi-dung.js ---------------- */
   function veNoiDung() {
-    document.title = '37FTU tuyển thành viên ' + (ND.the_he || '');
-    if (ND.tieu_de) $('#hero-tieu-de').textContent = ND.tieu_de;
-    if (ND.phu_de) $('#hero-phu').textContent = ND.phu_de;
-    $('#chip-chu').textContent = (CH.DANG_MO_DON ? 'Đang mở đơn · ' : 'Đã đóng đơn · ') + (ND.the_he || '');
+    document.title = '37FTU · Nghệ Sĩ Nhí — Tuyển thành viên ' + (ND.the_he || 'Gen 16');
+    var ht = $('#hero-tieu-de');
+    if (ht && !ht.querySelector('.chu-nghe') && ND.tieu_de) {
+      ht.textContent = ND.tieu_de;
+    }
+    if (ND.phu_de && $('#hero-phu')) $('#hero-phu').textContent = ND.phu_de;
+    var chip = $('#chip-chu');
+    if (chip) chip.textContent = (CH.DANG_MO_DON ? 'Đang mở đơn · ' : 'Đã đóng đơn · ') + (ND.the_he || 'Gen 16') + ' · Nghệ Sĩ Nhí';
 
     var sl = $('#so-lieu');
     (ND.so_lieu || []).forEach(function (x) {
@@ -38,15 +42,22 @@
     });
 
     var bt = $('#bon-t');
-    (ND.quy_tac_4t || []).forEach(function (x) {
-      bt.appendChild(el('div', '', '<b>' + an(x.chu) + '</b><span>' + an(x.y) + '</span>'));
-    });
+
+if (bt) {
+  (ND.quy_tac_4t || []).forEach(function (x) {
+    bt.appendChild(
+      el('div', '', '<b>' + an(x.chu) + '</b><span>' + an(x.y) + '</span>')
+    );
+  });
+}
 
     var cb = $('#cac-ban-luoi');
     (ND.cac_ban || []).forEach(function (b) {
       var hoc = (b.hoc_duoc || []).map(function (h) { return '<li>' + an(h) + '</li>'; }).join('');
+      var hinhHtml = b.anh ? '<div class="ban-anh-wrap"><img class="ban-anh" src="' + an(b.anh) + '" alt="' + an(b.ten) + '"></div>' : '';
       cb.appendChild(el('div', 'the ban',
         '<span class="biet-danh">' + an(b.biet_danh || '') + '</span>' +
+        hinhHtml +
         '<h3>' + an(b.ten) + '</h3>' +
         '<p class="tom-tat">' + an(b.tom_tat || '') + '</p>' +
         '<p>' + an(b.mo_ta || '') + '</p>' +
@@ -113,7 +124,7 @@
       var con = han - new Date();
       if (con <= 0) {
         hop.hidden = true;
-        chu.textContent = 'Đã hết hạn nộp đơn ' + ND.the_he + '. Hẹn em mùa sau nhé!';
+        chu.textContent = 'Đã hết hạn đăng kí ' + ND.the_he + '. Hẹn em mùa sau nhé!';
         return;
       }
       hop.hidden = false;
@@ -122,7 +133,7 @@
       $('#dn-gio').textContent = String(Math.floor(g / 3600) % 24).padStart(2, '0');
       $('#dn-phut').textContent = String(Math.floor(g / 60) % 60).padStart(2, '0');
       $('#dn-giay').textContent = String(g % 60).padStart(2, '0');
-      chu.textContent = 'Còn lại để nộp đơn — Hạn cuối điền đơn: ' + han.toLocaleString('vi-VN', {
+      chu.textContent = 'Còn lại để đăng kí — Hạn cuối điền đơn: ' + han.toLocaleString('vi-VN', {
   day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
 });
       setTimeout(ve, 1000);
@@ -157,13 +168,12 @@
     ho_ten: function (v) { return v.trim().length >= 3 && v.trim().indexOf(' ') > 0; },
     mssv: function (v) { return v.trim().length >= 6; },
     khoa: function (v) { return !!v; },
-    khoa_vien: function (v) { return v.trim().length >= 2; },
+    ngay_sinh: function (v) { var d = new Date(v + 'T00:00:00'); return /^\d{4}-\d{2}-\d{2}$/.test(v) && !isNaN(d.getTime()) && d <= new Date(); },
     sdt: function (v) { return /^(0|\+84)\d{8,10}$/.test(v.replace(/[\s.\-()]/g, '')); },
     email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
     facebook: function (v) { return v.trim().length >= 5; },
     que: function (v) { return !!v.trim(); },
     nv1: function (v) { return !!v; },
-    ly_do: function (v) { return v.trim().length >= 80; },
     biet_qua: function (v) { return !!v; }
   };
 
@@ -179,6 +189,8 @@
       var n = document.getElementById(k);
       d[k] = n ? String(n.value || '').trim() : '';
     });
+    // Giữ tương thích bảng hiện có; lưu riêng từng câu trả lời trong nguon ở dưới.
+    d.diem_manh = 'Ba tính từ: ' + document.getElementById('ba_tinh_tu').value.trim() + '\n\nTrải nghiệm ngoại khóa: ' + document.getElementById('trai_nghiem').value.trim();
     return d;
   }
 
@@ -249,7 +261,8 @@
 
     var lyDo = document.getElementById('ly_do');
     lyDo.addEventListener('input', function () {
-      $('#dem-chu-ly-do').textContent = lyDo.value.trim().length;
+      var demChu = $('#dem-chu-ly-do');
+      if (demChu) demChu.textContent = lyDo.value.trim().length;
     });
 
     form.addEventListener('submit', function (e) {
@@ -266,7 +279,10 @@
 
       var ban_ghi = Object.assign({}, d, {
         the_he: ND.the_he || 'Gen 16',
-        nguon: nguonTruyCap(),
+        nguon: Object.assign({}, nguonTruyCap(), { cau_tra_loi: {
+          ba_tinh_tu: document.getElementById('ba_tinh_tu').value.trim(),
+          trai_nghiem: document.getElementById('trai_nghiem').value.trim()
+        } }),
         gui_luc: new Date().toISOString(),
         trang_thai: 'moi'
       });

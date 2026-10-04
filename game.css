@@ -25,7 +25,7 @@
 .gm-nhan{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#FFB499;margin:0 0 10px}
 .gm h1{font-size:clamp(2.2rem,8vw,3.6rem);letter-spacing:-.03em}
 .gm h2{font-size:clamp(1.6rem,6vw,2.4rem);letter-spacing:-.02em}
-.gm-phu{color:rgba(255,255,255,.6);margin-top:12px;max-width:46ch}
+.gm-phu{color:rgba(255,255,255,.7);margin-top:12px;max-width:60ch;font-size:1.02rem;line-height:1.5}
 .gm-giua .gm-phu{margin-inline:auto}
 
 /* ---------- Chọn trò ---------- */
