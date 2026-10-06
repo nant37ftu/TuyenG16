@@ -1,0 +1,249 @@
+/* ============================================================
+   INTRO MỞ ĐẦU TRANG CHỦ — hai bản để BTC chọn
+     B · vén cỏ  : hai vạt cỏ rẽ ra hai bên, bướm bay lên
+     C · dựng chữ: chữ "Nghệ Sĩ Nhí" bật ra từng tiếng
+   Bật/tắt và đổi bản ở config.js (CAU_HINH.INTRO), hoặc thêm
+   ?intro=b / ?intro=c / ?intro=tat vào địa chỉ để xem thử.
+   Cả hai chạy dưới 1,4 giây và tự gỡ khỏi trang sau khi xong.
+   ============================================================ */
+
+/* Khoá cuộn trang trong lúc intro còn che */
+html.co-intro, html.co-intro body { overflow: hidden; }
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;            /* trên cả thanh đầu trang (z-index 50) */
+  overflow: hidden;
+  background: var(--xanh-rung);
+  transition: opacity .34s ease, transform .34s ease;
+}
+html.intro-tan .intro {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.intro-bo-qua {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 9;
+  font: inherit;
+  font-size: .86rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.intro-bo-qua:hover { background: rgba(255,255,255,.26); }
+
+/* ============================================================
+   BẢN B — VÉN CỎ
+   ============================================================ */
+.intro-b { position: absolute; inset: 0; }
+
+.intro-b-troi {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(760px 460px at 50% 14%, rgba(164,236,76,.98), transparent 66%),
+    linear-gradient(180deg, #86CE2E 0%, #4C9231 44%, #2A5E2A 78%, #1C4522 100%);
+  animation: intro-sang .95s ease forwards;
+}
+/* vệt nắng xiên qua tán lá */
+.intro-b-troi::after {
+  content: "";
+  position: absolute;
+  inset: -20% -40%;
+  background: linear-gradient(104deg, transparent 38%, rgba(255,255,255,.22) 47%, transparent 56%);
+  animation: intro-nang 1.2s ease forwards;
+}
+@keyframes intro-sang {
+  from { filter: brightness(.74); transform: scale(1.1); }
+  to   { filter: brightness(1.06); transform: scale(1); }
+}
+@keyframes intro-nang {
+  from { transform: translateX(-14%); opacity: 0; }
+  40%  { opacity: 1; }
+  to   { transform: translateX(10%); opacity: .5; }
+}
+
+.intro-b-buom {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: min(30%, 300px);
+  height: auto;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 4px 12px rgba(12,34,16,.45));
+  animation: intro-buom-bay 1.25s cubic-bezier(.3,.7,.3,1) forwards;
+}
+@keyframes intro-buom-bay {
+  from { transform: translate(-50%, -24%) scale(.82); opacity: 0; }
+  26%  { opacity: .95; }
+  to   { transform: translate(-50%, -128%) scale(1.14); opacity: 0; }
+}
+
+.intro-b-chu {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  width: min(92%, 560px);
+  animation: intro-chu-b 1.3s ease forwards;
+}
+.intro-b-logo {
+  width: 72px;
+  height: auto;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.35));
+}
+.intro-b-ten {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 8vw, 3.8rem);
+  margin: 8px 0 2px;
+  text-shadow: 0 6px 24px rgba(0,0,0,.4);
+}
+.intro-b-phu {
+  font-size: clamp(.78rem, 2.4vw, .92rem);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.76);
+  margin: 0;
+}
+@keyframes intro-chu-b {
+  from { opacity: 0; transform: translate(-50%, -42%) scale(.94); }
+  22%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  66%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to   { opacity: 0; transform: translate(-50%, -54%) scale(1.07); }
+}
+
+/* Hai vạt cỏ rẽ ra — phần chính của bản này.
+   Ảnh cỏ là dải ngang rất dẹt (tỉ lệ ~4,5:1) nên phải phóng to theo gốc dưới
+   thì mới phủ được gần nửa màn hình, nhìn mới ra "đang đứng trong bụi cỏ". */
+.intro-co {
+  position: absolute;
+  bottom: -7%;
+  width: max(84%, 560px);
+  height: auto;
+  filter: drop-shadow(0 -10px 30px rgba(0,0,0,.34));
+}
+.intro-co-trai {
+  left: -8%;
+  transform-origin: left bottom;
+  animation: intro-co-trai 1.15s cubic-bezier(.45,.05,.2,1) forwards;
+}
+.intro-co-phai {
+  right: -8%;
+  transform-origin: right bottom;
+  animation: intro-co-phai 1.15s cubic-bezier(.45,.05,.2,1) forwards;
+}
+/* hai vạt là hai ảnh khác nhau nên không cần lật, cứ đẩy ra hai phía */
+@keyframes intro-co-trai {
+  0%, 16% { transform: translate(0, 0) rotate(0deg) scale(1.65); }
+  to      { transform: translate(-56%, 32%) rotate(-8deg) scale(1.9); }
+}
+@keyframes intro-co-phai {
+  0%, 16% { transform: translate(0, 0) rotate(0deg) scale(1.65); }
+  to      { transform: translate(56%, 32%) rotate(8deg) scale(1.9); }
+}
+
+/* viền tối quanh khung cho giống đang nhìn qua kẽ lá */
+.intro-b::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(118% 84% at 50% 40%, transparent 50%, rgba(10,28,14,.52) 100%);
+  animation: intro-vien 1.15s ease forwards;
+}
+@keyframes intro-vien { 0% { opacity: 1; } 68%, 100% { opacity: 0; } }
+
+/* ============================================================
+   BẢN C — DỰNG CHỮ
+   ============================================================ */
+.intro-c {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  padding: 0 20px;
+  background:
+    radial-gradient(620px 420px at 50% 40%, rgba(115,182,39,.5), transparent 70%),
+    var(--xanh-rung);
+}
+.intro-c-logo {
+  width: 64px;
+  height: auto;
+  opacity: 0;
+  animation: intro-c-logo .5s ease .05s forwards;
+}
+@keyframes intro-c-logo {
+  from { opacity: 0; transform: translateY(10px) scale(.82); }
+  to   { opacity: 1; transform: none; }
+}
+
+.intro-c-ten {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 11vw, 5rem);
+  color: #fff;
+  margin: 14px 0 0;
+  display: flex;
+  align-items: baseline;
+  gap: .22em;
+  line-height: 1.1;
+}
+.intro-c-ten span,
+.intro-c-ten i {
+  display: inline-block;
+  opacity: 0;
+  animation: intro-c-tieng .46s cubic-bezier(.2,1.5,.4,1) forwards;
+}
+.intro-c-ten span:nth-child(1) { animation-delay: .14s; }
+.intro-c-ten span:nth-child(2) { animation-delay: .26s; }
+.intro-c-ten span:nth-child(3) { animation-delay: .38s; color: var(--xanh-lime); }
+.intro-c-ten i {
+  font-style: normal;
+  color: var(--cam);
+  animation-delay: .52s;
+  margin-left: -.12em;
+}
+@keyframes intro-c-tieng {
+  from { opacity: 0; transform: translateY(26px) rotate(-7deg) scale(.7); }
+  to   { opacity: 1; transform: none; }
+}
+
+.intro-c-phu {
+  font-size: clamp(.76rem, 2.6vw, .9rem);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.72);
+  margin: 14px 0 0;
+  opacity: 0;
+  animation: intro-c-phu .5s ease .62s forwards;
+}
+@keyframes intro-c-phu {
+  from { opacity: 0; letter-spacing: .3em; }
+  to   { opacity: 1; letter-spacing: .14em; }
+}
+
+/* ============================================================
+   Máy bật "giảm chuyển động" thì intro.js không chạy nữa. Trường
+   hợp duy nhất còn lọt vào đây là tự gõ ?intro= để xem thử — lúc
+   đó là cố ý xem nên vẫn cho chạy (html có class intro-xem-thu).
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html:not(.intro-xem-thu) .intro * {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  html:not(.intro-xem-thu) .intro { transition-duration: .01ms; }
+}

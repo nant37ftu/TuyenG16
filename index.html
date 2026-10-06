@@ -14,12 +14,43 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="intro.css">
 </head>
 <body>
 
 <!-- NHẠC NỀN 37FTU TỰ ĐỘNG PHÁT -->
 <audio id="nhac-nen" src="assets/music.mp3" autoplay loop playsinline preload="auto"></audio>
 <script src="nhac-nen.js"></script>
+
+<!-- ========== INTRO MỞ ĐẦU — xem mục 14 trong README ==========
+     Khung rỗng ở dưới sẽ được intro.js đổ nội dung vào. Hai bản nằm trong
+     <template> nên trình duyệt KHÔNG tải ảnh của bản không dùng tới. -->
+<div class="intro" id="intro" hidden aria-hidden="true"></div>
+
+<template id="mau-intro-b">
+  <div class="intro-b">
+    <div class="intro-b-troi"></div>
+    <img class="intro-b-buom" src="assets/intro-buom.webp" alt="" width="700" height="491">
+    <div class="intro-b-chu">
+      <img class="intro-b-logo" src="assets/logo.png" alt="" width="768" height="768">
+      <p class="intro-b-ten">Nghệ Sĩ Nhí</p>
+      <p class="intro-b-phu">CLB Tình nguyện Đồng hương Nghệ An · FTU</p>
+    </div>
+    <img class="intro-co intro-co-trai" src="assets/intro-co-1.webp" alt="" width="1200" height="266">
+    <img class="intro-co intro-co-phai" src="assets/intro-co-2.webp" alt="" width="1200" height="266">
+  </div>
+</template>
+
+<template id="mau-intro-c">
+  <div class="intro-c">
+    <img class="intro-c-logo" src="assets/logo.png" alt="" width="768" height="768">
+    <h2 class="intro-c-ten"><span>Nghệ</span><span>Sĩ</span><span>Nhí</span><i>!</i></h2>
+    <p class="intro-c-phu">Chuỗi tuyển thành viên thế hệ thứ 16</p>
+  </div>
+</template>
+
+<script src="config.js"></script>
+<script src="intro.js"></script>
 
 <header class="dinh">
   <div class="khung">
@@ -398,7 +429,6 @@
   </div>
 </footer>
 
-<script src="config.js"></script>
 <script src="noi-dung.js?v=3"></script>
 <script src="app.js"></script>
 <script src="gop-y.js"></script>

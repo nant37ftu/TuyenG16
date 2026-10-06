@@ -457,6 +457,9 @@ web/
 ├── noi-dung.js         ✍ toàn bộ chữ trang tuyển (BTC sửa)
 ├── app.js              xử lý form, đếm ngược, đo nguồn truy cập
 ├── wiki.js             Nghệ Wiki: đổi mục, vẽ tuyến xe, lọc, tìm kiếm
+├── intro.css           Intro mở đầu trang chủ (mục 14)
+├── intro.js            Intro: chọn bản, chạy một lần mỗi phiên
+├── xem-intro.html      Trang xem thử hai bản intro, mở offline được
 ├── gop-y.js            chế độ góp ý ?gopy=1 (mục 2)
 ├── quiz.js             câu hỏi + vẽ ảnh kết quả
 ├── an-gi.js            máy quay chọn món
@@ -524,3 +527,36 @@ sửa trong sheet *Nghệ Wiki - Tuyến xe* của file Excel (mục 2). Ba quy 
 
 Không đăng số điện thoại hay địa chỉ cá nhân của ai lên trang này — chỉ tổng đài doanh
 nghiệp và trang chính thức.
+
+
+## 14. Intro mở đầu trang chủ
+
+Vào `index.html` lần đầu trong một phiên sẽ thấy một đoạn mở đầu ngắn rồi mới tới hero.
+Có hai bản, chọn bằng **một dòng** `INTRO` trong `config.js`:
+
+| Giá trị | Bản | Dài | Nặng thêm |
+|---|---|---|---|
+| `'b'` | **Vén cỏ** — hai vạt cỏ rẽ ra hai bên, bướm bay lên, nắng xiên qua tán lá | 1,4 giây | ~140KB ảnh WebP |
+| `'c'` | **Dựng chữ** — "Nghệ Sĩ Nhí" bật ra từng tiếng rồi tan vào trang | 1,25 giây | 0 byte |
+| `'tat'` | Bỏ hẳn intro | — | — |
+
+**Xem thử không cần sửa file:** mở `xem-intro.html` (bấm đúp vào file cũng chạy được, không
+cần máy chủ) để chạy đi chạy lại hai bản, có cả chế độ chạy chậm một nửa. Hoặc thêm
+`?intro=b`, `?intro=c`, `?intro=tat` vào địa chỉ trang chủ.
+
+Bốn điều `intro.js` đang giữ, **đừng bỏ** — đây là mấy chỗ dễ làm hỏng phễu tuyển nhất:
+
+1. **Một lần mỗi phiên.** Xem xong là ghi `37ftu_intro_xong` vào `sessionStorage`. Khách
+   bấm sang `quiz.html` rồi quay lại trang chủ sẽ không phải ngồi xem lại.
+2. **Máy bật "giảm chuyển động" thì bỏ hẳn intro**, không chạy phiên bản rút gọn nào cả.
+3. **Bấm / gõ phím / lăn chuột là vào thẳng**, cộng thêm nút *Bỏ qua* ở góc phải.
+   Chuyển sang tab khác cũng tính là xong, khỏi bắt xem lại lúc quay về.
+4. **Chạy đồng bộ ngay đầu `<body>`.** Thẻ `<script src="intro.js">` nằm ngay sau khối
+   intro, trước phần thân trang — nhờ vậy hero không loé lên một nhịp rồi mới bị che lại.
+   Đổi sang `defer` hay dời xuống cuối trang là hỏng.
+
+Hai bản nằm trong `<template>` nên trình duyệt **không tải ảnh của bản không dùng**. Ảnh
+bản B (`assets/intro-co-1.webp`, `intro-co-2.webp`, `intro-buom.webp`) được cắt sát và nén
+lại từ `cỏ thêm gốc.png`, `cỏ thêm bóng.png`, `bươms.png` — ảnh gốc 1500×1500 phần lớn là
+vùng trong suốt, để nguyên thì nặng gấp bốn lần. Muốn làm lại thì cắt theo đúng khung alpha
+rồi xuất WebP.

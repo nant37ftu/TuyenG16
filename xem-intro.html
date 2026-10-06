@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xem thử intro — 37FTU Gen 16</title>
+<!-- Trang này chỉ để BTC xem thử hai bản intro trước khi chốt.
+     Mở được bằng cách bấm đúp vào file, không cần chạy máy chủ. -->
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="intro.css">
+<style>
+  body { background: #101A12; color: #fff; min-height: 100vh; }
+  .xt {
+    max-width: 760px;
+    margin-inline: auto;
+    padding: 46px 20px 70px;
+  }
+  .xt h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    color: #fff;
+  }
+  .xt-dan { color: rgba(255,255,255,.7); margin: 10px 0 0; line-height: 1.65; }
+  .xt-the-hang { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 28px; }
+  .xt-the {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: var(--r-lon);
+    padding: 20px;
+  }
+  .xt-the h2 { font-size: 1.15rem; color: var(--xanh-lime); }
+  .xt-the p { color: rgba(255,255,255,.66); font-size: .92rem; margin: 8px 0 16px; line-height: 1.6; }
+  .xt-chay {
+    font: inherit; font-weight: 700; font-size: .98rem;
+    width: 100%; cursor: pointer;
+    background: linear-gradient(135deg, var(--vang-cam), var(--cam));
+    color: #fff; border: 0; border-radius: 999px; padding: 12px 20px;
+  }
+  .xt-chay:hover { filter: brightness(1.07); }
+  .xt-hang { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 26px; font-size: .92rem; color: rgba(255,255,255,.72); }
+  .xt-hang label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+  .xt-ghi {
+    margin-top: 30px; padding: 16px 18px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.14);
+    border-left: 3px solid var(--xanh-lime);
+    border-radius: var(--r);
+    font-size: .9rem; color: rgba(255,255,255,.72); line-height: 1.65;
+  }
+  .xt-ghi b { color: #fff; }
+  .xt-ds { margin-top: 26px; font-size: .92rem; line-height: 2; }
+  .xt-ds a { color: var(--xanh-lime); font-weight: 600; }
+  .xt-ma {
+    font-family: ui-monospace, Consolas, monospace;
+    background: rgba(255,255,255,.1); padding: 2px 7px; border-radius: 6px; font-size: .88em;
+  }
+</style>
+</head>
+<body>
+
+<!-- Khung để đổ intro vào, dùng chung lớp CSS với trang chủ -->
+<div class="intro" id="intro" hidden aria-hidden="true"></div>
+
+<template id="mau-intro-b">
+  <div class="intro-b">
+    <div class="intro-b-troi"></div>
+    <img class="intro-b-buom" src="assets/intro-buom.webp" alt="" width="700" height="491">
+    <div class="intro-b-chu">
+      <img class="intro-b-logo" src="assets/logo.png" alt="" width="768" height="768">
+      <p class="intro-b-ten">Nghệ Sĩ Nhí</p>
+      <p class="intro-b-phu">CLB Tình nguyện Đồng hương Nghệ An · FTU</p>
+    </div>
+    <img class="intro-co intro-co-trai" src="assets/intro-co-1.webp" alt="" width="1498" height="332">
+    <img class="intro-co intro-co-phai" src="assets/intro-co-2.webp" alt="" width="1500" height="332">
+  </div>
+</template>
+
+<template id="mau-intro-c">
+  <div class="intro-c">
+    <img class="intro-c-logo" src="assets/logo.png" alt="" width="768" height="768">
+    <h2 class="intro-c-ten"><span>Nghệ</span><span>Sĩ</span><span>Nhí</span><i>!</i></h2>
+    <p class="intro-c-phu">Chuỗi tuyển thành viên thế hệ thứ 16</p>
+  </div>
+</template>
+
+<div class="xt">
+  <h1>Xem thử intro mở đầu</h1>
+  <p class="xt-dan">
+    Hai bản dưới đây chạy đúng y như khi vào trang chủ thật. Bấm nút để xem lại
+    bao nhiêu lần cũng được. Muốn xem kỹ từng nhịp thì tích ô “chạy chậm”.
+  </p>
+
+  <div class="xt-the-hang">
+    <div class="xt-the">
+      <h2>Bản B — Vén cỏ</h2>
+      <p>
+        Hai vạt cỏ rẽ ra hai bên, bướm bay lên, nắng xiên qua tán lá.
+        Dài 1,4 giây. Nặng thêm 140KB ảnh.
+      </p>
+      <button class="xt-chay" type="button" data-ban="b">▶ Chạy bản B</button>
+    </div>
+    <div class="xt-the">
+      <h2>Bản C — Dựng chữ</h2>
+      <p>
+        “Nghệ Sĩ Nhí” bật ra từng tiếng rồi tan vào trang.
+        Dài 1,25 giây. Không thêm một byte ảnh nào.
+      </p>
+      <button class="xt-chay" type="button" data-ban="c">▶ Chạy bản C</button>
+    </div>
+  </div>
+
+  <div class="xt-hang">
+    <label><input type="checkbox" id="xt-cham"> Chạy chậm một nửa để xem kỹ</label>
+    <span>Kéo hẹp cửa sổ lại là xem được dáng trên điện thoại.</span>
+  </div>
+
+  <div class="xt-ghi">
+    <b>Khi chạy thật trên trang chủ</b>, intro chỉ hiện <b>một lần mỗi phiên</b> — khách bấm
+    sang trang khác rồi quay lại trang chủ sẽ không phải xem lại. Máy nào bật “giảm chuyển
+    động” trong cài đặt hệ thống thì bỏ hẳn intro. Bấm chuột, gõ phím hay lăn chuột là vào
+    thẳng, không phải chờ hết.
+  </div>
+
+  <div class="xt-ds">
+    Xem trong trang chủ thật:
+    <br>
+    <a href="index.html?intro=b">index.html?intro=b</a> — vào trang chủ với bản B<br>
+    <a href="index.html?intro=c">index.html?intro=c</a> — vào trang chủ với bản C<br>
+    <a href="index.html?intro=tat">index.html?intro=tat</a> — vào trang chủ không có intro<br>
+    <br>
+    Chốt bản nào thì sửa một dòng <span class="xt-ma">INTRO: 'b'</span> trong
+    <span class="xt-ma">config.js</span> thành <span class="xt-ma">'c'</span> hoặc
+    <span class="xt-ma">'tat'</span>.
+  </div>
+</div>
+
+<script>
+/* Chạy lại intro theo yêu cầu — không dùng intro.js vì file đó là bản tự chạy
+   một lần khi vào trang chủ. */
+(function () {
+  'use strict';
+  var goc = document.documentElement;
+  var hop = document.getElementById('intro');
+  var cham = document.getElementById('xt-cham');
+  var dangChay = false;
+
+  function chay(ban) {
+    if (dangChay) return;
+    dangChay = true;
+
+    hop.innerHTML = '';
+    hop.appendChild(document.getElementById('mau-intro-' + ban).content.cloneNode(true));
+
+    var nut = document.createElement('button');
+    nut.type = 'button';
+    nut.className = 'intro-bo-qua';
+    nut.textContent = 'Bỏ qua';
+    hop.appendChild(nut);
+
+    hop.hidden = false;
+    goc.className = 'co-intro intro-' + ban + ' intro-xem-thu';
+
+    var nhip = cham.checked ? 0.5 : 1;
+    if (nhip !== 1) {
+      document.getAnimations().forEach(function (a) { a.playbackRate = nhip; });
+    }
+
+    var hanGio = setTimeout(ketThuc, (ban === 'c' ? 1250 : 1400) / nhip);
+
+    function ketThuc() {
+      clearTimeout(hanGio);
+      nut.removeEventListener('click', ketThuc);
+      goc.classList.add('intro-tan');
+      setTimeout(function () {
+        goc.className = '';
+        hop.hidden = true;
+        hop.innerHTML = '';
+        dangChay = false;
+      }, 380);
+    }
+    nut.addEventListener('click', ketThuc);
+  }
+
+  document.querySelectorAll('.xt-chay').forEach(function (b) {
+    b.addEventListener('click', function () { chay(b.getAttribute('data-ban')); });
+  });
+})();
+</script>
+</body>
+</html>

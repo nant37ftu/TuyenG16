@@ -22,6 +22,13 @@ window.CAU_HINH = {
   HAN_NOP_DON: '2026-10-20T23:59:59+07:00', // dùng cho đồng hồ đếm ngược
   DANG_MO_DON: true,                        // false -> ẩn form, hiện thông báo đã đóng
 
+  // --- Intro mở đầu trang chủ (xem mục 14 trong README) ---
+  // 'b'   -> vén cỏ: hai vạt cỏ rẽ ra hai bên, bướm bay lên
+  // 'c'   -> dựng chữ: "Nghệ Sĩ Nhí" bật ra từng tiếng
+  // 'tat' -> bỏ hẳn intro
+  // Xem thử nhanh không cần sửa file: thêm ?intro=b hoặc ?intro=c vào địa chỉ.
+  INTRO: 'b',
+
   // --- Liên hệ ---
   FANPAGE: 'https://www.facebook.com/svna.ftu',
   EMAIL: 'nant.37ftu@gmail.com',
