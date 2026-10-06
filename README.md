@@ -5,7 +5,7 @@ Năm trang web tĩnh, không cần server, không tốn tiền hosting:
 | Trang | File | Dùng để làm gì |
 |---|---|---|
 | Tuyển thành viên Gen 16 | `index.html` | Giới thiệu CLB, lộ trình tuyển, nhận đơn ứng tuyển |
-| Nghệ Wiki | `wiki.html` | Sổ tay tân sinh viên người Nghệ: xe về quê, ăn uống, học tập, chỗ ở (mục 13) |
+| Nghệ Wiki | `wiki.html` | **Tạm ngưng** — sổ tay tân sinh viên người Nghệ, đã gỡ khỏi điều hướng (mục 13) |
 | Trắc nghiệm hợp ban nào | `quiz.html` | Mini game lan toả, cho ra ảnh kết quả để đăng story |
 | Hôm nay ăn chi? | `an-gi.html` | Máy quay chọn món, có món xứ Nghệ cho hôm nào nhớ nhà |
 | Góc game bàn trực | `game.html` | Bắt lươn xứ Nghệ + Giọng Nghệ tốc độ, có bảng xếp hạng tại bàn |
@@ -486,7 +486,19 @@ sắp xếp đơn vị hành chính năm 2025 — cách người Nghệ vẫn qu
 
 ---
 
-## 13. Nghệ Wiki — sổ tay tân sinh viên
+## 13. Nghệ Wiki — sổ tay tân sinh viên · TẠM NGƯNG
+
+> **Tạm ngưng từ 06/10/2026.** Toàn bộ file vẫn còn nguyên trong repo và
+> `wiki.html` vẫn mở được nếu gõ thẳng địa chỉ — chỉ gỡ đường dẫn tới nó khỏi
+> thanh điều hướng của `index.html`, `quiz.html`, khỏi thẻ trong mục *Sân chơi*
+> và khỏi chân trang `an-gi.html`, `game.html`.
+>
+> **Bật lại:** thêm `<a href="wiki.html">Nghệ Wiki</a>` vào `<nav class="menu">`
+> của `index.html` và `quiz.html`, thêm lại thẻ `<a class="sc the" href="wiki.html">`
+> ở đầu `.sc-luoi` trong mục `#san-choi`, và dòng tương tự vào `.ag-chan-link`
+> của `an-gi.html`, `game.html`. Hoặc gọn hơn: đảo ngược commit đã tắt nó.
+> Lưu ý nav đang có 5 mục, thêm Wiki vào là 6 — vẫn vừa, đã đo tới 940px.
+
 
 `wiki.html` có bốn mục: **Về quê · Ăn uống · Học tập · Chỗ ở**, điều hướng cố định bên
 trái. Mục đích kép: giúp thật cho tân sinh viên người Nghệ, và làm cửa kéo người lạ vào
@@ -529,7 +541,16 @@ Không đăng số điện thoại hay địa chỉ cá nhân của ai lên tran
 nghiệp và trang chính thức.
 
 
-## 14. Intro mở đầu trang chủ
+## 14. Intro mở đầu trang chủ · ĐANG TẮT
+
+> **Đang để tắt từ 06/10/2026** (`INTRO: 'tat'` trong `config.js`). Code và ảnh
+> vẫn còn nguyên, `intro.css` với `intro.js` vẫn được nạp nhưng thoát ra ngay,
+> và ảnh của cả hai bản đều không tải vì nằm trong `<template>`.
+>
+> **Bật lại:** đổi đúng một dòng `INTRO` thành `'b'` hoặc `'c'`. Xem thử trước
+> khi bật thì mở `xem-intro.html`, hoặc thêm `?intro=b` / `?intro=c` vào địa chỉ
+> trang chủ — hai đường này chạy được cả khi `INTRO` đang để `'tat'`.
+
 
 Vào `index.html` lần đầu trong một phiên sẽ thấy một đoạn mở đầu ngắn rồi mới tới hero.
 Có hai bản, chọn bằng **một dòng** `INTRO` trong `config.js`:
