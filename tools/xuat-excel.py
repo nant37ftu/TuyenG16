@@ -99,6 +99,19 @@ def doc_json(ten):
     return json.load(open(os.path.join(GOC, 'data', ten), encoding='utf-8'))
 
 
+def doc_json_neu_co(*duong_dan):
+    """Thử lần lượt vài chỗ, không có thì trả về None (không làm hỏng cả file Excel).
+
+    thanh-vien.json đi theo bản đồ người Nghệ: tính năng tạm ngưng nên file nằm
+    trong rieng-tu/ban-do/data/, không còn trong repo công khai.
+    """
+    for p in duong_dan:
+        p = os.path.join(GOC, p)
+        if os.path.isfile(p):
+            return json.load(open(p, encoding='utf-8'))
+    return None
+
+
 def bo_the(s):
     s = re.sub(r'<br\s*/?>', '\n', s)
     s = re.sub(r'<[^>]+>', '', s)
@@ -116,7 +129,10 @@ def doc_chu_html(ten_file):
         (r'<h3[^>]*>(.*?)</h3>', 'Tiêu đề nhỏ'),
         (r'<p class="dan-de"[^>]*>(.*?)</p>', 'Câu dẫn'),
     ]
-    noi_dung = open(os.path.join(GOC, ten_file), encoding='utf-8').read()
+    duong = os.path.join(GOC, ten_file)
+    if not os.path.isfile(duong):
+        return ra          # trang tạm ngưng (vd ban-do.html) thì bỏ qua, không lỗi
+    noi_dung = open(duong, encoding='utf-8').read()
     for so, dong in enumerate(noi_dung.split('\n'), 1):
         for bieu, loai in mau:
             for m in re.finditer(bieu, dong, flags=re.S):
@@ -205,7 +221,7 @@ def bang_khoa_gia_tri(wb, ten, ghi_chu, dong):
 
 # ---------------------------------------------------------------- cac trang
 
-def trang_huong_dan(wb, tv, mon, ten_sheet):
+def trang_huong_dan(wb, tv, mon, ten_sheet, ban_do_chay):
     ws = wb.create_sheet('Hướng dẫn', 0)
     ws.sheet_properties.tabColor = '333333'
     ws.column_dimensions['A'].width = 32
@@ -235,11 +251,17 @@ def trang_huong_dan(wb, tv, mon, ten_sheet):
     dong('Muốn thêm dòng mới', 'Thêm ở cuối sheet, cột Mã để trống, ghi chú "thêm mới".')
     dong('Xuống dòng trong 1 ô', 'Alt + Enter. Mỗi lần xuống dòng là một ý riêng (ví dụ cột Thành tích).')
     dong('')
-    dong('ƯU TIÊN LÀM TRƯỚC',
-         'Sheet "Bản đồ - Người" có ' + str(so_nguoi) + ' người nhưng cột Quê đang trống hết '
-         '(' + str(tv.get('da_biet_que', 0)) + '/' + str(so_nguoi) + ' người có quê), nên bản đồ trên web '
-         'đang trắng. Bấm vào ô ở cột Quê sẽ có danh sách ' + str(SO_HUYEN) + ' huyện để chọn.',
-         to=True, cao=48)
+    if so_nguoi and ban_do_chay:
+        dong('ƯU TIÊN LÀM TRƯỚC',
+             'Sheet "Bản đồ - Người" có ' + str(so_nguoi) + ' người nhưng cột Quê đang trống hết '
+             '(' + str(tv.get('da_biet_que', 0)) + '/' + str(so_nguoi) + ' người có quê), nên bản đồ trên web '
+             'đang trắng. Bấm vào ô ở cột Quê sẽ có danh sách ' + str(SO_HUYEN) + ' huyện để chọn.',
+             to=True, cao=48)
+    else:
+        dong('BẢN ĐỒ NGƯỜI NGHỆ',
+             'Tính năng đang tạm ngưng, trang bản đồ không còn trên web. Sheet "Bản đồ - Người" '
+             'chỉ để team chuẩn bị sẵn dữ liệu (nhất là cột Quê) cho lúc bật lại; '
+             'file gốc giữ offline trong rieng-tu/ban-do/.', to=True, cao=46)
     dong('Đừng đưa vào file này',
          'Số điện thoại, email, ngày sinh, mã sinh viên của bất kỳ ai. Web là trang công khai, '
          'chỉ nên nêu tên + chức vụ của người đã đồng ý.', cao=32)
@@ -347,7 +369,10 @@ def main():
 
     nd = doc_js('noi-dung.js', 'NOI_DUNG')
     ch = doc_js('config.js', 'CAU_HINH')
-    tv = doc_json('thanh-vien.json')
+    # Bản đồ tạm ngưng: file nằm ở rieng-tu/ban-do/data/. Không có cũng chạy được.
+    tv = doc_json_neu_co('data/thanh-vien.json',
+                         'rieng-tu/ban-do/data/thanh-vien.json') or {}
+    ban_do_chay = os.path.isfile(os.path.join(GOC, 'ban-do.html'))
     mon = doc_json('mon-an.json')
     huyen = doc_json('nghe-an.json')['units']
 
@@ -441,13 +466,14 @@ def main():
                        ('LINK_FORM_DU_PHONG', 'Google Form dự phòng (để trống = dùng form trên trang)',
                         ch.get('LINK_FORM_DU_PHONG', ''))])
 
-    # --- ban do + huyen
-    trang_ban_do(wb, tv)
-    to_sheet(wb, S_HUYEN,
-             'Danh sách ' + str(SO_HUYEN) + ' huyện/thị/thành vẽ trên bản đồ. Chỉ để tham chiếu, đừng đổi tên ở đây.',
-             [('Tên hiện trên bản đồ', 26), ('Tên đầy đủ', 30), ('Mã vùng', 20), (GHI_CHU, 26)],
-             [[h['name'], h.get('full', ''), h['id'], ''] for h in sorted(huyen, key=lambda x: x['name'])],
-             loc=False)
+    # --- ban do + huyen (bo qua khi tinh nang dang tam ngung)
+    if tv.get('nguoi'):
+        trang_ban_do(wb, tv)
+        to_sheet(wb, S_HUYEN,
+                 'Danh sách ' + str(SO_HUYEN) + ' huyện/thị/thành vẽ trên bản đồ. Chỉ để tham chiếu, đừng đổi tên ở đây.',
+                 [('Tên hiện trên bản đồ', 26), ('Tên đầy đủ', 30), ('Mã vùng', 20), (GHI_CHU, 26)],
+                 [[h['name'], h.get('full', ''), h['id'], ''] for h in sorted(huyen, key=lambda x: x['name'])],
+                 loc=False)
 
     # --- trac nghiem
     trang_trac_nghiem(wb)
@@ -481,7 +507,7 @@ def main():
              [['tu' + str(i + 1), a.replace("\\'", "'"), b.replace("\\'", "'"), c.replace("\\'", "'"), '']
               for i, (a, b, c) in enumerate(tu)])
 
-    trang_huong_dan(wb, tv, mon, [ws.title for ws in wb.worksheets])
+    trang_huong_dan(wb, tv, mon, [ws.title for ws in wb.worksheets], ban_do_chay)
     wb.active = 0
     wb.save(tuy.ra)
     so_dong = sum(ws.max_row - 2 for ws in wb.worksheets if ws.title != 'Hướng dẫn')

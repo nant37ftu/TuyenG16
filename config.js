@@ -13,7 +13,7 @@ window.CAU_HINH = {
   SUPABASE_URL: 'https://qiwfknocgwcptjmjdpmc.supabase.co',
   SUPABASE_ANON_KEY: 'sb_publishable_hifh_GhvmKJM35AMwCs2nA_-2lvSiLk',
   BANG_UNG_VIEN: 'g16_ung_vien',
-  BANG_BAN_DO_DANG_KY: 'ban_do_dang_ky',  // nơi nhận người tự thêm tên vào bản đồ
+  BANG_BAN_DO_DANG_KY: 'ban_do_dang_ky',  // bản đồ đang tạm ngưng, xem chú thích cuối file
 
   // --- Phương án dự phòng: nếu chưa kịp dựng Supabase, điền link Google Form ---
   LINK_FORM_DU_PHONG: '',
@@ -27,6 +27,7 @@ window.CAU_HINH = {
   EMAIL: 'nant.37ftu@gmail.com',
   HOTLINE: ''             // vd: '0912 345 678 (Ban Nhân sự)'
 
-  // Bản đồ người Nghệ tự đọc dữ liệu BTC sửa ở admin.html (bảng trang_du_lieu
-  // trên Supabase); chưa có thì lấy file data/thanh-vien.json. Không cần chỉnh gì.
+  // Bản đồ người Nghệ (ban-do.html + admin.html) TẠM NGƯNG từ 06/10/2026: file đã
+  // chuyển ra rieng-tu/ban-do/, không còn trên web. Hai dòng BANG_BAN_DO_DANG_KY và
+  // bảng Supabase vẫn giữ nguyên để bật lại cho nhanh — xem mục 5 trong README.
 };

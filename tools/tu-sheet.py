@@ -45,7 +45,10 @@ GOC = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 THU_MUC_CSV = os.path.join(GOC, 'rieng-tu', 'nhiem-ky')
 FILE_CHO_PHEP = os.path.join(GOC, 'rieng-tu', 'cho-phep-neu-ten.txt')
 FILE_QUE = os.path.join(GOC, 'rieng-tu', 'que.csv')
-FILE_RA = os.path.join(GOC, 'data', 'thanh-vien.json')
+# Bản đồ người Nghệ đang tạm ngưng (06/10/2026): toàn bộ file của tính năng nằm
+# trong rieng-tu/ban-do/, không còn trong repo công khai. Bật lại thì chép
+# rieng-tu/ban-do/*.html|js|css về thư mục gốc và file này về data/.
+FILE_RA = os.path.join(GOC, 'rieng-tu', 'ban-do', 'data', 'thanh-vien.json')
 
 # ---------------------------------------------------------------- tiện ích
 

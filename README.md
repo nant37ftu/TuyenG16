@@ -1,21 +1,21 @@
 # 37FTU — Bộ trang web của CLB
 
-Năm trang web tĩnh, không cần server, không tốn tiền hosting:
+Bốn trang web tĩnh, không cần server, không tốn tiền hosting:
 
 | Trang | File | Dùng để làm gì |
 |---|---|---|
 | Tuyển thành viên Gen 16 | `index.html` | Giới thiệu CLB, lộ trình tuyển, nhận đơn ứng tuyển |
-| Người Nghệ ở Ngoại thương | `ban-do.html` | Bản đồ 21 huyện — bấm vào quê là thấy những người đi trước cùng quê |
 | Trắc nghiệm hợp ban nào | `quiz.html` | Mini game lan toả, cho ra ảnh kết quả để đăng story |
 | Hôm nay ăn chi? | `an-gi.html` | Máy quay chọn món, có món xứ Nghệ cho hôm nào nhớ nhà |
 | Góc game bàn trực | `game.html` | Bắt lươn xứ Nghệ + Giọng Nghệ tốc độ, có bảng xếp hạng tại bàn |
 
-Thêm một trang cho BTC: **`admin.html`** — bảng sửa trực tiếp tên, quê, chức vụ, thành
-tích… của người hiện trên bản đồ, bấm **Lưu lên web** là trang đổi ngay (mục 5). Không có
-trong menu, phải đăng nhập tài khoản BTC mới lưu được.
+> **Bản đồ "Người Nghệ ở Ngoại thương" đang tạm ngưng** (từ 06/10/2026). Trang
+> `ban-do.html`, trang quản trị `admin.html` và file `data/thanh-vien.json` đã được
+> đưa ra khỏi repo công khai, vẫn giữ nguyên offline trong `rieng-tu/ban-do/`. Mục 5
+> giữ lại để biết đường bật lại — xem cách bật ở đầu mục đó.
 
-`index.html` là trang của **mùa tuyển**. Bốn trang còn lại sống độc lập, hết mùa
-tuyển vẫn dùng được — đặc biệt là `ban-do.html`, thứ đáng giữ qua nhiều nhiệm kỳ nhất.
+`index.html` là trang của **mùa tuyển**. Ba trang còn lại sống độc lập, hết mùa
+tuyển vẫn dùng được.
 
 ---
 
@@ -76,7 +76,7 @@ Chạy lại script là file được ghi đè bằng nội dung mới nhất, n
 ### Góp ý thẳng vào từng khối — thêm `?gopy=1`
 
 Không muốn tự sửa, chỉ muốn chỉ chỗ cho người sửa: thêm `?gopy=1` vào cuối địa chỉ trang
-bất kỳ, ví dụ `ban-do.html?gopy=1`. Rê chuột thấy từng khối nội dung viền nét đứt; bấm
+bất kỳ, ví dụ `quiz.html?gopy=1`. Rê chuột thấy từng khối nội dung viền nét đứt; bấm
 vào khối nào là mở ô ghi chú ngay dưới khối đó (`Ctrl+Enter` lưu, `Esc` đóng). Sang trang
 khác vẫn ở chế độ góp ý cho tới khi bấm **Tắt**.
 
@@ -149,7 +149,23 @@ Trang tự ghi nhớ nguồn và gửi kèm khi ứng viên nộp đơn. Hết m
 
 ---
 
-## 5. Người Nghệ ở Ngoại thương — bản đồ theo quê
+## 5. Người Nghệ ở Ngoại thương — bản đồ theo quê (TẠM NGƯNG)
+
+> **Tính năng này không còn trên web kể từ 06/10/2026.** Toàn bộ file nằm offline
+> trong `rieng-tu/ban-do/` (`.gitignore` chặn nên không lên GitHub):
+>
+> ```
+> rieng-tu/ban-do/ban-do.html  ban-do.js  ban-do.css
+>                 admin.html   admin.js   admin.css
+>                 data/thanh-vien.json
+> ```
+>
+> **Bật lại:** chép 6 file ở tầng trên về thư mục `web/`, chép `data/thanh-vien.json`
+> về `data/`, trả `FILE_RA` trong `tools/tu-sheet.py` về `data/thanh-vien.json`, rồi
+> thêm lại link sang `ban-do.html` trong `index.html`. Bảng Supabase (`trang_du_lieu`,
+> `trang_lich_su`, `ban_do_dang_ky`) vẫn còn nguyên, không xoá gì.
+>
+> Phần còn lại của mục này mô tả tính năng lúc đang chạy — đọc khi cần bật lại.
 
 Trang này không phải danh bạ tra cứu. Nó trả lời câu người Nghệ gặp nhau bao giờ cũng
 hỏi trước — *quê mô* — rồi đưa ra những người đi trước cùng quê, để một em tân sinh
@@ -374,15 +390,18 @@ nội bộ hay để tạm thứ gì không muốn công khai thì bỏ vào đ�
 - [ ] Tạo tài khoản BTC, thêm vào `btc_quan_tri`, tắt tự đăng ký (mục 5)
 - [ ] **Nộp thử một đơn** trên trang thật, kiểm tra thấy trong Table Editor rồi xoá đơn thử
 - [ ] Điền `FANPAGE`, `EMAIL`, `HOTLINE` trong `config.js`
-- [ ] **Gán quê cho từng người** — thêm cột QUÊ vào sheet rồi chạy
-      `python tools/tu-sheet.py`, hoặc gán trong `admin.html`. Chưa làm thì bản đồ trống (mục 5)
 - [ ] Xoá `rieng-tu/que-VI-DU-de-xem-thu.csv` nếu đã dùng nó để xem thử
-- [ ] Soát 18 tên bị trùng ở nhiều gen mà script báo ra
-- [ ] Hỏi từng người được nêu tên trên bản đồ xem có đồng ý hiện tên, thành tích, link Facebook không
 - [ ] Đặt `assets/qr.png` nếu định mang game ra bàn trực
 - [ ] Đổi ảnh trong `assets/img/` nếu muốn dùng ảnh mùa mới
 - [ ] Đọc lại toàn bộ chữ một lượt trên điện thoại
 - [ ] Hẹn một bạn trong Ban Truyền thông tiếp quản bộ này cho mùa G17
+
+Nếu bật lại bản đồ người Nghệ (mục 5) thì làm thêm:
+
+- [ ] **Gán quê cho từng người** — thêm cột QUÊ vào sheet rồi chạy
+      `python tools/tu-sheet.py`, hoặc gán trong `admin.html`. Chưa làm thì bản đồ trống
+- [ ] Soát 18 tên bị trùng ở nhiều gen mà script báo ra
+- [ ] Hỏi từng người được nêu tên trên bản đồ xem có đồng ý hiện tên, thành tích, link Facebook không
 
 ---
 
@@ -397,14 +416,15 @@ Nghị định 13/2023/NĐ-CP. Ba nguyên tắc:
    thôi là chưa đủ. Ai rời BTC thì xoá khỏi bảng đó. Không chuyển file CSV ứng viên ra ngoài Đội.
 3. Xong mùa tuyển thì xoá dữ liệu của ứng viên không trúng, hoặc hỏi lại nếu muốn giữ cho mùa sau.
 
-Tên người trên `ban-do.html` là chỗ dễ sai nhất vì nó **công khai theo thiết kế**. Đọc kỹ
-ba điều ở mục 5 trước khi đưa tên ai lên đó.
+Tên người trên `ban-do.html` là chỗ dễ sai nhất vì nó **công khai theo thiết kế**. Trang
+đó đang tạm ngưng nên hiện không có tên ai trên web; lúc bật lại, đọc kỹ ba điều ở mục 5
+trước khi đưa tên ai lên.
 
 ---
 
 ## 11. Hiệu ứng trang
 
-`hieu-ung.js` lo phần chuyển động cho `index.html` và `ban-do.html`: chữ và thẻ hiện dần
+`hieu-ung.js` lo phần chuyển động cho `index.html`: chữ và thẻ hiện dần
 khi cuộn tới, mấy con số ở dải thống kê đếm từ 0 lên, thanh trên cùng đổ bóng khi rời
 đỉnh trang, thẻ nhấc nhẹ khi rê chuột.
 
@@ -428,30 +448,27 @@ trang chạy y nguyên.
 ```
 web/
 ├── index.html          trang tuyển thành viên Gen 16
-├── ban-do.html         bản đồ người Nghệ theo quê
-├── admin.html          bảng sửa dữ liệu bản đồ, lưu thẳng lên web (BTC, mục 5)
 ├── quiz.html           trắc nghiệm hợp ban nào
 ├── an-gi.html          hôm nay ăn chi
 ├── game.html           góc game bàn trực
 ├── config.js           ⚙ thiết lập (BTC sửa)
 ├── noi-dung.js         ✍ toàn bộ chữ trang tuyển (BTC sửa)
 ├── app.js              xử lý form, đếm ngược, đo nguồn truy cập
-├── ban-do.js           vẽ bản đồ, thẻ người trong huyện, form thêm tên
-├── admin.js            bảng sửa, đăng nhập, lưu lên Supabase, lịch sử
 ├── gop-y.js            chế độ góp ý ?gopy=1 (mục 2)
 ├── quiz.js             câu hỏi + vẽ ảnh kết quả
 ├── an-gi.js            máy quay chọn món
 ├── game.js             hai trò chơi + bảng xếp hạng
 ├── hieu-ung.js         hiện dần khi cuộn, số đếm lên (xem mục 11)
 ├── styles.css          giao diện chung
-├── ban-do.css, admin.css, quiz.css, an-gi.css, game.css
-├── tools/tu-sheet.py   đổi Google Sheet -> data/thanh-vien.json (mục 5)
+├── quiz.css, an-gi.css, game.css
+├── tools/tu-sheet.py   đổi Google Sheet -> thanh-vien.json (mục 5, đang tạm ngưng)
 ├── tools/xuat-excel.py xuất toàn bộ nội dung ra 1 file Excel cho team sửa (mục 2)
 ├── data/
-│   ├── nghe-an.json    ranh giới 21 huyện (không cần sửa)
-│   ├── thanh-vien.json bản dự phòng khi Supabase lỗi; đầu ra của tools/tu-sheet.py
+│   ├── nghe-an.json    ranh giới 21 huyện — danh sách quê trong đơn lấy từ đây
 │   └── mon-an.json     danh sách món ăn (BTC thêm bớt)
-├── rieng-tu/           CSV gốc từ sheet — .gitignore chặn, KHÔNG lên GitHub
+├── rieng-tu/           .gitignore chặn, KHÔNG lên GitHub
+│   ├── ban-do/         cả tính năng bản đồ đang tạm ngưng (mục 5)
+│   └── nhiem-ky/       CSV gốc từ Google Sheet
 ├── sql/schema.sql      chạy trong Supabase (chạy lại được, không mất dữ liệu)
 └── assets/             logo, ảnh, và qr.png nếu có
 ```
