@@ -119,9 +119,18 @@ section{padding:35px 0}
   color:var(--xanh-la);padding:3px 10px;border-radius:99px;border:1px solid var(--vien-dam);
   letter-spacing:.02em;font-weight:700;
 }
-.menu{display:none;gap:24px;margin-left:auto;font-size:.95rem;font-weight:600}
-.menu a{text-decoration:none;color:var(--muc-nhat);transition:color .15s ease}
+/* Khoảng cách và cỡ chữ co theo bề ngang: màn hình hẹp vẫn đủ chỗ cho cả hàng.
+   white-space:nowrap để không bao giờ gãy một mục thành hai dòng. */
+.menu{
+  display:none;margin-left:auto;font-weight:600;
+  gap:clamp(13px,1.7vw,24px);font-size:clamp(.86rem,1.05vw,.95rem);
+}
+.menu a{text-decoration:none;color:var(--muc-nhat);transition:color .15s ease;white-space:nowrap}
 .menu a:hover{color:var(--xanh-la)}
+.menu a.dang-xem{color:var(--xanh-la);text-decoration:underline;text-underline-offset:5px}
+.hieu-ten,.hieu-chu-de{white-space:nowrap}
+/* Chip "Nghệ Sĩ Nhí" nhường chỗ cho menu khi màn hình chưa đủ rộng */
+@media(max-width:1130px){.hieu-chu-de{display:none}}
 .dinh .nut{padding:10px 20px;font-size:.92rem;margin-left:auto}
 .menu + .nut{margin-left:0}
 .nut-dinh-cta{
