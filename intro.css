@@ -213,7 +213,7 @@ html.intro-tan .intro {
 .intro-c-ten i {
   font-style: normal;
   color: var(--cam);
-  animation-delay: .52s;
+  animation-delay: .46s;
   margin-left: -.12em;
 }
 @keyframes intro-c-tieng {
@@ -228,7 +228,9 @@ html.intro-tan .intro {
   color: rgba(255,255,255,.72);
   margin: 14px 0 0;
   opacity: 0;
-  animation: intro-c-phu .5s ease .62s forwards;
+  /* Lên sớm cho kịp đọc: cả intro chỉ dài 1,25 giây, để muộn hơn là vừa hiện
+     xong đã tan mất. */
+  animation: intro-c-phu .36s ease .56s forwards;
 }
 @keyframes intro-c-phu {
   from { opacity: 0; letter-spacing: .3em; }

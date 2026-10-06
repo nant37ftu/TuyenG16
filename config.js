@@ -27,7 +27,7 @@ window.CAU_HINH = {
   // 'c'   -> dựng chữ: "Nghệ Sĩ Nhí" bật ra từng tiếng
   // 'tat' -> bỏ hẳn intro
   // Xem thử nhanh không cần sửa file: thêm ?intro=b hoặc ?intro=c vào địa chỉ.
-  INTRO: 'b',
+  INTRO: 'c',
 
   // --- Liên hệ ---
   FANPAGE: 'https://www.facebook.com/svna.ftu',
