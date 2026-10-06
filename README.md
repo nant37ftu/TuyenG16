@@ -456,7 +456,7 @@ web/
 ├── config.js           ⚙ thiết lập (BTC sửa)
 ├── noi-dung.js         ✍ toàn bộ chữ trang tuyển (BTC sửa)
 ├── app.js              xử lý form, đếm ngược, đo nguồn truy cập
-├── wiki.js             Nghệ Wiki: vẽ tuyến xe, lọc, tìm kiếm, điều hướng trái
+├── wiki.js             Nghệ Wiki: đổi mục, vẽ tuyến xe, lọc, tìm kiếm
 ├── gop-y.js            chế độ góp ý ?gopy=1 (mục 2)
 ├── quiz.js             câu hỏi + vẽ ảnh kết quả
 ├── an-gi.js            máy quay chọn món
@@ -485,9 +485,25 @@ sắp xếp đơn vị hành chính năm 2025 — cách người Nghệ vẫn qu
 
 ## 13. Nghệ Wiki — sổ tay tân sinh viên
 
-`wiki.html` là một trang dài, điều hướng cố định bên trái, bốn mục: **Về quê · Ăn uống ·
-Học tập · Chỗ ở**. Mục đích kép: giúp thật cho tân sinh viên người Nghệ, và làm cửa kéo
-người lạ vào trang tuyển — cuối trang luôn có khối đếm ngược và nút nộp đơn.
+`wiki.html` có bốn mục: **Về quê · Ăn uống · Học tập · Chỗ ở**, điều hướng cố định bên
+trái. Mục đích kép: giúp thật cho tân sinh viên người Nghệ, và làm cửa kéo người lạ vào
+trang tuyển — cuối trang luôn có khối đếm ngược và nút nộp đơn.
+
+**Mỗi lần chỉ mở một mục.** `wiki.js` ẩn/hiện các `<section class="wk-muc">` theo mục đang
+chọn, ghi `#ve-que`, `#an-uong`… vào thanh địa chỉ bằng `replaceState` nên chia sẻ link
+thẳng tới một mục được. Ba điểm phải nhớ khi sửa:
+
+- Thêm mục mới thì thêm cả `<a data-muc="…" data-ten="…">` trong `#wk-menu` và
+  `<section class="wk-muc" id="…" hidden>` — thiếu `hidden` là mục đó hiện cùng mục đầu.
+- Ô tìm kiếm mở tạm tất cả các mục để tìm được xuyên mục, xoá ô tìm thì quay lại đúng mục
+  đang xem. Khối nào muốn tìm ra được thì phải có thuộc tính `data-tim` (chữ thường, không dấu
+  cũng được, cứ nhét từ khoá vào).
+- Mục bị `hidden` lúc tải nên trình duyệt chưa nhảy tới `#...` được; JS mở mục ra thì nó mới
+  nhảy. Vì vậy `chonMuc()` kéo lại đầu trang thêm vài nhịp — đừng bỏ mấy dòng `scrollTo` đó.
+
+Máy quay món dùng chung `an-gi.css`, mà file đó viết cho trang nền tối (chữ
+`rgba(255,255,255,…)`). Nên khối `.wk-angi` bọc nó **bắt buộc giữ nền tối** — đổi sang nền
+sáng là chip lọc với phụ đề tàng hình ngay.
 
 **Về quê** đọc `data/wiki-xe.json`. Mỗi tuyến một khối, BTC thêm bớt trong file đó hoặc
 sửa trong sheet *Nghệ Wiki - Tuyến xe* của file Excel (mục 2). Ba quy tắc bắt buộc:

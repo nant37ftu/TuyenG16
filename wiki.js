@@ -1,5 +1,5 @@
 /* ============================================================
-   NGHỆ WIKI — vẽ nội dung, lọc, tìm kiếm, điều hướng bên trái
+   NGHỆ WIKI — mỗi lần mở đúng một mục, bấm bên trái thì đổi.
    Dữ liệu tuyến xe nằm ở data/wiki-xe.json (BTC sửa file đó).
    Món ăn dùng chung window.DU_LIEU_MON_AN của trang "Ăn chi".
    ============================================================ */
@@ -49,8 +49,8 @@
 
   function theTuyen(t) {
     var cho = t.da_kiem
-      ? '<span class="wk-cho wk-cho-kiem">đã kiểm</span>'
-      : '<span class="wk-cho wk-cho-chua">chưa kiểm xong</span>';
+      ? '<span class="wk-cho wk-cho-kiem">anh chị đã kiểm</span>'
+      : '<span class="wk-cho">chưa kiểm xong</span>';
 
     var so = [
       ['Loại xe', t.loai_xe],
@@ -70,7 +70,7 @@
         (t.web ? '<a class="nut nut-chinh" href="' + an(t.web) + '" target="_blank" rel="noopener">Đặt vé ở ' + an(t.web_nhan || t.web) + ' ↗</a>' : '') +
         (t.hotline ? '<a class="nut nut-vien" href="tel:' + an(String(t.hotline).replace(/\s/g, '')) + '">Gọi ' + an(t.hotline) + '</a>' : '') +
       '</div>' +
-      (t.nguon ? '<p class="wk-xe-nguon">Nguồn: ' + an(t.nguon) + '</p>' : '') +
+      (t.nguon ? '<p class="wk-xe-nguon">Anh chị xem ở: ' + an(t.nguon) + '</p>' : '') +
     '</article>';
   }
 
@@ -83,7 +83,7 @@
     hop.innerHTML = ds.length
       ? ds.map(theTuyen).join('')
       : '<p class="wk-trong-rong">Chưa có tuyến nào về ' + an(XE.loc) +
-        ' trong sổ tay. Em biết nhà xe nào thì nhắn fanpage giúp anh chị nhé.</p>';
+        ' trong sổ tay. Em biết nhà xe mô thì nhắn fanpage giúp anh chị nha.</p>';
   }
 
   function veChipDen() {
@@ -130,15 +130,15 @@
 
         var cn = $('#wk-cap-nhat');
         if (cn && d.cap_nhat) {
-          cn.textContent = 'Mục “Về quê” cập nhật ngày ' +
-            d.cap_nhat.split('-').reverse().join('/') + '. Thấy sai thì nhắn anh chị sửa ngay.';
+          cn.textContent = 'Mục “Về quê” anh chị xem lại lần cuối ngày ' +
+            d.cap_nhat.split('-').reverse().join('/') + '. Thấy chỗ mô sai thì nhắn, anh chị sửa ngay.';
         }
       })
       .catch(function () {
         var hop = $('#wk-bang-xe');
         if (hop) {
           hop.innerHTML = '<p class="wk-trong-rong">Chưa tải được danh sách tuyến xe. ' +
-            'Em thử tải lại trang giúp anh chị nhé.</p>';
+            'Em thử tải lại trang giúp anh chị nha.</p>';
         }
       });
   }
@@ -157,7 +157,7 @@
           (m.mo_ta ? '<p class="wk-mon-mota">' + an(m.mo_ta) + '</p>' : '') +
           (cho
             ? '<p class="wk-mon-cho">📍 ' + an(cho) + '</p>'
-            : '<p class="wk-mon-cho trong">chưa có quán, em biết chỗ ngon thì mách anh chị</p>') +
+            : '<p class="wk-mon-cho trong">chưa có quán — em biết chỗ ngon thì mách anh chị với</p>') +
         '</div>';
       }).join('');
     }
@@ -169,50 +169,95 @@
     }
   }
 
-  /* ---------------- Điều hướng bên trái ---------------- */
-  function theoDoiMuc() {
-    var lien = [].slice.call(document.querySelectorAll('#wk-menu a'));
-    var muc = lien.map(function (a) { return document.getElementById(a.getAttribute('data-muc')); })
-                  .filter(Boolean);
-    if (!muc.length) return;
+  /* ---------------- Mỗi lần một mục ---------------- */
+  var LIEN = [], MUC = [], dang_tim = false;
 
-    // Tính theo vị trí cuộn chứ không dùng IntersectionObserver: máy nào bật
-    // "giảm chuyển động" hoặc treo vòng lặp vẽ thì observer không bắn, mục sẽ
-    // không bao giờ sáng lên.
-    var dang_cho = false;
+  function lenDau() {
+    // đổi mục thì kéo hẳn lên đầu trang, khỏi cắt ngang tiêu đề
+    if (window.scrollY > 0) window.scrollTo(0, 0);
+  }
 
-    function cham() {
-      dang_cho = false;
-      var moc = window.scrollY + 140;        // vạch ngắm ngay dưới thanh đầu trang
-      var chon = muc[0];
-      muc.forEach(function (m) {
-        if (m.getBoundingClientRect().top + window.scrollY <= moc) chon = m;
-      });
-      lien.forEach(function (a) {
-        a.classList.toggle('dang-o-day', a.getAttribute('data-muc') === chon.id);
-      });
+  function veMucTiep(id) {
+    var o = $('#wk-tiep');
+    if (!o) return;
+    var i = MUC.indexOf(id);
+    var sau = i >= 0 && i < MUC.length - 1 ? MUC[i + 1] : null;
+    if (!sau) { o.hidden = true; return; }
+    var ten = LIEN[i + 1] ? LIEN[i + 1].getAttribute('data-ten') : sau;
+    o.hidden = false;
+    o.innerHTML = '<span>Đọc tiếp cho đủ bộ</span>' +
+      '<a href="#' + sau + '" data-muc="' + sau + '">' + an(ten) + ' →</a>';
+    o.querySelector('a').addEventListener('click', function (e) {
+      e.preventDefault();
+      moMuc(sau, true);
+    });
+  }
+
+  function moMuc(id, cuon) {
+    if (MUC.indexOf(id) < 0) id = MUC[0];
+
+    MUC.forEach(function (m) {
+      var el = document.getElementById(m);
+      if (el) el.hidden = (m !== id);
+    });
+    LIEN.forEach(function (a) {
+      var o = a.getAttribute('data-muc') === id;
+      a.classList.toggle('dang-o-day', o);
+      if (o) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+    });
+
+    veMucTiep(id);
+
+    if (history.replaceState) {
+      history.replaceState(null, '', '#' + id);
+    } else {
+      location.hash = id;
     }
 
-    function hen() {
-      if (dang_cho) return;
-      dang_cho = true;
-      setTimeout(cham, 80);
-    }
+    if (cuon) lenDau();
+  }
 
-    window.addEventListener('scroll', hen, { passive: true });
-    window.addEventListener('resize', hen);
+  function chonMuc() {
+    LIEN = [].slice.call(document.querySelectorAll('#wk-menu a'));
+    MUC = LIEN.map(function (a) { return a.getAttribute('data-muc'); })
+              .filter(function (m) { return document.getElementById(m); });
+    if (!MUC.length) return;
 
-    // Bấm vào mục thì sáng ngay, khỏi chờ cuộn xong
-    lien.forEach(function (a) {
-      a.addEventListener('click', function () {
-        lien.forEach(function (b) { b.classList.toggle('dang-o-day', b === a); });
+    LIEN.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var o = $('#wk-o-tim');
+        if (o && o.value) { o.value = ''; thoiTim(); }
+        moMuc(a.getAttribute('data-muc'), true);
       });
     });
 
-    cham();
+    window.addEventListener('hashchange', function () {
+      if (dang_tim) return;
+      moMuc((location.hash || '').slice(1), true);
+    });
+
+    // vào trang (kể cả link chia sẻ kèm #cho-o) thì luôn bắt đầu từ đầu trang,
+    // để em thấy bìa rồi mới tới mục, khỏi bị trình duyệt nhảy lung tung
+    // Mục bị ẩn lúc tải nên trình duyệt chưa nhảy tới #... được; khi JS mở mục
+    // ra thì nó mới nhảy, nên phải kéo lại đầu trang thêm vài nhịp nữa.
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    moMuc((location.hash || '').slice(1), false);
+    window.scrollTo(0, 0);
+    setTimeout(function () { window.scrollTo(0, 0); }, 0);
+    setTimeout(function () { window.scrollTo(0, 0); }, 150);
   }
 
-  /* ---------------- Tìm trong wiki ---------------- */
+  /* ---------------- Tìm trong cả sổ tay ---------------- */
+  function thoiTim() {
+    dang_tim = false;
+    document.querySelectorAll('.wk-an-tim').forEach(function (k) { k.classList.remove('wk-an-tim'); });
+    var bao = $('#wk-bao-tim'); if (bao) bao.remove();
+    var khong = $('#wk-khong-thay'); if (khong) khong.remove();
+    var tiep = $('#wk-tiep'); if (tiep) tiep.hidden = false;
+    moMuc((location.hash || '').slice(1), false);
+  }
+
   function tim() {
     var o = $('#wk-o-tim');
     if (!o) return;
@@ -222,18 +267,19 @@
       clearTimeout(hen);
       hen = setTimeout(function () {
         var tu = o.value.trim().toLowerCase();
-        var khoi = [].slice.call(document.querySelectorAll('[data-tim]'));
 
-        if (!tu) {
-          khoi.forEach(function (k) { k.classList.remove('wk-an-tim'); });
-          document.querySelectorAll('.wk-muc').forEach(function (m) { m.classList.remove('wk-an-tim'); });
-          var bao = $('#wk-khong-thay');
-          if (bao) bao.remove();
-          return;
-        }
+        if (!tu) { thoiTim(); return; }
+
+        // đang tìm thì mở hết các mục ra, không thì tìm được mà không thấy
+        dang_tim = true;
+        MUC.forEach(function (m) {
+          var el = document.getElementById(m);
+          if (el) el.hidden = false;
+        });
+        var tiep = $('#wk-tiep'); if (tiep) tiep.hidden = true;
 
         var con = 0;
-        khoi.forEach(function (k) {
+        document.querySelectorAll('[data-tim]').forEach(function (k) {
           var hop = k.getAttribute('data-tim').indexOf(tu) >= 0;
           k.classList.toggle('wk-an-tim', !hop);
           if (hop) con++;
@@ -241,9 +287,25 @@
 
         // mục nào không còn khối nào khớp thì ẩn luôn cho đỡ rối
         document.querySelectorAll('.wk-muc').forEach(function (m) {
-          var co = m.querySelectorAll('[data-tim]:not(.wk-an-tim)').length;
           var coKhoi = m.querySelectorAll('[data-tim]').length;
-          m.classList.toggle('wk-an-tim', coKhoi > 0 && co === 0);
+          var conLai = m.querySelectorAll('[data-tim]:not(.wk-an-tim)').length;
+          m.classList.toggle('wk-an-tim', coKhoi > 0 && conLai === 0);
+        });
+
+        var bao = $('#wk-bao-tim');
+        if (!bao) {
+          bao = document.createElement('div');
+          bao.id = 'wk-bao-tim';
+          bao.className = 'wk-bao-tim';
+          $('#wk-chinh').prepend(bao);
+        }
+        bao.innerHTML = '<span></span><button type="button">Xem lại cả sổ tay</button>';
+        bao.querySelector('span').textContent = con
+          ? 'Đang tìm “' + o.value.trim() + '” trong cả sổ tay — thấy ' + con + ' chỗ.'
+          : 'Đang tìm “' + o.value.trim() + '” trong cả sổ tay.';
+        bao.querySelector('button').addEventListener('click', function () {
+          o.value = '';
+          thoiTim();
         });
 
         var cu = $('#wk-khong-thay');
@@ -252,9 +314,9 @@
           var p = document.createElement('p');
           p.id = 'wk-khong-thay';
           p.className = 'wk-khong-thay';
-          p.textContent = 'Không thấy “' + o.value.trim() + '” trong sổ tay. ' +
-            'Có thể anh chị chưa viết tới — nhắn fanpage để anh chị bổ sung nhé.';
-          $('#wk-chinh').prepend(p);
+          p.textContent = 'Chưa thấy “' + o.value.trim() + '” trong sổ tay. ' +
+            'Chắc anh chị chưa viết tới — em nhắn fanpage một tiếng, anh chị bổ sung nha.';
+          bao.after(p);
         }
       }, 140);
     });
@@ -264,7 +326,7 @@
     demNguoc();
     napXe();
     veMonQue();
-    theoDoiMuc();
+    chonMuc();
     tim();
   });
 })();
