@@ -282,6 +282,7 @@ def trang_huong_dan(wb, tv, mon, ten_sheet, ban_do_chay):
         'Cấu hình': 'Hạn nộp đơn, fanpage, email, hotline',
         'Bản đồ - Người': str(so_nguoi) + ' người hiện trên bản đồ — quan trọng nhất',
         S_HUYEN: 'Danh sách ' + str(SO_HUYEN) + ' huyện/thị/thành, chỉ để tham chiếu',
+        'Nghệ Wiki - Tuyến xe': 'Nhà xe/tàu về Nghệ An — mục cần team điền nhất',
         'Trắc nghiệm': '10 câu "Em hợp ban nào" + điểm từng đáp án',
         'Món ăn': str(len(mon.get('mon', []))) + ' món của trang "Hôm nay ăn chi"',
         'Lý do ăn': 'Câu trả lời vui khi quay ra món',
@@ -389,7 +390,7 @@ def main():
     # --- chu trong HTML
     dong = []
     ten_trang = {'index.html': 'Trang chủ', 'ban-do.html': 'Bản đồ', 'quiz.html': 'Trắc nghiệm',
-                 'an-gi.html': 'Ăn chi', 'game.html': 'Game'}
+                 'an-gi.html': 'Ăn chi', 'game.html': 'Game', 'wiki.html': 'Nghệ Wiki'}
     for f, nhan in ten_trang.items():
         for ma, loai, chu in doc_chu_html(f):
             dong.append([ma, nhan, loai, chu, ''])
@@ -473,6 +474,28 @@ def main():
                  'Danh sách ' + str(SO_HUYEN) + ' huyện/thị/thành vẽ trên bản đồ. Chỉ để tham chiếu, đừng đổi tên ở đây.',
                  [('Tên hiện trên bản đồ', 26), ('Tên đầy đủ', 30), ('Mã vùng', 20), (GHI_CHU, 26)],
                  [[h['name'], h.get('full', ''), h['id'], ''] for h in sorted(huyen, key=lambda x: x['name'])],
+                 loc=False)
+
+    # --- tuyen xe cua Nghe Wiki
+    xe = doc_json_neu_co('data/wiki-xe.json')
+    if xe:
+        ten_kieu_xe = {'xe': 'Xe khách', 'tau': 'Tàu hoả', 'may_bay': 'Máy bay'}
+        to_sheet(wb, 'Nghệ Wiki - Tuyến xe',
+                 'Mục "Về quê" trong Nghệ Wiki. CHỈ đánh dấu x ở cột "Đã kiểm" khi tự mình mở trang chính thức '
+                 'hoặc gọi tổng đài xác nhận, và ghi rõ nguồn. Giá luôn là giá tham khảo. '
+                 'Tuyệt đối không dẫn link sang đại lý không rõ nguồn gốc.',
+                 [('Tên nhà xe / tuyến', 28), ('Loại', 12), ('Về đâu (cách nhau dấu phẩy)', 24),
+                  ('Loại xe', 20), ('Giá tham khảo', 20), ('Đi mất', 14), ('Tổng đài', 16),
+                  ('Trang chính thức', 28), ('CLB nói gì', 30), ('Ghi chú', 36),
+                  ('Cảnh báo', 30), ('Nguồn + ngày tra', 30), ('Đã kiểm (x)', 10), (GHI_CHU, 22)],
+                 [[t.get('ten', ''), ten_kieu_xe.get(t.get('kieu'), t.get('kieu', '')),
+                   ', '.join(t.get('den') or []), t.get('loai_xe', ''), t.get('gia', ''),
+                   t.get('thoi_gian', ''), t.get('hotline', ''), t.get('web', ''),
+                   t.get('danh_gia', ''), t.get('ghi_chu', ''), t.get('canh_bao', ''),
+                   t.get('nguon', ''), 'x' if t.get('da_kiem') else '', '']
+                  for t in (xe.get('tuyen') or [])] +
+                 [[x, '', '', '', '', '', '', '', '', '', '', '', '', 'đang bổ sung — chưa kiểm chứng']
+                  for x in (xe.get('dang_bo_sung') or [])],
                  loc=False)
 
     # --- trac nghiem

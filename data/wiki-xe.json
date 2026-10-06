@@ -1,0 +1,66 @@
+{
+  "_doc": "Tuyến xe/tàu Hà Nội <-> Nghệ An cho mục 'Về quê' của Nghệ Wiki. QUY TẮC: chỉ đặt da_kiem = true khi đã tự mình mở trang chính thức hoặc gọi tổng đài kiểm chứng, và ghi rõ nguon + cap_nhat. Giá vé thay đổi theo mùa và ngày lễ nên luôn ghi là giá tham khảo. KHÔNG dẫn link sang trang trung gian/đại lý không rõ nguồn gốc — có rất nhiều trang nhái tên nhà xe.",
+  "cap_nhat": "2026-10-06",
+  "tuyen": [
+    {
+      "ten": "Nhà xe Văn Minh",
+      "kieu": "xe",
+      "den": ["Vinh", "Nghệ An", "Hà Tĩnh"],
+      "loai_xe": "Giường nằm, limousine",
+      "gia": "350.000 – 540.000đ",
+      "thoi_gian": "khoảng 5 giờ 30",
+      "quang_duong": "289 km",
+      "hotline": "1900 6467",
+      "web": "https://vanminh76.vn",
+      "web_nhan": "vanminh76.vn",
+      "danh_gia": "",
+      "ghi_chu": "Có đặt vé trên web và trên app Văn Minh. Nhà xe có hơn 40 văn phòng ở Nghệ An, Hà Tĩnh, Thanh Hoá, Hà Nội.",
+      "canh_bao": "Nhiều trang khác cũng để tên Văn Minh nhưng là đại lý, không phải nhà xe. Đặt ở đúng vanminh76.vn hoặc gọi tổng đài.",
+      "nguon": "Trang chính thức vanminh76.vn, tra ngày 06/10/2026",
+      "da_kiem": true
+    },
+    {
+      "ten": "Tàu hoả — Ga Hà Nội → Ga Vinh",
+      "kieu": "tau",
+      "den": ["Vinh", "Nghệ An"],
+      "loai_xe": "Ghế mềm, giường nằm (các tàu SE)",
+      "gia": "tra trực tiếp trên dsvn.vn, đổi theo tàu và loại chỗ",
+      "thoi_gian": "tra trên dsvn.vn",
+      "quang_duong": "",
+      "hotline": "",
+      "web": "https://dsvn.vn",
+      "web_nhan": "dsvn.vn — Đường sắt Việt Nam",
+      "danh_gia": "",
+      "ghi_chu": "Trang bán vé chính thức của Tổng công ty Đường sắt Việt Nam, có app iOS/Android, thanh toán và trả vé online. Hợp với ai say xe, và dịp lễ thường dễ mua hơn xe khách.",
+      "canh_bao": "Chỉ mua ở dsvn.vn hoặc app chính thức. Rất nhiều trang đặt tên na ná 'vé tàu đường sắt' là đại lý ăn chênh.",
+      "nguon": "Trang chính thức dsvn.vn, tra ngày 06/10/2026",
+      "da_kiem": true
+    },
+    {
+      "ten": "FUTA Bus Lines (Phương Trang)",
+      "kieu": "xe",
+      "den": ["Nghệ An"],
+      "loai_xe": "Giường nằm",
+      "gia": "",
+      "thoi_gian": "",
+      "quang_duong": "",
+      "hotline": "",
+      "web": "https://futabus.vn",
+      "web_nhan": "futabus.vn",
+      "danh_gia": "",
+      "ghi_chu": "Trang chính thức có đặt vé online. Cần tra mục Lịch trình xem tuyến Hà Nội – Nghệ An có chạy hôm em cần không.",
+      "canh_bao": "",
+      "nguon": "Trang chính thức futabus.vn, tra ngày 06/10/2026 — chưa xác nhận lịch chạy tuyến Nghệ An",
+      "da_kiem": false
+    }
+  ],
+  "dang_bo_sung": [
+    "FUTA Hà Sơn", "Sao Nghệ", "Hồng Vinh", "Nam Quỳnh Anh",
+    "Phương Oanh (tuyến Yên Thành – Đô Lương)", "Hiếu Viện"
+  ],
+  "ben_xe": [
+    { "ten": "Bến xe Nước Ngầm", "ghi_chu": "Bến hay có xe đi Nghệ An nhất" },
+    { "ten": "Bến xe Giáp Bát", "ghi_chu": "" },
+    { "ten": "Bến xe Mỹ Đình", "ghi_chu": "Gần Ngoại thương hơn, nhiều nhà xe đón ở đây" }
+  ]
+}

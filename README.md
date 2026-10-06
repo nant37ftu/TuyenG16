@@ -1,10 +1,11 @@
 # 37FTU — Bộ trang web của CLB
 
-Bốn trang web tĩnh, không cần server, không tốn tiền hosting:
+Năm trang web tĩnh, không cần server, không tốn tiền hosting:
 
 | Trang | File | Dùng để làm gì |
 |---|---|---|
 | Tuyển thành viên Gen 16 | `index.html` | Giới thiệu CLB, lộ trình tuyển, nhận đơn ứng tuyển |
+| Nghệ Wiki | `wiki.html` | Sổ tay tân sinh viên người Nghệ: xe về quê, ăn uống, học tập, chỗ ở (mục 13) |
 | Trắc nghiệm hợp ban nào | `quiz.html` | Mini game lan toả, cho ra ảnh kết quả để đăng story |
 | Hôm nay ăn chi? | `an-gi.html` | Máy quay chọn món, có món xứ Nghệ cho hôm nào nhớ nhà |
 | Góc game bàn trực | `game.html` | Bắt lươn xứ Nghệ + Giọng Nghệ tốc độ, có bảng xếp hạng tại bàn |
@@ -448,23 +449,26 @@ trang chạy y nguyên.
 ```
 web/
 ├── index.html          trang tuyển thành viên Gen 16
+├── wiki.html           Nghệ Wiki — sổ tay tân sinh viên (mục 13)
 ├── quiz.html           trắc nghiệm hợp ban nào
 ├── an-gi.html          hôm nay ăn chi
 ├── game.html           góc game bàn trực
 ├── config.js           ⚙ thiết lập (BTC sửa)
 ├── noi-dung.js         ✍ toàn bộ chữ trang tuyển (BTC sửa)
 ├── app.js              xử lý form, đếm ngược, đo nguồn truy cập
+├── wiki.js             Nghệ Wiki: vẽ tuyến xe, lọc, tìm kiếm, điều hướng trái
 ├── gop-y.js            chế độ góp ý ?gopy=1 (mục 2)
 ├── quiz.js             câu hỏi + vẽ ảnh kết quả
 ├── an-gi.js            máy quay chọn món
 ├── game.js             hai trò chơi + bảng xếp hạng
 ├── hieu-ung.js         hiện dần khi cuộn, số đếm lên (xem mục 11)
 ├── styles.css          giao diện chung
-├── quiz.css, an-gi.css, game.css
+├── wiki.css, quiz.css, an-gi.css, game.css
 ├── tools/tu-sheet.py   đổi Google Sheet -> thanh-vien.json (mục 5, đang tạm ngưng)
 ├── tools/xuat-excel.py xuất toàn bộ nội dung ra 1 file Excel cho team sửa (mục 2)
 ├── data/
 │   ├── nghe-an.json    ranh giới 21 huyện — danh sách quê trong đơn lấy từ đây
+│   ├── wiki-xe.json    tuyến xe/tàu về Nghệ An cho Nghệ Wiki (mục 13)
 │   └── mon-an.json     danh sách món ăn (BTC thêm bớt)
 ├── rieng-tu/           .gitignore chặn, KHÔNG lên GitHub
 │   ├── ban-do/         cả tính năng bản đồ đang tạm ngưng (mục 5)
@@ -475,3 +479,32 @@ web/
 
 Nguồn ranh giới hành chính: bộ dữ liệu mở dvhcvn, theo 21 huyện/thành/thị trước đợt
 sắp xếp đơn vị hành chính năm 2025 — cách người Nghệ vẫn quen gọi tên quê mình.
+
+
+---
+
+## 13. Nghệ Wiki — sổ tay tân sinh viên
+
+`wiki.html` là một trang dài, điều hướng cố định bên trái, bốn mục: **Về quê · Ăn uống ·
+Học tập · Chỗ ở**. Mục đích kép: giúp thật cho tân sinh viên người Nghệ, và làm cửa kéo
+người lạ vào trang tuyển — cuối trang luôn có khối đếm ngược và nút nộp đơn.
+
+**Về quê** đọc `data/wiki-xe.json`. Mỗi tuyến một khối, BTC thêm bớt trong file đó hoặc
+sửa trong sheet *Nghệ Wiki - Tuyến xe* của file Excel (mục 2). Ba quy tắc bắt buộc:
+
+1. Chỉ đặt `da_kiem: true` khi **tự mình** mở trang chính thức hoặc gọi tổng đài xác nhận,
+   và ghi `nguon` kèm ngày tra. Thẻ nào chưa kiểm xong trang sẽ gắn nhãn *chưa kiểm xong*.
+2. `web` chỉ trỏ tới **trang chính thức của nhà xe**. Tuyến Hà Nội – Nghệ An có rất nhiều
+   trang nhái tên nhà xe để ăn hoa hồng; dẫn nhầm là hại em mình.
+3. Giá luôn ghi là giá tham khảo. Vé đổi theo mùa, cao điểm lễ Tết tăng mạnh.
+
+**Ăn uống** nhúng lại máy quay món của `an-gi.html` (dùng chung `an-gi.css`, `an-gi.js`,
+`data/mon-an.js`) rồi liệt kê món quê. Cột *ăn ở đâu* lấy từ `goi_y_cho` trong dữ liệu món
+ăn — đang trống gần hết, điền vào là trang tự hiện.
+
+**Học tập** và **Chỗ ở** mới có khung và mấy link chính thức của trường. Phần số liệu
+(giá trọ, kinh nghiệm từng môn) để trống có chủ ý: ghi bừa thì hại hơn là giúp, phải người
+đi thật điền.
+
+Không đăng số điện thoại hay địa chỉ cá nhân của ai lên trang này — chỉ tổng đài doanh
+nghiệp và trang chính thức.
