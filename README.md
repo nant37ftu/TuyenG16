@@ -132,6 +132,12 @@ Ba bảng xem nhanh đã tạo sẵn trong **SQL Editor**:
 - `g16_theo_que` — ứng viên đến từ huyện nào
 - `ban_do_cho_duyet` — những người vừa xin thêm tên vào bản đồ, chờ duyệt
 
+**Dashboard theo dõi tiến độ đơn nội bộ (dành cho nhân sự CLB):**
+- Mở `dashboard.html` trên trình duyệt.
+- Chạy file `sql/dashboard.sql` trong Supabase SQL Editor một lần để kích hoạt.
+- Có mật mã bảo vệ (mặc định: `37ftu@g16`) hoặc dùng nút "Link gửi team" để chia sẻ cho các bạn trong tổ chức vào xem trực tiếp.
+
+
 ---
 
 ## 4. Đo xem kênh nào ra ứng viên

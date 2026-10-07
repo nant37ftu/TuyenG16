@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dashboard Đơn G16 — 37FTU (Nội Bộ)</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <!-- Chart.js để vẽ biểu đồ thống kê -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- ==================== 1. MÀN HÌNH KHÓA (NHẬP MẬT MÃ) ==================== -->
+  <div class="khoa-man-hinh" id="khoa-man-hinh">
+    <div class="khoa-hop">
+      <img class="khoa-logo" src="assets/logo.png" alt="37FTU">
+      <div><span class="khoa-nhan">🔒 Dành riêng cho nhân sự</span></div>
+      <h1 class="khoa-tieu-de">Dashboard Tuyển G16</h1>
+      <p class="khoa-mo-ta">Nhập mật mã nội bộ của Ban tổ chức để xem tiến độ nộp đơn thời gian thực.</p>
+
+      <form class="khoa-form" id="form-khoa" onsubmit="event.preventDefault();">
+        <div class="o-nhap-wrap">
+          <input type="password" id="pass-input" class="khoa-input" placeholder="Nhập mật mã nội bộ..." autofocus autocomplete="current-password">
+          <button type="button" class="nut-hien-pass" id="nut-hien-pass" title="Hiện/ẩn mật mã">👁️</button>
+        </div>
+
+        <label class="khoa-tuy-chon">
+          <input type="checkbox" id="nho-pass" checked> Ghi nhớ mật mã trên thiết bị này
+        </label>
+
+        <div class="khoa-loi" id="khoa-loi"></div>
+
+        <button type="submit" class="khoa-nut" id="nut-mo-khoa">
+          <span>Mở Dashboard</span> 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== 2. GIAO DIỆN CHÍNH DASHBOARD ==================== -->
+  <div class="db-wrap" id="db-wrap">
+    
+    <!-- HEADER -->
+    <header class="db-header">
+      <div class="db-brand">
+        <img class="db-logo" src="assets/logo.png" alt="37FTU Logo">
+        <div>
+          <div class="db-ten">
+            37FTU · Tiến độ Đơn G16
+            <span class="db-badge">Nội Bộ</span>
+          </div>
+          <div class="db-phu" id="cap-nhat-chu">Đang kết nối Supabase…</div>
+        </div>
+      </div>
+
+      <div class="db-cong-cu">
+        <button class="nut-db" id="nut-copy-link" title="Sao chép link kèm mật mã để gửi cho team xem nhanh">
+          📋 Link gửi team
+        </button>
+        <button class="nut-db nut-db-chinh" id="nut-lam-moi" title="Tải lại số liệu mới nhất">
+          🔄 Làm mới
+        </button>
+        <button class="nut-db" id="nut-dang-xuat" title="Khóa dashboard và xóa mật mã đã lưu">
+          🔒 Khóa
+        </button>
+      </div>
+    </header>
+
+    <!-- THẺ KPI TỔNG HỢP -->
+    <section class="kpi-luoi">
+      <!-- 1. Tổng đơn -->
+      <div class="kpi-the the-cam">
+        <div class="kpi-nhan">
+          <span>TỔNG SỐ ĐƠN ĐÃ NỘP</span>
+          <span class="kpi-icon">📋</span>
+        </div>
+        <div class="kpi-so" id="kpi-tong-don">0</div>
+        <div class="kpi-mo-ta">Hồ sơ ứng viên hợp lệ</div>
+      </div>
+
+      <!-- 2. Đơn hôm nay -->
+      <div class="kpi-the the-xanh">
+        <div class="kpi-nhan">
+          <span>HÔM NAY</span>
+          <span class="kpi-icon">⚡</span>
+        </div>
+        <div class="kpi-so" id="kpi-hom-nay">0</div>
+        <div class="kpi-mo-ta" id="kpi-so-sanh">Đang tính toán…</div>
+      </div>
+
+      <!-- 3. Đơn hôm qua -->
+      <div class="kpi-the the-duong">
+        <div class="kpi-nhan">
+          <span>HÔM QUA</span>
+          <span class="kpi-icon">⏳</span>
+        </div>
+        <div class="kpi-so" id="kpi-hom-qua">0</div>
+        <div class="kpi-mo-ta">Tổng chốt ngày hôm qua</div>
+      </div>
+
+      <!-- 4. Ban dẫn đầu -->
+      <div class="kpi-the the-tim">
+        <div class="kpi-nhan">
+          <span>BAN DẪN ĐẦU (NV1)</span>
+          <span class="kpi-icon">🏆</span>
+        </div>
+        <div class="kpi-so" id="kpi-ban-hot" style="font-size: 24px; padding-top: 6px;">—</div>
+        <div class="kpi-mo-ta" id="kpi-ban-hot-so">Chưa có số liệu</div>
+      </div>
+    </section>
+
+    <!-- BIỂU ĐỒ TRỰC QUAN -->
+    <section class="chart-luoi">
+      <!-- Biểu đồ 1: Số đơn theo ngày -->
+      <div class="chart-the">
+        <div class="chart-tieu-de-wrap">
+          <div>
+            <h2 class="chart-tieu-de">📈 Số lượng đơn mới theo ngày</h2>
+            <div class="chart-phu">Biểu đồ thể hiện nhịp độ nộp hồ sơ qua từng ngày</div>
+          </div>
+        </div>
+        <div class="chart-hop">
+          <canvas id="chart-theo-ngay"></canvas>
+        </div>
+      </div>
+
+      <!-- Biểu đồ 2: Cơ cấu theo Ban -->
+      <div class="chart-the">
+        <div class="chart-tieu-de-wrap">
+          <div>
+            <h2 class="chart-tieu-de">🎯 Cơ cấu Nguyện vọng 1</h2>
+            <div class="chart-phu">Tỷ lệ nộp đơn giữa các ban</div>
+          </div>
+        </div>
+        <div class="chart-hop">
+          <canvas id="chart-theo-ban"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- BẢNG DỮ LIỆU CHI TIẾT -->
+    <section class="bang-luoi">
+      <!-- Bảng theo ngày -->
+      <div class="bang-the">
+        <div class="chart-tieu-de-wrap">
+          <h2 class="chart-tieu-de">📅 Chi tiết từng ngày</h2>
+          <span class="chart-phu" id="dem-so-ngay">0 ngày</span>
+        </div>
+        <div class="bang-boc">
+          <table class="bang-dl">
+            <thead>
+              <tr>
+                <th>Ngày</th>
+                <th>Số đơn mới</th>
+                <th>Tỷ trọng</th>
+              </tr>
+            </thead>
+            <tbody id="than-bang-ngay">
+              <tr><td colspan="3" style="text-align:center; color:#9ca3af;">Đang nạp…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bảng theo quê / khu vực -->
+      <div class="bang-the">
+        <div class="chart-tieu-de-wrap">
+          <h2 class="chart-tieu-de">📍 Top quê quán / Đơn vị</h2>
+          <span class="chart-phu">Top ứng viên</span>
+        </div>
+        <div class="bang-boc">
+          <table class="bang-dl">
+            <thead>
+              <tr>
+                <th>Quê / Khu vực</th>
+                <th>Số đơn</th>
+                <th>Tỷ lệ</th>
+              </tr>
+            </thead>
+            <tbody id="than-bang-que">
+              <tr><td colspan="3" style="text-align:center; color:#9ca3af;">Đang nạp…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="db-footer">
+      <span>🐾 CLB Tình nguyện Đồng hương Nghệ An FTU — 37FTU</span>
+      <span>•</span>
+      <span>Dữ liệu thời gian thực tự động cập nhật từ Supabase</span>
+    </footer>
+
+  </div>
+
+  <!-- TOAST THÔNG BÁO -->
+  <div class="db-toast" id="db-toast">Đã sao chép link truy cập nhanh!</div>
+
+  <!-- CẤU HÌNH & CODE LOGIC -->
+  <script src="config.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

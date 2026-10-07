@@ -1,0 +1,552 @@
+/* ============================================================
+   DASHBOARD TIẾN ĐỘ ĐƠN GEN 16 — 37FTU (NỘI BỘ)
+   Phong cách hiện đại, tinh gọn, chuẩn màu thương hiệu 37FTU
+   ============================================================ */
+
+:root {
+  --cam: #FA501E;
+  --cam-dam: #D93B0C;
+  --cam-nhat: #FFF1EB;
+  --cam-alpha: rgba(250, 80, 30, 0.12);
+  --xanh-la: #10B981;
+  --xanh-la-nhat: #ECFDF5;
+  --xanh-duong: #2563EB;
+  --xanh-duong-nhat: #EFF6FF;
+  --tim: #8B5CF6;
+  --tim-nhat: #F5F3FF;
+  --chu: #1F2937;
+  --chu-phu: #6B7280;
+  --chu-mo: #9CA3AF;
+  --nen: #F8FAFC;
+  --the: #FFFFFF;
+  --vien: #E2E8F0;
+  --do: #EF4444;
+  --do-nhat: #FEF2F2;
+  --bong: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --bong-noi: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --bo-goc: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--nen);
+  color: var(--chu);
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================== MÀN HÌNH KHÓA (PASSCODE MODAL) ================== */
+.khoa-man-hinh {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 20%, #FFF5F0 0%, #F1F5F9 100%);
+  padding: 20px;
+  z-index: 999;
+}
+
+.khoa-hop {
+  background: var(--the);
+  max-width: 440px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--vien);
+  text-align: center;
+}
+
+.khoa-logo {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(250, 80, 30, 0.2);
+}
+
+.khoa-nhan {
+  display: inline-block;
+  background: var(--cam-nhat);
+  color: var(--cam);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.khoa-tieu-de {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 8px;
+}
+
+.khoa-mo-ta {
+  font-size: 14px;
+  color: var(--chu-phu);
+  margin-bottom: 24px;
+}
+
+.khoa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.o-nhap-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.khoa-input {
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  border: 1.5px solid var(--vien);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s;
+  background: #F8FAFC;
+}
+
+.khoa-input:focus {
+  outline: none;
+  border-color: var(--cam);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px var(--cam-alpha);
+}
+
+.nut-hien-pass {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--chu-mo);
+  font-size: 16px;
+  padding: 4px;
+}
+
+.nut-hien-pass:hover {
+  color: var(--chu);
+}
+
+.khoa-tuy-chon {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: var(--chu-phu);
+  cursor: pointer;
+  gap: 8px;
+}
+
+.khoa-nut {
+  background: var(--cam);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.khoa-nut:hover {
+  background: var(--cam-dam);
+  transform: translateY(-1px);
+}
+
+.khoa-nut:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.khoa-loi {
+  background: var(--do-nhat);
+  color: var(--do);
+  border: 1px solid #FECACA;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: none;
+  text-align: left;
+}
+
+/* ================== GIAO DIỆN CHÍNH DASHBOARD ================== */
+.db-wrap {
+  display: none;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+/* HEADER */
+.db-header {
+  background: var(--the);
+  border: 1px solid var(--vien);
+  border-radius: var(--bo-goc);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--bong);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.db-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.db-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.db-ten {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.db-badge {
+  background: var(--cam-nhat);
+  color: var(--cam);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.db-phu {
+  font-size: 12px;
+  color: var(--chu-phu);
+}
+
+.db-cong-cu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nut-db {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  border: 1px solid var(--vien);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--chu);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nut-db:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.nut-db-chinh {
+  background: var(--cam);
+  color: #fff;
+  border-color: var(--cam);
+}
+
+.nut-db-chinh:hover {
+  background: var(--cam-dam);
+  color: #fff;
+}
+
+.nut-db.dang-quay {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* CARDS THỐNG KÊ (KPI) */
+.kpi-luoi {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.kpi-the {
+  background: var(--the);
+  border: 1px solid var(--vien);
+  border-radius: var(--bo-goc);
+  padding: 20px;
+  box-shadow: var(--bong);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.kpi-the:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--bong-noi);
+}
+
+.kpi-the::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.kpi-the.the-cam::before { background: var(--cam); }
+.kpi-the.the-xanh::before { background: var(--xanh-la); }
+.kpi-the.the-duong::before { background: var(--xanh-duong); }
+.kpi-the.the-tim::before { background: var(--tim); }
+
+.kpi-nhan {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--chu-phu);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kpi-icon {
+  font-size: 18px;
+}
+
+.kpi-so {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.kpi-mo-ta {
+  font-size: 12px;
+  color: var(--chu-phu);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tang {
+  color: var(--xanh-la);
+  font-weight: 700;
+}
+
+.giam {
+  color: var(--do);
+  font-weight: 700;
+}
+
+/* BIỂU ĐỒ */
+.chart-luoi {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.chart-the {
+  background: var(--the);
+  border: 1px solid var(--vien);
+  border-radius: var(--bo-goc);
+  padding: 22px;
+  box-shadow: var(--bong);
+}
+
+.chart-tieu-de-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.chart-tieu-de {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.chart-phu {
+  font-size: 12px;
+  color: var(--chu-mo);
+}
+
+.chart-hop {
+  position: relative;
+  width: 100%;
+  height: 280px;
+}
+
+/* BẢNG DỮ LIỆU CHI TIẾT */
+.bang-luoi {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 20px;
+}
+
+.bang-the {
+  background: var(--the);
+  border: 1px solid var(--vien);
+  border-radius: var(--bo-goc);
+  padding: 22px;
+  box-shadow: var(--bong);
+}
+
+.bang-boc {
+  max-height: 320px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid var(--vien);
+}
+
+.bang-dl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.bang-dl th {
+  background: #F8FAFC;
+  color: var(--chu-phu);
+  font-weight: 700;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--vien);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.bang-dl td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #F1F5F9;
+  color: var(--chu);
+}
+
+.bang-dl tr:last-child td {
+  border-bottom: none;
+}
+
+.bang-dl tr:hover td {
+  background: #F8FAFC;
+}
+
+.thanh-ti-le {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.thanh-chay {
+  flex: 1;
+  height: 7px;
+  background: #E2E8F0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.thanh-ruot {
+  height: 100%;
+  background: var(--cam);
+  border-radius: 999px;
+}
+
+/* FOOTER */
+.db-footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--chu-mo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.db-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0F172A;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+  display: none;
+  animation: truotLen 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1000;
+}
+
+@keyframes truotLen {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .kpi-luoi {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .chart-luoi {
+    grid-template-columns: 1fr;
+  }
+  .bang-luoi {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .kpi-luoi {
+    grid-template-columns: 1fr;
+  }
+  .db-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .db-cong-cu {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
