@@ -623,3 +623,94 @@ bản B (`assets/intro-co-1.webp`, `intro-co-2.webp`, `intro-buom.webp`) đượ
 lại từ `cỏ thêm gốc.png`, `cỏ thêm bóng.png`, `bươms.png` — ảnh gốc 1500×1500 phần lớn là
 vùng trong suốt, để nguyên thì nặng gấp bốn lần. Muốn làm lại thì cắt theo đúng khung alpha
 rồi xuất WebP.
+
+---
+
+## 15. Cho trang chạy mượt
+
+Tháng 10/2026 trang bị khựng lúc cuộn, cả trên máy tính lẫn điện thoại. Đo ra bốn
+nguyên nhân, đã sửa cả bốn. Ghi lại đây để lần sau thêm thứ mới thì tránh.
+
+### 15.1 Ảnh to gấp mấy chục lần chỗ hiển thị
+
+Đây là thủ phạm nặng nhất. Hai con bướm ở hero là ảnh **3000×3000** (526 KB và 819 KB)
+nhưng hiện ra chỉ 76×76 và 93×93 — to gấp 39 lần. Trình duyệt phải tải về, giải nén ra
+bộ nhớ, thu nhỏ lại, rồi vì hai con bướm đó **còn đang bay vô tận** nên phải giữ nguyên
+tấm 3000×3000 trong bộ nhớ suốt thời gian xem trang. Sáu ảnh `img/hanh-trinh-*.jpg` cũng
+rộng 1024 trong khi khung chỉ 244.
+
+Đã thu nhỏ tại chỗ, **giữ nguyên tên file** nên không phải sửa chỗ nào trỏ tới:
+
+| | trước | sau |
+|---|---|---|
+| `buom-1.png` | 3000×3000 · 526 KB | 280×339 · 39 KB |
+| `buom-2.png` | 3000×3000 · 819 KB | 280×196 · 41 KB |
+| 6 ảnh `hanh-trinh-*.jpg` | 1024 rộng · ~1,2 MB | 560 rộng · 311 KB |
+| **tổng** | **2 534 KB** | **390 KB** |
+
+Script để chạy lại: `tools/thu-nho-anh.py` (cần `pip install pillow`). Quy tắc chung:
+**ảnh nên rộng gấp đôi khung hiển thị, không hơn** — gấp đôi là đủ nét trên màn Retina.
+Ảnh PNG trong suốt thì cắt sát khung alpha trước khi thu nhỏ, phần trong suốt thừa vẫn
+tốn đúng bằng phần có hình.
+
+### 15.2 Hoạt hình chạy vô tận bằng thuộc tính sai
+
+Không phải thuộc tính nào cũng rẻ như nhau. Đổi `transform` và `opacity` thì card đồ hoạ
+lo, CPU không động tay. Đổi chiều cao, lề, `box-shadow`, màu… thì mỗi khung hình trình
+duyệt phải tính lại bố cục rồi vẽ lại — 60 lần mỗi giây, suốt thời gian xem trang.
+
+Trang chủ đang có 10 hoạt hình vô tận, trong đó 5 cái sai thuộc tính:
+
+- **4 vạch sóng ở nút nhạc** nhấp nhô bằng `height` → đổi sang `transform: scaleY`,
+  cố định `height: 15px` và `transform-origin: bottom` cho chân vạch đứng yên.
+- **Chấm “đang mở đơn”** nhấp nháy bằng `box-shadow` → đổi thành một vòng tròn riêng
+  `.cham::after` nằm sau (`z-index: -1`), chỉ phóng to rồi mờ dần.
+
+Sau khi sửa còn 5 hoạt hình vô tận, **tất cả đều chỉ dùng `transform`/`opacity`**.
+
+### 15.3 Làm mờ nền (`backdrop-filter`)
+
+Tốn nhất lúc cuộn: mỗi khối phải làm mờ lại toàn bộ thứ nằm sau nó, mỗi khung hình.
+Trang chủ đang có **15 khối** như vậy. Đã bỏ ở những chỗ nền vốn đã gần đục — có mờ cũng
+không ai nhìn ra khác: thanh đầu trang (đổi nền thành `.97` đặc), nút nhạc nền, thẻ Sân
+chơi, thẻ “Nhận được gì”. Còn 6 khối, đều nằm trong hero (chip thế hệ, nút phụ, 4 ô đếm) —
+chỗ đó kính mờ trên ảnh bìa đúng là ý đồ thiết kế, giữ lại.
+
+**Dưới 900px bỏ hết**, không chừa khối nào, và tô đặc thêm để bù (`.24` thay vì `.14`).
+Điện thoại vừa yếu hơn vừa nhìn màn nhỏ, không ai thấy thiếu.
+
+### 15.4 Nền dán cứng (`background-attachment: fixed`)
+
+Trang *Ăn chi* và *Góc game* dán nền vào viewport kiểu này. Cuộn một nhịp là trình duyệt
+vẽ lại cả tấm nền — trên Android Chrome đây là thủ phạm giật số một, còn iOS Safari thì
+bỏ qua luôn nên nhìn khác hẳn trên máy tính.
+
+Đã lấy hai vầng sáng ra một lớp `::before` `position: fixed; z-index: -1`. Nhìn y nguyên
+(vẫn dính viewport), nhưng lớp cố định chỉ vẽ một lần rồi card đồ hoạ giữ lại.
+
+> Phải viết `body.ag-body` (hai bậc) chứ không phải `.ag-body`, vì `an-gi.css` và
+> `game.css` nạp **sau** `chuyen-canh.css`.
+
+### Tự đo lại
+
+Mở trang, F12 → Console, dán vào:
+
+```js
+// hoạt hình vô tận nào đang chạy, và chạy bằng thuộc tính gì
+document.getAnimations().filter(a => a.effect.getTiming().iterations === Infinity)
+  .map(a => a.animationName + ' -> ' +
+       [...new Set(a.effect.getKeyframes().flatMap(Object.keys))]
+         .filter(k => k !== 'offset' && k !== 'computedOffset' && k !== 'easing').join(','));
+
+// còn bao nhiêu khối làm mờ nền
+[...document.querySelectorAll('*')]
+  .filter(e => getComputedStyle(e).backdropFilter !== 'none').length;
+
+// ảnh nào đang to hơn khung hiển thị quá 2 lần
+[...document.images].filter(i => i.naturalWidth > i.clientWidth * 2.2)
+  .map(i => i.currentSrc.split('/').pop() + ' ' +
+       i.naturalWidth + 'px cho khung ' + i.clientWidth + 'px');
+```
+
+Ba dòng này nên ra: hoạt hình chỉ có `transform`/`opacity`, số khối làm mờ ≤ 6 (0 trên
+điện thoại), danh sách ảnh quá khổ rỗng.
