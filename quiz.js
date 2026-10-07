@@ -327,6 +327,10 @@
       hop.appendChild(b);
     });
     $('#q-quay-lai').hidden = i === 0;
+    if (window.ChuyenCanh) {
+      ChuyenCanh.hien($('#q-cau'));
+      ChuyenCanh.hien($('#q-dap-an'));
+    }
   }
 
   function tinhDiem() {
@@ -339,8 +343,12 @@
   }
 
   function veKetQua() {
-    $('#man-hoi').hidden = true;
-    $('#man-ket-qua').hidden = false;
+    if (window.ChuyenCanh) {
+      ChuyenCanh.doiMan($('#man-hoi'), $('#man-ket-qua'));
+    } else {
+      $('#man-hoi').hidden = true;
+      $('#man-ket-qua').hidden = false;
+    }
     $('#q-thanh-chay').style.width = '100%';
 
     var d = tinhDiem();
@@ -472,8 +480,12 @@
     }
 
     $('#bat-dau').addEventListener('click', function () {
-      $('#man-dau').hidden = true;
-      $('#man-hoi').hidden = false;
+      if (window.ChuyenCanh) {
+        ChuyenCanh.doiMan($('#man-dau'), $('#man-hoi'));
+      } else {
+        $('#man-dau').hidden = true;
+        $('#man-hoi').hidden = false;
+      }
       i = 0; chon = [];
       veCau();
       $('#man-hoi').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -484,8 +496,12 @@
     });
 
     $('#kq-lam-lai').addEventListener('click', function () {
-      $('#man-ket-qua').hidden = true;
-      $('#man-hoi').hidden = false;
+      if (window.ChuyenCanh) {
+        ChuyenCanh.doiMan($('#man-ket-qua'), $('#man-hoi'));
+      } else {
+        $('#man-ket-qua').hidden = true;
+        $('#man-hoi').hidden = false;
+      }
       i = 0; chon = [];
       veCau();
     });

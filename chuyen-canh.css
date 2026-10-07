@@ -1,0 +1,86 @@
+/* ============================================================
+   CHUYỂN CẢNH — cho mỗi cú bấm đỡ khô
+   Để riêng một file và nạp SAU styles.css, vì styles.css hay bị
+   team tải bản mới lên đè. Ba việc:
+     1. Bấm nút thì nút lún xuống, nhả ra thì bật lại
+     2. Màn mới hiện ra thì trôi lên, không bật cái độp
+     3. Chuyển giữa các trang thì mờ chồng, không chớp trắng
+   ============================================================ */
+
+/* ---------- 1. Phản hồi lúc bấm ---------- */
+.nut {
+  transition:
+    transform .16s cubic-bezier(.2,.7,.3,1),
+    box-shadow .16s ease,
+    background .16s ease,
+    color .16s ease,
+    border-color .16s ease;
+}
+.nut:active { transform: translateY(1px) scale(.97); }
+.nut-chinh:active { box-shadow: 0 4px 12px -5px rgba(238,92,27,.7); }
+.nut[disabled], .nut[disabled]:active { transform: none; }
+
+/* Mấy thứ bấm được nhưng không mang class .nut */
+.q-dap-an button,
+.ag-chip button,
+.wk-chip button,
+.ag-bam,
+.ag-tieng,
+.sc.the,
+.nut-nhac-nen,
+.intro-bo-qua,
+.wk-menu a {
+  transition:
+    transform .16s cubic-bezier(.2,.7,.3,1),
+    background .16s ease,
+    border-color .16s ease,
+    color .16s ease,
+    box-shadow .16s ease;
+}
+.q-dap-an button:active,
+.ag-chip button:active,
+.wk-chip button:active,
+.ag-bam:active,
+.ag-tieng:active,
+.nut-nhac-nen:active,
+.intro-bo-qua:active { transform: scale(.97); }
+.sc.the:active { transform: translateY(-2px) scale(.99); }
+
+/* ---------- 2. Khối mới hiện ra ---------- */
+@keyframes cc-hien {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes cc-tan {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
+.cc-hien { animation: cc-hien .28s cubic-bezier(.2,.7,.3,1) both; }
+.cc-tan  { animation: cc-tan .15s ease both; }
+
+/* ---------- 3. Chuyển giữa các trang ----------
+   Trình duyệt nào hiểu thì tự mờ chồng hai trang vào nhau, trình duyệt
+   cũ bỏ qua dòng này và chạy y như trước, không hỏng gì. */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation-duration: .2s; }
+::view-transition-new(root) { animation-duration: .26s; }
+
+/* ---------- 4. Máy bật giảm chuyển động thì bỏ hết ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cc-hien, .cc-tan { animation: none; }
+  .nut:active,
+  .q-dap-an button:active,
+  .ag-chip button:active,
+  .wk-chip button:active,
+  .ag-bam:active,
+  .ag-tieng:active,
+  .nut-nhac-nen:active,
+  .intro-bo-qua:active,
+  .sc.the:active { transform: none; }
+
+  /* Tắt hẳn chuyển trang chứ không chỉ rút ngắn: để nó chạy rồi bị bỏ giữa
+     chừng thì trình duyệt ném một lời than "Transition was skipped" ra console. */
+  @view-transition { navigation: none; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: .01ms; }
+}

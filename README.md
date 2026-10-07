@@ -442,6 +442,33 @@ Ba điều đã tính sẵn, đừng phá:
 Không thích hiệu ứng thì xoá hai dòng `<script src="hieu-ung.js"></script>` là xong,
 trang chạy y nguyên.
 
+### Chuyển cảnh khi bấm — `chuyen-canh.css` + `chuyen-canh.js`
+
+Hai file này lo cho mỗi cú bấm đỡ khô, nạp ở **mọi trang**. Để riêng ra chứ không nhét
+vào `styles.css` vì file đó hay bị team tải bản mới lên đè — ba lần sửa trước đã mất như vậy.
+
+- **Bấm nút thì nút lún xuống** (`:active` co lại 3%) rồi bật lại. Áp cho `.nut`, đáp án
+  trắc nghiệm, chip lọc, thẻ ở mục Sân chơi, nút nhạc nền, nút bỏ qua intro.
+- **Đổi màn thì màn cũ mờ đi rồi màn mới trôi lên**, thay cho kiểu bật/tắt `hidden` cắt
+  thẳng như trước. Dùng ở ba chỗ: trắc nghiệm (màn đầu → câu hỏi → kết quả), mỗi lần
+  sang câu mới, và đơn ứng tuyển gửi xong → màn cảm ơn.
+- **Chuyển giữa các trang** dùng `@view-transition { navigation: auto }` — trình duyệt
+  nào hiểu thì tự mờ chồng hai trang, trình duyệt cũ bỏ qua và chạy y như trước.
+
+Hai hàm dùng chung, gọi ở đâu cũng được:
+
+```js
+ChuyenCanh.hien(khoi);          // khối vừa đổi nội dung -> cho nó trôi lên
+ChuyenCanh.doiMan(manCu, manMoi); // màn cũ mờ đi rồi màn mới thay chỗ
+```
+
+Mọi chỗ gọi đều bọc trong `if (window.ChuyenCanh)` và có nhánh dự phòng chạy như cũ,
+nên lỡ file không nạp được thì trang vẫn hoạt động, chỉ là mất hiệu ứng.
+
+Máy bật “giảm chuyển động” thì tắt sạch, kể cả chuyển trang — phải tắt hẳn bằng
+`navigation: none` chứ không chỉ rút ngắn thời lượng, vì để nó chạy rồi bị bỏ giữa chừng
+là trình duyệt ném `AbortError: Transition was skipped` ra console.
+
 ---
 
 ## 12. Cấu trúc thư mục
@@ -459,6 +486,8 @@ web/
 ├── wiki.js             Nghệ Wiki: đổi mục, vẽ tuyến xe, lọc, tìm kiếm
 ├── intro.css           Intro mở đầu trang chủ (mục 14)
 ├── intro.js            Intro: chọn bản, chạy một lần mỗi phiên
+├── chuyen-canh.css     Chuyển cảnh khi bấm nút / đổi màn / đổi trang (mục 11)
+├── chuyen-canh.js      Hai hàm ChuyenCanh.hien và ChuyenCanh.doiMan
 ├── xem-intro.html      Trang xem thử hai bản intro, mở offline được
 ├── gop-y.js            chế độ góp ý ?gopy=1 (mục 2)
 ├── quiz.js             câu hỏi + vẽ ảnh kết quả

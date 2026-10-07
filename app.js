@@ -317,9 +317,13 @@ if (bt) {
       nut.textContent = 'Đang gửi...';
 
       var xong = function () {
-        form.hidden = true;
         $('#email-xac-nhan').textContent = d.email;
-        $('#man-xong').hidden = false;
+        if (window.ChuyenCanh) {
+          ChuyenCanh.doiMan(form, $('#man-xong'));
+        } else {
+          form.hidden = true;
+          $('#man-xong').hidden = false;
+        }
         $('#man-xong').scrollIntoView({ behavior: 'smooth', block: 'center' });
       };
 
