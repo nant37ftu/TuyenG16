@@ -55,7 +55,11 @@
   hop.appendChild(nut);
 
   hop.hidden = false;
-  goc.classList.add('co-intro', 'intro-' + ban);
+  // Đánh dấu bằng thuộc tính chứ KHÔNG dùng class 'intro-' + ban: '.intro-b' và
+  // '.intro-c' đã là class của khung nội dung trong intro.css, gắn lên <html>
+  // nữa thì cả trang ăn phải position:absolute và display:grid của khung đó.
+  goc.classList.add('co-intro');
+  goc.setAttribute('data-intro', ban);
   if (xemThu) goc.classList.add('intro-xem-thu');
 
   var xong = false;
@@ -68,13 +72,14 @@
 
     goc.classList.add('intro-tan');
     setTimeout(function () {
-      goc.classList.remove('co-intro', 'intro-' + ban, 'intro-tan', 'intro-xem-thu');
+      goc.classList.remove('co-intro', 'intro-tan', 'intro-xem-thu');
+      goc.removeAttribute('data-intro');
       if (hop.parentNode) hop.parentNode.removeChild(hop);
     }, 360);
   }
 
   // Bản C ít lớp hơn nên kết thúc sớm hơn một chút
-  var hanGio = setTimeout(ketThuc, ban === 'c' ? 1250 : 1400);
+  var hanGio = setTimeout(ketThuc, ban === 'c' ? 1350 : 1400);
 
   nut.addEventListener('click', ketThuc);
   ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (loai) {

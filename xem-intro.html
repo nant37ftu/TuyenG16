@@ -71,8 +71,9 @@
     <img class="intro-b-buom" src="assets/intro-buom.webp" alt="" width="700" height="491">
     <div class="intro-b-chu">
       <img class="intro-b-logo" src="assets/logo.png" alt="" width="768" height="768">
+      <p class="intro-b-clb">CLB Tình nguyện Đồng hương Nghệ An trường Đại học Ngoại thương - <b>Since 2011</b></p>
       <p class="intro-b-ten">Nghệ Sĩ Nhí</p>
-      <p class="intro-b-phu">CLB Tình nguyện Đồng hương Nghệ An · FTU</p>
+      <p class="intro-b-phu">Chuỗi tuyển thành viên thế hệ thứ 16</p>
     </div>
     <img class="intro-co intro-co-trai" src="assets/intro-co-1.webp" alt="" width="1498" height="332">
     <img class="intro-co intro-co-phai" src="assets/intro-co-2.webp" alt="" width="1500" height="332">
@@ -82,6 +83,7 @@
 <template id="mau-intro-c">
   <div class="intro-c">
     <img class="intro-c-logo" src="assets/logo.png" alt="" width="768" height="768">
+    <p class="intro-c-clb">CLB Tình nguyện Đồng hương Nghệ An trường Đại học Ngoại thương - <b>Since 2011</b></p>
     <h2 class="intro-c-ten"><span>Nghệ</span><span>Sĩ</span><span>Nhí</span><i>!</i></h2>
     <p class="intro-c-phu">Chuỗi tuyển thành viên thế hệ thứ 16</p>
   </div>
@@ -162,14 +164,17 @@
     hop.appendChild(nut);
 
     hop.hidden = false;
-    goc.className = 'co-intro intro-' + ban + ' intro-xem-thu';
+    // dung thuoc tinh, khong dung class 'intro-'+ban: trung ten voi khung
+    // noi dung trong intro.css nen <html> se an phai position:absolute
+    goc.className = 'co-intro intro-xem-thu';
+    goc.setAttribute('data-intro', ban);
 
     var nhip = cham.checked ? 0.5 : 1;
     if (nhip !== 1) {
       document.getAnimations().forEach(function (a) { a.playbackRate = nhip; });
     }
 
-    var hanGio = setTimeout(ketThuc, (ban === 'c' ? 1250 : 1400) / nhip);
+    var hanGio = setTimeout(ketThuc, (ban === 'c' ? 1350 : 1400) / nhip);
 
     function ketThuc() {
       clearTimeout(hanGio);
@@ -177,6 +182,7 @@
       goc.classList.add('intro-tan');
       setTimeout(function () {
         goc.className = '';
+        goc.removeAttribute('data-intro');
         hop.hidden = true;
         hop.innerHTML = '';
         dangChay = false;

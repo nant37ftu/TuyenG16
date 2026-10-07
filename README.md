@@ -541,15 +541,20 @@ Không đăng số điện thoại hay địa chỉ cá nhân của ai lên tran
 nghiệp và trang chính thức.
 
 
-## 14. Intro mở đầu trang chủ · ĐANG TẮT
+## 14. Intro mở đầu trang chủ
 
-> **Đang để tắt từ 06/10/2026** (`INTRO: 'tat'` trong `config.js`). Code và ảnh
-> vẫn còn nguyên, `intro.css` với `intro.js` vẫn được nạp nhưng thoát ra ngay,
-> và ảnh của cả hai bản đều không tải vì nằm trong `<template>`.
+> **Đang bật bản C từ 07/10/2026.** Thứ tự ba dòng đã chốt, sửa thì giữ nguyên
+> thứ tự này ở cả hai bản B và C:
 >
-> **Bật lại:** đổi đúng một dòng `INTRO` thành `'b'` hoặc `'c'`. Xem thử trước
-> khi bật thì mở `xem-intro.html`, hoặc thêm `?intro=b` / `?intro=c` vào địa chỉ
-> trang chủ — hai đường này chạy được cả khi `INTRO` đang để `'tat'`.
+> 1. CLB Tình nguyện Đồng hương Nghệ An trường Đại học Ngoại thương - Since 2011
+> 2. Nghệ Sĩ Nhí
+> 3. Chuỗi tuyển thành viên thế hệ thứ 16
+>
+> **Một cái bẫy đã dính một lần, đừng lặp lại:** `intro.js` KHÔNG được gắn class
+> `intro-b` / `intro-c` lên thẻ `<html>`, vì trong `intro.css` đó đã là tên class
+> của khung nội dung (`position:absolute; display:grid`). Gắn lên `<html>` là cả
+> trang ăn phải hai thuộc tính đó, layout vỡ suốt lúc intro chạy mà nhìn không ra
+> vì bị lớp phủ che. Đánh dấu bằng `data-intro="b|c"` như hiện tại.
 
 
 Vào `index.html` lần đầu trong một phiên sẽ thấy một đoạn mở đầu ngắn rồi mới tới hero.
