@@ -34,9 +34,14 @@
   // Gõ ?intro= là cố ý xem thử, nên bỏ qua hai cửa dưới đây
   var xemThu = !!tuDiaChi;
 
+  // Máy tắt hiệu ứng động thì KHÔNG bỏ hẳn intro, chỉ bỏ phần chuyển động:
+  // thứ làm người ta chóng mặt là chuyển động, không phải tấm bìa đứng yên.
+  // Bỏ hẳn thì rất nhiều máy Windows công sở không bao giờ thấy intro.
+  var khongDong = false;
+
   if (!xemThu) {
     var it = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (it && it.matches) return;
+    if (it && it.matches) khongDong = true;
     try {
       if (sessionStorage.getItem(KHOA) === '1') return;
     } catch (e) {}
@@ -61,6 +66,7 @@
   goc.classList.add('co-intro');
   goc.setAttribute('data-intro', ban);
   if (xemThu) goc.classList.add('intro-xem-thu');
+  if (khongDong) goc.classList.add('intro-khong-dong');
 
   var xong = false;
 
@@ -72,14 +78,15 @@
 
     goc.classList.add('intro-tan');
     setTimeout(function () {
-      goc.classList.remove('co-intro', 'intro-tan', 'intro-xem-thu');
+      goc.classList.remove('co-intro', 'intro-tan', 'intro-xem-thu', 'intro-khong-dong');
       goc.removeAttribute('data-intro');
       if (hop.parentNode) hop.parentNode.removeChild(hop);
-    }, 360);
+    }, khongDong ? 0 : 360);
   }
 
-  // Bản C ít lớp hơn nên kết thúc sớm hơn một chút
-  var hanGio = setTimeout(ketThuc, ban === 'c' ? 1350 : 1400);
+  // Bản C ít lớp hơn nên kết thúc sớm hơn một chút. Bản đứng yên thì không có
+  // gì để xem diễn ra, đọc xong ba dòng là đủ nên rút ngắn lại.
+  var hanGio = setTimeout(ketThuc, khongDong ? 950 : (ban === 'c' ? 1350 : 1400));
 
   nut.addEventListener('click', ketThuc);
   ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (loai) {

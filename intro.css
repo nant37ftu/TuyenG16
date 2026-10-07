@@ -266,14 +266,23 @@ html.intro-tan .intro {
 }
 
 /* ============================================================
-   Máy bật "giảm chuyển động" thì intro.js không chạy nữa. Trường
-   hợp duy nhất còn lọt vào đây là tự gõ ?intro= để xem thử — lúc
-   đó là cố ý xem nên vẫn cho chạy (html có class intro-xem-thu).
+   MÁY TẮT HIỆU ỨNG ĐỘNG — vẫn hiện intro, nhưng đứng yên hoàn toàn
+   intro.js gắn class intro-khong-dong lên <html> cho trường hợp này.
+   Mọi thứ hiện sẵn ở trạng thái cuối, không một chuyển động nào.
    ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-  html:not(.intro-xem-thu) .intro * {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-  html:not(.intro-xem-thu) .intro { transition-duration: .01ms; }
+html.intro-khong-dong .intro,
+html.intro-khong-dong .intro *,
+html.intro-khong-dong .intro *::after,
+html.intro-khong-dong .intro *::before {
+  animation: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
+html.intro-khong-dong.intro-tan .intro { display: none; }
+
+/* Mấy khối vốn phải nhờ transform mới nằm đúng chỗ thì trả lại vị trí tĩnh */
+html.intro-khong-dong .intro-b-chu,
+html.intro-khong-dong .intro-b-buom { transform: translate(-50%, -50%) !important; }
+html.intro-khong-dong .intro-co { transform: scale(1.65) !important; }
+html.intro-khong-dong .intro-b-troi::after { display: none; }

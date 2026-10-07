@@ -585,6 +585,10 @@ nghiệp và trang chính thức.
 > trang ăn phải hai thuộc tính đó, layout vỡ suốt lúc intro chạy mà nhìn không ra
 > vì bị lớp phủ che. Đánh dấu bằng `data-intro="b|c"` như hiện tại.
 
+**Mở trang chủ mà không thấy intro?** Mở `xem-intro.html`, cuối trang có ô tự soi báo đúng
+ba thứ có thể đang chặn: `INTRO` trong config đang để gì, máy có tắt hiệu ứng động không,
+và phiên này đã xem intro chưa. Kèm một nút xoá dấu “đã xem” rồi mở thẳng trang chủ.
+
 
 Vào `index.html` lần đầu trong một phiên sẽ thấy một đoạn mở đầu ngắn rồi mới tới hero.
 Có hai bản, chọn bằng **một dòng** `INTRO` trong `config.js`:
@@ -603,7 +607,11 @@ Bốn điều `intro.js` đang giữ, **đừng bỏ** — đây là mấy chỗ
 
 1. **Một lần mỗi phiên.** Xem xong là ghi `37ftu_intro_xong` vào `sessionStorage`. Khách
    bấm sang `quiz.html` rồi quay lại trang chủ sẽ không phải ngồi xem lại.
-2. **Máy bật "giảm chuyển động" thì bỏ hẳn intro**, không chạy phiên bản rút gọn nào cả.
+2. **Máy tắt hiệu ứng động thì intro vẫn hiện, nhưng đứng yên hoàn toàn** và chỉ 0,95
+   giây (`<html class="intro-khong-dong">`, mọi `animation` và `transition` trong khung
+   intro bị tắt). Trước đây bỏ hẳn intro, nhưng rất nhiều máy Windows công sở tắt sẵn
+   hiệu ứng động nên cả một nhóm khách không bao giờ thấy intro — mà thứ gây khó chịu
+   là chuyển động, không phải tấm bìa đứng yên.
 3. **Bấm / gõ phím / lăn chuột là vào thẳng**, cộng thêm nút *Bỏ qua* ở góc phải.
    Chuyển sang tab khác cũng tính là xong, khỏi bắt xem lại lúc quay về.
 4. **Chạy đồng bộ ngay đầu `<body>`.** Thẻ `<script src="intro.js">` nằm ngay sau khối

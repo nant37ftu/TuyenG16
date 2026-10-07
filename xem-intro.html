@@ -55,6 +55,22 @@
   .xt-ghi b { color: #fff; }
   .xt-ds { margin-top: 26px; font-size: .92rem; line-height: 2; }
   .xt-ds a { color: var(--xanh-lime); font-weight: 600; }
+  .xt-soi {
+    margin-top: 30px; padding: 20px 22px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: var(--r-lon);
+  }
+  .xt-soi h2 { font-size: 1.1rem; color: #fff; }
+  .xt-soi ul { list-style: none; padding: 0; margin: 14px 0 16px; }
+  .xt-soi li {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 9px 0; border-top: 1px solid rgba(255,255,255,.1);
+    font-size: .92rem; color: rgba(255,255,255,.76); line-height: 1.55;
+  }
+  .xt-soi li:first-child { border-top: 0; }
+  .xt-soi b { color: #fff; display: block; }
+  .xt-dau { flex: 0 0 auto; font-size: 1rem; line-height: 1.4; }
   .xt-ma {
     font-family: ui-monospace, Consolas, monospace;
     background: rgba(255,255,255,.1); padding: 2px 7px; border-radius: 6px; font-size: .88em;
@@ -62,6 +78,8 @@
 </style>
 </head>
 <body>
+
+<script src="config.js"></script>
 
 <!-- Khung để đổ intro vào, dùng chung lớp CSS với trang chủ -->
 <div class="intro" id="intro" hidden aria-hidden="true"></div>
@@ -139,6 +157,12 @@
     <span class="xt-ma">config.js</span> thành <span class="xt-ma">'c'</span> hoặc
     <span class="xt-ma">'tat'</span>.
   </div>
+
+  <div class="xt-soi" id="xt-soi">
+    <h2>Mở trang chủ mà không thấy intro?</h2>
+    <ul id="xt-soi-ds"></ul>
+    <button class="xt-chay" type="button" id="xt-xoa-dau">Xoá dấu “đã xem” rồi mở trang chủ</button>
+  </div>
 </div>
 
 <script>
@@ -191,6 +215,52 @@
     }
     nut.addEventListener('click', ketThuc);
   }
+
+  function soi() {
+    var ds = document.getElementById('xt-soi-ds');
+    if (!ds) return;
+
+    var cf = ((window.CAU_HINH || {}).INTRO || '').toLowerCase();
+    var itDong = window.matchMedia &&
+                 window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var daXem = false;
+    try { daXem = sessionStorage.getItem('37ftu_intro_xong') === '1'; } catch (e) {}
+
+    var hang = [
+      [cf !== 'tat' && cf !== '',
+       'Cài đặt trong config.js',
+       cf === 'tat' || cf === ''
+         ? 'đang TẮT — phải sửa INTRO thành \'b\' hoặc \'c\' thì trang chủ mới chạy intro'
+         : 'đang bật bản ' + cf.toUpperCase()],
+
+      [true,
+       'Máy đang dùng',
+       itDong
+         ? 'đang tắt hiệu ứng động trong cài đặt hệ thống — intro vẫn hiện, nhưng đứng yên và chỉ 0,95 giây'
+         : 'hiệu ứng động đang bật, intro chạy đầy đủ'],
+
+      [!daXem,
+       'Phiên trình duyệt này',
+       daXem
+         ? 'ĐÃ xem intro rồi — mở lại trang chủ sẽ không chạy nữa. Bấm nút dưới đây hoặc đóng hẳn tab rồi mở lại.'
+         : 'chưa xem lần nào, mở trang chủ là thấy']
+    ];
+
+    ds.innerHTML = hang.map(function (h) {
+      return '<li><span class="xt-dau">' + (h[0] ? '✅' : '⚠️') + '</span>' +
+             '<span><b>' + h[1] + '</b>' + h[2] + '</span></li>';
+    }).join('');
+  }
+
+  var nutXoa = document.getElementById('xt-xoa-dau');
+  if (nutXoa) {
+    nutXoa.addEventListener('click', function () {
+      try { sessionStorage.removeItem('37ftu_intro_xong'); } catch (e) {}
+      location.href = 'index.html';
+    });
+  }
+
+  soi();
 
   document.querySelectorAll('.xt-chay').forEach(function (b) {
     b.addEventListener('click', function () { chay(b.getAttribute('data-ban')); });
