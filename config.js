@@ -13,6 +13,7 @@ window.CAU_HINH = {
   SUPABASE_URL: 'https://qiwfknocgwcptjmjdpmc.supabase.co',
   SUPABASE_ANON_KEY: 'sb_publishable_hifh_GhvmKJM35AMwCs2nA_-2lvSiLk',
   BANG_UNG_VIEN: 'g16_ung_vien',
+  BANG_HOI_NHANH: 'g16_hoi_nhanh',
   BANG_BAN_DO_DANG_KY: 'ban_do_dang_ky',  // bản đồ đang tạm ngưng, xem chú thích cuối file
 
   // --- Phương án dự phòng: nếu chưa kịp dựng Supabase, điền link Google Form ---

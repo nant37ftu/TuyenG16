@@ -16,8 +16,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="chuyen-canh.css">
-<link rel="stylesheet" href="an-gi.css">
-<link rel="stylesheet" href="wiki.css">
+<link rel="stylesheet" href="an-gi.css?v=2">
+<link rel="stylesheet" href="wiki.css?v=5">
 </head>
 <body>
 
@@ -29,6 +29,7 @@
       <a href="index.html#cac-ban">Các ban</a>
       <a href="quiz.html">Hợp ban nào?</a>
       <a href="wiki.html" class="dang-xem">Nghệ Wiki</a>
+      <a href="index.html#san-choi">Một chút game</a>
       <a href="index.html#cau-hoi">Hỏi đáp</a>
     </nav>
     <a class="nut nut-chinh" href="index.html#nop-don">Đăng kí</a>
@@ -40,11 +41,10 @@
     <p class="wk-nhan">Sổ tay của Nghệ Sĩ Nhí</p>
     <h1>Nghệ Wiki</h1>
     <p class="wk-dan">
-      Vừa bước chân đến Hà Nội xô bồ, có lẽ với những cô cậu sinh viên còn non nớt, cái chi cũng thật lạ lẫm, thật mới mẻ. Những con đường đông đúc, những chuyến xe về quê, những hàng quán xa lạ hay cả chuyện đăng ký tín chỉ, câu chuyện tìm phòng trọ thật đau đầu… cũng đủ khiến những ngày đầu nơi đất khách trở nên bối rối.
-
-Anh chị cũng từng có một thời như thế. Từng loay hoay với những điều tưởng chừng rất nhỏ, từng mất thời gian để tìm một chuyến xe về quê, một quán ăn hợp vị hay một chỗ trọ vừa túi. Vì vậy, anh chị đã gom nhặt những điều mình biết, những nơi mình từng đi qua và những kinh nghiệm mình từng có, để gửi lại cho em trong cuốn cẩm nang nhỏ này.
-
-Hy vọng với những điều nho nhỏ này, em sẽ thấy Hà Nội bớt xa lạ hơn một chút, và những ngày đầu xa nhà cũng nhẹ nhàng hơn một chút.
+      Vừa bước chân đến Hà Nội xô bồ, có lẽ với những cô cậu sinh viên còn non nớt, cái chi cũng thật lạ lẫm, thật mới mẻ. Những con đường đông đúc, những chuyến xe về quê, những hàng quán xa lạ hay cả chuyện đăng ký tín chỉ, câu chuyện tìm phòng trọ thật đau đầu… cũng đủ khiến những ngày đầu nơi đất khách trở nên bối rối. Anh chị cũng từng có một thời như thế. Từng loay hoay với những điều tưởng chừng rất nhỏ, từng mất thời gian để tìm một chuyến xe về quê, một quán ăn hợp vị hay một chỗ trọ vừa túi.
+    </p>
+    <p class="wk-dan">
+      <strong><em>Vì vậy, anh chị đã gom nhặt những điều mình biết, những nơi mình từng đi qua và những kinh nghiệm mình từng có, để gửi lại cho em trong cuốn cẩm nang nhỏ này. Hy vọng với những điều nho nhỏ này, em sẽ thấy Hà Nội bớt xa lạ hơn một chút, và những ngày đầu xa nhà cũng nhẹ nhàng hơn một chút.</em></strong>
     </p>
   </div>
 </div>
@@ -68,7 +68,7 @@ Hy vọng với những điều nho nhỏ này, em sẽ thấy Hà Nội bớt x
       <div class="wk-chot">
         <p class="wk-chot-nhan">Tuyển Gen 16</p>
         <p class="wk-chot-dem" id="wk-dem">—</p>
-        <a class="nut nut-chinh" href="index.html#nop-don">Nộp đơn</a>
+        <a class="nut nut-chinh" href="index.html#nop-don">Đăng kí</a>
       </div>
 
       <p class="wk-gop">
@@ -175,13 +175,6 @@ Từ Hà Nội về Vinh chừng 300 cây số, em có thể chọn đi xe giư�
           <div class="ag-phao" id="ag-phao" aria-hidden="true"></div>
         </main>
       </div>
-
-      <h3 class="wk-tieu-phu">Món quê ăn ở Hà Nội</h3>
-      <p class="wk-nho">
-        Những món có ghi tên quán là những địa chỉ anh chị trong Đội đã từng ghé và dùng thử. 
-        Danh sách vẫn còn nhiều chỗ trống, nên nếu em biết quán mô ngon, em có thể giới thiệu cho anh chị nhé!
-      </p>
-      <div id="wk-mon-que" class="wk-mon-hang"></div>
     </section>
 
     <!-- ---------------- HỌC TẬP ---------------- -->
@@ -208,12 +201,37 @@ Từ Hà Nội về Vinh chừng 300 cây số, em có thể chọn đi xe giư�
           </ul>
           <p class="wk-nho"></p>
         </div>
-        <div class="wk-phu-the wk-dang-viet" data-tim="môn năm nhất đăng ký tín chỉ học bổng tài liệu đi làm thêm kinh nghiệm">
+        <div class="wk-phu-the wk-hoi-nhanh" data-tim="hỏi nhanh thắc mắc họ tên số điện thoại facebook giải đáp môn năm nhất đăng ký tín chỉ học bổng tài liệu đi làm thêm kinh nghiệm liên hệ">
           <h3>Hỏi nhanh</h3>
-          <ul class="wk-ds-mo">
-
-          </ul>
           <p class="wk-nho">Nếu em cần tìm hiểu thông tin gấp hãy thoải mái gửi những thắc mắc kèm thông tin liên lạc của mình tại đây, anh chị sẽ hỗ trợ em nhé.</p>
+
+          <form id="form-hoi-nhanh" class="hn-form" novalidate>
+            <div class="hn-truong">
+              <label for="hn-ho-ten">1. Họ và tên:</label>
+              <input type="text" id="hn-ho-ten" name="ho_ten" placeholder="Họ và tên của em">
+            </div>
+
+            <div class="hn-truong">
+              <label for="hn-thac-mac">2. Thắc mắc của em:</label>
+              <textarea id="hn-thac-mac" name="thac_mac" rows="3" placeholder="Em đang có câu hỏi hay băn khoăn điều gì, gửi cho anh chị nha..."></textarea>
+            </div>
+
+            <div class="hn-truong">
+              <label for="hn-sdt">3. Số điện thoại:</label>
+              <input type="text" id="hn-sdt" name="sdt" placeholder="Số điện thoại của em">
+            </div>
+
+            <div class="hn-truong">
+              <label for="hn-facebook">4. Link facebook:</label>
+              <input type="text" id="hn-facebook" name="facebook" placeholder="Link Facebook cá nhân của em">
+            </div>
+
+            <div class="hn-nut-hang">
+              <button type="submit" id="hn-nut-gui" class="nut nut-chinh hn-nut-gui">Gửi</button>
+            </div>
+
+            <div id="hn-thong-bao" class="hn-thong-bao" hidden></div>
+          </form>
         </div>
       </div>
     </section>
@@ -224,9 +242,9 @@ Từ Hà Nội về Vinh chừng 300 cây số, em có thể chọn đi xe giư�
     <!-- ---------------- KHỐI CHỐT ---------------- -->
     <section class="wk-ket">
       <h2>Made by 37FTU</h2>
-      <p>
+      <p class="wk-ket-doan">
         Trang này được tạo bởi CLB Tình nguyện Đồng hương Nghệ An Trường Đại học Ngoại thương. 
-        Qua mỗi khóa, anh chị lại tích góp thêm một chút kinh nghiệm, một chút câu chuyện, để các em các em có thêm hành trang trên chặng đường đầu tiên ở FTU. Nếu em thấy mình phù hợp với 37FTU, hãy về nhà cùng anh chị nhé.
+        Qua mỗi khóa, anh chị lại tích góp thêm một chút kinh nghiệm, một chút câu chuyện, để các em có thêm hành trang trên chặng đường đầu tiên ở FTU. Nếu em thấy mình phù hợp với 37FTU, hãy về nhà cùng anh chị nhé.
       </p>
       <p class="wk-ket-dem" id="wk-dem-2">—</p>
       <div class="wk-ket-nut">
@@ -242,7 +260,7 @@ Từ Hà Nội về Vinh chừng 300 cây số, em có thể chọn đi xe giư�
 <script src="config.js"></script>
 <script src="data/mon-an.js"></script>
 <script src="an-gi.js"></script>
-<script src="wiki.js"></script>
+<script src="wiki.js?v=3"></script>
 <script src="gop-y.js"></script>
 </body>
 </html>

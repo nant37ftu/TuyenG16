@@ -33,8 +33,8 @@
           var ngay = Math.floor(con / 86400000);
           var gio = Math.floor(con / 3600000) % 24;
           chu = ngay > 0
-            ? 'Còn ' + ngay + ' ngày ' + gio + ' giờ để nộp đơn'
-            : 'Còn ' + gio + ' giờ cuối để nộp đơn';
+            ? 'Còn ' + ngay + ' ngày ' + gio + ' giờ để em trở thành một G16 37FTU-ers'
+            : 'Còn ' + gio + ' giờ cuối để em trở thành một G16 37FTU-ers';
         }
       }
       if (o1) o1.textContent = chu;
@@ -322,11 +322,104 @@
     });
   }
 
+  /* ---------------- Hỏi nhanh ---------------- */
+  function dauSupabase() {
+    var k = CH.SUPABASE_ANON_KEY || '';
+    var h = { 'Content-Type': 'application/json', apikey: k, Prefer: 'return=minimal' };
+    if (/^eyJ/.test(k)) h.Authorization = 'Bearer ' + k;
+    return h;
+  }
+
+  function luuTamHoiNhanh(banGhi) {
+    var ds = [];
+    try { ds = JSON.parse(localStorage.getItem('g16_hoi_nhanh_offline') || '[]'); } catch (e) {}
+    ds.push(banGhi);
+    try { localStorage.setItem('g16_hoi_nhanh_offline', JSON.stringify(ds)); } catch (e) {}
+  }
+
+  function guiHoiNhanh(banGhi) {
+    var coBackend = !!(CH.SUPABASE_URL && CH.SUPABASE_ANON_KEY);
+    if (!coBackend) {
+      luuTamHoiNhanh(banGhi);
+      return Promise.resolve({ cheDo: 'tam' });
+    }
+
+    var bang = CH.BANG_HOI_NHANH || 'g16_hoi_nhanh';
+    var url = (CH.SUPABASE_URL || '').replace(/\/$/, '') + '/rest/v1/' + bang;
+
+    return fetch(url, {
+      method: 'POST',
+      headers: dauSupabase(),
+      body: JSON.stringify(banGhi)
+    }).then(function (r) {
+      if (!r.ok) {
+        return r.text().then(function (t) {
+          throw new Error(t || ('HTTP ' + r.status));
+        });
+      }
+      return { cheDo: 'supabase' };
+    }).catch(function (err) {
+      console.warn('Lỗi gửi hỏi nhanh tới Supabase, lưu tạm vào trình duyệt:', err);
+      luuTamHoiNhanh(banGhi);
+      return { cheDo: 'tam', loi: err };
+    });
+  }
+
+  function khoiTaoHoiNhanh() {
+    var form = $('#form-hoi-nhanh');
+    if (!form) return;
+
+    var tb = $('#hn-thong-bao');
+    var nut = $('#hn-nut-gui');
+
+    function hienThongBao(loai, html) {
+      if (!tb) return;
+      tb.hidden = false;
+      tb.className = 'hn-thong-bao ' + (loai === 'loi' ? 'loi' : 'thanh-cong');
+      tb.innerHTML = html;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var hoTen = ($('#hn-ho-ten') ? $('#hn-ho-ten').value : '').trim();
+      var thacMac = ($('#hn-thac-mac') ? $('#hn-thac-mac').value : '').trim();
+      var sdt = ($('#hn-sdt') ? $('#hn-sdt').value : '').trim();
+      var facebook = ($('#hn-facebook') ? $('#hn-facebook').value : '').trim();
+
+      var banGhi = {
+        ho_ten: hoTen,
+        thac_mac: thacMac,
+        sdt: sdt,
+        facebook: facebook
+      };
+
+      if (nut) {
+        nut.disabled = true;
+        nut.textContent = 'Đang gửi...';
+      }
+      if (tb) tb.hidden = true;
+
+      guiHoiNhanh(banGhi).then(function () {
+        form.reset();
+        hienThongBao('thanh-cong', '<b>Đã gửi thành công!</b> Cảm ơn em nhé, các anh chị 37FTU sẽ liên hệ hỗ trợ em sớm nhất.');
+      }).catch(function () {
+        hienThongBao('loi', 'Có lỗi nhỏ khi gửi thắc mắc. Em thử lại hoặc nhắn tin fanpage giúp anh chị nhé!');
+      }).finally(function () {
+        if (nut) {
+          nut.disabled = false;
+          nut.textContent = 'Gửi';
+        }
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     demNguoc();
     napXe();
     veMonQue();
     chonMuc();
     tim();
+    khoiTaoHoiNhanh();
   });
 })();

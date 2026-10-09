@@ -37,6 +37,10 @@
   text-justify: inter-word;
   text-align-last: left;
 }
+.wk-dan strong {
+  color: var(--muc);
+  font-weight: 700;
+}
 
 /* ---------- Bố cục 2 cột ---------- */
 .wk-bo {
@@ -256,6 +260,86 @@
 .wk-dang-viet { border-style: dashed; }
 .wk-dang-viet li { color: var(--muc-nhat); }
 
+/* ---------- Khối Hỏi nhanh & biểu mẫu ---------- */
+.wk-hoi-nhanh {
+  display: flex;
+  flex-direction: column;
+}
+.hn-form {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hn-truong {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.hn-truong label {
+  font-size: .86rem;
+  font-weight: 700;
+  color: var(--xanh-rung);
+}
+.hn-truong input,
+.hn-truong textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid var(--vien-dam);
+  border-radius: var(--r);
+  font-family: inherit;
+  font-size: .9rem;
+  background: var(--trang);
+  color: var(--muc);
+  transition: border-color .15s ease, box-shadow .15s ease;
+  box-sizing: border-box;
+}
+.hn-truong textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+.hn-truong input:focus,
+.hn-truong textarea:focus {
+  outline: none;
+  border-color: var(--cam);
+  box-shadow: 0 0 0 3px rgba(250,80,30,.14);
+}
+.hn-truong input::placeholder,
+.hn-truong textarea::placeholder {
+  color: var(--muc-nhat);
+  opacity: .75;
+  font-size: .86rem;
+}
+.hn-nut-hang {
+  margin-top: 4px;
+}
+.hn-nut-gui {
+  width: 100%;
+  padding: 11px 20px;
+  font-size: .96rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--r);
+}
+.hn-thong-bao {
+  margin-top: 4px;
+  padding: 10px 14px;
+  border-radius: var(--r);
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.hn-thong-bao.thanh-cong {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #166534;
+}
+.hn-thong-bao.loi {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
+
 /* ---------- Món quê ---------- */
 .wk-mon-hang {
   display: grid;
@@ -288,7 +372,7 @@
 .wk-angi-dau { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .wk-angi-dau h3 { font-size: 1.05rem; color: #fff; }
 .wk-angi .ag { min-height: 0; padding: 0; background: none; }
-.wk-angi .ag-trong { padding: 0; margin: 0; max-width: none; }
+.wk-angi .ag-trong { padding: 0; margin-inline: auto; width: min(680px, 100%); }
 .wk-angi .ag-tieu { margin-top: 2px; }
 .wk-angi .ag-tieu h1 { font-size: clamp(1.25rem, 2.6vw, 1.6rem); }
 .wk-angi .ag-chao { font-size: .9rem; }
@@ -326,8 +410,19 @@
   margin-top: 30px;
 }
 .wk-ket h2 { color: #fff; justify-content: center; font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
-.wk-ket p { color: rgba(255,255,255,.82); max-width: 56ch; margin-inline: auto; margin-top: 10px; line-height: 1.65; font-size: .95rem; }
-.wk-ket-dem { color: var(--xanh-lime) !important; margin-top: 14px !important; font-weight: 600; }
+.wk-ket p.wk-ket-doan,
+.wk-ket p:not(.wk-ket-dem) {
+  color: rgba(255, 255, 255, .88);
+  max-width: min(640px, 100%);
+  margin-inline: auto;
+  margin-top: 12px;
+  line-height: 1.7;
+  font-size: .96rem;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: center;
+}
+.wk-ket-dem { color: var(--xanh-lime) !important; margin-top: 14px !important; font-weight: 600; text-align: center; }
 .wk-ket-nut { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 16px; }
 .wk-ket-nut .nut-vien { color: #fff; border-color: rgba(255,255,255,.4); }
 .wk-ket-nut .nut-vien:hover { background: rgba(255,255,255,.1); color: #fff; border-color: #fff; }

@@ -371,9 +371,39 @@ create trigger trang_du_lieu_sau
 -- Gỡ quyền một người:     delete from public.btc_quan_tri where email = '...';
 
 
--- ---------- 9. Tự kiểm tra ----------
--- Kết quả hiện ngay dưới khung SQL. Đúng khi: cả 5 bảng da_bat_rls = true, và
--- g16_ung_vien, ban_do_dang_ky KHÔNG có dòng nào "SELECT anon".
+-- ---------- 10. Bảng Hỏi nhanh (Nghệ Wiki) ----------
+create table if not exists public.g16_hoi_nhanh (
+  id        uuid primary key default gen_random_uuid(),
+  tao_luc   timestamptz not null default now(),
+  ho_ten    text,       -- 1. Họ và tên
+  thac_mac  text,       -- 2. Thắc mắc của em
+  sdt       text,       -- 3. Số điện thoại
+  facebook  text        -- 4. Link facebook
+);
+
+create index if not exists g16_hoi_nhanh_tao_luc_idx on public.g16_hoi_nhanh (tao_luc desc);
+
+alter table public.g16_hoi_nhanh enable row level security;
+
+drop policy if exists "ai cung gui hoi nhanh duoc" on public.g16_hoi_nhanh;
+create policy "ai cung gui hoi nhanh duoc"
+  on public.g16_hoi_nhanh for insert
+  to anon
+  with check (true);
+
+drop policy if exists "btc doc hoi nhanh" on public.g16_hoi_nhanh;
+create policy "btc doc hoi nhanh"
+  on public.g16_hoi_nhanh for select
+  to authenticated
+  using ((select public.la_btc()));
+
+grant insert on public.g16_hoi_nhanh to anon;
+grant select, delete on public.g16_hoi_nhanh to authenticated;
+
+
+-- ---------- 11. Tự kiểm tra ----------
+-- Kết quả hiện ngay dưới khung SQL. Đúng khi: các bảng da_bat_rls = true, và
+-- g16_ung_vien, g16_hoi_nhanh, ban_do_dang_ky KHÔNG có dòng nào "SELECT anon".
 select
   c.relname        as bang,
   c.relrowsecurity as da_bat_rls,
@@ -385,7 +415,8 @@ from pg_class c
 left join pg_policies p
   on p.schemaname = 'public' and p.tablename = c.relname
 where c.relnamespace = 'public'::regnamespace
-  and c.relname in ('g16_ung_vien', 'ban_do_dang_ky', 'trang_du_lieu',
+  and c.relname in ('g16_ung_vien', 'g16_hoi_nhanh', 'ban_do_dang_ky', 'trang_du_lieu',
                     'trang_lich_su', 'btc_quan_tri')
 group by c.relname, c.relrowsecurity
 order by c.relname;
+

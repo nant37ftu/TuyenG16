@@ -40,12 +40,12 @@
   font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:rgba(255,255,255,.44);text-align:right
 }
-.ag-chip{display:flex;gap:8px;overflow-x:auto;padding:3px 1px;scrollbar-width:none}
+.ag-chip{display:flex;gap:8px;overflow-x:auto;padding:3px 1px;scrollbar-width:none;width:100%}
 .ag-chip::-webkit-scrollbar{display:none}
 .ag-chip button{
-  flex:none;padding:8px 15px;border-radius:999px;cursor:pointer;white-space:nowrap;
+  flex:1 1 0px;min-width:max-content;padding:8px 12px;border-radius:999px;cursor:pointer;white-space:nowrap;
   border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);
-  font-family:var(--font);font-size:.88rem;font-weight:600;transition:all .15s ease;
+  font-family:var(--font);font-size:.88rem;font-weight:600;transition:all .15s ease;text-align:center;
 }
 .ag-chip button:hover{border-color:rgba(255,255,255,.45);color:#fff}
 .ag-chip button[aria-pressed="true"]{
