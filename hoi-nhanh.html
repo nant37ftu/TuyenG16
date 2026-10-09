@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Hỏi Nhanh — 37FTU Nghệ Wiki</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hoi-nhanh.css?v=1">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="hn-header">
+    <div class="hn-header-trong">
+      <div class="hn-brand">
+        <img class="hn-logo" src="assets/logo.png" alt="Logo 37FTU">
+        <div class="hn-tieu-de-wrap">
+          <h1>
+            37FTU · Hỏi Nhanh
+            <span class="hn-badge-public">Công khai</span>
+          </h1>
+          <p class="hn-phu-de" id="trang-thai-kn">Đang kết nối dữ liệu Supabase...</p>
+        </div>
+      </div>
+
+      <div class="hn-nut-nhom">
+        <button type="button" class="nut-action" id="nut-copy-link" title="Sao chép link này để gửi vào nhóm Zalo/Mess cho nhân sự">
+          📋 Link gửi nhân sự
+        </button>
+        <button type="button" class="nut-action" id="nut-lam-moi" title="Tải lại câu hỏi mới">
+          🔄 Làm mới
+        </button>
+        <button type="button" class="nut-action nut-action-chinh" id="nut-xuat-excel" title="Xuất danh sách ra file Excel / CSV">
+          📥 Xuất Excel
+        </button>
+        <a class="nut-action" href="dashboard.html" title="Chuyển sang Dashboard Đơn">
+          📊 Đơn G16
+        </a>
+        <a class="nut-action" href="wiki.html#hoc-tap" target="_blank" title="Xem trang Nghệ Wiki">
+          📔 Nghệ Wiki ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG CHÍNH -->
+  <main class="hn-main">
+
+    <!-- KPI THỐNG KÊ -->
+    <section class="hn-kpi-luoi">
+      <div class="hn-kpi-the kpi-tong" id="kpi-card-tat-ca">
+        <div class="hn-kpi-dau">
+          <span>TỔNG CÂU HỎI</span>
+          <span>📋</span>
+        </div>
+        <div class="hn-kpi-so" id="kpi-tong">0</div>
+        <div class="hn-kpi-chu">Thắc mắc gửi về từ Nghệ Wiki</div>
+      </div>
+
+      <div class="hn-kpi-the kpi-cho" id="kpi-card-cho">
+        <div class="hn-kpi-dau">
+          <span>CHƯA TRẢ LỜI</span>
+          <span>⏳</span>
+        </div>
+        <div class="hn-kpi-so" id="kpi-chua-tra-loi" style="color: #D97706;">0</div>
+        <div class="hn-kpi-chu">Đang chờ nhân sự giải đáp</div>
+      </div>
+
+      <div class="hn-kpi-the kpi-xong" id="kpi-card-xong">
+        <div class="hn-kpi-dau">
+          <span>ĐÃ PHẢN HỒI</span>
+          <span>✅</span>
+        </div>
+        <div class="hn-kpi-so" id="kpi-da-tra-loi" style="color: #059669;">0</div>
+        <div class="hn-kpi-chu">Đã liên hệ hỗ trợ các em</div>
+      </div>
+
+      <div class="hn-kpi-the kpi-ngay">
+        <div class="hn-kpi-dau">
+          <span>HÔM NAY</span>
+          <span>⚡</span>
+        </div>
+        <div class="hn-kpi-so" id="kpi-hom-nay" style="color: #7C3AED;">0</div>
+        <div class="hn-kpi-chu">Câu hỏi mới trong ngày</div>
+      </div>
+    </section>
+
+    <!-- BỘ LỌC & TÌM KIẾM -->
+    <section class="hn-thanh-cong-cu">
+      <div class="hn-tim-kiem">
+        <span>🔎</span>
+        <input type="text" id="o-tim-kiem" placeholder="Tìm theo tên, câu hỏi, SĐT hoặc link Facebook...">
+      </div>
+
+      <div class="hn-bo-loc">
+        <button type="button" class="hn-tab dang-chon" data-loc="tat-ca">
+          Tất cả <span class="dem-so" id="tab-so-tat-ca">0</span>
+        </button>
+        <button type="button" class="hn-tab" data-loc="chua_tra_loi">
+          ⏳ Chưa trả lời <span class="dem-so" id="tab-so-cho">0</span>
+        </button>
+        <button type="button" class="hn-tab" data-loc="da_tra_loi">
+          ✅ Đã trả lời <span class="dem-so" id="tab-so-xong">0</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- BẢNG CÂU HỎI -->
+    <section class="hn-bang-hop">
+      <div class="hn-bang-dau">
+        <div>
+          Danh sách câu hỏi: <b id="dem-hien-thi">0</b> mục
+        </div>
+        <div style="font-size: 0.82rem; color: #6B7280;">
+          💡 Click vào badge để đổi nhanh trạng thái, bấm Lưu để cập nhật phản hồi
+        </div>
+      </div>
+
+      <div class="hn-bang-cuon">
+        <table class="hn-bang">
+          <thead>
+            <tr>
+              <th style="width: 130px;">Thời gian</th>
+              <th style="width: 160px;">Họ và tên</th>
+              <th>Thắc mắc của em</th>
+              <th style="width: 170px;">Liên hệ</th>
+              <th style="width: 130px;">Trạng thái</th>
+              <th style="width: 250px;">Phản hồi & Nhân sự</th>
+            </tr>
+          </thead>
+          <tbody id="than-bang">
+            <tr>
+              <td colspan="6" class="hn-trong">
+                <div class="hn-trong-icon">⏳</div>
+                <div>Đang tải danh sách câu hỏi...</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST BÁO LƯU -->
+  <div class="hn-toast" id="hn-toast">Đã lưu cập nhật thành công!</div>
+
+  <script src="config.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    var CH = window.CAU_HINH || {};
+    var BANG = CH.BANG_HOI_NHANH || 'g16_hoi_nhanh';
+    var dsGoc = [];
+    var boLocHienTai = 'tat-ca';
+    var tuKhoaHienTai = '';
+
+    var $ = function (id) { return document.getElementById(id); };
+
+    function an(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    function baoToast(msg) {
+      var t = $('hn-toast');
+      if (!t) return;
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(function () { t.style.display = 'none'; }, 2500);
+    }
+
+    function dauSupabase() {
+      var k = CH.SUPABASE_ANON_KEY || '';
+      var h = {
+        'Content-Type': 'application/json',
+        'apikey': k
+      };
+      if (/^eyJ/.test(k)) h.Authorization = 'Bearer ' + k;
+      return h;
+    }
+
+    function dinhDangGio(iso) {
+      if (!iso) return '—';
+      try {
+        var d = new Date(iso);
+        if (isNaN(d)) return iso;
+        var gio = String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+        var ngay = String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0');
+        return gio + ' · ' + ngay;
+      } catch (e) {
+        return iso;
+      }
+    }
+
+    function layTenNhanSuMacDinh() {
+      try { return localStorage.getItem('37ftu_ten_nhan_su') || ''; } catch (e) { return ''; }
+    }
+
+    function luuTenNhanSuMacDinh(ten) {
+      if (!ten) return;
+      try { localStorage.setItem('37ftu_ten_nhan_su', ten); } catch (e) {}
+    }
+
+    /* ------------------- Tải dữ liệu ------------------- */
+    function taiDuLieu() {
+      var kn = $('trang-thai-kn');
+      if (kn) kn.textContent = 'Đang tải dữ liệu…';
+
+      if (!CH.SUPABASE_URL || !CH.SUPABASE_ANON_KEY) {
+        // Fallback localStorage
+        docLocalStorage();
+        if (kn) kn.textContent = 'Chạy ở chế độ bộ nhớ cục bộ (chưa nối Supabase)';
+        return;
+      }
+
+      var url = CH.SUPABASE_URL.replace(/\/+$/, '') + '/rest/v1/' + BANG + '?select=*&order=tao_luc.desc';
+
+      fetch(url, {
+        method: 'GET',
+        headers: dauSupabase()
+      })
+      .then(function (r) {
+        if (!r.ok) return r.text().then(function (t) { throw new Error(t || ('HTTP ' + r.status)); });
+        return r.json();
+      })
+      .then(function (data) {
+        dsGoc = Array.isArray(data) ? data : [];
+        if (kn) {
+          var now = new Date();
+          var timeStr = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0') + ':' + String(now.getSeconds()).padStart(2, '0');
+          kn.textContent = 'Cập nhật thời gian thực lúc ' + timeStr;
+        }
+        veGiaoDien();
+      })
+      .catch(function (err) {
+        console.warn('Lỗi tải từ Supabase, chuyển sang đọc lưu tạm:', err);
+        docLocalStorage();
+        if (kn) kn.textContent = 'Không kết nối được Supabase (đang hiện đơn lưu tạm)';
+      });
+    }
+
+    function docLocalStorage() {
+      try {
+        var local = JSON.parse(localStorage.getItem('g16_hoi_nhanh_offline') || '[]');
+        dsGoc = local.map(function (item, idx) {
+          return {
+            id: item.id || ('local_' + idx),
+            tao_luc: item.tao_luc || new Date().toISOString(),
+            ho_ten: item.ho_ten || '',
+            thac_mac: item.thac_mac || '',
+            sdt: item.sdt || '',
+            facebook: item.facebook || '',
+            trang_thai: item.trang_thai || 'chua_tra_loi',
+            tra_loi: item.tra_loi || '',
+            nguoi_tra_loi: item.nguoi_tra_loi || ''
+          };
+        });
+      } catch (e) {
+        dsGoc = [];
+      }
+      veGiaoDien();
+    }
+
+    /* ------------------- Cập nhật vào Supabase ------------------- */
+    function capNhatPhanHoi(id, trangThai, traLoi, nguoiTraLoi, nutBtn) {
+      if (nutBtn) {
+        nutBtn.disabled = true;
+        nutBtn.textContent = 'Đang lưu…';
+      }
+
+      // Lưu tên nhân sự
+      if (nguoiTraLoi) luuTenNhanSuMacDinh(nguoiTraLoi);
+
+      var payload = {
+        trang_thai: trangThai,
+        tra_loi: traLoi,
+        nguoi_tra_loi: nguoiTraLoi,
+        cap_nhat_luc: new Date().toISOString()
+      };
+
+      // Cập nhật mảng local trước để UI mượt
+      for (var i = 0; i < dsGoc.length; i++) {
+        if (dsGoc[i].id === id) {
+          dsGoc[i].trang_thai = trangThai;
+          dsGoc[i].tra_loi = traLoi;
+          dsGoc[i].nguoi_tra_loi = nguoiTraLoi;
+          break;
+        }
+      }
+
+      if (String(id).indexOf('local_') === 0 || !CH.SUPABASE_URL || !CH.SUPABASE_ANON_KEY) {
+        // Lưu tạm
+        try { localStorage.setItem('g16_hoi_nhanh_offline', JSON.stringify(dsGoc)); } catch (e) {}
+        baoToast('Đã lưu vào bộ nhớ trình duyệt!');
+        veGiaoDien();
+        return;
+      }
+
+      var url = CH.SUPABASE_URL.replace(/\/+$/, '') + '/rest/v1/' + BANG + '?id=eq.' + encodeURIComponent(id);
+
+      fetch(url, {
+        method: 'PATCH',
+        headers: Object.assign({}, dauSupabase(), { 'Prefer': 'return=minimal' }),
+        body: JSON.stringify(payload)
+      })
+      .then(function (r) {
+        if (!r.ok) return r.text().then(function (t) { throw new Error(t || ('HTTP ' + r.status)); });
+        baoToast('Đã cập nhật phản hồi thành công! 🎉');
+        veGiaoDien();
+      })
+      .catch(function (err) {
+        alert('Lỗi cập nhật: ' + err.message + '\n\nBTC vui lòng kiểm tra đã chạy lệnh SQL mở quyền UPDATE trên Supabase chưa.');
+        if (nutBtn) {
+          nutBtn.disabled = false;
+          nutBtn.textContent = 'Lưu';
+        }
+      });
+    }
+
+    /* ------------------- Xuất CSV / Excel ------------------- */
+    function xuatExcel() {
+      if (!dsGoc.length) {
+        alert('Chưa có câu hỏi nào để xuất file.');
+        return;
+      }
+
+      var tieuDe = ['Thời gian', 'Họ và tên', 'Thắc mắc của em', 'Số điện thoại', 'Link Facebook', 'Trạng thái', 'Nội dung phản hồi', 'Nhân sự xử lý'];
+      var dongCsv = [tieuDe.map(function (c) { return '"' + c.replace(/"/g, '""') + '"'; }).join(',')];
+
+      dsGoc.forEach(function (row) {
+        var dong = [
+          dinhDangGio(row.tao_luc),
+          row.ho_ten || '',
+          row.thac_mac || '',
+          row.sdt || '',
+          row.facebook || '',
+          row.trang_thai === 'da_tra_loi' ? 'Đã trả lời' : 'Chưa trả lời',
+          row.tra_loi || '',
+          row.nguoi_tra_loi || ''
+        ];
+        dongCsv.push(dong.map(function (c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(','));
+      });
+
+      var csvNoiDung = '\uFEFF' + dongCsv.join('\r\n'); // Thêm BOM UTF-8 để Excel đọc tiếng Việt chuẩn
+      var blob = new Blob([csvNoiDung], { type: 'text/csv;charset=utf-8;' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      var ngayStr = new Date().toISOString().slice(0, 10);
+      a.download = '37FTU_Hoi_Nhanh_' + ngayStr + '.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      baoToast('Đã tải file Excel/CSV về máy!');
+    }
+
+    /* ------------------- Render Giao diện ------------------- */
+    function veGiaoDien() {
+      var homNayStr = new Date().toISOString().slice(0, 10);
+      var soTong = dsGoc.length;
+      var soCho = 0;
+      var soXong = 0;
+      var soHomNay = 0;
+
+      dsGoc.forEach(function (d) {
+        if (d.trang_thai === 'da_tra_loi') soXong++;
+        else soCho++;
+
+        if (d.tao_luc && String(d.tao_luc).slice(0, 10) === homNayStr) {
+          soHomNay++;
+        }
+      });
+
+      $('kpi-tong').textContent = soTong;
+      $('kpi-chua-tra-loi').textContent = soCho;
+      $('kpi-da-tra-loi').textContent = soXong;
+      $('kpi-hom-nay').textContent = soHomNay;
+
+      $('tab-so-tat-ca').textContent = soTong;
+      $('tab-so-cho').textContent = soCho;
+      $('tab-so-xong').textContent = soXong;
+
+      // Lọc danh sách
+      var dsHienThi = dsGoc.filter(function (d) {
+        // Lọc trạng thái
+        if (boLocHienTai === 'chua_tra_loi' && d.trang_thai === 'da_tra_loi') return false;
+        if (boLocHienTai === 'da_tra_loi' && d.trang_thai !== 'da_tra_loi') return false;
+
+        // Lọc tìm kiếm
+        if (tuKhoaHienTai) {
+          var chu = (
+            (d.ho_ten || '') + ' ' +
+            (d.thac_mac || '') + ' ' +
+            (d.sdt || '') + ' ' +
+            (d.facebook || '') + ' ' +
+            (d.tra_loi || '') + ' ' +
+            (d.nguoi_tra_loi || '')
+          ).toLowerCase();
+          if (chu.indexOf(tuKhoaHienTai) < 0) return false;
+        }
+
+        return true;
+      });
+
+      $('dem-hien-thi').textContent = dsHienThi.length;
+      var than = $('than-bang');
+
+      if (!dsHienThi.length) {
+        than.innerHTML = '<tr><td colspan="6" class="hn-trong">' +
+          '<div class="hn-trong-icon">📭</div>' +
+          '<div>' + (tuKhoaHienTai ? 'Không tìm thấy câu hỏi nào phù hợp với từ khóa.' : 'Chưa có câu hỏi nào trong mục này.') + '</div>' +
+          '</td></tr>';
+        return;
+      }
+
+      var tenMacDinh = layTenNhanSuMacDinh();
+
+      than.innerHTML = dsHienThi.map(function (row) {
+        var daTraLoi = row.trang_thai === 'da_tra_loi';
+        var badgeHtml = daTraLoi
+          ? '<span class="hn-badge badge-xong" data-id="' + an(row.id) + '" data-doi="chua_tra_loi" title="Bấm để đổi sang Chưa trả lời">✅ Đã trả lời</span>'
+          : '<span class="hn-badge badge-cho" data-id="' + an(row.id) + '" data-doi="da_tra_loi" title="Bấm để đổi sang Đã trả lời">⏳ Chưa trả lời</span>';
+
+        // Liên hệ SĐT
+        var sdtHtml = row.sdt
+          ? '<a href="tel:' + an(row.sdt.replace(/\s+/g, '')) + '" title="Bấm để gọi điện">📞 ' + an(row.sdt) + '</a>'
+          : '<span style="color:#9CA3AF; font-size:0.82rem;">(Chưa có SĐT)</span>';
+
+        // Liên hệ FB
+        var fbUrl = row.facebook || '';
+        if (fbUrl && !/^https?:\/\//i.test(fbUrl)) fbUrl = 'https://' + fbUrl;
+        var fbHtml = row.facebook
+          ? '<a class="lien-he-fb" href="' + an(fbUrl) + '" target="_blank" rel="noopener">🌐 Mở Facebook ↗</a>'
+          : '<span style="color:#9CA3AF; font-size:0.82rem;">(Chưa có FB)</span>';
+
+        var tenNguoiXuLy = row.nguoi_tra_loi || tenMacDinh;
+
+        return '<tr class="' + (daTraLoi ? '' : 'dong-chua-tra-loi') + '">' +
+          '<td class="hn-gio">' + dinhDangGio(row.tao_luc) + '</td>' +
+          '<td class="hn-ten">' + (row.ho_ten ? an(row.ho_ten) : '<i style="color:#9CA3AF;font-weight:normal">Ẩn danh</i>') + '</td>' +
+          '<td class="hn-cau-hoi">' + an(row.thac_mac || '(Không điền nội dung thắc mắc)') + '</td>' +
+          '<td><div class="hn-lien-he">' + sdtHtml + fbHtml + '</div></td>' +
+          '<td>' + badgeHtml + '</td>' +
+          '<td>' +
+            '<div class="hn-xu-ly">' +
+              '<textarea id="note-' + an(row.id) + '" placeholder="Ghi chú phản hồi / câu trả lời...">' + an(row.tra_loi || '') + '</textarea>' +
+              '<div class="hn-xu-ly-hang">' +
+                '<input type="text" id="user-' + an(row.id) + '" value="' + an(tenNguoiXuLy) + '" placeholder="Người trả lời...">' +
+                '<button type="button" class="nut-luu" data-luu="' + an(row.id) + '">Lưu</button>' +
+              '</div>' +
+            '</div>' +
+          '</td>' +
+        '</tr>';
+      }).join('');
+
+      // Gắn sự kiện click badge đổi trạng thái
+      than.querySelectorAll('.hn-badge').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var id = b.getAttribute('data-id');
+          var trangThaiMoi = b.getAttribute('data-doi');
+          var noteInput = $('note-' + id);
+          var userInput = $('user-' + id);
+          var noteVal = noteInput ? noteInput.value.trim() : '';
+          var userVal = userInput ? userInput.value.trim() : '';
+          capNhatPhanHoi(id, trangThaiMoi, noteVal, userVal, null);
+        });
+      });
+
+      // Gắn sự kiện bấm Lưu
+      than.querySelectorAll('.nut-luu').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-luu');
+          var noteInput = $('note-' + id);
+          var userInput = $('user-' + id);
+          var noteVal = noteInput ? noteInput.value.trim() : '';
+          var userVal = userInput ? userInput.value.trim() : '';
+          // Tìm trạng thái hiện tại của item
+          var currentStatus = 'da_tra_loi'; // Khi bấm lưu phản hồi mặc định đánh dấu đã trả lời nếu trước đó chưa
+          for (var i = 0; i < dsGoc.length; i++) {
+            if (dsGoc[i].id === id) {
+              currentStatus = dsGoc[i].trang_thai === 'da_tra_loi' ? 'da_tra_loi' : (noteVal ? 'da_tra_loi' : dsGoc[i].trang_thai);
+              break;
+            }
+          }
+          capNhatPhanHoi(id, currentStatus, noteVal, userVal, btn);
+        });
+      });
+    }
+
+    /* ------------------- Khởi tạo sự kiện ------------------- */
+    function khoiTao() {
+      // Nút sao chép link gửi nhân sự
+      var btnCp = $('nut-copy-link');
+      if (btnCp) {
+        btnCp.addEventListener('click', function () {
+          var link = window.location.href;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(link).then(function () {
+              baoToast('Đã copy link! Bạn có thể gửi vào nhóm Zalo/Mess cho nhân sự.');
+            }).catch(function () {
+              prompt('Copy đường link này gửi cho nhân sự:', link);
+            });
+          } else {
+            prompt('Copy đường link này gửi cho nhân sự:', link);
+          }
+        });
+      }
+
+      // Nút làm mới
+      var btnLm = $('nut-lam-moi');
+      if (btnLm) btnLm.addEventListener('click', taiDuLieu);
+
+      // Nút xuất Excel
+      var btnEx = $('nut-xuat-excel');
+      if (btnEx) btnEx.addEventListener('click', xuatExcel);
+
+      // Ô tìm kiếm
+      var ot = $('o-tim-kiem');
+      if (ot) {
+        ot.addEventListener('input', function () {
+          tuKhoaHienTai = ot.value.trim().toLowerCase();
+          veGiaoDien();
+        });
+      }
+
+      // Các tab lọc
+      document.querySelectorAll('.hn-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          document.querySelectorAll('.hn-tab').forEach(function (t) { t.classList.remove('dang-chon'); });
+          tab.classList.add('dang-chon');
+          boLocHienTai = tab.getAttribute('data-loc');
+          veGiaoDien();
+        });
+      });
+
+      // Bấm thẻ KPI để lọc nhanh
+      var cardCho = $('kpi-card-cho');
+      if (cardCho) {
+        cardCho.addEventListener('click', function () {
+          var tabCho = document.querySelector('.hn-tab[data-loc="chua_tra_loi"]');
+          if (tabCho) tabCho.click();
+        });
+      }
+
+      var cardXong = $('kpi-card-xong');
+      if (cardXong) {
+        cardXong.addEventListener('click', function () {
+          var tabXong = document.querySelector('.hn-tab[data-loc="da_tra_loi"]');
+          if (tabXong) tabXong.click();
+        });
+      }
+
+      var cardAll = $('kpi-card-tat-ca');
+      if (cardAll) {
+        cardAll.addEventListener('click', function () {
+          var tabAll = document.querySelector('.hn-tab[data-loc="tat-ca"]');
+          if (tabAll) tabAll.click();
+        });
+      }
+
+      // Tự động tải lần đầu
+      taiDuLieu();
+
+      // Tự động cập nhật mỗi 45 giây
+      setInterval(taiDuLieu, 45000);
+    }
+
+    document.addEventListener('DOMContentLoaded', khoiTao);
+  })();
+  </script>
+</body>
+</html>

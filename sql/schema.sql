@@ -373,15 +373,25 @@ create trigger trang_du_lieu_sau
 
 -- ---------- 10. Bảng Hỏi nhanh (Nghệ Wiki) ----------
 create table if not exists public.g16_hoi_nhanh (
-  id        uuid primary key default gen_random_uuid(),
-  tao_luc   timestamptz not null default now(),
-  ho_ten    text,       -- 1. Họ và tên
-  thac_mac  text,       -- 2. Thắc mắc của em
-  sdt       text,       -- 3. Số điện thoại
-  facebook  text        -- 4. Link facebook
+  id            uuid primary key default gen_random_uuid(),
+  tao_luc       timestamptz not null default now(),
+  ho_ten        text,       -- 1. Họ và tên
+  thac_mac      text,       -- 2. Thắc mắc của em
+  sdt           text,       -- 3. Số điện thoại
+  facebook      text,       -- 4. Link facebook
+  trang_thai    text default 'chua_tra_loi', -- 'chua_tra_loi' | 'da_tra_loi'
+  tra_loi       text,       -- Ghi chú phản hồi / câu trả lời
+  nguoi_tra_loi text,       -- Tên nhân sự phụ trách giải đáp
+  cap_nhat_luc  timestamptz -- Thời điểm cập nhật gần nhất
 );
 
+alter table public.g16_hoi_nhanh add column if not exists trang_thai text default 'chua_tra_loi';
+alter table public.g16_hoi_nhanh add column if not exists tra_loi text;
+alter table public.g16_hoi_nhanh add column if not exists nguoi_tra_loi text;
+alter table public.g16_hoi_nhanh add column if not exists cap_nhat_luc timestamptz;
+
 create index if not exists g16_hoi_nhanh_tao_luc_idx on public.g16_hoi_nhanh (tao_luc desc);
+create index if not exists g16_hoi_nhanh_trang_thai_idx on public.g16_hoi_nhanh (trang_thai);
 
 alter table public.g16_hoi_nhanh enable row level security;
 
@@ -392,13 +402,20 @@ create policy "ai cung gui hoi nhanh duoc"
   with check (true);
 
 drop policy if exists "btc doc hoi nhanh" on public.g16_hoi_nhanh;
-create policy "btc doc hoi nhanh"
+drop policy if exists "public xem duoc hoi nhanh" on public.g16_hoi_nhanh;
+create policy "public xem duoc hoi nhanh"
   on public.g16_hoi_nhanh for select
-  to authenticated
-  using ((select public.la_btc()));
+  to anon, authenticated
+  using (true);
 
-grant insert on public.g16_hoi_nhanh to anon;
-grant select, delete on public.g16_hoi_nhanh to authenticated;
+drop policy if exists "public cap nhat hoi nhanh" on public.g16_hoi_nhanh;
+create policy "public cap nhat hoi nhanh"
+  on public.g16_hoi_nhanh for update
+  to anon, authenticated
+  using (true)
+  with check (true);
+
+grant select, insert, update on public.g16_hoi_nhanh to anon, authenticated;
 
 
 -- ---------- 11. Tự kiểm tra ----------
