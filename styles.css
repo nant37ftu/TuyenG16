@@ -244,6 +244,19 @@ section{padding:35px 0}
   color:#fff;border-color:rgba(255,255,255,.4);
 }
 .nut-cta-phu:hover{background:rgba(255,255,255,.24);border-color:#fff;color:#fff}
+.nut-offline{
+  background:linear-gradient(135deg, #184c26 0%, #0d2c15 100%);
+  color:#FBBF24;
+  border:1.5px solid #FBBF24;
+  box-shadow:0 8px 22px -4px rgba(0,0,0,.5);
+}
+.nut-offline:hover{
+  background:linear-gradient(135deg, #226734 0%, #134020 100%);
+  color:#FFFBEB;
+  border-color:#FDE047;
+  transform:translateY(-2px);
+  box-shadow:0 12px 26px -4px rgba(0,0,0,.6), 0 0 16px rgba(251,191,36,.35);
+}
 
 /* Mascot Column */
 .hero-phai{display:flex;justify-content:center;align-items:center}

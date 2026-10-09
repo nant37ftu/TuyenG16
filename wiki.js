@@ -185,7 +185,7 @@
     if (!sau) { o.hidden = true; return; }
     var ten = LIEN[i + 1] ? LIEN[i + 1].getAttribute('data-ten') : sau;
     o.hidden = false;
-    o.innerHTML = '<span>Đọc tiếp cho đủ bộ</span>' +
+    o.innerHTML = '<span>Đọc tiếp</span>' +
       '<a href="#' + sau + '" data-muc="' + sau + '">' + an(ten) + ' →</a>';
     o.querySelector('a').addEventListener('click', function (e) {
       e.preventDefault();

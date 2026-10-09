@@ -12,6 +12,9 @@
   border-bottom: 1px solid var(--vien);
   padding: clamp(26px, 4.5vw, 44px) 0 clamp(20px, 3vw, 30px);
 }
+.wk-bia .khung {
+  width: min(1180px, 100% - 32px);
+}
 .wk-nhan {
   font-family: var(--font-vui);
   color: var(--xanh-la);
@@ -26,10 +29,13 @@
   margin: 0;
 }
 .wk-dan {
-  max-width: 62ch;
+  max-width: 100%;
   color: var(--muc-nhat);
   margin: 12px 0 0;
   line-height: 1.68;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
 }
 
 /* ---------- Bố cục 2 cột ---------- */
