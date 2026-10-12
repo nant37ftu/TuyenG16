@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <link rel="stylesheet" href="intro.css">
 </head>
 <body>
@@ -116,9 +116,6 @@
             <span>Khám phá ban phù hợp</span>
             <span class="icon-la">🧭</span>
           </a>
-          <a class="nut nut-offline" href="https://www.facebook.com/share/p/1LwEyubZYB/" target="_blank" rel="noopener noreferrer">
-            <span>ĐĂNG KÍ OFFLINE</span>
-          </a>
         </div>
 
         <div class="dem-nguoc" id="dem-nguoc" hidden>
@@ -142,8 +139,51 @@
 
   <div class="so-lieu"><div class="khung" id="so-lieu"></div></div>
 
+  <!-- CÁC HOẠT ĐỘNG ĐANG DIỄN RA -->
+  <section id="hoat-dong" class="hoat-dong-section">
+    <div class="khung">
+      <span class="nhan">CÁC HOẠT ĐỘNG ĐANG DIỄN RA</span>
+      <h2>VĂN NGHỆ NGẪU HỨNG FTU CLUB'S DAY - "NGHỆ AN NGOẠI THƯƠNG"</h2>
+      <p class="dan-de" style="margin-top:14px">
+        Trong ngày hội FTU Club’s Day (FCD) diễn ra vào ngày 18/10 sắp tới, 37FTU sẽ mang đến tiết mục văn nghệ ngẫu hứng “Nghệ An Ngoại thương” với sự góp mặt của các anh chị thành viên và các em sinh viên K65. Nếu em yêu thích nghệ thuật hay đơn giản muốn thử sức với những trải nghiệm mới, đừng ngần ngại đăng ký để cùng anh chị làm quen, gắn kết và tạo nên những kỷ niệm đáng nhớ dưới mái nhà 37FTU nhé!
+      </p>
+      <div class="hoat-dong-grid">
+        <div class="hoat-dong-card">
+          <div class="hoat-dong-anh-wrap">
+            <img src="assets/img/fcd-san-khau.jpg" alt="Tiết mục văn nghệ FTU Club's Day - Nghệ An Ngoại thương" loading="lazy">
+            <span class="hoat-dong-tag">Sân khấu FCD</span>
+          </div>
+        </div>
+        <div class="hoat-dong-card">
+          <div class="hoat-dong-anh-wrap">
+            <img src="assets/img/fcd-tap-the.jpg" alt="Đại gia đình 37FTU tại gian trại Club's Day" loading="lazy">
+            <span class="hoat-dong-tag">Gian trại 37FTU</span>
+          </div>
+        </div>
+        <div class="hoat-dong-card">
+          <div class="hoat-dong-anh-wrap">
+            <img src="assets/img/fcd-viet-don.jpg" alt="Bàn trực nhận đơn tuyển thành viên Gen 16" loading="lazy">
+            <span class="hoat-dong-tag">Điền đơn trực tiếp</span>
+          </div>
+        </div>
+        <div class="hoat-dong-card">
+          <div class="hoat-dong-anh-wrap">
+            <img src="assets/img/fcd-checkin.jpg" alt="Check-in Nghệ An Ngoại thương" loading="lazy">
+            <span class="hoat-dong-tag">Check-in 37FTU</span>
+          </div>
+        </div>
+      </div>
+      <div class="hoat-dong-nut-wrap">
+        <a class="nut nut-chinh nut-hoat-dong-cta" href="https://forms.gle/q76grLXR9DMWDuYJ6" target="_blank" rel="noopener noreferrer">
+          <span>ĐĂNG KÍ THAM GIA NGAY</span>
+          <span class="icon-cta">✨</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- VỀ 37FTU -->
- <section id="ve-chung-toi" style="padding-top:80px">
+  <section id="ve-chung-toi">
     <div class="khung">
       <span class="nhan">37FTU LÀ AI</span>
       <h2>Một cái tên, một quê hương, một mái nhà giữa lòng thủ đô</h2>
@@ -399,6 +439,15 @@
     </div>
   </section>
 </main>
+
+<!-- LIGHTBOX PHÓNG TO ẢNH -->
+<dialog id="lightbox-anh" class="lightbox-anh" aria-label="Xem ảnh phóng to">
+  <div class="lightbox-noi-dung">
+    <button type="button" class="lightbox-dong" id="lightbox-dong" aria-label="Đóng">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-chu" class="lightbox-chu"></div>
+  </div>
+</dialog>
 
 <!-- NÚT BẬT/TẮT NHẠC NỀN -->
 <button id="nut-nhac-nen" class="nut-nhac-nen" type="button" aria-label="Bật/tắt nhạc nền" title="Khúc ca 37FTU · Bật/tắt nhạc">
