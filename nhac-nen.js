@@ -192,6 +192,20 @@
     if (!audio.paused) {
       capNhatGiaoDien(true);
     }
+
+    // Tự động tạm dừng nhạc nền khi phát video hoạt động
+    document.addEventListener('play', function (e) {
+      if (e.target && e.target.tagName === 'VIDEO' && audio && !audio.paused) {
+        audio.pause();
+      }
+    }, true);
+
+    document.addEventListener('ended', function (e) {
+      if (e.target && e.target.tagName === 'VIDEO' && audio && audio.paused && !nguoiDungTamDung) {
+        var p = audio.play();
+        if (p !== undefined) p.catch(function () {});
+      }
+    }, true);
   }
 
   // Khởi động UI ngay khi DOM sẵn sàng

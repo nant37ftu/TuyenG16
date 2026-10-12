@@ -28,7 +28,8 @@
     'section > .hep > h2',
     '.so-lieu .khung > div',
     '.the', '.sc', '.lt-buoc', '.anh-o', '.ch-o',
-    '.luoi > *', '.bon-t > *', '.lo-trinh > *'
+    '.luoi > *', '.bon-t > *', '.lo-trinh > *',
+    '.hoat-dong-card'
   ].join(',');
 
   var theoDoi = null;
@@ -182,6 +183,40 @@
     }
   }
 
+  /* ------------------------------------------------------------------
+     5. LIGHTBOX XEM ẢNH HOẠT ĐỘNG
+     ------------------------------------------------------------------ */
+  function dungLightbox() {
+    var cards = document.querySelectorAll('.hoat-dong-card');
+    var lb = document.getElementById('lightbox-anh');
+    var lbImg = document.getElementById('lightbox-img');
+    var lbChu = document.getElementById('lightbox-chu');
+    if (!lb || !cards.length) return;
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var img = card.querySelector('img');
+        var tag = card.querySelector('.hoat-dong-tag');
+        if (!img || !lbImg) return;
+        lbImg.src = img.src;
+        lbImg.alt = img.alt || '';
+        if (lbChu) lbChu.textContent = tag ? tag.textContent : (img.alt || '');
+        if (typeof lb.showModal === 'function') {
+          lb.showModal();
+        } else {
+          lb.setAttribute('open', '');
+        }
+      });
+    });
+
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb || e.target.closest('#lightbox-dong')) {
+        if (typeof lb.close === 'function') lb.close();
+        else lb.removeAttribute('open');
+      }
+    });
+  }
+
   /* ------------------------------------------------------------------ */
 
   function chay() {
@@ -189,6 +224,7 @@
     dungHero();
     dungHienDan();
     dungDemSo();
+    dungLightbox();
   }
 
   if (document.readyState === 'loading') {

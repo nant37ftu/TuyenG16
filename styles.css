@@ -727,6 +727,179 @@ footer .ten{font-family:var(--font-tieu-de);font-size:1.25rem;color:#fff;margin-
     display: none;
   }
 }
+
+/* ---------- Section Hoạt động đang diễn ra ---------- */
+.hoat-dong-section {
+  position: relative;
+  background: var(--xanh-nhat);
+  border-block: 1px solid var(--vien);
+}
+.hoat-dong-section .khung {
+  width: min(1140px, calc(100% - 64px));
+  margin-inline: auto;
+}
+.hoat-dong-section h2 {
+  margin-bottom: 12px;
+}
+.hoat-dong-section .dan-de {
+  margin-bottom: 24px;
+}
+/* Lưới ảnh hoạt động FCD - Thu nhỏ gọn gàng và sắc nét */
+.hoat-dong-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 880px;
+  margin: 18px auto 0;
+}
+.hoat-dong-card {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid var(--vien);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--bong);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.hoat-dong-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--vien-dam);
+  box-shadow: 0 12px 26px -8px rgba(20, 53, 28, 0.2);
+}
+.hoat-dong-anh-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0d2213;
+}
+.hoat-dong-anh-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  image-rendering: auto;
+  transition: transform 0.35s ease;
+}
+.hoat-dong-card:hover .hoat-dong-anh-wrap img {
+  transform: scale(1.05);
+}
+.hoat-dong-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(17, 40, 23, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+.hoat-dong-nut-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+.nut-hoat-dong-cta {
+  font-size: 1rem;
+  padding: 13px 32px;
+  letter-spacing: .02em;
+  font-weight: 800;
+}
+
+/* Lightbox phóng to ảnh */
+.lightbox-anh {
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 95vw;
+  max-height: 95vh;
+  outline: none;
+  overflow: visible;
+}
+.lightbox-anh::backdrop {
+  background: rgba(12, 30, 16, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.lightbox-noi-dung {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lightbox-dong {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.lightbox-dong:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+.lightbox-anh img {
+  max-width: min(880px, 92vw);
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--r);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  display: block;
+}
+.lightbox-chu {
+  color: #fff;
+  text-align: center;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-top: 12px;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 780px) {
+  .hoat-dong-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 460px;
+    gap: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .hoat-dong-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    gap: 8px;
+  }
+  .hoat-dong-tag {
+    bottom: 6px;
+    left: 6px;
+    font-size: 0.66rem;
+    padding: 2px 7px;
+  }
+}
+
 #ve-chung-toi .khung {
   width: min(1140px, calc(100% - 64px));
   margin-inline: auto;

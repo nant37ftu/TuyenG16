@@ -17,7 +17,7 @@ declare
   v_theo_que  jsonb := '[]'::jsonb;
 begin
   -- 1. Kiểm tra mật mã nội bộ
-  if mat_ma_nhap is null or trim(mat_ma_nhap) <> '37ftu@g16' then
+  if mat_ma_nhap is null or trim(mat_ma_nhap) <> '30102011' then
     return jsonb_build_object(
       'hop_le', false,
       'loi', 'Mật mã nội bộ không chính xác.'

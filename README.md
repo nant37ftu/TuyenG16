@@ -135,7 +135,7 @@ Ba bảng xem nhanh đã tạo sẵn trong **SQL Editor**:
 **Dashboard theo dõi tiến độ đơn nội bộ (dành cho nhân sự CLB):**
 - Mở `dashboard.html` trên trình duyệt.
 - Chạy file `sql/dashboard.sql` trong Supabase SQL Editor một lần để kích hoạt.
-- Có mật mã bảo vệ (mặc định: `37ftu@g16`) hoặc dùng nút "Link gửi team" để chia sẻ cho các bạn trong tổ chức vào xem trực tiếp.
+- Có mật mã bảo vệ (mặc định: `30102011`) hoặc dùng nút "Link gửi team" để chia sẻ cho các bạn trong tổ chức vào xem trực tiếp.
 
 
 ---
